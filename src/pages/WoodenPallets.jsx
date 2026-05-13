@@ -1,5 +1,5 @@
 import { CheckCircle2, ChevronDown, MessageCircle, Phone, ShieldCheck, Star } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for wooden pallets in UAE.')}`;
 
@@ -13,20 +13,20 @@ const bullets = [
 ];
 
 const palletTypes = [
-  ['Euro Pallets', 'Standardized pallets for warehouse storage, distribution, and commercial supply chains.', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80'],
-  ['Two-Way Pallets', 'Reliable entry pallets suitable for common forklift handling and storage operations.', 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&q=80'],
-  ['Four-Way Pallets', 'Flexible pallet handling from all sides for efficient warehouse movement.', 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80'],
-  ['Heavy-Duty Pallets', 'Strong pallets built for heavy industrial products, machinery, and bulk loads.', 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80'],
-  ['Heat Treated Pallets', 'Export-ready heat-treated pallets for international shipping requirements.', 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=80'],
-  ['Custom Wooden Pallets', 'Made-to-size pallet solutions according to load, dimensions, and shipping needs.', 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=80']
+  ['Euro Pallets', 'Standardized pallets for warehouse storage, distribution, and commercial supply chains.', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Two-Way Pallets', 'Reliable entry pallets suitable for common forklift handling and storage operations.', 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Four-Way Pallets', 'Flexible pallet handling from all sides for efficient warehouse movement.', 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Heavy-Duty Pallets', 'Strong pallets built for heavy industrial products, machinery, and bulk loads.', 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Heat Treated Pallets', 'Export-ready heat-treated pallets for international shipping requirements.', 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Custom Wooden Pallets', 'Made-to-size pallet solutions according to load, dimensions, and shipping needs.', 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=65&fm=webp']
 ];
 
 const applications = ['Warehouses', 'Logistics', 'Shipping', 'Factories', 'Retail Storage', 'Export Companies'];
 const features = ['Strong load capacity', 'Long-lasting wood quality', 'Custom manufacturing', 'Competitive pricing', 'UAE-wide delivery', 'Export standards'];
 const gallery = [
-  'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80'
+  'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=65&fm=webp',
+  'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&q=65&fm=webp',
+  'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=65&fm=webp'
 ];
 
 const faqs = [
@@ -50,41 +50,23 @@ function SectionHeading({ eyebrow, title, subtitle }) {
 export default function WoodenPallets() {
   const [openFaq, setOpenFaq] = useState(0);
 
-  useEffect(() => {
-    const previousTitle = document.title;
-    const description = document.querySelector('meta[name="description"]');
-    const previousDescription = description?.getAttribute('content');
-    const keywords = document.querySelector('meta[name="keywords"]');
-    const previousKeywords = keywords?.getAttribute('content');
-
-    document.title = 'Wooden Pallets Supplier in UAE | Mujahid Hussain Carpentry';
-    description?.setAttribute('content', 'Premium wooden pallet manufacturer and supplier in Dubai, Sharjah, Abu Dhabi, JAFZA, and all UAE.');
-    keywords?.setAttribute('content', 'wooden pallets UAE, pallet supplier Dubai, wooden pallets Sharjah, export pallets UAE');
-
-    return () => {
-      document.title = previousTitle;
-      if (previousDescription) description?.setAttribute('content', previousDescription);
-      if (previousKeywords) keywords?.setAttribute('content', previousKeywords);
-    };
-  }, []);
-
   return (
     <>
       <section
-        className="relative isolate min-h-[620px] bg-slate-950 text-white"
+        className="relative isolate min-h-[520px] bg-slate-950 text-white sm:min-h-[620px]"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80')",
+            "linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=65&fm=webp')",
           backgroundPosition: 'center',
           backgroundSize: 'cover'
         }}
       >
-        <div className="mx-auto flex min-h-[620px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto flex min-h-[520px] max-w-7xl items-center px-4 py-16 sm:min-h-[620px] sm:px-6 sm:py-20 lg:px-8">
           <div className="max-w-4xl">
             <span className="inline-flex items-center gap-2 rounded-full bg-indigo-500/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-100 ring-1 ring-white/10">
               <Star className="text-sky-200" size={15} /> Wooden Pallets UAE
             </span>
-            <h1 className="mt-6 text-4xl font-black leading-tight sm:text-5xl lg:text-7xl">Premium Wooden Pallets Supplier in UAE</h1>
+            <h1 className="mt-6 text-3xl font-black leading-tight sm:text-5xl lg:text-7xl">Premium Wooden Pallets Supplier in UAE</h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
               High-quality wooden pallets for warehouses, logistics, factories, export, shipping, and industrial use across UAE.
             </p>
@@ -117,7 +99,7 @@ export default function WoodenPallets() {
               ))}
             </ul>
           </div>
-          <img className="min-h-96 rounded-3xl object-cover shadow-2xl shadow-slate-950/10" src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1100&q=80" alt="Wooden pallets in warehouse" />
+          <img className="min-h-96 rounded-3xl object-cover shadow-2xl shadow-slate-950/10" src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1100&q=65&fm=webp" alt="Wooden pallets in warehouse" width="1100" height="720" loading="lazy" decoding="async" />
         </div>
       </section>
 
@@ -128,7 +110,7 @@ export default function WoodenPallets() {
             {palletTypes.map(([title, description, image]) => (
               <article className="group overflow-hidden rounded-3xl bg-white shadow-md shadow-slate-950/5 ring-1 ring-slate-200 transition hover:-translate-y-2 hover:shadow-2xl" key={title}>
                 <div className="overflow-hidden">
-                  <img className="h-48 w-full object-cover transition duration-500 group-hover:scale-110" src={image} alt={title} loading="lazy" />
+                  <img className="h-48 w-full object-cover transition duration-500 group-hover:scale-110" src={image} alt={title} width="900" height="520" loading="lazy" decoding="async" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-black text-[#02024f]">{title}</h3>
@@ -170,7 +152,7 @@ export default function WoodenPallets() {
           <SectionHeading title="Wooden Pallet Gallery" subtitle="Warehouse stock, pallet loading, and export packaging visuals." />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {gallery.map((image, index) => (
-              <img className="h-72 w-full rounded-3xl object-cover shadow-xl shadow-slate-950/10" src={image} alt={`Wooden pallet product ${index + 1}`} loading="lazy" key={image} />
+              <img className="h-72 w-full rounded-3xl object-cover shadow-xl shadow-slate-950/10" src={image} alt={`Wooden pallet product ${index + 1}`} width="900" height="560" loading="lazy" decoding="async" key={image} />
             ))}
           </div>
         </div>

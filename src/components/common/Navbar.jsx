@@ -42,9 +42,9 @@ export default function Navbar({ activePage, whatsappUrl }) {
   const isProductsActive = activePage === 'products';
 
   return (
-    <nav className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-5 px-4 py-3 sm:px-6 lg:min-h-[100px] lg:px-8" aria-label="Primary navigation">
+    <nav className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-3 py-3 sm:gap-5 sm:px-6 lg:min-h-[100px] lg:px-8" aria-label="Primary navigation">
       <a className="flex min-w-0 items-center gap-3 text-white" href="/" data-spa-link="true" aria-label="Mujahid Hussain Carpentry home">
-        <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-indigo-500/20 text-white ring-1 ring-sky-300/30">
+        <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-500/20 text-white ring-1 ring-sky-300/30 sm:size-12">
           <Grid2X2 size={23} />
         </span>
         <span className="min-w-0">
@@ -109,28 +109,52 @@ export default function Navbar({ activePage, whatsappUrl }) {
       </button>
 
       {open && (
-        <div className="absolute inset-x-4 top-full z-[120] grid max-h-[calc(100vh-9rem)] gap-1 overflow-y-auto rounded-2xl border border-indigo-400/30 bg-[#04043f] p-3 shadow-2xl shadow-slate-950/50 lg:hidden">
-          {mobileLinks.map(([label, href, key]) => (
-            <a
-              className={`rounded-xl px-4 py-3 text-sm font-semibold transition ${activePage === key ? 'bg-violet-950 text-white' : 'text-slate-200 hover:bg-indigo-500/20 hover:text-white'}`}
-              href={href}
-              key={href}
-              data-spa-link="true"
-              onClick={() => setOpen(false)}
-            >
-              {label}
-            </a>
-          ))}
-          <a
-            className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-5 py-3 text-sm font-extrabold text-white"
-            href={whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => setOpen(false)}
-          >
-            <MessageCircle size={18} />
-            Get Quote
-          </a>
+        <div className="fixed inset-0 z-[140] bg-[#02024f]/95 backdrop-blur lg:hidden">
+          <div className="flex min-h-dvh flex-col overflow-y-auto px-4 py-4">
+            <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+              <a className="flex min-w-0 items-center gap-3 text-white" href="/" data-spa-link="true" onClick={() => setOpen(false)}>
+                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-500/20 text-white ring-1 ring-sky-300/30">
+                  <Grid2X2 size={22} />
+                </span>
+                <span className="min-w-0">
+                  <strong className="block truncate text-base font-extrabold">Mujahid Hussain</strong>
+                  <span className="block bg-gradient-to-r from-sky-300 to-indigo-300 bg-clip-text text-sm font-bold text-transparent">Carpentry</span>
+                </span>
+              </a>
+              <button
+                className="grid size-11 shrink-0 place-items-center rounded-xl border border-white/15 text-white transition hover:bg-white/10"
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close navigation"
+              >
+                <X size={23} />
+              </button>
+            </div>
+
+            <div className="grid gap-2 py-5">
+              {mobileLinks.map(([label, href, key]) => (
+                <a
+                  className={`rounded-2xl px-5 py-4 text-base font-semibold transition duration-300 ${activePage === key ? 'bg-gradient-to-r from-violet-800 to-indigo-700 text-white shadow-lg shadow-indigo-950/30' : 'text-slate-100 hover:translate-x-1 hover:bg-indigo-500/20 hover:text-white'}`}
+                  href={href}
+                  key={href}
+                  data-spa-link="true"
+                  onClick={() => setOpen(false)}
+                >
+                  {label}
+                </a>
+              ))}
+              <a
+                className="mt-3 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-indigo-950/30 transition hover:scale-[1.02]"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setOpen(false)}
+              >
+                <MessageCircle size={18} />
+                Get Quote
+              </a>
+            </div>
+          </div>
         </div>
       )}
     </nav>

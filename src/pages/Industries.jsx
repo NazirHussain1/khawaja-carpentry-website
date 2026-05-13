@@ -7,7 +7,7 @@ export default function Industries() {
       <section className="bg-slate-950 px-4 py-16 text-center text-white sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">Industries</span>
-          <h1 className="mt-3 text-4xl font-black sm:text-5xl">Pallet and packaging supply for UAE business sectors</h1>
+          <h1 className="mt-3 text-3xl font-black sm:text-5xl">Pallet and packaging supply for UAE business sectors</h1>
           <p className="mt-5 text-base leading-8 text-slate-300">Serving construction, logistics, food, pharma, manufacturing, oil and gas, and export operations.</p>
         </div>
       </section>

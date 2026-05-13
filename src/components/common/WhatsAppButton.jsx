@@ -21,10 +21,10 @@ export default function WhatsAppButton() {
   }
 
   return (
-    <div className="fixed bottom-5 right-4 z-40 flex flex-col items-end gap-3 sm:right-5">
+    <div className="fixed bottom-4 right-3 z-40 flex flex-col items-end gap-2 sm:bottom-5 sm:right-5 sm:gap-3">
       {showScrollTop && (
         <button
-          className="grid size-12 place-items-center rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-950/30 transition duration-300 hover:-translate-y-1 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300"
+          className="grid size-11 place-items-center rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-950/30 transition duration-300 hover:-translate-y-1 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-300 sm:size-12"
           type="button"
           onClick={scrollToTop}
           aria-label="Scroll to top"
@@ -33,13 +33,13 @@ export default function WhatsAppButton() {
         </button>
       )}
       <a
-        className="grid size-14 place-items-center rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-950/30 transition duration-300 hover:-translate-y-1 hover:animate-pulse hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+        className="grid size-12 place-items-center rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-950/30 transition duration-300 hover:-translate-y-1 hover:animate-pulse hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:size-14"
         href={whatsappUrl}
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle size={25} />
+        <MessageCircle className="size-6 sm:size-[25px]" />
       </a>
     </div>
   );

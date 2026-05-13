@@ -25,8 +25,12 @@ export default function AboutPreview() {
         <div className="overflow-hidden rounded-3xl shadow-2xl shadow-slate-950/10 ring-1 ring-slate-200">
           <img
             className="h-full min-h-96 w-full object-cover"
-            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1100&q=80"
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1100&q=65&fm=webp"
             alt="Wooden pallets stacked inside an industrial warehouse"
+            width="1100"
+            height="720"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

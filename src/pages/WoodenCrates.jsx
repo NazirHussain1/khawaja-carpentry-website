@@ -1,5 +1,5 @@
 import { CheckCircle2, ChevronDown, MessageCircle, Phone, ShieldCheck, Star } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for custom wooden crates in UAE.')}`;
 
@@ -13,20 +13,20 @@ const bullets = [
 ];
 
 const crateTypes = [
-  ['Export Wooden Crates', 'Export-ready crates built for cargo handling, container loading, and international shipment.', 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=80'],
-  ['Heavy-Duty Crates', 'Strong wooden crates designed for heavy goods, industrial components, and bulk materials.', 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=80'],
-  ['Machinery Packing Crates', 'Custom crates for machinery, spare parts, fabrication equipment, and technical cargo.', 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80'],
-  ['Fragile Goods Crates', 'Protective wooden crates for fragile, sensitive, and high-value commercial goods.', 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&q=80'],
-  ['Custom Wooden Boxes', 'Made-to-measure wooden boxes for storage, packing, and transport requirements.', 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80'],
-  ['Industrial Packing Crates', 'Reliable crate solutions for warehouses, factories, logistics, and shipping companies.', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80']
+  ['Export Wooden Crates', 'Export-ready crates built for cargo handling, container loading, and international shipment.', 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Heavy-Duty Crates', 'Strong wooden crates designed for heavy goods, industrial components, and bulk materials.', 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Machinery Packing Crates', 'Custom crates for machinery, spare parts, fabrication equipment, and technical cargo.', 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Fragile Goods Crates', 'Protective wooden crates for fragile, sensitive, and high-value commercial goods.', 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Custom Wooden Boxes', 'Made-to-measure wooden boxes for storage, packing, and transport requirements.', 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Industrial Packing Crates', 'Reliable crate solutions for warehouses, factories, logistics, and shipping companies.', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=65&fm=webp']
 ];
 
 const applications = ['Export Companies', 'Warehouses', 'Factories', 'Machinery Suppliers', 'Logistics Companies', 'Shipping Companies'];
 const features = ['Strong wood material', 'Custom-built design', 'Safe cargo protection', 'Affordable pricing', 'UAE-wide delivery', 'Suitable for export packing'];
 const gallery = [
-  'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=80'
+  'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=65&fm=webp',
+  'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=65&fm=webp',
+  'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=65&fm=webp'
 ];
 
 const faqs = [
@@ -50,37 +50,23 @@ function SectionHeading({ eyebrow, title, subtitle }) {
 export default function WoodenCrates() {
   const [openFaq, setOpenFaq] = useState(0);
 
-  useEffect(() => {
-    const previousTitle = document.title;
-    const description = document.querySelector('meta[name="description"]');
-    const previousDescription = description?.getAttribute('content');
-
-    document.title = 'Wooden Crates Supplier in UAE | Custom Packing Crates';
-    description?.setAttribute('content', 'Custom wooden crates supplier in Dubai, Sharjah, Abu Dhabi, JAFZA, Jebel Ali, and all UAE for export packing, machinery, and industrial goods.');
-
-    return () => {
-      document.title = previousTitle;
-      if (previousDescription) description?.setAttribute('content', previousDescription);
-    };
-  }, []);
-
   return (
     <>
       <section
-        className="relative isolate min-h-[620px] bg-slate-950 text-white"
+        className="relative isolate min-h-[520px] bg-slate-950 text-white sm:min-h-[620px]"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=1800&q=80')",
+            "linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=1400&q=65&fm=webp')",
           backgroundPosition: 'center',
           backgroundSize: 'cover'
         }}
       >
-        <div className="mx-auto flex min-h-[620px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto flex min-h-[520px] max-w-7xl items-center px-4 py-16 sm:min-h-[620px] sm:px-6 sm:py-20 lg:px-8">
           <div className="max-w-4xl">
             <span className="inline-flex items-center gap-2 rounded-full bg-indigo-500/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-100 ring-1 ring-white/10">
               <Star className="text-sky-200" size={15} /> Wooden Crates UAE
             </span>
-            <h1 className="mt-6 text-4xl font-black leading-tight sm:text-5xl lg:text-7xl">Custom Wooden Crates Supplier in UAE</h1>
+            <h1 className="mt-6 text-3xl font-black leading-tight sm:text-5xl lg:text-7xl">Custom Wooden Crates Supplier in UAE</h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
               Strong wooden crates for packing, storage, export shipping, heavy machinery, fragile goods, and industrial transport across UAE.
             </p>
@@ -113,7 +99,7 @@ export default function WoodenCrates() {
               ))}
             </ul>
           </div>
-          <img className="min-h-96 rounded-3xl object-cover shadow-2xl shadow-slate-950/10" src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=1100&q=80" alt="Wooden crates for cargo packing" />
+          <img className="min-h-96 rounded-3xl object-cover shadow-2xl shadow-slate-950/10" src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=1100&q=65&fm=webp" alt="Wooden crates for cargo packing" width="1100" height="720" loading="lazy" decoding="async" />
         </div>
       </section>
 
@@ -124,7 +110,7 @@ export default function WoodenCrates() {
             {crateTypes.map(([title, description, image]) => (
               <article className="group overflow-hidden rounded-3xl bg-white shadow-md shadow-slate-950/5 ring-1 ring-slate-200 transition hover:-translate-y-2 hover:shadow-2xl" key={title}>
                 <div className="overflow-hidden">
-                  <img className="h-48 w-full object-cover transition duration-500 group-hover:scale-110" src={image} alt={title} loading="lazy" />
+                  <img className="h-48 w-full object-cover transition duration-500 group-hover:scale-110" src={image} alt={title} width="900" height="520" loading="lazy" decoding="async" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-black text-[#02024f]">{title}</h3>
@@ -166,7 +152,7 @@ export default function WoodenCrates() {
           <SectionHeading title="Wooden Crates Gallery" subtitle="Cargo packing, warehouse crates, and export crate visuals." />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {gallery.map((image, index) => (
-              <img className="h-72 w-full rounded-3xl object-cover shadow-xl shadow-slate-950/10" src={image} alt={`Wooden crate product ${index + 1}`} loading="lazy" key={image} />
+              <img className="h-72 w-full rounded-3xl object-cover shadow-xl shadow-slate-950/10" src={image} alt={`Wooden crate product ${index + 1}`} width="900" height="560" loading="lazy" decoding="async" key={image} />
             ))}
           </div>
         </div>

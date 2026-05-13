@@ -51,7 +51,7 @@ export default function QuoteForm() {
         </label>
         <label className={labelClass}>
           Phone Number
-          <input className={fieldClass} type="tel" name="phone" placeholder="+971 ..." required pattern="^[+0-9\\s-]{7,}$" />
+          <input className={fieldClass} type="tel" inputMode="tel" name="phone" placeholder="+971 ..." required pattern="^[+0-9\\s-]{7,}$" />
         </label>
         <label className={labelClass}>
           Email Address
@@ -70,7 +70,7 @@ export default function QuoteForm() {
         </label>
         <label className={labelClass}>
           Quantity
-          <input className={fieldClass} type="number" name="quantity" min="1" placeholder="100" required />
+          <input className={fieldClass} type="number" inputMode="numeric" name="quantity" min="1" placeholder="100" required />
         </label>
         <label className={`${labelClass} md:col-span-2`}>
           Message

@@ -4,6 +4,27 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  build: {
+    cssCodeSplit: true,
+    modulePreload: {
+      polyfill: false
+    },
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/scheduler')) {
+            return 'react';
+          }
+
+          if (id.includes('node_modules/lucide-react')) {
+            return 'icons';
+          }
+
+          return undefined;
+        }
+      }
+    }
+  },
   server: {
     host: '127.0.0.1',
     port: 5173

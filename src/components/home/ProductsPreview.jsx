@@ -5,25 +5,25 @@ const products = [
     title: 'Wooden Pallets',
     description: 'Strong and durable wooden pallets for warehouses, factories, shipping, logistics, and export use.',
     href: '/products/wooden-pallets',
-    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80'
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=65&fm=webp'
   },
   {
     title: 'Wooden Crates',
     description: 'Custom wooden crates for safe packing, storage, and transportation of heavy or fragile goods.',
     href: '/products/wooden-crates',
-    image: 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=80'
+    image: 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=65&fm=webp'
   },
   {
     title: 'Plastic Pallets',
     description: 'Reusable plastic pallets suitable for hygiene-sensitive industries and long-term warehouse use.',
     href: '/products/plastic-pallets',
-    image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=900&q=80'
+    image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=900&q=65&fm=webp'
   },
   {
     title: 'Plastic Jumbo Bags',
     description: 'High-quality jumbo bags for bulk packaging, industrial materials, and transportation needs.',
     href: '/products/plastic-jumbo-bags',
-    image: 'https://images.unsplash.com/photo-1581093458791-9d09ccfed1c1?auto=format&fit=crop&w=900&q=80'
+    image: 'https://images.unsplash.com/photo-1581093458791-9d09ccfed1c1?auto=format&fit=crop&w=900&q=65&fm=webp'
   }
 ];
 
@@ -43,7 +43,15 @@ export default function ProductsPreview() {
           {products.map((product) => (
             <article className="group overflow-hidden rounded-2xl bg-white shadow-md shadow-slate-950/5 ring-1 ring-slate-200 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-slate-950/12" key={product.href}>
               <div className="overflow-hidden">
-                <img className="h-52 w-full object-cover transition duration-500 group-hover:scale-110" src={product.image} alt={product.title} />
+                <img
+                  className="h-52 w-full object-cover transition duration-500 group-hover:scale-110"
+                  src={product.image}
+                  alt={product.title}
+                  width="900"
+                  height="520"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-black text-[#02024f]">{product.title}</h3>
