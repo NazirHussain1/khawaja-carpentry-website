@@ -1,18 +1,18 @@
 const testimonials = [
   {
-    name: 'Operations Manager',
-    company: 'UAE Logistics Company',
-    quote: 'Their team delivered strong custom pallets on schedule and helped us standardize packing for repeated shipments.'
+    name: 'Logistics Company',
+    company: 'Dubai',
+    quote: 'Khawaja-Carpentry-WoodPallets has been our trusted pallet supplier for years. Excellent quality and fast delivery every time.'
   },
   {
-    name: 'Procurement Lead',
-    company: 'Industrial Supplier',
-    quote: 'The build quality is consistent, communication is direct, and bulk orders are handled without delays.'
+    name: 'Manufacturing Client',
+    company: 'Sharjah',
+    quote: 'Best prices for wooden pallets in UAE. Professional team and very responsive.'
   },
   {
-    name: 'Project Supervisor',
-    company: 'Fit-Out Contractor',
-    quote: 'We use Khawaja for carpentry support and wooden packing because they understand site requirements clearly.'
+    name: 'Export Business',
+    company: 'Abu Dhabi',
+    quote: 'Their custom wooden crates are strong and export-ready. Highly recommended.'
   }
 ];
 

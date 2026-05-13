@@ -5,11 +5,11 @@ import contactInfo from '../../data/contactInfo.js';
 export default function Header({ activePage }) {
   return (
     <header className="site-header">
-      <a className="brand" href="#/home" aria-label="Khawaja Carpentry & Wood Pallets home">
+      <a className="brand" href="#/home" aria-label="Khawaja-Carpentry-WoodPallets home">
         <span className="brand-mark">KC</span>
         <span>
-          <strong>Khawaja</strong>
-          <small>WoodPallets LLC</small>
+          <strong>{contactInfo.businessName}</strong>
+          <small>{contactInfo.tagline}</small>
         </span>
       </a>
       <Navbar activePage={activePage} />

@@ -8,7 +8,7 @@ export default function AboutPreview() {
         <span className="eyebrow">Trusted Since 2009</span>
         <h2>Trusted Wooden Pallet Supplier in UAE Since 2009</h2>
         <p>
-          Mujahid Hussain Carpentry LLC is a leading manufacturer, supplier, and repairer of wooden pallets based in
+          Khawaja-Carpentry-WoodPallets is a leading manufacturer, supplier, and repairer of wooden pallets based in
           Sharjah, UAE. With over 15 years of industry experience, we specialize in high-quality new and refurbished
           wooden pallets, plastic pallets, and custom wooden crates for businesses across Dubai, Abu Dhabi, JAFZA,
           Ras Al Khaimah, Mussafah, Jabal Ali, and Umm Al Quwain.

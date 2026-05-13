@@ -8,7 +8,7 @@ export default function ContactInfo() {
     [Mail, 'Email', contactInfo.email],
     [MapPin, 'Location', contactInfo.address],
     [Clock, 'Hours', contactInfo.hours]
-  ];
+  ].filter(([, , value]) => value);
 
   return (
     <aside className="contact-info">
@@ -21,6 +21,14 @@ export default function ContactInfo() {
           </div>
         </div>
       ))}
+      <div className="map-card">
+        <iframe
+          title="Industrial Area Al Sajja, Sharjah map"
+          src={contactInfo.mapEmbedUrl}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
     </aside>
   );
 }

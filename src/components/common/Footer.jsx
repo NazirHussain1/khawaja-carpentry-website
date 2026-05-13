@@ -9,8 +9,8 @@ export default function Footer() {
           <a className="brand footer-brand" href="#/home">
             <span className="brand-mark">KC</span>
             <span>
-              <strong>Khawaja</strong>
-              <small>WoodPallets LLC</small>
+              <strong>{contactInfo.businessName}</strong>
+              <small>{contactInfo.tagline}</small>
             </span>
           </a>
           <p>Premium wooden pallets manufacturer and supplier serving businesses across all 7 UAE Emirates.</p>
@@ -25,13 +25,19 @@ export default function Footer() {
         <div>
           <h4>Contact</h4>
           <p><Phone size={16} /> {contactInfo.phone}</p>
-          <p><Phone size={16} /> {contactInfo.secondaryPhone}</p>
+          {contactInfo.secondaryPhone && <p><Phone size={16} /> {contactInfo.secondaryPhone}</p>}
           <p><Mail size={16} /> {contactInfo.email}</p>
           <p><MapPin size={16} /> {contactInfo.address}</p>
         </div>
+        <div>
+          <h4>Social</h4>
+          {contactInfo.socialLinks.map((link) => (
+            <a href={link.href} key={link.label} target="_blank" rel="noreferrer">{link.label}</a>
+          ))}
+        </div>
       </div>
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} {contactInfo.businessName}. All rights reserved.</span>
+        <span>&copy; {new Date().getFullYear()} {contactInfo.businessName}. All rights reserved.</span>
       </div>
     </footer>
   );

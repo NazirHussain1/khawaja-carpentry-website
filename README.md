@@ -1,6 +1,16 @@
-# Khawaja-Carpentry-WoodPallets LLC
+# Khawaja-Carpentry-WoodPallets
 
 Modern MERN-ready React/Vite website for a UAE wooden pallet manufacturing, supply, and carpentry business.
+
+## Feature Roadmap
+
+- Backend: Node.js + Express
+- Database: MongoDB
+- Storage: Cloudinary
+- Admin dashboard for product and quote management
+- Email notifications and CRM/lead tracking
+- PDF quotation generator
+- Multi-language support
 
 ## Run
 
