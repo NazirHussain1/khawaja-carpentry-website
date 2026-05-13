@@ -67,6 +67,27 @@
     box-shadow: var(--shadow-nav);
   }
 
+  .nav-item-with-menu {
+    display: grid;
+    gap: 8px;
+  }
+
+  .nav-dropdown {
+    position: static;
+    display: grid;
+    min-width: 0;
+    padding: 8px 0 0 14px;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .nav-dropdown a {
+    padding: 7px 0;
+    color: rgba(255, 255, 255, 0.76);
+  }
+
   .nav-links.is-open {
     display: flex;
   }
@@ -88,6 +109,7 @@
   }
 
   .split-section,
+  .mission-vision-section,
   .product-detail-layout,
   .contact-layout,
   .industries-section,
@@ -176,6 +198,8 @@
   .product-grid,
   .reason-grid,
   .six-grid,
+  .two-column-list,
+  .mission-vision-section,
   .testimonial-grid,
   .gallery-grid,
   .form-row,

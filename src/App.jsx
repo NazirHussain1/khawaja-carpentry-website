@@ -9,13 +9,21 @@ import ProductDetail from './pages/ProductDetail.jsx';
 import Gallery from './pages/Gallery.jsx';
 import Testimonials from './pages/Testimonials.jsx';
 import Contact from './pages/Contact.jsx';
+import Services from './pages/Services.jsx';
+import Industries from './pages/Industries.jsx';
+import FAQ from './pages/FAQ.jsx';
+import GetQuote from './pages/GetQuote.jsx';
 
 const routes = {
   home: Home,
   about: About,
+  services: Services,
   products: Products,
+  industries: Industries,
   gallery: Gallery,
   testimonials: Testimonials,
+  faq: FAQ,
+  quote: GetQuote,
   contact: Contact
 };
 

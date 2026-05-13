@@ -1,16 +1,16 @@
-import { Hammer, PackageCheck, Recycle, Ruler } from 'lucide-react';
+import { Boxes, Factory, Hammer, PackageCheck, Recycle, Ruler } from 'lucide-react';
 import services from '../../data/services.js';
 
-const icons = [PackageCheck, Hammer, Ruler, Recycle];
+const icons = [PackageCheck, Hammer, Ruler, Recycle, Boxes, Factory];
 
 export default function ServicesSection() {
   return (
     <section className="section light-section">
       <div className="section-heading">
         <span className="eyebrow">What We Do</span>
-        <h2>Manufacturing and woodwork services for industrial operations</h2>
+        <h2>Main services for industrial pallet and packaging buyers</h2>
       </div>
-      <div className="service-grid">
+      <div className="service-grid six-grid">
         {services.map((service, index) => {
           const Icon = icons[index];
           return (

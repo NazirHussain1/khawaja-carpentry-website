@@ -1,5 +1,4 @@
-const serviceAreas = ['Dubai', 'Sharjah', 'JAFZA', 'Jabal Ali', 'Mussafah', 'Ras Al Khaimah', 'Umm Al Quwain', 'Abu Dhabi', 'Ajman', 'Fujairah'];
-const industries = ['Construction', 'Pharmaceutical', 'Food & Beverage', 'Manufacturing', 'Logistics', 'Oil & Gas'];
+import { industries, serviceAreas } from '../../data/industries.js';
 
 export default function IndustriesSection() {
   return (

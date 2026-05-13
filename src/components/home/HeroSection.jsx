@@ -1,5 +1,6 @@
-import { ArrowRight, Boxes, Factory, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Boxes, Clock, MessageCircle, ShieldCheck, Truck } from 'lucide-react';
 import { createWhatsAppUrl } from '../../utils/whatsapp.js';
+import contactInfo from '../../data/contactInfo.js';
 
 export default function HeroSection() {
   return (
@@ -12,22 +13,33 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="hero-content">
-        <span className="eyebrow">#1 Rated Pallet Supplier in UAE</span>
-        <h1>Premium Wooden Pallets Manufacturer & Supplier</h1>
+        <span className="eyebrow">#1 Wooden Pallet Supplier in UAE</span>
+        <h1>Premium Wooden Pallets, Plastic Pallets & Wooden Crates Manufacturer in UAE</h1>
         <p>
-          Manufacturing, supplying, and repairing high-quality wooden pallets, plastic pallets, wooden crates, and
-          jumbo bags serving businesses across all 7 UAE Emirates.
+          {contactInfo.businessName} is a trusted manufacturer and supplier of high-quality wooden pallets, plastic
+          pallets, export crates, and industrial packaging solutions in UAE. Serving businesses across Dubai, Sharjah,
+          Abu Dhabi, JAFZA, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain since 2009.
         </p>
+        <div className="hero-badges">
+          <span>ISPM-15 Certified</span>
+          <span>Fast UAE Delivery</span>
+          <span>Custom Sizes Available</span>
+          <span>Bulk Orders Accepted</span>
+          <span>New & Used Pallets</span>
+        </div>
         <div className="hero-actions">
           <a className="btn btn-primary" href={createWhatsAppUrl('Hello, I need an instant quote for pallets.')} target="_blank" rel="noreferrer">
             Get Instant Quote <ArrowRight size={18} />
           </a>
-          <a className="btn btn-outline" href="#/products">Our Products</a>
+          <a className="btn btn-outline" href={createWhatsAppUrl('Hello, I want to discuss pallets on WhatsApp.')} target="_blank" rel="noreferrer">
+            <MessageCircle size={18} /> WhatsApp Us
+          </a>
         </div>
         <div className="hero-stats">
-          <span><Boxes size={18} /> Custom sizes</span>
-          <span><Factory size={18} /> All UAE Emirates</span>
-          <span><ShieldCheck size={18} /> ISPM-15 certified</span>
+          <span><ShieldCheck size={18} /> <strong>15+</strong> Years Experience</span>
+          <span><Boxes size={18} /> <strong>5000+</strong> Bulk Orders Completed</span>
+          <span><Clock size={18} /> <strong>24-48</strong> Hours Delivery</span>
+          <span><Truck size={18} /> All 7 Emirates Covered</span>
         </div>
       </div>
     </section>
