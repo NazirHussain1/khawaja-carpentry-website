@@ -1,6 +1,7 @@
 import CTASection from '../components/common/CTASection.jsx';
 import ProductDetails from '../components/products/ProductDetails.jsx';
 import products from '../data/products.js';
+import PlasticJumboBags from './PlasticJumboBags.jsx';
 import PlasticPallets from './PlasticPallets.jsx';
 import WoodenCrates from './WoodenCrates.jsx';
 import WoodenPallets from './WoodenPallets.jsx';
@@ -16,6 +17,10 @@ export default function ProductDetail({ slug }) {
 
   if (slug === 'plastic-pallets') {
     return <PlasticPallets />;
+  }
+
+  if (slug === 'plastic-jumbo-bags') {
+    return <PlasticJumboBags />;
   }
 
   const product = products.find((item) => item.slug === slug) || products[0];
