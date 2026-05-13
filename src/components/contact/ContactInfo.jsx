@@ -11,18 +11,21 @@ export default function ContactInfo() {
   ].filter(([, , value]) => value);
 
   return (
-    <aside className="contact-info">
+    <aside className="grid gap-4">
       {items.map(([Icon, label, value]) => (
-        <div className="contact-item" key={label}>
-          <Icon size={22} />
+        <div className="flex gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm" key={label}>
+          <div className="grid size-11 shrink-0 place-items-center rounded-md bg-emerald-50 text-emerald-700">
+            <Icon size={22} />
+          </div>
           <div>
-            <h4>{label}</h4>
-            <p>{value}</p>
+            <h4 className="font-bold text-slate-950">{label}</h4>
+            <p className="mt-1 text-sm leading-6 text-slate-600">{value}</p>
           </div>
         </div>
       ))}
-      <div className="map-card">
+      <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
         <iframe
+          className="h-72 w-full"
           title="Industrial Area Al Sajja, Sharjah map"
           src={contactInfo.mapEmbedUrl}
           loading="lazy"

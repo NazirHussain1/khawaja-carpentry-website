@@ -5,17 +5,21 @@ import QuoteForm from '../components/contact/QuoteForm.jsx';
 export default function Contact() {
   return (
     <>
-      <section className="page-hero">
-        <span className="eyebrow">Contact</span>
-        <h1>Request pricing for pallets, crates, and jumbo bags</h1>
-        <p>Send your pallet type, size, quantity, and delivery location. We will respond with custom pricing.</p>
+      <section className="bg-slate-950 px-4 py-16 text-center text-white sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">Contact</span>
+          <h1 className="mt-3 text-4xl font-black sm:text-5xl">Request pricing for pallets, crates, and jumbo bags</h1>
+          <p className="mt-5 text-base leading-8 text-slate-300">Send your pallet type, size, quantity, and delivery location. We will respond with custom pricing.</p>
+        </div>
       </section>
-      <section className="contact-layout">
+      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <ContactInfo />
         <ContactForm />
       </section>
-      <section className="section light-section">
-        <QuoteForm />
+      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl">
+          <QuoteForm />
+        </div>
       </section>
     </>
   );

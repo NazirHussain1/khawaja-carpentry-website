@@ -31,23 +31,25 @@ export default function Navbar({ activePage }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="navbar" aria-label="Primary navigation">
-      <button className="nav-toggle" type="button" onClick={() => setOpen(!open)} aria-label="Toggle navigation">
+    <nav className="flex justify-end lg:flex-1" aria-label="Primary navigation">
+      <button className="inline-flex size-10 items-center justify-center rounded-md border border-white/15 text-white lg:hidden" type="button" onClick={() => setOpen(!open)} aria-label="Toggle navigation">
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
-      <div className={`nav-links ${open ? 'is-open' : ''}`}>
+      <div className={`${open ? 'fixed inset-x-4 top-24 grid' : 'hidden'} max-w-[calc(100vw-2rem)] gap-1 rounded-md border border-slate-200 bg-white p-3 shadow-xl lg:static lg:flex lg:max-w-none lg:items-center lg:justify-end lg:gap-1 lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none`}>
         {navItems.map((item) => {
-          const className = `${activePage === item.key ? 'active' : ''}${item.cta ? ' nav-quote' : ''}`;
+          const className = item.cta
+            ? 'rounded-md bg-emerald-600 px-3 py-2 text-sm font-semibold text-white transition hover:bg-emerald-500'
+            : `rounded-md px-3 py-2 text-sm font-semibold transition ${activePage === item.key ? 'bg-slate-100 text-slate-950 lg:bg-white/10 lg:text-emerald-300' : 'text-slate-700 hover:bg-slate-100 lg:text-slate-100 lg:hover:bg-white/10'}`;
 
           if (item.children) {
             return (
-              <div className="nav-item-with-menu" key={item.key}>
+              <div className="group relative" key={item.key}>
                 <a className={className} href={item.href} onClick={() => setOpen(false)}>
                   {item.label}
                 </a>
-                <div className="nav-dropdown">
+                <div className="hidden min-w-56 rounded-md bg-white p-2 shadow-xl group-hover:grid lg:absolute lg:right-0 lg:top-full">
                   {item.children.map(([label, href]) => (
-                    <a href={href} key={href} onClick={() => setOpen(false)}>{label}</a>
+                    <a className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100" href={href} key={href} onClick={() => setOpen(false)}>{label}</a>
                   ))}
                 </div>
               </div>

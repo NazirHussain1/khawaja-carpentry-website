@@ -45,13 +45,13 @@ export default function App() {
   const Page = slug ? ProductDetail : routes[page] || Home;
 
   return (
-    <>
+    <div className="min-h-screen overflow-x-clip bg-slate-50 text-slate-900 antialiased">
       <Header activePage={page} />
       <main>
         <Page slug={slug} />
       </main>
       <Footer />
       <WhatsAppButton />
-    </>
+    </div>
   );
 }
