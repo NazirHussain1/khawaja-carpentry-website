@@ -1,49 +1,140 @@
-import { Mail, MapPin, Phone } from 'lucide-react';
-import contactInfo from '../../data/contactInfo.js';
+import { ChevronRight, Grid2X2, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+
+const company = {
+  name: 'Mujahid Hussain Carpentry',
+  legalName: 'Mujahid Hussain Carpentry LLC',
+  description: 'Leading manufacturer and supplier of premium wooden pallets, plastic pallets, and wooden crates in UAE.',
+  whatsapp: '971509253127',
+  phonePrimary: '+971 50 92 53127',
+  phoneSecondary: '+971 52 51 73794',
+  email: 'mujahidhussaincarpentry@gmail.com',
+  location: 'Industrial Area Al Sajja, Sharjah, UAE',
+  mapsUrl: 'https://www.google.com/maps?q=Industrial%20Area%20Al%20Sajja%2C%20Sharjah%2C%20UAE'
+};
+
+const quickLinks = [
+  ['Home', '#/home'],
+  ['About Us', '#/about'],
+  ['Products', '#/products'],
+  ['Gallery', '#/gallery'],
+  ['Testimonials', '#/testimonials'],
+  ['Contact Us', '#/contact']
+];
+
+const productLinks = [
+  ['Wooden Pallets', '#/products/wooden-pallets'],
+  ['Wooden Crates', '#/products/wooden-crates'],
+  ['Plastic Pallets', '#/products/plastic-pallets'],
+  ['Plastic Jumbo Bags', '#/products/plastic-jumbo-bags']
+];
+
+function FooterHeading({ children }) {
+  return (
+    <div>
+      <h3 className="text-lg font-bold text-white">{children}</h3>
+      <span className="mt-3 block h-1 w-12 rounded-full bg-gradient-to-r from-indigo-400 to-sky-400" />
+    </div>
+  );
+}
+
+function FooterLink({ href, children }) {
+  return (
+    <a className="group inline-flex items-center gap-2 text-sm text-slate-300 transition duration-300 hover:translate-x-1.5 hover:text-sky-300" href={href}>
+      <ChevronRight className="text-indigo-300 transition group-hover:text-sky-300" size={15} />
+      {children}
+    </a>
+  );
+}
+
+function SocialIcon({ href, label, children }) {
+  return (
+    <a
+      className="grid size-10 place-items-center rounded-full bg-indigo-400/15 text-white ring-1 ring-white/10 transition duration-300 hover:scale-110 hover:bg-indigo-500/70 hover:ring-indigo-300/50"
+      href={href}
+      target={href.startsWith('http') ? '_blank' : undefined}
+      rel={href.startsWith('http') ? 'noreferrer' : undefined}
+      aria-label={label}
+    >
+      {children}
+    </a>
+  );
+}
+
+function ContactItem({ href, icon: Icon, children }) {
+  return (
+    <a
+      className="group flex items-start gap-3 text-sm leading-6 text-slate-300 transition duration-300 hover:text-sky-300"
+      href={href}
+      target={href.startsWith('http') ? '_blank' : undefined}
+      rel={href.startsWith('http') ? 'noreferrer' : undefined}
+    >
+      <Icon className="mt-1 shrink-0 text-indigo-300 transition group-hover:text-sky-300" size={18} />
+      <span>{children}</span>
+    </a>
+  );
+}
 
 export default function Footer() {
+  const whatsappUrl = `https://wa.me/${company.whatsapp}?text=${encodeURIComponent('Hello, I need a quote for wooden pallets.')}`;
+  const primaryTel = `tel:${company.phonePrimary.replace(/\s/g, '')}`;
+  const secondaryTel = `tel:${company.phoneSecondary.replace(/\s/g, '')}`;
+  const mailto = `mailto:${company.email}`;
+
   return (
-    <footer className="bg-slate-950 text-slate-200">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
-        <div>
-          <a className="flex items-center gap-3 text-white" href="#/home">
-            <span className="grid size-11 place-items-center rounded-md bg-emerald-500 text-sm font-black text-white">KC</span>
-            <span>
-              <strong className="block text-sm font-bold">{contactInfo.businessName}</strong>
-              <small className="block text-xs text-slate-400">{contactInfo.tagline}</small>
+    <footer className="bg-[#02024f] text-slate-300">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+        <section aria-labelledby="footer-company">
+          <div className="flex items-center gap-3">
+            <span className="grid size-10 place-items-center rounded-md bg-indigo-400/20 text-white ring-1 ring-indigo-300/30">
+              <Grid2X2 size={20} />
             </span>
-          </a>
-          <p className="mt-4 text-sm leading-6 text-slate-400">Premium wooden pallets manufacturer and supplier serving businesses across all 7 UAE Emirates.</p>
-        </div>
-        <div>
-          <h4 className="font-semibold text-white">Company</h4>
-          <div className="mt-4 grid gap-2 text-sm text-slate-400">
-            <a className="hover:text-white" href="#/about">About</a>
-            <a className="hover:text-white" href="#/products">Products</a>
-            <a className="hover:text-white" href="#/gallery">Gallery</a>
-            <a className="hover:text-white" href="#/contact">Contact</a>
+            <h2 id="footer-company" className="text-lg font-bold text-white">{company.name}</h2>
           </div>
-        </div>
-        <div>
-          <h4 className="font-semibold text-white">Contact</h4>
-          <div className="mt-4 grid gap-3 text-sm text-slate-400">
-            <p className="flex items-start gap-2"><Phone className="mt-0.5 shrink-0 text-emerald-300" size={16} /> {contactInfo.phone}</p>
-            {contactInfo.secondaryPhone && <p className="flex items-start gap-2"><Phone className="mt-0.5 shrink-0 text-emerald-300" size={16} /> {contactInfo.secondaryPhone}</p>}
-            <p className="flex items-start gap-2"><Mail className="mt-0.5 shrink-0 text-emerald-300" size={16} /> {contactInfo.email}</p>
-            <p className="flex items-start gap-2"><MapPin className="mt-0.5 shrink-0 text-emerald-300" size={16} /> {contactInfo.address}</p>
+          <p className="mt-5 max-w-sm text-sm leading-7 text-slate-300/85">{company.description}</p>
+          <div className="mt-6 flex items-center gap-3">
+            <SocialIcon href={whatsappUrl} label="Chat on WhatsApp">
+              <MessageCircle size={19} />
+            </SocialIcon>
+            <SocialIcon href={primaryTel} label="Call Mujahid Hussain Carpentry">
+              <Phone size={18} />
+            </SocialIcon>
+            <SocialIcon href={mailto} label="Email Mujahid Hussain Carpentry">
+              <Mail size={18} />
+            </SocialIcon>
           </div>
-        </div>
-        <div>
-          <h4 className="font-semibold text-white">Social</h4>
-          <div className="mt-4 grid gap-2 text-sm text-slate-400">
-          {contactInfo.socialLinks.map((link) => (
-            <a className="hover:text-white" href={link.href} key={link.label} target="_blank" rel="noreferrer">{link.label}</a>
-          ))}
+        </section>
+
+        <nav aria-labelledby="footer-quick-links">
+          <FooterHeading>Quick Links</FooterHeading>
+          <div id="footer-quick-links" className="mt-6 grid gap-3">
+            {quickLinks.map(([label, href]) => (
+              <FooterLink href={href} key={href}>{label}</FooterLink>
+            ))}
           </div>
-        </div>
+        </nav>
+
+        <nav aria-labelledby="footer-products">
+          <FooterHeading>Our Products</FooterHeading>
+          <div id="footer-products" className="mt-6 grid gap-3">
+            {productLinks.map(([label, href]) => (
+              <FooterLink href={href} key={href}>{label}</FooterLink>
+            ))}
+          </div>
+        </nav>
+
+        <section aria-labelledby="footer-contact">
+          <FooterHeading>Contact Us</FooterHeading>
+          <div id="footer-contact" className="mt-6 grid gap-4">
+            <ContactItem href={company.mapsUrl} icon={MapPin}>{company.location}</ContactItem>
+            <ContactItem href={primaryTel} icon={Phone}>{company.phonePrimary}</ContactItem>
+            <ContactItem href={secondaryTel} icon={Phone}>{company.phoneSecondary}</ContactItem>
+            <ContactItem href={mailto} icon={Mail}>{company.email}</ContactItem>
+          </div>
+        </section>
       </div>
-      <div className="border-t border-white/10 px-4 py-5 text-center text-xs text-slate-500">
-        &copy; {new Date().getFullYear()} {contactInfo.businessName}. All rights reserved.
+
+      <div className="border-t border-white/10 px-5 py-5 text-center text-xs text-slate-300/70">
+        &copy; 2026 {company.legalName}. All Rights Reserved.
       </div>
     </footer>
   );

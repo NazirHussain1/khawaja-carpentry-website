@@ -27,22 +27,40 @@ const routes = {
   contact: Contact
 };
 
-function parseHash() {
-  const hash = window.location.hash.replace('#/', '') || 'home';
-  const [page, slug] = hash.split('/');
+function parseRoute() {
+  const hashRoute = window.location.hash.startsWith('#/') ? window.location.hash.replace('#/', '') : '';
+  const pathRoute = window.location.pathname.replace(/^\/+/, '');
+  const route = hashRoute || pathRoute || 'home';
+  const [page, slug] = route.split('/');
   return { page, slug };
 }
 
 export default function App() {
-  const [{ page, slug }, setRoute] = useState(parseHash);
+  const [{ page, slug }, setRoute] = useState(parseRoute);
 
   useEffect(() => {
-    const onHashChange = () => setRoute(parseHash());
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
+    const updateRoute = () => setRoute(parseRoute());
+    const onLinkClick = (event) => {
+      const link = event.target.closest('a[data-spa-link="true"]');
+      if (!link) return;
+
+      event.preventDefault();
+      window.history.pushState({}, '', link.getAttribute('href'));
+      updateRoute();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.addEventListener('popstate', updateRoute);
+    window.addEventListener('hashchange', updateRoute);
+    document.addEventListener('click', onLinkClick);
+    return () => {
+      window.removeEventListener('popstate', updateRoute);
+      window.removeEventListener('hashchange', updateRoute);
+      document.removeEventListener('click', onLinkClick);
+    };
   }, []);
 
-  const Page = slug ? ProductDetail : routes[page] || Home;
+  const Page = page === 'products' && slug ? ProductDetail : routes[page] || Home;
 
   return (
     <div className="min-h-screen overflow-x-clip bg-slate-50 text-slate-900 antialiased">
