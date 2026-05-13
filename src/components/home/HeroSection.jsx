@@ -1,58 +1,68 @@
-import { ArrowRight, Boxes, Clock, MessageCircle, ShieldCheck, Truck } from 'lucide-react';
-import { createWhatsAppUrl } from '../../utils/whatsapp.js';
-import contactInfo from '../../data/contactInfo.js';
+import { CheckCircle2, MessageCircle, Phone, Trophy } from 'lucide-react';
+
+const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a free quote for wooden pallets.')}`;
+const trustPoints = ['Since 2009', 'Fast UAE Delivery', 'Custom Sizes Available', 'Bulk Orders Welcome'];
 
 export default function HeroSection() {
-  const badges = ['ISPM-15 Certified', 'Fast UAE Delivery', 'Custom Sizes Available', 'Bulk Orders Accepted', 'New & Used Pallets'];
-
   return (
-    <section className="bg-slate-950 text-white">
-      <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-20">
-        <div className="max-w-3xl">
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">#1 Wooden Pallet Supplier in UAE</span>
-          <h1 className="mt-5 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">Premium Wooden Pallets, Plastic Pallets & Wooden Crates Manufacturer in UAE</h1>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-            {contactInfo.businessName} is a trusted manufacturer and supplier of high-quality wooden pallets, plastic
-            pallets, export crates, and industrial packaging solutions in UAE. Serving businesses across Dubai, Sharjah,
-            Abu Dhabi, JAFZA, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain since 2009.
+    <section
+      className="relative isolate min-h-[650px] overflow-hidden bg-slate-950 text-white"
+      style={{
+        backgroundImage:
+          "linear-gradient(90deg, rgba(2, 2, 79, 0.95) 0%, rgba(25, 18, 92, 0.88) 46%, rgba(2, 6, 23, 0.66) 100%), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80')",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover'
+      }}
+    >
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_24%_32%,rgba(99,102,241,0.34),transparent_34%),linear-gradient(180deg,rgba(2,2,79,0.10),rgba(2,2,79,0.62))]" />
+
+      <div className="mx-auto flex min-h-[650px] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
+        <div className="animate-hero-enter mx-auto max-w-4xl text-center lg:mx-0 lg:text-left">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-violet-500/20 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-violet-950/20 backdrop-blur">
+            <span className="size-2 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(52,211,153,0.15)]" />
+            <Trophy className="text-sky-200" size={15} />
+            #1 Rated Pallet Supplier in UAE
+          </div>
+
+          <h1 className="mt-7 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-7xl">
+            Premium{' '}
+            <span className="bg-gradient-to-r from-sky-300 via-indigo-200 to-violet-300 bg-clip-text text-transparent">
+              Wooden Pallets
+            </span>{' '}
+            Manufacturer & Supplier in UAE
+          </h1>
+
+          <p className="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg lg:text-xl">
+            Trusted manufacturer and supplier of wooden pallets, plastic pallets, wooden crates, and plastic jumbo bags
+            in Dubai, Sharjah, JAFZA, Abu Dhabi, Ras Al Khaimah, and all UAE.
           </p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {badges.map((badge) => (
-              <span className="rounded-md border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-200" key={badge}>{badge}</span>
+
+          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+            <a
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/35 transition duration-300 hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={20} />
+              Get Free Quote
+            </a>
+            <a
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-slate-950/40 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-sky-300/70 hover:bg-white/10"
+              href="tel:+971509253127"
+            >
+              <Phone size={20} />
+              Call Now
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+            {trustPoints.map((point) => (
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-100 backdrop-blur" key={point}>
+                <CheckCircle2 className="text-emerald-300" size={17} />
+                {point}
+              </span>
             ))}
-          </div>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a className="inline-flex items-center justify-center gap-2 rounded-md bg-emerald-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-500" href={createWhatsAppUrl('Hello, I need an instant quote for pallets.')} target="_blank" rel="noreferrer">
-              Get Instant Quote <ArrowRight size={18} />
-            </a>
-            <a className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10" href={createWhatsAppUrl('Hello, I want to discuss pallets on WhatsApp.')} target="_blank" rel="noreferrer">
-              <MessageCircle size={18} /> WhatsApp Us
-            </a>
-          </div>
-          <div className="mt-8 grid gap-3 text-sm text-slate-300 sm:grid-cols-2">
-            <span className="flex items-center gap-2"><ShieldCheck className="text-emerald-400" size={18} /> <strong className="text-white">15+</strong> Years Experience</span>
-            <span className="flex items-center gap-2"><Boxes className="text-emerald-400" size={18} /> <strong className="text-white">5000+</strong> Bulk Orders Completed</span>
-            <span className="flex items-center gap-2"><Clock className="text-emerald-400" size={18} /> <strong className="text-white">24-48</strong> Hours Delivery</span>
-            <span className="flex items-center gap-2"><Truck className="text-emerald-400" size={18} /> All 7 Emirates Covered</span>
-          </div>
-        </div>
-        <div className="relative min-h-80 overflow-hidden rounded-lg border border-white/10 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 p-6 shadow-2xl">
-          <div className="absolute inset-6 rounded-lg border border-emerald-300/20" />
-          <div className="relative flex h-full min-h-72 items-end justify-center">
-            <div className="grid w-full max-w-md gap-4">
-              {[0, 1, 2].map((row) => (
-                <div className="grid grid-cols-5 gap-3" key={row}>
-                  {[0, 1, 2, 3, 4].map((piece) => (
-                    <span className="h-10 rounded bg-slate-500 shadow-lg shadow-black/30" key={piece} />
-                  ))}
-                </div>
-              ))}
-              <div className="mt-4 grid grid-cols-3 gap-6 px-8">
-                <span className="h-16 rounded bg-slate-700" />
-                <span className="h-16 rounded bg-slate-700" />
-                <span className="h-16 rounded bg-slate-700" />
-              </div>
-            </div>
           </div>
         </div>
       </div>

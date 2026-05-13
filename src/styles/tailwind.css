@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-enter {
+  animation: hero-enter 800ms ease-out both;
+}

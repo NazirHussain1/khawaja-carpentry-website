@@ -1,32 +1,60 @@
-import contactInfo from '../../data/contactInfo.js';
+import { BadgeDollarSign, Globe2, Leaf, Ruler, ShieldCheck, Truck } from 'lucide-react';
 
-const reasons = [
-  ['15+ Years Industry Experience', 'Long-standing expertise in UAE pallet manufacturing and supply.'],
-  ['Competitive UAE Market Prices', 'Cost-effective pricing for new, used, and repaired pallet orders.'],
-  ['Fast Delivery Across UAE', 'Reliable delivery support for buyers across major UAE locations.'],
-  ['Custom Manufacturing', 'Pallets, crates, and packaging built to required dimensions.'],
-  ['ISPM-15 Export Compliance', 'Heat-treated pallet options for export and international shipping.'],
-  ['Large Production Capacity', 'Bulk quantity supply for factories, warehouses, and logistics companies.'],
-  ['Experienced Workforce', 'Skilled team focused on quality craftsmanship and durable materials.'],
-  ['Reliable Customer Support', 'Responsive communication for quotes, delivery, and repeat orders.'],
-  ['Bulk Quantity Supply', 'Small and large-scale industrial orders handled efficiently.'],
-  ['Eco-Friendly Pallet Recycling', 'Used pallet repair and recycling options that reduce waste.']
+const features = [
+  {
+    title: 'Premium Quality',
+    description: 'Strong and durable wooden pallets manufactured using quality materials for long-lasting performance.',
+    icon: ShieldCheck
+  },
+  {
+    title: 'Fast UAE Delivery',
+    description: 'Quick delivery service across Dubai, Sharjah, Abu Dhabi, JAFZA, Ras Al Khaimah, and all UAE.',
+    icon: Truck
+  },
+  {
+    title: 'Custom Sizes',
+    description: 'Customized pallet and crate sizes available according to your warehouse and shipping requirements.',
+    icon: Ruler
+  },
+  {
+    title: 'Affordable Pricing',
+    description: 'Competitive wholesale pricing for bulk orders without compromising quality.',
+    icon: BadgeDollarSign
+  },
+  {
+    title: 'ISPM-15 Export Standard',
+    description: 'Export-ready wooden pallets and crates manufactured according to international shipping standards.',
+    icon: Globe2
+  },
+  {
+    title: 'Eco-Friendly Solutions',
+    description: 'Recycled and refurbished pallet solutions supporting sustainable industrial practices.',
+    icon: Leaf
+  }
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+    <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">Why Choose Us</span>
-          <h2 className="mt-3 text-3xl font-black text-slate-950 sm:text-4xl">Why Businesses Choose {contactInfo.businessName}</h2>
+          <span className="inline-flex rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-indigo-700">
+            Trusted Industrial Supplier
+          </span>
+          <h2 className="mt-5 text-3xl font-black text-[#02024f] sm:text-4xl">Why Choose Us</h2>
+          <p className="mt-4 text-base leading-7 text-slate-600">
+            Trusted by warehouses, factories, exporters, and logistics companies across UAE.
+          </p>
         </div>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {reasons.map(([title, text], index) => (
-            <article className="rounded-lg border border-slate-200 bg-slate-50 p-5" key={title}>
-              <span className="text-xs font-black text-emerald-600">{String(index + 1).padStart(2, '0')}</span>
-              <h3 className="mt-3 text-base font-bold text-slate-950">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {features.map(({ title, description, icon: Icon }) => (
+            <article className="group rounded-2xl border border-slate-200 bg-white p-7 shadow-md shadow-slate-950/5 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-950/10" key={title}>
+              <div className="grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-lg shadow-indigo-950/20 transition duration-300 group-hover:shadow-sky-500/35">
+                <Icon size={28} />
+              </div>
+              <h3 className="mt-6 text-xl font-black text-[#02024f]">{title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{description}</p>
             </article>
           ))}
         </div>
