@@ -14,6 +14,18 @@ export default function ProductDetails({ product }) {
             <li key={spec}><CheckCircle2 size={18} /> {spec}</li>
           ))}
         </ul>
+        {product.details?.length > 0 && (
+          <div className="product-detail-groups">
+            {product.details.map((group) => (
+              <article className="product-detail-group" key={group.title}>
+                <h3>{group.title}</h3>
+                <ul>
+                  {group.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+        )}
         <a
           className="btn btn-primary"
           href={createWhatsAppUrl(`Hello, I need a quote for ${product.title}.`)}

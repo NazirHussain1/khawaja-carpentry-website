@@ -4,8 +4,8 @@ export default function IndustriesSection() {
   return (
     <section className="industries-section">
       <div>
-        <span className="eyebrow">Service Areas</span>
-        <h2>Serving major industrial and business areas across UAE</h2>
+        <span className="eyebrow">Delivery Locations</span>
+        <h2>We Deliver Across UAE</h2>
       </div>
       <div className="industry-list">
         {serviceAreas.map((area) => <span key={area}>{area}</span>)}

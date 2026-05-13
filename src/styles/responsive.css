@@ -199,12 +199,17 @@
   .reason-grid,
   .six-grid,
   .two-column-list,
+  .product-detail-groups,
   .mission-vision-section,
   .testimonial-grid,
   .gallery-grid,
   .form-row,
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    justify-content: flex-start;
   }
 
   .industrial-panel,

@@ -3,36 +3,52 @@ const products = [
     id: 1,
     slug: 'wooden-pallets',
     title: 'Wooden Pallets',
-    category: 'New and Refurbished',
-    summary: 'Standard, Euro, heavy duty, custom, new, and refurbished wooden pallets from 80x80 cm to 130x130 cm. ISPM-15 heat treated for export.',
-    specs: ['Standard, Euro, and heavy-duty pallets', '80x80 cm to 130x130 cm sizes', 'ISPM-15 heat treated for export'],
+    category: 'Industrial Wooden Pallets',
+    summary: 'High-quality industrial wooden pallets available in standard and custom sizes.',
+    specs: ['Euro Pallets', 'Heavy Duty Pallets', 'Two-Way Entry Pallets', 'Four-Way Entry Pallets', 'Block Pallets', 'Stringer Pallets', 'Export Pallets', 'Recycled Pallets'],
+    details: [
+      { title: 'Available Types', items: ['Euro Pallets', 'Heavy Duty Pallets', 'Two-Way Entry Pallets', 'Four-Way Entry Pallets', 'Block Pallets', 'Stringer Pallets', 'Export Pallets', 'Recycled Pallets'] },
+      { title: 'Sizes', items: ['80x80 cm', '100x120 cm', '120x120 cm', 'Custom Dimensions'] },
+      { title: 'Applications', items: ['Warehousing', 'Shipping', 'Construction', 'Industrial Storage', 'Export Packaging'] }
+    ],
     imageClass: 'visual-pallet-stack'
   },
   {
     id: 2,
     slug: 'plastic-pallets',
     title: 'Plastic Pallets',
-    category: 'Normal and Heavy Duty',
-    summary: 'Lightweight, moisture-proof, chemical-resistant plastic pallets. Normal and heavy-duty options for food, pharma, and logistics.',
-    specs: ['Moisture-proof and chemical-resistant', 'Normal and heavy-duty options', 'Ideal for food, pharma, and logistics'],
+    category: 'Reusable Plastic Pallets',
+    summary: 'Strong, moisture-resistant, and reusable plastic pallets designed for hygienic industrial applications.',
+    specs: ['Water Resistant', 'Lightweight', 'Long Lifespan', 'Easy Cleaning', 'Chemical Resistant'],
+    details: [
+      { title: 'Benefits', items: ['Water Resistant', 'Lightweight', 'Long Lifespan', 'Easy Cleaning', 'Chemical Resistant'] },
+      { title: 'Industries', items: ['Food Industry', 'Pharmaceutical Industry', 'Cold Storage', 'Chemical Industry'] }
+    ],
     imageClass: 'visual-box'
   },
   {
     id: 3,
     slug: 'wooden-crates',
     title: 'Wooden Crates',
-    category: 'Crating',
-    summary: 'Heavy-duty wooden crates for shipping machinery, equipment, and fragile goods. Standard sizes and custom dimensions available.',
-    specs: ['Heavy-duty export crating', 'Standard and custom dimensions', 'Safe transport for machinery and fragile goods'],
+    category: 'Custom Wooden Crates',
+    summary: 'Custom wooden crates and boxes designed for machinery transportation and export safety.',
+    specs: ['Heavy-duty construction', 'Export compliant', 'Shock-resistant structure', 'Custom dimensions', 'Industrial-grade wood'],
+    details: [
+      { title: 'Features', items: ['Heavy-duty construction', 'Export compliant', 'Shock-resistant structure', 'Custom dimensions', 'Industrial-grade wood'] }
+    ],
     imageClass: 'visual-crate'
   },
   {
     id: 4,
     slug: 'plastic-jumbo-bags',
-    title: 'Plastic Jumbo Bags',
-    category: 'Bulk Storage',
-    summary: 'High-capacity FIBC jumbo bags for bulk material storage and transportation.',
-    specs: ['High-capacity FIBC bags', 'Bulk storage and transportation', 'Suitable for industrial materials'],
+    title: 'Jumbo Bags',
+    category: 'FIBC Jumbo Bags',
+    summary: 'Industrial FIBC jumbo bags for bulk material handling and transportation.',
+    specs: ['500 KG - 2500 KG capacity', 'Bulk material handling', 'Industrial transportation'],
+    details: [
+      { title: 'Capacity', items: ['500 KG - 2500 KG'] },
+      { title: 'Applications', items: ['Cement', 'Sand', 'Chemicals', 'Agriculture', 'Construction Materials'] }
+    ],
     imageClass: 'visual-warehouse'
   },
   {

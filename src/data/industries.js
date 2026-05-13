@@ -1,23 +1,27 @@
 export const industries = [
-  'Construction',
-  'Pharmaceutical',
-  'Food & Beverage',
+  'Logistics & Warehousing',
   'Manufacturing',
-  'Logistics',
   'Oil & Gas',
-  'Warehousing',
-  'Export & Shipping'
+  'Food & Beverage',
+  'Pharmaceutical',
+  'Construction',
+  'Agriculture',
+  'Retail Distribution',
+  'Import & Export'
 ];
 
 export const serviceAreas = [
   'Dubai',
   'Sharjah',
-  'Abu Dhabi',
-  'JAFZA',
   'Ajman',
+  'Abu Dhabi',
+  'Mussafah',
+  'JAFZA',
+  'Jabal Ali',
   'Ras Al Khaimah',
   'Fujairah',
   'Umm Al Quwain',
-  'Jabal Ali',
-  'Mussafah'
+  'Al Ain',
+  'Dubai Industrial City',
+  'Sharjah Industrial Area'
 ];

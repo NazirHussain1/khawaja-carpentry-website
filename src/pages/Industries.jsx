@@ -20,8 +20,8 @@ export default function Industries() {
       </section>
       <section className="section dark-section">
         <div className="section-heading">
-          <span className="eyebrow">Service Areas</span>
-          <h2>Fast supply across UAE</h2>
+        <span className="eyebrow">Delivery Locations</span>
+        <h2>We Deliver Across UAE</h2>
         </div>
         <div className="industry-list centered-list dark-list">
           {serviceAreas.map((area) => <span key={area}>{area}</span>)}
