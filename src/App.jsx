@@ -2,6 +2,8 @@ import { Suspense, lazy, useEffect, useState } from 'react';
 import Header from './components/common/Header.jsx';
 import Footer from './components/common/Footer.jsx';
 import WhatsAppButton from './components/common/WhatsAppButton.jsx';
+import { trackEvent } from './utils/analytics.js';
+import { installUiPolish } from './utils/uiPolish.js';
 
 const Home = lazy(() => import('./pages/Home.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
@@ -17,7 +19,7 @@ const GetQuote = lazy(() => import('./pages/GetQuote.jsx'));
 
 const site = {
   name: 'Mujahid Hussain Carpentry',
-  url: 'https://nazirhussain1.github.io/khawaja-carpentry-website',
+  url: 'https://mujahidhussaincarpentry.store',
   image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=65&fm=webp',
   keywords: 'wooden pallets UAE, pallet supplier Dubai, wooden pallets Sharjah, wooden crates UAE, plastic pallets UAE, jumbo bags supplier UAE, industrial packaging UAE, export pallets UAE',
   phone: '+971 50 92 53127',
@@ -211,7 +213,16 @@ export default function App() {
     const updateRoute = () => setRoute(parseRoute());
     const onLinkClick = (event) => {
       const link = event.target.closest('a[data-spa-link="true"]');
-      if (!link) return;
+      if (!link) {
+        const externalLink = event.target.closest('a[href]');
+        if (!externalLink) return;
+        const href = externalLink.getAttribute('href') || '';
+        if (href.includes('wa.me')) trackEvent('whatsapp_click', { href });
+        if (href.startsWith('tel:')) trackEvent('call_click', { phone: href.replace('tel:', '') });
+        if (href.startsWith('mailto:')) trackEvent('email_click', { email: href.replace('mailto:', '') });
+        if (href.includes('google.com/maps')) trackEvent('maps_click', { href });
+        return;
+      }
 
       event.preventDefault();
       window.history.pushState({}, '', link.getAttribute('href'));
@@ -233,6 +244,12 @@ export default function App() {
     applySeo(page, slug);
   }, [page, slug]);
 
+  useEffect(() => {
+    installAnalytics();
+  }, []);
+
+  useEffect(() => installUiPolish(), [page, slug]);
+
   const Page = page === 'products' && slug ? ProductDetail : routes[page] || Home;
 
   return (
@@ -247,6 +264,48 @@ export default function App() {
       <WhatsAppButton />
     </div>
   );
+}
+
+function installAnalytics() {
+  const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+  const gtmId = import.meta.env.VITE_GTM_ID;
+  const pixelId = import.meta.env.VITE_FACEBOOK_PIXEL_ID;
+
+  if (gaId && !document.getElementById('ga-script')) {
+    const script = document.createElement('script');
+    script.id = 'ga-script';
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag('js', new Date());
+    window.gtag('config', gaId);
+  }
+
+  if (gtmId && !document.getElementById('gtm-script')) {
+    const script = document.createElement('script');
+    script.id = 'gtm-script';
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtm.js?id=${gtmId}`;
+    document.head.appendChild(script);
+  }
+
+  if (pixelId && !window.fbq) {
+    window.fbq = function fbq() {
+      window.fbq.callMethod ? window.fbq.callMethod.apply(window.fbq, arguments) : window.fbq.queue.push(arguments);
+    };
+    window.fbq.queue = [];
+    window.fbq.version = '2.0';
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(script);
+    window.fbq('init', pixelId);
+    window.fbq('track', 'PageView');
+  }
 }
 
 function PageSkeleton() {

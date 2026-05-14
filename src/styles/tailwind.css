@@ -25,9 +25,123 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+:root {
+  --brand-navy: #02024f;
+  --brand-indigo: #4f46e5;
+  --brand-sky: #0ea5e9;
+}
+
+::selection {
+  background: rgba(79, 70, 229, 0.22);
+  color: #02024f;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(14, 165, 233, 0.78);
+  outline-offset: 3px;
+}
+
 main > section:not(:first-child) {
   content-visibility: auto;
   contain-intrinsic-size: 1px 760px;
+}
+
+main section {
+  scroll-margin-top: 140px;
+}
+
+main p {
+  text-wrap: pretty;
+}
+
+main h1,
+main h2,
+main h3 {
+  text-wrap: balance;
+}
+
+a,
+button {
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+a[class*="bg-gradient-to-r"],
+button[class*="bg-gradient-to-r"] {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+  box-shadow: 0 18px 34px rgba(49, 46, 129, 0.22);
+}
+
+a[class*="bg-gradient-to-r"]::after,
+button[class*="bg-gradient-to-r"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.22) 45%, transparent 72%);
+  opacity: 0;
+  transform: translateX(-120%);
+  transition: opacity 240ms ease, transform 620ms ease;
+}
+
+a[class*="bg-gradient-to-r"]:hover::after,
+button[class*="bg-gradient-to-r"]:hover::after {
+  opacity: 1;
+  transform: translateX(120%);
+}
+
+a[class*="bg-gradient-to-r"] > *,
+button[class*="bg-gradient-to-r"] > * {
+  position: relative;
+  z-index: 1;
+}
+
+a:active,
+button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+article,
+form,
+aside,
+button[class*="rounded-3xl"],
+a[class*="rounded-full"] {
+  backface-visibility: hidden;
+}
+
+main article[class*="bg-white"],
+main form[class*="bg-white"],
+main aside[class*="bg-white"] {
+  box-shadow: 0 20px 46px rgba(15, 23, 42, 0.07);
+}
+
+main article:hover svg,
+main a:hover svg,
+main button:hover svg {
+  transform: translateZ(0) scale(1.05);
+}
+
+main svg {
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1), color 240ms ease, filter 240ms ease;
+}
+
+img {
+  background-color: #e2e8f0;
+}
+
+.ui-reveal {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0) scale(0.985);
+  transition:
+    opacity 620ms cubic-bezier(0.2, 0.8, 0.2, 1) var(--reveal-delay, 0ms),
+    transform 620ms cubic-bezier(0.2, 0.8, 0.2, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.ui-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  will-change: auto;
 }
 
 @media (max-width: 767px) {
@@ -50,6 +164,22 @@ main > section:not(:first-child) {
 
 .animate-hero-enter {
   animation: hero-enter 800ms ease-out both;
+}
+
+@keyframes mobile-panel {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-mobile-panel {
+  animation: mobile-panel 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {

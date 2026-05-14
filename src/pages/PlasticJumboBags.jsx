@@ -1,5 +1,6 @@
 import { CheckCircle2, ChevronDown, MessageCircle, Phone, ShieldCheck, Star } from 'lucide-react';
 import { useState } from 'react';
+import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
 
 const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for plastic jumbo bags in UAE.')}`;
 
@@ -181,6 +182,8 @@ export default function PlasticJumboBags() {
           </div>
         </div>
       </section>
+
+      <ProductInquirySection productType="Jumbo Bags" />
 
       <section className="bg-[#02024f] px-4 py-14 text-center text-white sm:px-6 lg:px-8">
         <h2 className="text-3xl font-black">Need Jumbo Bags in UAE?</h2>

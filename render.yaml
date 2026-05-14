@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: mujahid-hussain-carpentry
+    env: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: INQUIRY_TO_EMAIL
+        value: mujahidhussaincarpentry@gmail.com
+      - key: ALLOWED_ORIGINS
+        value: https://mujahidhussaincarpentry.store,https://www.mujahidhussaincarpentry.store

@@ -109,7 +109,7 @@ export default function Navbar({ activePage, whatsappUrl }) {
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-[140] bg-[#02024f]/95 backdrop-blur lg:hidden">
+        <div className="animate-mobile-panel fixed inset-0 z-[140] bg-[#02024f]/95 backdrop-blur lg:hidden">
           <div className="flex min-h-dvh flex-col overflow-y-auto px-4 py-4">
             <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
               <a className="flex min-w-0 items-center gap-3 text-white" href="/" data-spa-link="true" onClick={() => setOpen(false)}>

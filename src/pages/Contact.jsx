@@ -1,5 +1,6 @@
 import { CheckCircle2, Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import { useState } from 'react';
+import { formDataToInquiry, productOptions, submitInquiry } from '../utils/inquiries.js';
 
 const contact = {
   location: 'Industrial Area Al Sajja, Sharjah, UAE',
@@ -36,8 +37,9 @@ function ContactCard({ icon: Icon, title, children }) {
 
 export default function Contact() {
   const [status, setStatus] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const form = event.currentTarget;
 
@@ -47,21 +49,18 @@ export default function Contact() {
       return;
     }
 
-    setStatus({ type: 'success', message: 'Thanks. Your inquiry is ready for follow-up. WhatsApp will open with your details.' });
-    const formData = new FormData(form);
-    const message = [
-      'Hello, I need a free quote.',
-      `Name: ${formData.get('name')}`,
-      `Phone: ${formData.get('phone')}`,
-      `Email: ${formData.get('email')}`,
-      `Product: ${formData.get('productType')}`,
-      `Quantity: ${formData.get('quantity')}`,
-      `City/Location: ${formData.get('city')}`,
-      `Message: ${formData.get('message')}`
-    ].join('\n');
+    setSubmitting(true);
+    setStatus(null);
 
-    window.open(`https://wa.me/971509253127?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
-    form.reset();
+    try {
+      const result = await submitInquiry(formDataToInquiry(form, 'contact-page'));
+      setStatus({ type: 'success', message: result.message || 'Inquiry submitted successfully. Our team will contact you shortly.' });
+      form.reset();
+    } catch (error) {
+      setStatus({ type: 'error', message: error.message });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -136,21 +135,26 @@ export default function Contact() {
               <label className={labelClass}>Product Type
                 <select className={fieldClass} name="productType" defaultValue="" required>
                   <option value="" disabled>Select product</option>
-                  <option>Wooden Pallets</option>
-                  <option>Wooden Crates</option>
-                  <option>Plastic Pallets</option>
-                  <option>Plastic Jumbo Bags</option>
-                  <option>Custom Orders</option>
+                  {productOptions.map((option) => <option key={option}>{option}</option>)}
                 </select>
               </label>
               <label className={labelClass}>Quantity<input className={fieldClass} name="quantity" type="number" inputMode="numeric" min="1" required placeholder="100" /></label>
               <label className={labelClass}>City/Location<input className={fieldClass} name="city" type="text" required placeholder="Dubai, Sharjah..." /></label>
               <label className={`${labelClass} md:col-span-2`}>Message<textarea className={`${fieldClass} min-h-36 resize-y`} name="message" required minLength="10" placeholder="Share product sizes, delivery location, quantity, and requirements..." /></label>
+              <input className="hidden" type="text" name="website" tabIndex="-1" autoComplete="off" aria-hidden="true" />
             </div>
-            <button className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:shadow-sky-500/30 hover:from-violet-600 hover:to-sky-400" type="submit">
-              <MessageCircle size={19} /> Send Inquiry
+            <button className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:shadow-sky-500/30 hover:from-violet-600 hover:to-sky-400 disabled:cursor-not-allowed disabled:opacity-70" type="submit" disabled={submitting}>
+              <MessageCircle size={19} /> {submitting ? 'Sending Inquiry...' : 'Send Inquiry'}
             </button>
-            {status && <p className={`mt-4 rounded-2xl px-4 py-3 text-sm font-semibold ${status.type === 'success' ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700'}`}>{status.message}</p>}
+            {status && (
+              <p
+                className={`mt-4 rounded-2xl px-4 py-3 text-sm font-semibold ${status.type === 'success' ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700'}`}
+                role={status.type === 'success' ? 'status' : 'alert'}
+                aria-live="polite"
+              >
+                {status.message}
+              </p>
+            )}
           </form>
 
           <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-950/8">
