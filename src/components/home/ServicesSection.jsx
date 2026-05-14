@@ -1,4 +1,5 @@
-import { Boxes, Factory, Hammer, MessageCircle, Package, Recycle } from 'lucide-react';
+import { Boxes, Factory, Hammer, Package, Recycle } from 'lucide-react';
+import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 
 const services = [
   {
@@ -59,7 +60,7 @@ export default function ServicesSection() {
             target="_blank"
             rel="noreferrer"
           >
-            <MessageCircle size={19} />
+            <WhatsAppIcon className="size-5" />
             Get Service Quote
           </a>
         </div>

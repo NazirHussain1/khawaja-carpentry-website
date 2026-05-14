@@ -1,4 +1,6 @@
-import { BadgeCheck, MessageCircle, Phone, Quote, Star } from 'lucide-react';
+import { BadgeCheck, Quote, Star } from 'lucide-react';
+import { CallIcon } from '../components/common/ContactIcons.jsx';
+import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 
 const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I want to work with a trusted pallet supplier in UAE.')}`;
 
@@ -32,10 +34,10 @@ export default function Testimonials() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400" href={whatsappUrl} target="_blank" rel="noreferrer">
-                <MessageCircle size={19} /> Get Free Quote
+                <WhatsAppIcon className="size-5" /> Get Free Quote
               </a>
               <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/15" href={whatsappUrl} target="_blank" rel="noreferrer">
-                <MessageCircle size={19} /> WhatsApp Now
+                <WhatsAppIcon className="size-5" /> WhatsApp Now
               </a>
             </div>
           </div>
@@ -84,13 +86,13 @@ export default function Testimonials() {
         <h2 className="text-3xl font-black">Ready to Work With a Trusted Pallet Supplier?</h2>
         <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
           <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
-            <MessageCircle size={19} /> Request Quote
+            <WhatsAppIcon className="size-5" /> Request Quote
           </a>
           <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+971509253127">
-            <Phone size={19} /> Call Now
+            <CallIcon className="size-5" /> Call Now
           </a>
           <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href={whatsappUrl} target="_blank" rel="noreferrer">
-            <MessageCircle size={19} /> WhatsApp Us
+            <WhatsAppIcon className="size-5" /> WhatsApp Us
           </a>
         </div>
       </section>

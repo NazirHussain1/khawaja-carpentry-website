@@ -1,4 +1,5 @@
-import { ArrowRight, CheckCircle2, MessageCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 
 const points = [
   'Premium quality wooden pallets',
@@ -77,7 +78,7 @@ export default function AboutPreview() {
               target="_blank"
               rel="noreferrer"
             >
-              <MessageCircle size={18} />
+              <WhatsAppIcon className="size-5" />
               Get Quote
             </a>
           </div>

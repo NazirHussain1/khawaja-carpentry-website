@@ -1,6 +1,8 @@
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import contactInfo from '../../data/contactInfo.js';
 import { createWhatsAppUrl } from '../../utils/whatsapp.js';
+import { CallIcon } from './ContactIcons.jsx';
+import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 export default function CTASection() {
   return (
@@ -12,11 +14,11 @@ export default function CTASection() {
           <p className="mt-4 text-base leading-7 text-slate-300">Share your pallet type, size, quantity, and location. We will prepare custom pricing for your order.</p>
         </div>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-          <a className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-emerald-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-500 sm:w-auto" href={createWhatsAppUrl('Hello, I need an instant quote for pallets.')} target="_blank" rel="noreferrer">
-            Get Quote <ArrowRight size={18} />
+          <a className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-950/20 transition hover:-translate-y-0.5 hover:bg-[#1ebe5d] sm:w-auto" href={createWhatsAppUrl('Hello, I need an instant quote for pallets.')} target="_blank" rel="noreferrer">
+            <WhatsAppIcon className="size-5" /> Get Quote <ArrowRight size={18} />
           </a>
-          <a className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md border border-white/20 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10 sm:w-auto" href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}>
-            <Phone size={18} /> Call Now
+          <a className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/10 sm:w-auto" href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}>
+            <CallIcon className="size-5" /> Call Now
           </a>
         </div>
       </div>

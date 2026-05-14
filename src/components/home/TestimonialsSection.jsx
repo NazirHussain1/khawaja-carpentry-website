@@ -1,4 +1,5 @@
-import { BadgeCheck, MessageCircle, Quote, Star } from 'lucide-react';
+import { BadgeCheck, Quote, Star } from 'lucide-react';
+import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 
 const testimonials = [
   {
@@ -70,7 +71,7 @@ export default function TestimonialsSection() {
               target="_blank"
               rel="noreferrer"
             >
-              <MessageCircle size={19} />
+              <WhatsAppIcon className="size-5" />
               Get Free Quote
             </a>
           </div>

@@ -1,5 +1,6 @@
-import { Mail, MapPin, Phone, Smartphone } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import Navbar from './Navbar.jsx';
+import { CallIcon, MailIcon } from './ContactIcons.jsx';
 import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 const contact = {
@@ -31,13 +32,13 @@ export default function Header({ activePage }) {
       <div className="bg-gradient-to-r from-violet-700 via-indigo-600 to-sky-600">
         <div className="mx-auto flex min-h-9 max-w-7xl flex-wrap items-center justify-center gap-x-4 gap-y-1 px-3 py-2 sm:gap-x-5 sm:px-6 lg:justify-between lg:px-8 lg:py-0">
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 lg:justify-start">
-            <TopBarLink className="max-w-[220px] sm:max-w-none" href={`mailto:${contact.email}`} icon={Mail}>{contact.email}</TopBarLink>
-            <TopBarLink href={`tel:${contact.phonePrimary.replace(/\s/g, '')}`} icon={Phone}>{contact.phonePrimary}</TopBarLink>
+            <TopBarLink className="max-w-[220px] sm:max-w-none" href={`mailto:${contact.email}`} icon={MailIcon}>{contact.email}</TopBarLink>
+            <TopBarLink href={`tel:${contact.phonePrimary.replace(/\s/g, '')}`} icon={CallIcon}>{contact.phonePrimary}</TopBarLink>
             <TopBarLink className="hidden md:inline-flex" href={contact.mapsUrl} icon={MapPin}>{contact.location}</TopBarLink>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 lg:justify-end">
             <TopBarLink href={contact.whatsappUrl} icon={WhatsAppIcon}>WhatsApp</TopBarLink>
-            <TopBarLink href={`tel:${contact.phoneSecondary.replace(/\s/g, '')}`} icon={Smartphone}>{contact.phoneSecondary}</TopBarLink>
+            <TopBarLink href={`tel:${contact.phoneSecondary.replace(/\s/g, '')}`} icon={CallIcon}>{contact.phoneSecondary}</TopBarLink>
           </div>
         </div>
       </div>

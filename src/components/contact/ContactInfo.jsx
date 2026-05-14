@@ -1,4 +1,6 @@
-import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { Clock, MapPin } from 'lucide-react';
+import { CallIcon, MailIcon } from '../common/ContactIcons.jsx';
+import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 
 const contact = {
   location: 'Industrial Area Al Sajja, Sharjah, UAE',
@@ -12,9 +14,9 @@ const contact = {
 
 const items = [
   [MapPin, 'Location', contact.location, contact.mapsUrl],
-  [Phone, 'Phone', contact.phone, `tel:${contact.phone.replace(/\s/g, '')}`],
-  [MessageCircle, 'WhatsApp', contact.whatsappPhone, contact.whatsappUrl],
-  [Mail, 'Email', contact.email, `mailto:${contact.email}`],
+  [CallIcon, 'Phone', contact.phone, `tel:${contact.phone.replace(/\s/g, '')}`],
+  [WhatsAppIcon, 'WhatsApp', contact.whatsappPhone, contact.whatsappUrl],
+  [MailIcon, 'Email', contact.email, `mailto:${contact.email}`],
   [Clock, 'Working Hours', contact.hours, null]
 ];
 
@@ -34,7 +36,7 @@ export default function ContactInfo() {
           const content = (
             <>
               <div className="grid size-11 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-lg shadow-indigo-950/20">
-                <Icon size={21} />
+                <Icon className="size-[21px]" />
               </div>
               <div>
                 <h3 className="font-black text-[#02024f]">{label}</h3>

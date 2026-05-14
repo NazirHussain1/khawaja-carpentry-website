@@ -1,4 +1,5 @@
-import { MapPin, MessageCircle, Navigation } from 'lucide-react';
+import { MapPin, Navigation } from 'lucide-react';
+import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 
 const locations = [
   {
@@ -92,7 +93,7 @@ export default function IndustriesSection() {
               target="_blank"
               rel="noreferrer"
             >
-              <MessageCircle size={19} />
+              <WhatsAppIcon className="size-5" />
               Contact Us Today
             </a>
           </div>

@@ -1,10 +1,11 @@
-import { BadgeDollarSign, Factory, MessageCircle, Truck } from 'lucide-react';
+import { BadgeDollarSign, Factory, Truck } from 'lucide-react';
+import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 
 const steps = [
   {
     title: 'Request Quote',
     description: 'Contact us by phone, WhatsApp, or quote form with your pallet or packaging requirements.',
-    icon: MessageCircle
+    icon: WhatsAppIcon
   },
   {
     title: 'Get Best Pricing',
@@ -42,7 +43,7 @@ export default function HowWeWork() {
           {steps.map(({ title, description, icon: Icon }, index) => (
             <article className="group relative rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center shadow-md shadow-slate-950/5 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-950/10" key={title}>
               <div className="relative mx-auto grid size-20 place-items-center rounded-full bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-xl shadow-indigo-950/20 transition duration-300 group-hover:shadow-sky-500/40">
-                <Icon size={30} />
+                <Icon className="size-8" />
                 <span className="absolute -right-2 -top-2 grid size-9 place-items-center rounded-full border-4 border-white bg-[#02024f] text-xs font-black text-white">
                   {String(index + 1).padStart(2, '0')}
                 </span>
@@ -60,7 +61,7 @@ export default function HowWeWork() {
             target="_blank"
             rel="noreferrer"
           >
-            <MessageCircle size={19} />
+            <WhatsAppIcon className="size-5" />
             Get Free Quote
           </a>
         </div>

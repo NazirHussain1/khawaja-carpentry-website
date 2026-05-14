@@ -1,4 +1,5 @@
-import { ChevronRight, Grid2X2, Mail, MapPin, Phone } from 'lucide-react';
+import { ChevronRight, Grid2X2, MapPin } from 'lucide-react';
+import { CallIcon, MailIcon } from './ContactIcons.jsx';
 import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 const company = {
@@ -97,10 +98,10 @@ export default function Footer() {
               <WhatsAppIcon className="size-5" />
             </SocialIcon>
             <SocialIcon href={primaryTel} label="Call Mujahid Hussain Carpentry">
-              <Phone size={18} />
+              <CallIcon className="size-[18px]" />
             </SocialIcon>
             <SocialIcon href={mailto} label="Email Mujahid Hussain Carpentry">
-              <Mail size={18} />
+              <MailIcon className="size-[18px]" />
             </SocialIcon>
           </div>
         </section>
@@ -127,9 +128,9 @@ export default function Footer() {
           <FooterHeading>Contact Us</FooterHeading>
           <div id="footer-contact" className="mt-6 grid gap-4">
             <ContactItem href={company.mapsUrl} icon={MapPin}>{company.location}</ContactItem>
-            <ContactItem href={primaryTel} icon={Phone}>{company.phonePrimary}</ContactItem>
-            <ContactItem href={secondaryTel} icon={Phone}>{company.phoneSecondary}</ContactItem>
-            <ContactItem href={mailto} icon={Mail}>{company.email}</ContactItem>
+            <ContactItem href={primaryTel} icon={CallIcon}>{company.phonePrimary}</ContactItem>
+            <ContactItem href={secondaryTel} icon={CallIcon}>{company.phoneSecondary}</ContactItem>
+            <ContactItem href={mailto} icon={MailIcon}>{company.email}</ContactItem>
           </div>
         </section>
       </div>

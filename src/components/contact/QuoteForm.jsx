@@ -1,5 +1,5 @@
-import { MessageCircle } from 'lucide-react';
 import { useState } from 'react';
+import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 import { formDataToInquiry, productOptions, submitInquiry } from '../../utils/inquiries.js';
 
 const fieldClass = 'mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/15';
@@ -75,7 +75,7 @@ export default function QuoteForm({ defaultProduct = '', source = 'quote-form', 
       </div>
 
       <button className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition duration-300 hover:-translate-y-1 hover:shadow-sky-500/30 hover:from-violet-600 hover:to-sky-400 disabled:cursor-not-allowed disabled:opacity-70" type="submit" disabled={submitting}>
-        <MessageCircle size={19} />
+        <WhatsAppIcon className="size-5" />
         {submitting ? 'Sending Inquiry...' : 'Get Free Quote'}
       </button>
 

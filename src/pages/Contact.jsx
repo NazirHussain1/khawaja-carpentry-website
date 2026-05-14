@@ -1,5 +1,7 @@
-import { CheckCircle2, Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { CheckCircle2, Clock, MapPin } from 'lucide-react';
 import { useState } from 'react';
+import { CallIcon, MailIcon } from '../components/common/ContactIcons.jsx';
+import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 import { formDataToInquiry, productOptions, submitInquiry } from '../utils/inquiries.js';
 
 const contact = {
@@ -27,7 +29,7 @@ function ContactCard({ icon: Icon, title, children }) {
   return (
     <article className="rounded-3xl border border-slate-200 bg-white p-6 shadow-md shadow-slate-950/5 transition hover:-translate-y-1 hover:shadow-xl">
       <div className="grid size-13 place-items-center rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-lg shadow-indigo-950/20">
-        <Icon size={26} />
+        <Icon className="size-7" />
       </div>
       <h3 className="mt-5 text-xl font-black text-[#02024f]">{title}</h3>
       <div className="mt-3 grid gap-2 text-sm leading-7 text-slate-600">{children}</div>
@@ -83,10 +85,10 @@ export default function Contact() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400" href={contact.whatsappUrl} target="_blank" rel="noreferrer">
-                <MessageCircle size={19} /> WhatsApp Now
+                <WhatsAppIcon className="size-5" /> WhatsApp Now
               </a>
               <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/15" href={`tel:${contact.phonePrimary.replace(/\s/g, '')}`}>
-                <Phone size={19} /> Call Now
+                <CallIcon className="size-5" /> Call Now
               </a>
             </div>
           </div>
@@ -108,11 +110,11 @@ export default function Contact() {
               <a className="font-semibold text-slate-700 hover:text-indigo-700" href={contact.mapsUrl} target="_blank" rel="noreferrer">{contact.location}</a>
               <span className="text-xs font-bold uppercase tracking-wide text-indigo-700">Open Google Maps</span>
             </ContactCard>
-            <ContactCard icon={Phone} title="Phone Number">
+            <ContactCard icon={CallIcon} title="Phone Number">
               <a className="font-semibold text-slate-700 hover:text-indigo-700" href={`tel:${contact.phonePrimary.replace(/\s/g, '')}`}>{contact.phonePrimary}</a>
               <a className="font-semibold text-slate-700 hover:text-indigo-700" href={`tel:${contact.phoneSecondary.replace(/\s/g, '')}`}>{contact.phoneSecondary}</a>
             </ContactCard>
-            <ContactCard icon={Mail} title="Email Address">
+            <ContactCard icon={MailIcon} title="Email Address">
               <a className="font-semibold text-slate-700 hover:text-indigo-700" href={`mailto:${contact.email}`}>{contact.email}</a>
             </ContactCard>
             <ContactCard icon={Clock} title="Working Hours">
@@ -144,7 +146,7 @@ export default function Contact() {
               <input className="hidden" type="text" name="website" tabIndex="-1" autoComplete="off" aria-hidden="true" />
             </div>
             <button className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:shadow-sky-500/30 hover:from-violet-600 hover:to-sky-400 disabled:cursor-not-allowed disabled:opacity-70" type="submit" disabled={submitting}>
-              <MessageCircle size={19} /> {submitting ? 'Sending Inquiry...' : 'Send Inquiry'}
+              <WhatsAppIcon className="size-5" /> {submitting ? 'Sending Inquiry...' : 'Send Inquiry'}
             </button>
             {status && (
               <p
@@ -195,10 +197,10 @@ export default function Contact() {
         <h2 className="text-3xl font-black">Need Industrial Packaging Solutions in UAE?</h2>
         <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
           <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={contact.whatsappUrl} target="_blank" rel="noreferrer">
-            <MessageCircle size={19} /> WhatsApp Us
+            <WhatsAppIcon className="size-5" /> WhatsApp Us
           </a>
           <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href={`tel:${contact.phonePrimary.replace(/\s/g, '')}`}>
-            <Phone size={19} /> Call Now
+            <CallIcon className="size-5" /> Call Now
           </a>
           <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="#top">
             <CheckCircle2 size={19} /> Get Free Quote
