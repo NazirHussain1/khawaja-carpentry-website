@@ -1,5 +1,6 @@
-import { ArrowUp, MessageCircle } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for wooden pallets.')}`;
 
@@ -33,13 +34,13 @@ export default function WhatsAppButton() {
         </button>
       )}
       <a
-        className="grid size-12 place-items-center rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-950/30 transition duration-300 hover:-translate-y-1 hover:animate-pulse hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:size-14"
+        className="grid size-12 place-items-center rounded-full bg-[#25D366] text-white shadow-xl shadow-emerald-950/30 ring-1 ring-white/20 transition duration-300 hover:-translate-y-1 hover:animate-pulse hover:bg-[#1ebe5d] focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:size-14"
         href={whatsappUrl}
         target="_blank"
         rel="noreferrer"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle className="size-6 sm:size-[25px]" />
+        <WhatsAppIcon className="size-7 sm:size-8" />
       </a>
     </div>
   );

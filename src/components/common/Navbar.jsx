@@ -1,5 +1,6 @@
-import { Boxes, ChevronDown, Grid2X2, Menu, MessageCircle, Package, PackageCheck, X } from 'lucide-react';
+import { Boxes, ChevronDown, Grid2X2, Menu, Package, PackageCheck, X } from 'lucide-react';
 import { useState } from 'react';
+import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 const navLinks = [
   ['Home', '/', 'home'],
@@ -94,7 +95,7 @@ export default function Navbar({ activePage, whatsappUrl }) {
           target="_blank"
           rel="noreferrer"
         >
-          <MessageCircle size={18} />
+          <WhatsAppIcon className="size-5" />
           Get Quote
         </a>
       </div>
@@ -150,7 +151,7 @@ export default function Navbar({ activePage, whatsappUrl }) {
                 rel="noreferrer"
                 onClick={() => setOpen(false)}
               >
-                <MessageCircle size={18} />
+                <WhatsAppIcon className="size-5" />
                 Get Quote
               </a>
             </div>

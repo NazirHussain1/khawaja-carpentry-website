@@ -1,4 +1,5 @@
-import { ChevronRight, Grid2X2, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { ChevronRight, Grid2X2, Mail, MapPin, Phone } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 const company = {
   name: 'Mujahid Hussain Carpentry',
@@ -93,7 +94,7 @@ export default function Footer() {
           <p className="mt-5 max-w-sm text-sm leading-7 text-slate-300/85">{company.description}</p>
           <div className="mt-6 flex items-center gap-3">
             <SocialIcon href={whatsappUrl} label="Chat on WhatsApp">
-              <MessageCircle size={19} />
+              <WhatsAppIcon className="size-5" />
             </SocialIcon>
             <SocialIcon href={primaryTel} label="Call Mujahid Hussain Carpentry">
               <Phone size={18} />

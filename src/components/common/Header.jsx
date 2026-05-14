@@ -1,5 +1,6 @@
-import { Mail, MapPin, MessageCircle, Phone, Smartphone } from 'lucide-react';
+import { Mail, MapPin, Phone, Smartphone } from 'lucide-react';
 import Navbar from './Navbar.jsx';
+import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 const contact = {
   email: 'mujahidhussaincarpentry@gmail.com',
@@ -35,7 +36,7 @@ export default function Header({ activePage }) {
             <TopBarLink className="hidden md:inline-flex" href={contact.mapsUrl} icon={MapPin}>{contact.location}</TopBarLink>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 lg:justify-end">
-            <TopBarLink href={contact.whatsappUrl} icon={MessageCircle}>WhatsApp</TopBarLink>
+            <TopBarLink href={contact.whatsappUrl} icon={WhatsAppIcon}>WhatsApp</TopBarLink>
             <TopBarLink href={`tel:${contact.phoneSecondary.replace(/\s/g, '')}`} icon={Smartphone}>{contact.phoneSecondary}</TopBarLink>
           </div>
         </div>
