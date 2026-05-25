@@ -16,6 +16,7 @@ const Services = lazy(() => import('./pages/Services.jsx'));
 const Industries = lazy(() => import('./pages/Industries.jsx'));
 const FAQ = lazy(() => import('./pages/FAQ.jsx'));
 const GetQuote = lazy(() => import('./pages/GetQuote.jsx'));
+const Admin = lazy(() => import('./pages/Admin.jsx'));
 
 const site = {
   name: 'Mujahid Hussain Carpentry',
@@ -97,6 +98,11 @@ const seoPages = {
     title: 'Request Quote | Wooden Pallets Supplier UAE',
     description: 'Request a free quote for wooden pallets, wooden crates, plastic pallets, and jumbo bags anywhere in UAE.',
     path: '/quote'
+  },
+  admin: {
+    title: 'Inquiry Admin | Mujahid Hussain Carpentry',
+    description: 'Private inquiry dashboard for Mujahid Hussain Carpentry.',
+    path: '/admin'
   }
 };
 
@@ -110,7 +116,8 @@ const routes = {
   testimonials: Testimonials,
   faq: FAQ,
   quote: GetQuote,
-  contact: Contact
+  contact: Contact,
+  admin: Admin
 };
 
 function parseRoute() {

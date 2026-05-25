@@ -2,7 +2,7 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import nodemailer from 'nodemailer';
-import { appendFile, mkdir, readFile } from 'node:fs/promises';
+import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -11,7 +11,9 @@ const rootDir = path.resolve(__dirname, '..');
 const dataDir = path.join(__dirname, 'data');
 const inquiryFile = path.join(dataDir, 'inquiries.jsonl');
 const eventFile = path.join(dataDir, 'analytics-events.jsonl');
+const statusFile = path.join(dataDir, 'inquiry-status.json');
 const categories = new Set(['Wooden Pallets', 'Wooden Crates', 'Plastic Pallets', 'Jumbo Bags', 'Plastic Jumbo Bags', 'Custom Orders', 'Custom Order']);
+const inquiryStatuses = new Set(['new', 'contacted', 'quoted', 'won', 'lost', 'spam']);
 const requestsByIp = new Map();
 
 await loadEnv();
@@ -109,6 +111,55 @@ app.post('/api/inquiries', async (request, response) => {
   });
 });
 
+app.get('/api/admin/inquiries', requireAdmin, async (_request, response) => {
+  const [inquiries, statusMap] = await Promise.all([readJsonLines(inquiryFile), readStatusMap()]);
+  const rows = inquiries
+    .map((inquiry) => ({
+      ...inquiry,
+      status: statusMap[inquiry.id]?.status || 'new',
+      notes: statusMap[inquiry.id]?.notes || '',
+      updatedAt: statusMap[inquiry.id]?.updatedAt || inquiry.submittedAt
+    }))
+    .sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime());
+
+  response.json({
+    ok: true,
+    inquiries: rows,
+    totals: rows.reduce((summary, inquiry) => {
+      summary[inquiry.status] = (summary[inquiry.status] || 0) + 1;
+      summary.all += 1;
+      return summary;
+    }, { all: 0, new: 0, contacted: 0, quoted: 0, won: 0, lost: 0, spam: 0 })
+  });
+});
+
+app.patch('/api/admin/inquiries/:id', requireAdmin, async (request, response) => {
+  const id = sanitizeText(request.params.id, 80);
+  const status = sanitizeText(request.body?.status, 30) || 'new';
+  const notes = sanitizeText(request.body?.notes, 800);
+
+  if (!inquiryStatuses.has(status)) {
+    response.status(400).json({ ok: false, message: 'Invalid inquiry status.' });
+    return;
+  }
+
+  const inquiries = await readJsonLines(inquiryFile);
+  if (!inquiries.some((inquiry) => inquiry.id === id)) {
+    response.status(404).json({ ok: false, message: 'Inquiry not found.' });
+    return;
+  }
+
+  const statusMap = await readStatusMap();
+  statusMap[id] = {
+    status,
+    notes,
+    updatedAt: new Date().toISOString()
+  };
+  await writeJson(statusFile, statusMap);
+
+  response.json({ ok: true, inquiry: { id, ...statusMap[id] } });
+});
+
 app.use((_request, response) => {
   response.sendFile(path.join(rootDir, 'dist', 'index.html'));
 });
@@ -196,6 +247,69 @@ function isRateLimited(ip) {
 
 async function appendJsonLine(file, data) {
   await appendFile(file, `${JSON.stringify(data)}\n`, 'utf8');
+}
+
+async function readJsonLines(file) {
+  try {
+    const text = await readFile(file, 'utf8');
+    return text
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .map((line) => JSON.parse(line));
+  } catch (error) {
+    if (error.code === 'ENOENT') return [];
+    throw error;
+  }
+}
+
+async function readStatusMap() {
+  try {
+    return JSON.parse(await readFile(statusFile, 'utf8'));
+  } catch (error) {
+    if (error.code === 'ENOENT') return {};
+    throw error;
+  }
+}
+
+async function writeJson(file, data) {
+  await writeFile(file, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+}
+
+function requireAdmin(request, response, next) {
+  const username = process.env.ADMIN_USERNAME || 'admin';
+  const password = process.env.ADMIN_PASSWORD || (process.env.NODE_ENV === 'production' ? '' : 'admin123');
+
+  if (!password) {
+    response.status(503).json({ ok: false, message: 'Admin credentials are not configured.' });
+    return;
+  }
+
+  const credentials = parseBasicAuth(request.headers.authorization);
+  if (!credentials || credentials.username !== username || credentials.password !== password) {
+    response.setHeader('WWW-Authenticate', 'Basic realm="Inquiry Admin"');
+    response.status(401).json({ ok: false, message: 'Admin login required.' });
+    return;
+  }
+
+  next();
+}
+
+function parseBasicAuth(header = '') {
+  const [scheme, token] = header.split(' ');
+  if (scheme !== 'Basic' || !token) return null;
+
+  try {
+    const decoded = Buffer.from(token, 'base64').toString('utf8');
+    const separator = decoded.indexOf(':');
+    if (separator === -1) return null;
+    return {
+      username: decoded.slice(0, separator),
+      password: decoded.slice(separator + 1)
+    };
+  } catch {
+    return null;
+  }
 }
 
 async function sendInquiryEmail(inquiry) {
