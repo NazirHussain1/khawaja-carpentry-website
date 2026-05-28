@@ -1,44 +1,263 @@
-import { CheckCircle2, ChevronDown, ShieldCheck, Star } from 'lucide-react';
+import { CheckCircle2, ChevronDown, Ruler, ShieldCheck, Star } from 'lucide-react';
 import { useState } from 'react';
 import { CallIcon } from '../components/common/ContactIcons.jsx';
 import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 
-const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for wooden pallets in UAE.')}`;
+const imageBase = 'https://mujahidhussaincarpentry.store/images/';
+const whatsappBase = 'https://wa.me/971509253127?text=';
+const whatsappUrl = `${whatsappBase}${encodeURIComponent('Hello, I need a quote for wooden pallets in UAE.')}`;
 
 const bullets = [
-  'Heavy-duty wooden pallets',
-  'Export-quality pallets',
-  'Custom dimensions available',
-  'Heat-treated pallets',
-  'Affordable bulk pricing',
-  'Fast UAE delivery'
+  'New wooden pallets',
+  'Refurbished wooden pallets',
+  'Used wooden pallets',
+  'Normal and heavy duty options',
+  'ISPM-15 heat treatment available',
+  'Custom pallet sizes'
 ];
 
-const palletTypes = [
-  ['Euro Pallets', 'Standardized pallets for warehouse storage, distribution, and commercial supply chains.', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Two-Way Pallets', 'Reliable entry pallets suitable for common forklift handling and storage operations.', 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Four-Way Pallets', 'Flexible pallet handling from all sides for efficient warehouse movement.', 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Heavy-Duty Pallets', 'Strong pallets built for heavy industrial products, machinery, and bulk loads.', 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Heat Treated Pallets', 'Export-ready heat-treated pallets for international shipping requirements.', 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Custom Wooden Pallets', 'Made-to-size pallet solutions according to load, dimensions, and shipping needs.', 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=65&fm=webp']
+const woodenSizes = [
+  {
+    id: 's80x80',
+    size: '80 cm x 80 cm',
+    title: '80 cm x 80 cm Wooden Pallet',
+    badge: 'New and Refurbished',
+    description: 'Compact and versatile pallet ideal for small to medium shipments, retail storage, and light-duty warehousing.',
+    image: '80cm x 80cm.jpg',
+    availability: 'New, Refurbished',
+    type: 'Normal',
+    load: 'Up to 800 kg static'
+  },
+  {
+    id: 's80x100',
+    size: '80 cm x 100 cm',
+    title: '80 cm x 100 cm Wooden Pallet',
+    badge: 'New and Refurbished',
+    description: 'Popular mid-range size for manufacturing plants and distribution centers with balanced footprint and load capacity.',
+    image: '80 cm x 120 cm.jpg',
+    availability: 'New, Refurbished',
+    type: 'Normal',
+    load: 'Up to 1000 kg'
+  },
+  {
+    id: 's80x110',
+    size: '80 cm x 110 cm',
+    title: '80 cm x 110 cm Wooden Pallet',
+    badge: 'New and Refurbished',
+    description: 'Extended-length pallet for bulkier cargo, commonly used in food processing, pharmaceutical, and electronics handling.',
+    image: '90 cm x 110 cm.jpeg',
+    availability: 'New, Refurbished',
+    type: 'Normal',
+    load: 'Up to 1000 kg'
+  },
+  {
+    id: 's80x120',
+    size: '80 cm x 120 cm',
+    title: '80 cm x 120 cm Wooden Pallet',
+    badge: 'New, Refurbished and Used',
+    note: 'Most Popular',
+    description: 'Industry standard pallet size for warehousing, logistics, retail, manufacturing, and export operations.',
+    image: '80 cm x 120 cm.jpg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal',
+    load: 'Up to 1200 kg'
+  },
+  {
+    id: 's80x200',
+    size: '80 cm x 200 cm',
+    title: '80 cm x 200 cm Wooden Pallet',
+    badge: 'Normal and Heavy Duty',
+    description: 'Extra-long pallet for oversized materials such as pipes, steel beams, machinery parts, and construction material.',
+    image: '80 cm x 200 cm heavy duty.jpeg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal and Heavy Duty',
+    load: 'Up to 2000 kg heavy duty'
+  },
+  {
+    id: 's90x90',
+    size: '90 cm x 90 cm',
+    title: '90 cm x 90 cm Wooden Pallet',
+    badge: 'New and Refurbished',
+    description: 'Square pallet ideal for drum storage, chemical containers, paint manufacturers, and oil industry facilities.',
+    image: '90 cm x 90 cm.jpg',
+    availability: 'New, Refurbished',
+    type: 'Normal',
+    load: 'Up to 1000 kg'
+  },
+  {
+    id: 's90x100',
+    size: '90 cm x 100 cm',
+    title: '90 cm x 100 cm Wooden Pallet',
+    badge: 'New and Refurbished',
+    description: 'Practical warehouse pallet for medium-duty goods, distribution, and general industrial storage.',
+    image: '90 cm x 110 cm.jpeg',
+    availability: 'New, Refurbished',
+    type: 'Normal',
+    load: 'Up to 1000 kg'
+  },
+  {
+    id: 's95x95',
+    size: '95 cm x 95 cm',
+    title: '95 cm x 95 cm Wooden Pallet',
+    badge: 'New and Refurbished',
+    description: 'Square wooden pallet for specialized stock, drums, and space-conscious warehouse layouts.',
+    image: '95 cm x 95 cm.jpeg',
+    availability: 'New, Refurbished',
+    type: 'Normal',
+    load: 'Up to 1000 kg'
+  },
+  {
+    id: 's100x100',
+    size: '100 cm x 100 cm',
+    title: '100 cm x 100 cm Wooden Pallet',
+    badge: 'Normal and Heavy Duty',
+    description: 'Strong square pallet for drums, industrial containers, warehouse storage, and heavy-duty handling.',
+    image: '100 cm x 100 cm.jpg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal and Heavy Duty',
+    load: 'Up to 1800 kg heavy duty'
+  },
+  {
+    id: 's100x110',
+    size: '100 cm x 110 cm',
+    title: '100 cm x 110 cm Wooden Pallet',
+    badge: 'Normal and Heavy Duty',
+    description: 'Reliable industrial pallet for factories, packaging lines, storage racks, and frequent forklift handling.',
+    image: '100 cm x 110 cm.jpg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal and Heavy Duty',
+    load: 'Up to 1800 kg heavy duty'
+  },
+  {
+    id: 's100x120',
+    size: '100 cm x 120 cm',
+    title: '100 cm x 120 cm Wooden Pallet',
+    badge: 'Normal and Heavy Duty',
+    note: 'Most Popular',
+    description: 'High-demand industrial size used across UAE warehouses, factories, logistics hubs, and export operations.',
+    image: '100 cm x 120 cm Heavy Duty.jpg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal and Heavy Duty',
+    load: 'Up to 2000 kg heavy duty'
+  },
+  {
+    id: 's100x200',
+    size: '100 cm x 200 cm',
+    title: '100 cm x 200 cm Wooden Pallet',
+    badge: 'Normal and Heavy Duty',
+    description: 'Oversized wooden pallet for long industrial cargo, construction products, and heavy machinery components.',
+    image: '100cm x 200 cm normal.jpeg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal and Heavy Duty',
+    load: 'Up to 2500 kg heavy duty'
+  },
+  {
+    id: 's110x110',
+    size: '110 cm x 110 cm',
+    title: '110 cm x 110 cm Wooden Pallet',
+    badge: 'Normal and Heavy Duty',
+    description: 'Square heavy-duty pallet for chemical, oil and gas, bulk storage, and industrial distribution.',
+    image: '110 cm x 110 cm.jpeg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal and Heavy Duty',
+    load: 'Up to 2000 kg heavy duty'
+  },
+  {
+    id: 's110x130',
+    size: '110 cm x 130 cm',
+    title: '110 cm x 130 cm Wooden Pallet',
+    badge: 'Normal and Heavy Duty',
+    description: 'Large pallet for bulky warehouse stock, construction materials, and industrial cargo movement.',
+    image: '110 cm x 130 cm.jpeg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal and Heavy Duty',
+    load: 'Up to 2200 kg heavy duty'
+  },
+  {
+    id: 's114x114',
+    size: '114 cm x 114 cm',
+    title: '114 cm x 114 cm CP3 Wooden Pallet',
+    badge: 'Normal and Heavy Duty',
+    description: 'CP3 pallet size used for chemical drums, export cargo, and North American standard shipping requirements.',
+    image: 'CP3 Pallets.jpg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal and Heavy Duty',
+    load: 'Up to 2200 kg heavy duty'
+  },
+  {
+    id: 's120x120',
+    size: '120 cm x 120 cm',
+    title: '120 cm x 120 cm Wooden Pallet',
+    badge: 'Normal and Heavy Duty',
+    description: 'Large square pallet for heavy stock, bulk cargo, drums, and demanding warehouse operations.',
+    image: '120 cm x 120 cm heavy duty.jpg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal and Heavy Duty',
+    load: 'Up to 2500 kg heavy duty'
+  },
+  {
+    id: 's130x130',
+    size: '130 cm x 130 cm',
+    title: '130 cm x 130 cm Wooden Pallet',
+    badge: 'Normal and Heavy Duty',
+    description: 'Oversized square pallet for special industrial loads, large containers, and custom warehouse requirements.',
+    image: '130cm x 130 cm.jpeg',
+    availability: 'New, Refurbished, Used',
+    type: 'Normal and Heavy Duty',
+    load: 'Up to 3000 kg heavy duty'
+  },
+  {
+    id: 'eurowhite',
+    size: 'Euro White 80 cm x 120 cm',
+    title: 'Euro White Wooden Pallet',
+    badge: 'Heavy Duty',
+    description: 'Premium Euro-style wooden pallet for export, retail distribution, and professional warehouse presentation.',
+    image: 'Euro Pallets.jpg',
+    availability: 'New, Refurbished, Used',
+    type: 'Heavy Duty',
+    load: 'Up to 2000 kg'
+  },
+  {
+    id: 'euroblack',
+    size: 'Euro Black 80 cm x 120 cm',
+    title: 'Euro Black Wooden Pallet',
+    badge: 'Heavy Duty',
+    description: 'Heavy-duty Euro black pallet for high-volume storage, export handling, and repeated supply chain use.',
+    image: 'Euro Pallets.jpg',
+    availability: 'New, Refurbished, Used',
+    type: 'Heavy Duty',
+    load: 'Up to 2000 kg'
+  }
 ];
 
-const applications = ['Warehouses', 'Logistics', 'Shipping', 'Factories', 'Retail Storage', 'Export Companies'];
-const features = ['Strong load capacity', 'Long-lasting wood quality', 'Custom manufacturing', 'Competitive pricing', 'UAE-wide delivery', 'Export standards'];
-const gallery = [
-  'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=65&fm=webp',
-  'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&q=65&fm=webp',
-  'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=65&fm=webp'
+const features = [
+  '15+ Years Experience',
+  'Free Delivery UAE',
+  'ISPM-15 Certified',
+  'Fast Turnaround',
+  'Best Prices',
+  '20+ Sizes'
 ];
+
+const industries = ['Logistics', 'Freight and Shipping', 'Retail and FMCG', 'Manufacturing', 'Construction', 'Oil and Gas', 'Food and Beverage', 'Pharmaceutical'];
 
 const faqs = [
-  ['Do you provide custom wooden pallet sizes?', 'Yes, we manufacture custom wooden pallets according to your required dimensions, load capacity, and warehouse or shipping needs.'],
-  ['Which UAE delivery areas do you cover?', 'We deliver wooden pallets across Dubai, Sharjah, Abu Dhabi, JAFZA, Jebel Ali, Ras Al Khaimah, Ajman, Fujairah, and all UAE.'],
-  ['Do you supply export pallets?', 'Yes, we provide export-quality wooden pallets, including heat-treated pallet options suitable for international shipping.'],
-  ['Can you handle bulk wooden pallet orders?', 'Yes, we support bulk and wholesale wooden pallet supply for warehouses, factories, logistics companies, and exporters.'],
-  ['How is wooden pallet pricing calculated?', 'Pricing depends on pallet size, quantity, wood type, load requirements, treatment needs, and delivery location. Contact us for a fast quote.']
+  ['What is the most popular wooden pallet size in UAE?', 'The 80x120 cm and 100x120 cm sizes are the most popular in UAE logistics and warehousing.'],
+  ['What is the difference between new, refurbished, and used pallets?', 'New pallets are freshly manufactured, refurbished pallets are inspected and repaired, and used pallets are pre-owned economical options.'],
+  ['What is ISPM-15?', 'ISPM-15 is the international heat-treatment standard for wooden packaging used in export shipments.'],
+  ['What is the difference between normal and heavy duty pallets?', 'Normal pallets suit standard loads, while heavy-duty pallets use thicker boards and stronger supports for heavier loads.'],
+  ['Do you deliver across all UAE?', 'Yes, delivery is available across Dubai, Sharjah, Abu Dhabi, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain.'],
+  ['Can you make custom sizes?', 'Yes, custom wooden pallets can be manufactured in any required dimension, height, entry type, and load specification.']
 ];
+
+function imageUrl(file) {
+  return `${imageBase}${encodeURIComponent(file)}`;
+}
+
+function quoteUrl(size) {
+  return `${whatsappBase}${encodeURIComponent(`Hi, I need ${size} wooden pallets.`)}`;
+}
 
 function SectionHeading({ eyebrow, title, subtitle }) {
   return (
@@ -47,6 +266,41 @@ function SectionHeading({ eyebrow, title, subtitle }) {
       <h2 className="mt-3 text-3xl font-black text-[#02024f] sm:text-4xl">{title}</h2>
       {subtitle && <p className="mt-4 text-base leading-7 text-slate-600">{subtitle}</p>}
     </div>
+  );
+}
+
+function SizeSection({ item, index }) {
+  const isAlt = index % 2 === 1;
+  return (
+    <section className={`${isAlt ? 'bg-slate-50' : 'bg-white'} px-4 py-14 sm:px-6 lg:px-8`} id={item.id}>
+      <div className={`mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center ${isAlt ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+        <img className="h-80 w-full rounded-3xl object-cover shadow-xl shadow-slate-950/10" src={imageUrl(item.image)} alt={item.title} width="900" height="560" loading="lazy" decoding="async" />
+        <div>
+          <span className="inline-flex rounded-full bg-indigo-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-indigo-700 ring-1 ring-indigo-100">{item.badge}</span>
+          <h2 className="mt-4 text-3xl font-black text-[#02024f]">
+            {item.title} {item.note && <small className="text-base font-black text-indigo-600">({item.note})</small>}
+          </h2>
+          <p className="mt-4 text-base leading-8 text-slate-600">{item.description}</p>
+          <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            {[
+              ['Dimensions', item.size],
+              ['Availability', item.availability],
+              ['Type', item.type],
+              ['Load Capacity', item.load],
+              ['Treatment', 'Heat Treated ISPM-15 available']
+            ].map(([label, value]) => (
+              <div className="grid grid-cols-2 border-b border-slate-100 last:border-b-0" key={label}>
+                <strong className="bg-slate-50 px-4 py-3 text-sm text-[#02024f]">{label}</strong>
+                <span className="px-4 py-3 text-sm text-slate-700">{value}</span>
+              </div>
+            ))}
+          </div>
+          <a className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-indigo-950/20 transition hover:-translate-y-1" href={quoteUrl(item.size)} target="_blank" rel="noreferrer">
+            <WhatsAppIcon className="size-5" /> Get Quote - {item.size}
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -59,7 +313,7 @@ export default function WoodenPallets() {
         className="relative isolate min-h-[520px] bg-slate-950 text-white sm:min-h-[620px]"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=65&fm=webp')",
+            `linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('${imageUrl('100 cm x 120 cm Heavy Duty.jpg')}')`,
           backgroundPosition: 'center',
           backgroundSize: 'cover'
         }}
@@ -69,16 +323,16 @@ export default function WoodenPallets() {
             <span className="inline-flex items-center gap-2 rounded-full bg-indigo-500/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-100 ring-1 ring-white/10">
               <Star className="text-sky-200" size={15} /> Wooden Pallets UAE
             </span>
-            <h1 className="mt-6 text-3xl font-black leading-tight sm:text-5xl lg:text-7xl">Premium Wooden Pallets Supplier in UAE</h1>
+            <h1 className="mt-6 text-3xl font-black leading-tight sm:text-5xl lg:text-7xl">Wooden Pallets - All Sizes</h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
-              High-quality wooden pallets for warehouses, logistics, factories, export, shipping, and industrial use across UAE.
+              New, refurbished, and used wooden pallets in 20+ sizes. Normal and heavy duty options with ISPM-15 treatment available across UAE.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400" href={whatsappUrl} target="_blank" rel="noreferrer">
-                <WhatsAppIcon className="size-5" /> Get Free Quote
+              <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
+                <WhatsAppIcon className="size-5" /> Get Best Price
               </a>
-              <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/15" href={whatsappUrl} target="_blank" rel="noreferrer">
-                <WhatsAppIcon className="size-5" /> WhatsApp Now
+              <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/15" href="#sizes">
+                <Ruler size={18} /> View All Sizes
               </a>
             </div>
           </div>
@@ -87,12 +341,12 @@ export default function WoodenPallets() {
 
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
+          <img className="h-96 w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/10" src={imageUrl('100cm x 120cm.jpg')} alt="Wooden pallets stack" width="1100" height="720" loading="lazy" decoding="async" />
           <div>
-            <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">About Product</span>
-            <h2 className="mt-3 text-3xl font-black text-[#02024f] sm:text-4xl">Reliable Wooden Pallets for Industrial Use</h2>
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">Wooden Pallets</span>
+            <h2 className="mt-3 text-3xl font-black text-[#02024f] sm:text-4xl">Premium Quality Wooden Pallets for Every Industry</h2>
             <p className="mt-5 text-base leading-8 text-slate-600">
-              We manufacture and supply durable wooden pallets in standard and custom sizes for warehouses, shipping companies,
-              factories, and logistics businesses across UAE.
+              Mujahid Hussain Carpentry LLC manufactures and supplies wooden pallets in Dubai, Sharjah, and all over UAE with a complete range of standard and custom sizes.
             </p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {bullets.map((item) => (
@@ -101,48 +355,95 @@ export default function WoodenPallets() {
                 </li>
               ))}
             </ul>
+            <a className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
+              <WhatsAppIcon className="size-5" /> Get Best Price
+            </a>
           </div>
-          <img className="min-h-96 rounded-3xl object-cover shadow-2xl shadow-slate-950/10" src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1100&q=65&fm=webp" alt="Wooden pallets in warehouse" width="1100" height="720" loading="lazy" decoding="async" />
+        </div>
+      </section>
+
+      <section className="bg-slate-50 px-4 py-12 sm:px-6 lg:px-8" id="sizes">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading title="Jump to Any Size" subtitle="Choose from standard, Euro, CP3, heavy-duty, refurbished, used, and custom wooden pallet options." />
+          <div className="mt-8 flex flex-wrap justify-center gap-2">
+            {woodenSizes.map((item) => (
+              <a className="rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-black text-indigo-700 shadow-sm transition hover:border-indigo-500 hover:bg-indigo-50" href={`#${item.id}`} key={item.id}>
+                {item.size.replaceAll(' cm', '')}
+              </a>
+            ))}
+            <a className="rounded-full bg-[#02024f] px-4 py-2 text-sm font-black text-white shadow-sm transition hover:bg-indigo-800" href="#custom">Custom Size</a>
+          </div>
+        </div>
+      </section>
+
+      {woodenSizes.map((item, index) => <SizeSection item={item} index={index} key={item.id} />)}
+
+      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8" id="custom">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="grid min-h-80 place-items-center rounded-3xl bg-gradient-to-br from-indigo-50 to-sky-50 p-10 text-center ring-1 ring-indigo-100">
+            <div>
+              <Ruler className="mx-auto text-indigo-600" size={76} />
+              <h3 className="mt-5 text-3xl font-black text-[#02024f]">Need a Custom Size?</h3>
+              <p className="mt-3 text-slate-600">Any dimension. Any specification. We build it.</p>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-3xl font-black text-[#02024f] sm:text-4xl">Custom Size Wooden Pallets</h2>
+            <p className="mt-4 text-base leading-8 text-slate-600">We manufacture custom wooden pallets in any dimension to match your load, storage, export, and warehouse requirements.</p>
+            <ul className="mt-6 grid gap-3">
+              {['Any width and length combination', 'Custom height and board thickness', '2-way or 4-way entry', 'Normal or heavy duty', 'Heat treatment and fumigation', 'Bulk orders with fast turnaround'].map((item) => (
+                <li className="flex items-start gap-2 text-sm font-semibold text-slate-700" key={item}><CheckCircle2 className="mt-0.5 shrink-0 text-indigo-600" size={18} /> {item}</li>
+              ))}
+            </ul>
+            <a className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={quoteUrl('custom size')} target="_blank" rel="noreferrer">
+              <WhatsAppIcon className="size-5" /> Discuss Custom Size
+            </a>
+          </div>
         </div>
       </section>
 
       <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Pallet Types" subtitle="Choose from standard, export-ready, and custom wooden pallet solutions." />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {palletTypes.map(([title, description, image]) => (
-              <article className="group overflow-hidden rounded-3xl bg-white shadow-md shadow-slate-950/5 ring-1 ring-slate-200 transition hover:-translate-y-2 hover:shadow-2xl" key={title}>
-                <div className="overflow-hidden">
-                  <img className="h-48 w-full object-cover transition duration-500 group-hover:scale-110" src={image} alt={title} width="900" height="520" loading="lazy" decoding="async" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-black text-[#02024f]">{title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{description}</p>
-                </div>
-              </article>
-            ))}
+          <SectionHeading title="All Sizes at a Glance" />
+          <div className="mt-10 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
+            <table className="min-w-full text-left text-sm">
+              <thead className="bg-[#02024f] text-white">
+                <tr>
+                  {['Size', 'Type', 'New', 'Refurbished', 'Used', 'Heavy Duty'].map((head) => <th className="px-4 py-3 font-black" key={head}>{head}</th>)}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {woodenSizes.map((item) => (
+                  <tr className={item.note ? 'bg-indigo-50/60' : ''} key={item.id}>
+                    <td className="px-4 py-3 font-black text-[#02024f]">{item.size}</td>
+                    <td className="px-4 py-3">{item.type}</td>
+                    <td className="px-4 py-3 text-emerald-600">Yes</td>
+                    <td className="px-4 py-3 text-emerald-600">Yes</td>
+                    <td className="px-4 py-3">{item.availability.includes('Used') ? <span className="text-emerald-600">Yes</span> : <span className="text-slate-400">-</span>}</td>
+                    <td className="px-4 py-3">{item.type.includes('Heavy') ? <span className="text-emerald-600">Yes</span> : <span className="text-slate-400">-</span>}</td>
+                  </tr>
+                ))}
+                <tr className="bg-sky-50">
+                  <td className="px-4 py-3 font-black text-[#02024f]">Custom Size</td>
+                  <td className="px-4 py-3">Any</td>
+                  <td className="px-4 py-3 text-emerald-600">Yes</td>
+                  <td className="px-4 py-3 text-slate-400">-</td>
+                  <td className="px-4 py-3 text-slate-400">-</td>
+                  <td className="px-4 py-3 text-emerald-600">Yes</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Industries We Serve" subtitle="Wooden pallet supply for demanding commercial and industrial operations." />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
-            {applications.map((item) => (
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center font-bold text-[#02024f] shadow-sm" key={item}>{item}</div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Why Choose Our Pallets" subtitle="Built for strength, value, export use, and fast UAE delivery." />
+          <SectionHeading title="Why Buy Wooden Pallets from Us?" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
-              <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md shadow-slate-950/5 transition hover:-translate-y-2 hover:shadow-2xl" key={feature}>
-                <ShieldCheck className="text-indigo-600" size={28} />
+              <article className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-md shadow-slate-950/5 transition hover:-translate-y-2 hover:shadow-2xl" key={feature}>
+                <ShieldCheck className="mx-auto text-indigo-600" size={32} />
                 <h3 className="mt-4 text-lg font-black text-[#02024f]">{feature}</h3>
               </article>
             ))}
@@ -150,20 +451,18 @@ export default function WoodenPallets() {
         </div>
       </section>
 
-      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-slate-50 px-4 py-14 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Wooden Pallet Gallery" subtitle="Warehouse stock, pallet loading, and export packaging visuals." />
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {gallery.map((image, index) => (
-              <img className="h-72 w-full rounded-3xl object-cover shadow-xl shadow-slate-950/10" src={image} alt={`Wooden pallet product ${index + 1}`} width="900" height="560" loading="lazy" decoding="async" key={image} />
-            ))}
+          <SectionHeading title="Industries We Serve" />
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {industries.map((industry) => <span className="rounded-full bg-white px-5 py-3 text-sm font-bold text-[#02024f] shadow-sm ring-1 ring-indigo-100" key={industry}>{industry}</span>)}
           </div>
         </div>
       </section>
 
-      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <SectionHeading title="Wooden Pallets FAQ" subtitle="Answers about custom sizes, delivery, export pallets, bulk orders, and pricing." />
+          <SectionHeading title="Frequently Asked Questions" />
           <div className="mt-10 grid gap-4">
             {faqs.map(([question, answer], index) => {
               const isOpen = openFaq === index;
@@ -188,16 +487,14 @@ export default function WoodenPallets() {
       <ProductInquirySection productType="Wooden Pallets" />
 
       <section className="bg-[#02024f] px-4 py-14 text-center text-white sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-black">Need Wooden Pallets in UAE?</h2>
+        <h2 className="text-3xl font-black">Order Your Wooden Pallets Today</h2>
+        <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">20+ sizes. New, refurbished and used. Free delivery across UAE.</p>
         <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
           <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
-            <WhatsAppIcon className="size-5" /> Request Quote
+            <WhatsAppIcon className="size-5" /> WhatsApp Us
           </a>
           <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+971509253127">
             <CallIcon className="size-5" /> Call Now
-          </a>
-          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href={whatsappUrl} target="_blank" rel="noreferrer">
-            <WhatsAppIcon className="size-5" /> WhatsApp Us
           </a>
         </div>
       </section>

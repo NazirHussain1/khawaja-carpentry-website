@@ -4,12 +4,12 @@ const products = [
     slug: 'wooden-pallets',
     title: 'Wooden Pallets',
     category: 'Industrial Wooden Pallets',
-    summary: 'High-quality industrial wooden pallets available in standard and custom sizes.',
-    specs: ['Euro Pallets', 'Heavy Duty Pallets', 'Two-Way Entry Pallets', 'Four-Way Entry Pallets', 'Block Pallets', 'Stringer Pallets', 'Export Pallets', 'Recycled Pallets'],
+    summary: 'New, refurbished, and used wooden pallets available in 20+ standard and custom sizes.',
+    specs: ['80x80 cm', '80x120 cm', '100x120 cm', '114x114 cm CP3', 'Euro Pallets', '130x130 cm', 'Heavy Duty', 'Custom Sizes'],
     details: [
-      { title: 'Available Types', items: ['Euro Pallets', 'Heavy Duty Pallets', 'Two-Way Entry Pallets', 'Four-Way Entry Pallets', 'Block Pallets', 'Stringer Pallets', 'Export Pallets', 'Recycled Pallets'] },
-      { title: 'Sizes', items: ['80x80 cm', '100x120 cm', '120x120 cm', 'Custom Dimensions'] },
-      { title: 'Applications', items: ['Warehousing', 'Shipping', 'Construction', 'Industrial Storage', 'Export Packaging'] }
+      { title: 'Available Sizes', items: ['80x80 cm', '80x100 cm', '80x110 cm', '80x120 cm', '80x200 cm', '90x90 cm', '90x100 cm', '95x95 cm', '100x100 cm', '100x110 cm', '100x120 cm', '100x200 cm', '110x110 cm', '110x130 cm', '114x114 cm CP3', '120x120 cm', '130x130 cm', 'Euro White', 'Euro Black', 'Custom Size'] },
+      { title: 'Availability', items: ['New Pallets', 'Refurbished Pallets', 'Used Pallets', 'Normal Duty', 'Heavy Duty', 'ISPM-15 Heat Treatment'] },
+      { title: 'Applications', items: ['Warehousing', 'Shipping', 'Construction', 'Industrial Storage', 'Export Packaging', 'Food and Beverage', 'Oil and Gas'] }
     ],
     imageClass: 'visual-pallet-stack'
   },
@@ -18,11 +18,12 @@ const products = [
     slug: 'plastic-pallets',
     title: 'Plastic Pallets',
     category: 'Reusable Plastic Pallets',
-    summary: 'Strong, moisture-resistant, and reusable plastic pallets designed for hygienic industrial applications.',
-    specs: ['Water Resistant', 'Lightweight', 'Long Lifespan', 'Easy Cleaning', 'Chemical Resistant'],
+    summary: 'New and used plastic pallets in 5 standard sizes for hygienic industrial applications.',
+    specs: ['80x120 cm', '100x100 cm', '100x120 cm', '114x114 cm', '110x130 cm', 'Normal Duty', 'Heavy Duty', 'Washable'],
     details: [
-      { title: 'Benefits', items: ['Water Resistant', 'Lightweight', 'Long Lifespan', 'Easy Cleaning', 'Chemical Resistant'] },
-      { title: 'Industries', items: ['Food Industry', 'Pharmaceutical Industry', 'Cold Storage', 'Chemical Industry'] }
+      { title: 'Available Sizes', items: ['80x120 cm', '100x100 cm', '100x120 cm', '114x114 cm', '110x130 cm'] },
+      { title: 'Benefits', items: ['Water Resistant', 'Lightweight', 'Long Lifespan', 'Easy Cleaning', 'Chemical Resistant', 'No ISPM-15 Required'] },
+      { title: 'Industries', items: ['Food Industry', 'Pharmaceutical Industry', 'Cold Storage', 'Chemical Industry', 'Logistics and Shipping'] }
     ],
     imageClass: 'visual-box'
   },
@@ -31,8 +32,8 @@ const products = [
     slug: 'wooden-crates',
     title: 'Wooden Crates',
     category: 'Custom Wooden Crates',
-    summary: 'Custom wooden crates and boxes designed for machinery transportation and export safety.',
-    specs: ['Heavy-duty construction', 'Export compliant', 'Shock-resistant structure', 'Custom dimensions', 'Industrial-grade wood'],
+    summary: 'Brand-new wooden crates and boxes for export, machinery transportation, and warehouse protection.',
+    specs: ['100x100 cm', '100x120 cm', '80x200 cm', '200x400 cm', 'Custom Dimensions', 'Export Compliant'],
     details: [
       { title: 'Features', items: ['Heavy-duty construction', 'Export compliant', 'Shock-resistant structure', 'Custom dimensions', 'Industrial-grade wood'] }
     ],
@@ -44,7 +45,7 @@ const products = [
     title: 'Jumbo Bags',
     category: 'FIBC Jumbo Bags',
     summary: 'Industrial FIBC jumbo bags for bulk material handling and transportation.',
-    specs: ['500 KG - 2500 KG capacity', 'Bulk material handling', 'Industrial transportation'],
+    specs: ['500 KG', '1 TON', '1.5 TON', '2 TON', '2.5 TON', 'Bulk material handling', 'Industrial transportation'],
     details: [
       { title: 'Capacity', items: ['500 KG - 2500 KG'] },
       { title: 'Applications', items: ['Cement', 'Sand', 'Chemicals', 'Agriculture', 'Construction Materials'] }

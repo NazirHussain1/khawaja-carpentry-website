@@ -45,24 +45,24 @@ const seoPages = {
     path: '/products'
   },
   'wooden-pallets': {
-    title: 'Wooden Pallets Supplier UAE | Export & Warehouse Pallets',
-    description: 'Premium wooden pallet manufacturer and supplier in Dubai, Sharjah, Abu Dhabi, JAFZA, and all UAE.',
-    path: '/products/wooden-pallets'
+    title: 'Wooden Pallets - All Sizes New, Refurbished & Used | Mujahid Hussain Carpentry UAE',
+    description: 'Buy wooden pallets in Dubai, Sharjah and UAE. New, refurbished and used pallets in all sizes: 80x120, 100x120, Euro pallets, CP3 pallets, and custom sizes.',
+    path: '/wooden-pallets'
   },
   'wooden-crates': {
     title: 'Wooden Crates Supplier UAE | Custom Export Crates',
     description: 'Custom wooden crates supplier in Dubai, Sharjah, Abu Dhabi, JAFZA, Jebel Ali, and all UAE for export packing, machinery, and industrial goods.',
-    path: '/products/wooden-crates'
+    path: '/wooden-crates'
   },
   'plastic-pallets': {
-    title: 'Plastic Pallets Supplier UAE | Industrial Plastic Pallets',
-    description: 'Leading plastic pallet supplier in Dubai, Sharjah, Abu Dhabi, JAFZA, and all UAE for warehouse, logistics, food, and industrial use.',
-    path: '/products/plastic-pallets'
+    title: 'Plastic Pallets - All Sizes New & Used | Mujahid Hussain Carpentry UAE',
+    description: 'Buy plastic pallets in Dubai, Sharjah and UAE. New and used plastic pallets in 80x120, 100x100, 100x120, 114x114, and 110x130 sizes.',
+    path: '/plastic-pallets'
   },
   'plastic-jumbo-bags': {
     title: 'Plastic Jumbo Bags Supplier UAE | Bulk Packaging Bags',
     description: 'Supplier of plastic jumbo bags in Dubai, Sharjah, Abu Dhabi, JAFZA, and all UAE for industrial packaging, storage, and transport.',
-    path: '/products/plastic-jumbo-bags'
+    path: '/plastic-jumbo-bags'
   },
   contact: {
     title: 'Contact Us | Mujahid Hussain Carpentry UAE',
@@ -111,6 +111,10 @@ const routes = {
   about: About,
   services: Services,
   products: Products,
+  'wooden-pallets': lazy(() => import('./pages/WoodenPallets.jsx')),
+  'wooden-crates': lazy(() => import('./pages/WoodenCrates.jsx')),
+  'plastic-pallets': lazy(() => import('./pages/PlasticPallets.jsx')),
+  'plastic-jumbo-bags': lazy(() => import('./pages/PlasticJumboBags.jsx')),
   industries: Industries,
   gallery: Gallery,
   testimonials: Testimonials,

@@ -12,20 +12,20 @@ const navLinks = [
 
 const productLinks = [
   ['All Products', '/products', 'products', Boxes],
-  ['Wooden Pallets', '/products/wooden-pallets', 'wooden-pallets', PackageCheck],
-  ['Wooden Crates', '/products/wooden-crates', 'wooden-crates', Package],
-  ['Plastic Pallets', '/products/plastic-pallets', 'plastic-pallets', Grid2X2],
-  ['Plastic Jumbo Bags', '/products/plastic-jumbo-bags', 'plastic-jumbo-bags', Boxes]
+  ['Wooden Pallets', '/wooden-pallets', 'wooden-pallets', PackageCheck],
+  ['Wooden Crates', '/wooden-crates', 'wooden-crates', Package],
+  ['Plastic Pallets', '/plastic-pallets', 'plastic-pallets', Grid2X2],
+  ['Plastic Jumbo Bags', '/plastic-jumbo-bags', 'plastic-jumbo-bags', Boxes]
 ];
 
 const mobileLinks = [
   ['Home', '/', 'home'],
   ['About Us', '/about', 'about'],
   ['Our Products', '/products', 'products'],
-  ['Wooden Pallets', '/products/wooden-pallets', 'wooden-pallets'],
-  ['Wooden Crates', '/products/wooden-crates', 'wooden-crates'],
-  ['Plastic Pallets', '/products/plastic-pallets', 'plastic-pallets'],
-  ['Plastic Jumbo Bags', '/products/plastic-jumbo-bags', 'plastic-jumbo-bags'],
+  ['Wooden Pallets', '/wooden-pallets', 'wooden-pallets'],
+  ['Wooden Crates', '/wooden-crates', 'wooden-crates'],
+  ['Plastic Pallets', '/plastic-pallets', 'plastic-pallets'],
+  ['Plastic Jumbo Bags', '/plastic-jumbo-bags', 'plastic-jumbo-bags'],
   ['Gallery', '/gallery', 'gallery'],
   ['Testimonials', '/testimonials', 'testimonials'],
   ['Contact', '/contact', 'contact']

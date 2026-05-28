@@ -23,10 +23,10 @@ const stats = [
 ];
 
 const products = [
-  ['Wooden Pallets', 'Strong pallets for warehouses, factories, logistics, export, and industrial storage.', '/products/wooden-pallets', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Wooden Crates', 'Custom crates for cargo packing, heavy machinery, fragile goods, and export shipping.', '/products/wooden-crates', 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Plastic Pallets', 'Reusable plastic pallets for food, pharma, logistics, export, and warehouse storage.', '/products/plastic-pallets', 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Plastic Jumbo Bags', 'Industrial bulk bags for construction, agriculture, material handling, and storage.', '/products/plastic-jumbo-bags', 'https://images.unsplash.com/photo-1581093458791-9d09ccfed1c1?auto=format&fit=crop&w=900&q=65&fm=webp']
+  ['Wooden Pallets', 'Strong pallets for warehouses, factories, logistics, export, and industrial storage.', '/wooden-pallets', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Wooden Crates', 'Custom crates for cargo packing, heavy machinery, fragile goods, and export shipping.', '/wooden-crates', 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Plastic Pallets', 'Reusable plastic pallets for food, pharma, logistics, export, and warehouse storage.', '/plastic-pallets', 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=900&q=65&fm=webp'],
+  ['Plastic Jumbo Bags', 'Industrial bulk bags for construction, agriculture, material handling, and storage.', '/plastic-jumbo-bags', 'https://images.unsplash.com/photo-1581093458791-9d09ccfed1c1?auto=format&fit=crop&w=900&q=65&fm=webp']
 ];
 
 const areas = ['Dubai', 'Sharjah', 'Abu Dhabi', 'JAFZA', 'Jebel Ali', 'Ras Al Khaimah', 'Ajman', 'Fujairah'];

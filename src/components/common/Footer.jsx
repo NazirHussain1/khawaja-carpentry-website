@@ -24,10 +24,10 @@ const quickLinks = [
 ];
 
 const productLinks = [
-  ['Wooden Pallets', '#/products/wooden-pallets'],
-  ['Wooden Crates', '#/products/wooden-crates'],
-  ['Plastic Pallets', '#/products/plastic-pallets'],
-  ['Plastic Jumbo Bags', '#/products/plastic-jumbo-bags']
+  ['Wooden Pallets', '#/wooden-pallets'],
+  ['Wooden Crates', '#/wooden-crates'],
+  ['Plastic Pallets', '#/plastic-pallets'],
+  ['Plastic Jumbo Bags', '#/plastic-jumbo-bags']
 ];
 
 function FooterHeading({ children }) {
