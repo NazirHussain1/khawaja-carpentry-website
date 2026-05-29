@@ -103,6 +103,10 @@ function quoteUrl(size) {
   return `${whatsappBase}${encodeURIComponent(`Hello, I need a quote for ${size} plastic pallet.`)}`;
 }
 
+function displaySizeLabel(item) {
+  return item.quoteLabel.includes('x') ? item.quoteLabel.toUpperCase().replace('X', ' X ') : item.label;
+}
+
 function SectionHeading({ title, subtitle }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
@@ -234,7 +238,7 @@ export default function PlasticPallets() {
                 onClick={() => setActiveSize(item.id)}
                 key={item.id}
               >
-                {item.label}
+                {displaySizeLabel(item)}
               </a>
             ))}
           </div>
