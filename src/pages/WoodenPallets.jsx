@@ -1,4 +1,4 @@
-import { CheckCircle2, ChevronDown, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, ChevronDown, ShieldCheck, X } from 'lucide-react';
 import { useState } from 'react';
 import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
@@ -276,6 +276,10 @@ function quoteUrl(size) {
   return `${whatsappBase}${encodeURIComponent(`Hello, I need a quote for ${size} wooden pallet.`)}`;
 }
 
+function sizeButtonLabel(item) {
+  return item.quoteLabel.includes('x') ? item.quoteLabel.toUpperCase() : item.label;
+}
+
 function SectionHeading({ title, subtitle }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
@@ -285,21 +289,29 @@ function SectionHeading({ title, subtitle }) {
   );
 }
 
-function SizeSection({ item, index }) {
+function SizeSection({ item, index, onImageOpen }) {
   const isAlt = index % 2 === 1;
+  const fullImageUrl = imageUrl(item.image);
 
   return (
     <section className={`${isAlt ? 'bg-[#fbf7ff]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
       <div className={`mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center ${isAlt ? 'lg:[&>*:first-child]:order-2' : ''}`}>
-        <img
-          className="h-80 w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/10 sm:h-96"
-          src={imageUrl(item.image)}
-          alt={item.heading}
-          width="1000"
-          height="680"
-          loading="lazy"
-          decoding="async"
-        />
+        <button
+          className="group block overflow-hidden rounded-3xl text-left shadow-2xl shadow-slate-950/10 outline-none ring-offset-4 transition hover:-translate-y-1 hover:shadow-indigo-950/20 focus:ring-4 focus:ring-indigo-300"
+          type="button"
+          onClick={() => onImageOpen({ src: fullImageUrl, alt: item.heading })}
+          aria-label={`Open full image for ${item.heading}`}
+        >
+          <img
+            className="h-80 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-96"
+            src={fullImageUrl}
+            alt={item.heading}
+            width="1000"
+            height="680"
+            loading="lazy"
+            decoding="async"
+          />
+        </button>
         <div>
           <span className="inline-flex rounded-full bg-indigo-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-indigo-700 ring-1 ring-indigo-100">
             New &amp; Refurbished
@@ -326,7 +338,7 @@ function SizeSection({ item, index }) {
             target="_blank"
             rel="noreferrer"
           >
-            <WhatsAppIcon className="size-5" /> Get Quote {item.label}
+            <WhatsAppIcon className="size-5" /> Get Quote {sizeButtonLabel(item)}
           </a>
         </div>
       </div>
@@ -334,21 +346,63 @@ function SizeSection({ item, index }) {
   );
 }
 
+function ImageLightbox({ image, onClose }) {
+  if (!image) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[80] grid place-items-center bg-slate-950/90 p-4 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Product image preview"
+      onClick={onClose}
+    >
+      <button
+        className="absolute right-4 top-4 grid size-11 place-items-center rounded-full bg-white text-[#02024f] shadow-xl transition hover:scale-105 hover:bg-slate-100 focus:outline-none focus:ring-4 focus:ring-white/40 sm:right-6 sm:top-6"
+        type="button"
+        onClick={onClose}
+        aria-label="Close image preview"
+      >
+        <X size={24} />
+      </button>
+      <img
+        className="max-h-[86vh] max-w-[94vw] rounded-2xl object-contain shadow-2xl shadow-black/40"
+        src={image.src}
+        alt={image.alt}
+        onClick={(event) => event.stopPropagation()}
+      />
+    </div>
+  );
+}
+
 export default function WoodenPallets() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [activeSize, setActiveSize] = useState(palletSizes[0].id);
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const heroImage = {
+    src: imageUrl('100 cm x 120 cm Heavy Duty.jpg'),
+    alt: 'Premium wooden pallets'
+  };
 
   return (
     <>
       <section className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
-          <img
-            className="h-[360px] w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/15 sm:h-[460px]"
-            src={imageUrl('100 cm x 120 cm Heavy Duty.jpg')}
-            alt="Premium wooden pallets"
-            width="1200"
-            height="800"
-            decoding="async"
-          />
+          <button
+            className="group block overflow-hidden rounded-3xl text-left shadow-2xl shadow-slate-950/15 outline-none ring-offset-4 transition hover:-translate-y-1 hover:shadow-indigo-950/20 focus:ring-4 focus:ring-indigo-300"
+            type="button"
+            onClick={() => setLightboxImage(heroImage)}
+            aria-label="Open full wooden pallets image"
+          >
+            <img
+              className="h-[360px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[460px]"
+              src={heroImage.src}
+              alt={heroImage.alt}
+              width="1200"
+              height="800"
+              decoding="async"
+            />
+          </button>
           <div>
             <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-700">Wooden Pallets</span>
             <h1 className="mt-4 text-4xl font-black leading-tight text-[#02024f] sm:text-5xl lg:text-6xl">Premium Quality Wooden Pallets for Every Industry</h1>
@@ -380,18 +434,21 @@ export default function WoodenPallets() {
           <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">
             {palletSizes.map((item) => (
               <a
-                className="rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-black text-indigo-700 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-500 hover:bg-indigo-50"
+                className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 ${activeSize === item.id ? 'border-[#02024f] bg-[#02024f] text-white shadow-indigo-950/25' : 'border-indigo-200 bg-white text-indigo-700 hover:border-[#02024f] hover:bg-[#02024f] hover:text-white'}`}
                 href={`#${item.id}`}
+                onClick={() => setActiveSize(item.id)}
                 key={item.id}
               >
-                {item.label}
+                {sizeButtonLabel(item)}
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {palletSizes.map((item, index) => <SizeSection item={item} index={index} key={item.id} />)}
+      {palletSizes.map((item, index) => (
+        <SizeSection item={item} index={index} onImageOpen={setLightboxImage} key={item.id} />
+      ))}
 
       <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -445,6 +502,8 @@ export default function WoodenPallets() {
           </a>
         </div>
       </section>
+
+      <ImageLightbox image={lightboxImage} onClose={() => setLightboxImage(null)} />
     </>
   );
 }
