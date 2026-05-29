@@ -1,99 +1,98 @@
-import { CheckCircle2, ChevronDown, Droplets, Feather, HeartPulse, Recycle, ShieldCheck, Star } from 'lucide-react';
+import { CheckCircle2, ChevronDown, Droplets, Feather, HeartPulse, PackageCheck, Recycle, ShieldCheck } from 'lucide-react';
 import { useState } from 'react';
 import { CallIcon } from '../components/common/ContactIcons.jsx';
-import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
+import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
 
 const imageBase = 'https://mujahidhussaincarpentry.store/images/';
 const whatsappBase = 'https://wa.me/971509253127?text=';
-const whatsappUrl = `${whatsappBase}${encodeURIComponent('Hello, I need a quote for plastic pallets in UAE.')}`;
 
-const bullets = [
-  'New plastic pallets',
-  'Used plastic pallets',
-  'Normal duty options',
-  'Heavy duty options',
-  'Hygienic and washable',
-  'Weather resistant'
-];
+const introFeatures = ['New Pallets', 'Used Pallets', 'Heavy Duty', 'Normal Duty', 'Hygienic & Washable', 'Weather Resistant'];
 
 const plasticSizes = [
   {
-    id: 'pp80x120',
+    id: 'plastic-80x120',
+    label: '80120',
+    quoteLabel: '80x120',
     size: '80 cm x 120 cm',
     title: '80 cm x 120 cm Plastic Pallet',
     note: 'Euro Size',
-    badge: 'Normal and Heavy Duty - New and Used',
-    description: 'European standard plastic pallet size for food and beverage logistics, pharmaceutical warehousing, and international shipping.',
+    description: 'European standard size. Ideal for food and beverage logistics, pharmaceutical warehousing, and international shipping. Stackable and nestable designs available.',
     image: 'plastic pallets.jpeg',
-    load: 'Up to 1500 kg heavy duty static',
+    load: 'Up to 1500 kg HD static',
     material: 'HDPE / PP Recycled Plastic'
   },
   {
-    id: 'pp100x100',
+    id: 'plastic-100x100',
+    label: '100100',
+    quoteLabel: '100x100',
     size: '100 cm x 100 cm',
     title: '100 cm x 100 cm Plastic Pallet',
-    badge: 'Normal and Heavy Duty - New and Used',
-    description: 'Square plastic pallet for drum storage, chemical containers, IBC tank bases, and easy-clean industrial handling.',
+    description: 'Square plastic pallet perfect for drum storage, chemical containers, and IBC tank bases. Excellent chemical resistance and easy to clean.',
     image: 'new plastic pallet normal duty.jpeg',
-    load: 'Up to 1500 kg heavy duty static',
+    load: 'Up to 1500 kg HD static',
     material: 'HDPE / PP Recycled Plastic'
   },
   {
-    id: 'pp100x120',
+    id: 'plastic-100x120',
+    label: '100120',
+    quoteLabel: '100x120',
     size: '100 cm x 120 cm',
     title: '100 cm x 120 cm Plastic Pallet',
     note: 'Most Popular',
-    badge: 'Normal and Heavy Duty - New and Used',
-    description: 'Most popular industrial plastic pallet size for supermarkets, FMCG distribution centers, warehousing, and racking operations.',
+    description: 'Most popular industrial size. High demand across supermarkets, FMCG distribution centers, and warehousing operations. Strong racking capability.',
     image: '100 cm x 120 cm heavy duty new plastic pallet.jpeg',
-    load: 'Up to 2000 kg heavy duty static',
+    load: 'Up to 2000 kg HD static',
     material: 'HDPE / PP Recycled Plastic'
   },
   {
-    id: 'pp114x114',
+    id: 'plastic-114x114',
+    label: '114114',
+    quoteLabel: '114x114',
     size: '114 cm x 114 cm',
     title: '114 cm x 114 cm Plastic Pallet',
-    badge: 'Normal and Heavy Duty - New and Used',
-    description: 'North American GMA-style plastic pallet size for export to US and Canada and compatibility with standard racking systems.',
+    description: 'North American GMA standard, approximately 48 inch x 45 inch. Suitable for export to US and Canada. Compatible with standard racking systems.',
     image: 'plastic 100 cm x120 cm used heavu duty.jpeg',
-    load: 'Up to 1800 kg heavy duty static',
+    load: 'Up to 1800 kg HD static',
     material: 'HDPE / PP Recycled Plastic'
   },
   {
-    id: 'pp110x130',
+    id: 'plastic-110x130',
+    label: '110130',
+    quoteLabel: '110x130',
     size: '110 cm x 130 cm',
     title: '110 cm x 130 cm Plastic Pallet',
-    badge: 'Normal and Heavy Duty - New and Used',
-    description: 'Large industrial plastic pallet for heavy machinery, bulky product storage, construction material logistics, and outdoor UAE use.',
+    description: 'Large industrial plastic pallet for heavy machinery, bulky storage, and construction material logistics. Ideal for outdoor use in UAE weather.',
     image: 'new plastic pallet normal duty.jpeg',
-    load: 'Up to 2000 kg heavy duty static',
+    load: 'Up to 2000 kg HD static',
     material: 'HDPE / PP Virgin/Recycled Plastic'
   }
 ];
 
 const advantages = [
-  [Feather, 'Lightweight', '30-40% lighter than wood, reducing freight cost and improving handling.'],
-  [Droplets, 'Moisture Proof', 'Resistant to water, rain, humidity, warping, rotting, and mold.'],
+  [Feather, 'Lightweight', 'Easier handling and lower transport weight compared with many wood pallets.'],
+  [Droplets, 'Moisture Proof', 'Resistant to water, humidity, mold, rotting, and warping.'],
   [HeartPulse, 'Hygienic', 'Easy to wash and sanitize for food and pharmaceutical storage.'],
-  [ShieldCheck, 'Safe Handling', 'No nails, splinters, or sharp edges for safer operations.'],
-  [Recycle, '100% Recyclable', 'Environmentally friendly and recyclable at end of life.'],
-  [CheckCircle2, 'Longer Lifespan', 'Built for repeated use with strong long-term value.']
+  [ShieldCheck, 'Safe Handling', 'No nails, splinters, or sharp broken timber edges.'],
+  [Recycle, '100% Recyclable', 'Reusable plastic material that can be recycled at end of life.'],
+  [CheckCircle2, 'Longer Lifespan', 'Designed for repeated industrial use and strong long-term value.']
 ];
 
 const industries = [
-  ['Food and Beverage', 'Hygienic, washable pallets for food-grade storage.'],
-  ['Pharmaceutical', 'Clean handling with low contamination risk.'],
-  ['Chemical Industry', 'Chemical-resistant pallets for drums and hazmat storage.'],
-  ['Logistics and Shipping', 'Lightweight export-ready pallets with no fumigation required.']
+  ['Food & Beverage', 'Washable pallets for food-grade storage and logistics.'],
+  ['Pharmaceutical', 'Clean handling for sensitive and regulated stock.'],
+  ['Chemical Industry', 'Chemical-resistant pallets for drums and containers.'],
+  ['Logistics & Shipping', 'Lightweight pallets for local and export movement.'],
+  ['Warehousing', 'Durable pallets for repeated storage and handling.'],
+  ['Supermarkets / FMCG', 'Popular sizes for retail distribution and FMCG supply chains.']
 ];
 
 const faqs = [
-  ['Do you sell new plastic pallets or only used?', 'We offer both new and used plastic pallets. New pallets suit premium requirements, and quality-inspected used pallets are available at competitive prices.'],
-  ['What is the difference between normal and heavy duty?', 'Normal plastic pallets handle standard warehouse loads. Heavy-duty pallets are reinforced for heavier industrial loads.'],
-  ['Are plastic pallets suitable for food storage?', 'Yes, plastic pallets are non-porous, easy to sanitize, and preferred for food-industry storage.'],
-  ['Do plastic pallets need ISPM-15 treatment?', 'No. Plastic pallets are exempt from ISPM-15 requirements, which saves time and cost for international exports.'],
-  ['What is bulk order minimum?', 'There is no strict minimum. Bulk discounts are available for larger pallet orders.']
+  ['Do you sell new plastic pallets or only used?', 'We sell both new and used plastic pallets, depending on stock, size, and customer requirement.'],
+  ['What is the difference between Normal and Heavy Duty?', 'Normal duty pallets are for standard warehouse loads. Heavy-duty pallets are stronger and built for heavier industrial handling.'],
+  ['Are plastic pallets suitable for food storage?', 'Yes, plastic pallets are hygienic, washable, and commonly used in food and beverage supply chains.'],
+  ['Do plastic pallets need ISPM-15 treatment?', 'No. Plastic pallets do not require ISPM-15 heat treatment for export.'],
+  ['What is bulk order minimum?', 'There is no strict minimum. Bulk discounts are available for larger orders.']
 ];
 
 function imageUrl(file) {
@@ -101,47 +100,62 @@ function imageUrl(file) {
 }
 
 function quoteUrl(size) {
-  return `${whatsappBase}${encodeURIComponent(`Hi, I need ${size} plastic pallets.`)}`;
+  return `${whatsappBase}${encodeURIComponent(`Hello, I need a quote for ${size} plastic pallet.`)}`;
 }
 
-function SectionHeading({ eyebrow, title, subtitle }) {
+function SectionHeading({ title, subtitle }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      {eyebrow && <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">{eyebrow}</span>}
-      <h2 className="mt-3 text-3xl font-black text-[#02024f] sm:text-4xl">{title}</h2>
+      <h2 className="text-3xl font-black text-[#02024f] sm:text-4xl">{title}</h2>
       {subtitle && <p className="mt-4 text-base leading-7 text-slate-600">{subtitle}</p>}
     </div>
   );
 }
 
-function SizeSection({ item, index }) {
+function PlasticSizeSection({ item, index }) {
   const isAlt = index % 2 === 1;
+
   return (
-    <section className={`${isAlt ? 'bg-slate-50' : 'bg-white'} px-4 py-14 sm:px-6 lg:px-8`} id={item.id}>
+    <section className={`${isAlt ? 'bg-[#fbf7ff]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
       <div className={`mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center ${isAlt ? 'lg:[&>*:first-child]:order-2' : ''}`}>
-        <img className="h-80 w-full rounded-3xl object-cover shadow-xl shadow-slate-950/10" src={imageUrl(item.image)} alt={item.title} width="900" height="560" loading="lazy" decoding="async" />
+        <img
+          className="h-80 w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/10 sm:h-96"
+          src={imageUrl(item.image)}
+          alt={item.title}
+          width="1000"
+          height="680"
+          loading="lazy"
+          decoding="async"
+        />
         <div>
-          <span className="inline-flex rounded-full bg-indigo-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-indigo-700 ring-1 ring-indigo-100">{item.badge}</span>
-          <h2 className="mt-4 text-3xl font-black text-[#02024f]">
+          <span className="inline-flex rounded-full bg-indigo-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-indigo-700 ring-1 ring-indigo-100">
+            Normal &amp; Heavy Duty - New &amp; Used
+          </span>
+          <h2 className="mt-4 text-3xl font-black leading-tight text-[#02024f] sm:text-4xl">
             {item.title} {item.note && <small className="text-base font-black text-indigo-600">({item.note})</small>}
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">{item.description}</p>
-          <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-950/5">
             {[
               ['Dimensions', item.size],
-              ['Availability', 'New and Used'],
-              ['Type', 'Normal and Heavy Duty'],
+              ['Availability', 'New & Used'],
+              ['Type', 'Normal & Heavy Duty'],
               ['Load Capacity', item.load],
               ['Material', item.material]
             ].map(([label, value]) => (
-              <div className="grid grid-cols-2 border-b border-slate-100 last:border-b-0" key={label}>
-                <strong className="bg-slate-50 px-4 py-3 text-sm text-[#02024f]">{label}</strong>
-                <span className="px-4 py-3 text-sm text-slate-700">{value}</span>
+              <div className="grid grid-cols-[44%_1fr] border-b border-slate-100 last:border-b-0" key={label}>
+                <strong className="bg-[#fbf7ff] px-4 py-3 text-sm text-[#02024f]">{label}</strong>
+                <span className="px-4 py-3 text-sm font-medium text-slate-700">{value}</span>
               </div>
             ))}
           </div>
-          <a className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-indigo-950/20 transition hover:-translate-y-1" href={quoteUrl(item.size)} target="_blank" rel="noreferrer">
-            <WhatsAppIcon className="size-5" /> Get Quote - {item.size}
+          <a
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-6 py-3 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
+            href={quoteUrl(item.quoteLabel)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <WhatsAppIcon className="size-5" /> Get Quote {item.label}
           </a>
         </div>
       </div>
@@ -151,96 +165,103 @@ function SizeSection({ item, index }) {
 
 export default function PlasticPallets() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [activeSize, setActiveSize] = useState(plasticSizes[0].id);
 
   return (
     <>
-      <section
-        className="relative isolate min-h-[520px] bg-slate-950 text-white sm:min-h-[620px]"
-        style={{
-          backgroundImage:
-            `linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('${imageUrl('plastic pallets.jpeg')}')`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover'
-        }}
-      >
-        <div className="mx-auto flex min-h-[520px] max-w-7xl items-center px-4 py-16 sm:min-h-[620px] sm:px-6 sm:py-20 lg:px-8">
-          <div className="max-w-4xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-indigo-500/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-100 ring-1 ring-white/10">
-              <Star className="text-sky-200" size={15} /> Plastic Pallets UAE
-            </span>
-            <h1 className="mt-6 text-3xl font-black leading-tight sm:text-5xl lg:text-7xl">Plastic Pallets - All Sizes</h1>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
-              New and used plastic pallets in 5 standard sizes. Normal and heavy duty options with hygienic, washable, weather-resistant material.
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#02024f] via-indigo-800 to-sky-600 px-4 py-20 text-white sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(125,211,252,0.16),transparent_28%)]" aria-hidden="true" />
+        <div className="relative mx-auto max-w-7xl">
+          <nav className="flex flex-wrap items-center gap-2 text-sm font-semibold text-sky-100" aria-label="Breadcrumb">
+            <a className="transition hover:text-white" href="/" data-spa-link="true">Home</a>
+            <span>/</span>
+            <a className="transition hover:text-white" href="/products" data-spa-link="true">Products</a>
+            <span>/</span>
+            <span className="text-white">Plastic Pallets</span>
+          </nav>
+          <div className="mt-10 max-w-4xl">
+            <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-7xl">Plastic Pallets - All Sizes</h1>
+            <p className="mt-6 max-w-3xl text-base leading-8 text-slate-100 sm:text-xl">
+              New &amp; Used Plastic Pallets. Normal &amp; Heavy Duty. 5 standard sizes. Free delivery across UAE.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
-                <WhatsAppIcon className="size-5" /> Get Best Price
-              </a>
-              <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/15" href="#sizes">
-                View Available Sizes
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
-          <img className="h-96 w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/10" src={imageUrl('plastic pallets.jpeg')} alt="Plastic pallets stack" width="1100" height="720" loading="lazy" decoding="async" />
+          <img
+            className="h-[360px] w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/15 sm:h-[460px]"
+            src={imageUrl('plastic pallets.jpeg')}
+            alt="Plastic pallets stack"
+            width="1200"
+            height="800"
+            decoding="async"
+          />
           <div>
-            <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">Plastic Pallets</span>
-            <h2 className="mt-3 text-3xl font-black text-[#02024f] sm:text-4xl">Durable and Hygienic Plastic Pallets for Modern Logistics</h2>
-            <p className="mt-5 text-base leading-8 text-slate-600">
-              Mujahid Hussain Carpentry LLC supplies premium plastic pallets across Dubai, Sharjah, and all UAE. These pallets are lightweight, weather-resistant, hygienic, and built for industrial use.
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-700">Plastic Pallets</span>
+            <h2 className="mt-4 text-4xl font-black leading-tight text-[#02024f] sm:text-5xl">Durable &amp; Hygienic Plastic Pallets for Modern Logistics</h2>
+            <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
+              Plastic pallets are lightweight, weather-resistant, hygienic, and suitable for industrial use across warehouses, food storage, pharmaceuticals, chemicals, logistics, and export handling.
             </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {bullets.map((item) => (
-                <li className="flex items-start gap-2 text-sm font-semibold text-slate-700" key={item}>
-                  <CheckCircle2 className="mt-0.5 shrink-0 text-indigo-600" size={18} /> {item}
+            <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+              {introFeatures.map((feature) => (
+                <li className="flex items-start gap-2 text-sm font-bold text-slate-700" key={feature}>
+                  <CheckCircle2 className="mt-0.5 shrink-0 text-indigo-600" size={18} /> {feature}
                 </li>
               ))}
             </ul>
-            <a className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
+            <a
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
+              href={quoteUrl('plastic pallets')}
+              target="_blank"
+              rel="noreferrer"
+            >
               <WhatsAppIcon className="size-5" /> Get Best Price
             </a>
           </div>
         </div>
       </section>
 
-      <section className="bg-slate-50 px-4 py-12 sm:px-6 lg:px-8" id="sizes">
+      <section className="bg-[#fbf7ff] px-4 py-14 sm:px-6 lg:px-8" id="plastic-sizes">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Available Sizes" subtitle="Choose from 5 standard plastic pallet sizes with normal and heavy-duty options." />
-          <div className="mt-8 flex flex-wrap justify-center gap-2">
+          <SectionHeading title="Available Sizes" />
+          <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">
             {plasticSizes.map((item) => (
-              <a className="rounded-full border border-indigo-200 bg-white px-4 py-2 text-sm font-black text-indigo-700 shadow-sm transition hover:border-indigo-500 hover:bg-indigo-50" href={`#${item.id}`} key={item.id}>
-                {item.size.replaceAll(' cm', '')}
+              <a
+                className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 ${activeSize === item.id ? 'border-[#02024f] bg-[#02024f] text-white shadow-indigo-950/25' : 'border-indigo-200 bg-white text-indigo-700 hover:border-[#02024f] hover:bg-[#02024f] hover:text-white'}`}
+                href={`#${item.id}`}
+                onClick={() => setActiveSize(item.id)}
+                key={item.id}
+              >
+                {item.label}
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {plasticSizes.map((item, index) => <SizeSection item={item} index={index} key={item.id} />)}
+      {plasticSizes.map((item, index) => <PlasticSizeSection item={item} index={index} key={item.id} />)}
 
-      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="All Plastic Pallet Sizes at a Glance" />
           <div className="mt-10 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
             <table className="min-w-full text-left text-sm">
               <thead className="bg-[#02024f] text-white">
                 <tr>
-                  {['Size', 'New', 'Used', 'Normal', 'Heavy Duty', 'Load'].map((head) => <th className="px-4 py-3 font-black" key={head}>{head}</th>)}
+                  {['Size', 'New', 'Used', 'Normal', 'Heavy Duty', 'Load Capacity'].map((head) => <th className="px-4 py-3 font-black" key={head}>{head}</th>)}
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {plasticSizes.map((item) => (
                   <tr className={item.note ? 'bg-indigo-50/60' : ''} key={item.id}>
-                    <td className="px-4 py-3 font-black text-[#02024f]">{item.size}</td>
+                    <td className="px-4 py-3 font-black text-[#02024f]">{item.label}</td>
                     <td className="px-4 py-3 text-emerald-600">Yes</td>
                     <td className="px-4 py-3 text-emerald-600">Yes</td>
                     <td className="px-4 py-3 text-emerald-600">Yes</td>
                     <td className="px-4 py-3 text-emerald-600">Yes</td>
-                    <td className="px-4 py-3">{item.load.replace('heavy duty static', '')}</td>
+                    <td className="px-4 py-3">{item.load.replace(' HD static', '')}</td>
                   </tr>
                 ))}
               </tbody>
@@ -254,7 +275,7 @@ export default function PlasticPallets() {
           <SectionHeading title="Why Choose Plastic Pallets?" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {advantages.map(([Icon, title, text]) => (
-              <article className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-md shadow-slate-950/5 transition hover:-translate-y-2 hover:shadow-2xl" key={title}>
+              <article className="rounded-2xl border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={title}>
                 <Icon className="mx-auto text-indigo-600" size={32} />
                 <h3 className="mt-4 text-lg font-black text-[#02024f]">{title}</h3>
                 <p className="mt-2 text-sm leading-7 text-slate-600">{text}</p>
@@ -264,7 +285,7 @@ export default function PlasticPallets() {
         </div>
       </section>
 
-      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Plastic Pallets vs Wooden Pallets" />
           <div className="mt-10 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
@@ -276,14 +297,14 @@ export default function PlasticPallets() {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {[
-                  ['Weight', 'Lighter, usually 5-15 kg', 'Heavier, usually 15-30 kg'],
-                  ['Lifespan', 'Longer repeated use', 'Shorter repeated use'],
-                  ['Moisture', 'Water resistant', 'Can warp or rot'],
-                  ['Hygiene', 'Easy to clean and wash', 'Porous material'],
-                  ['Splinters', 'None', 'Possible'],
-                  ['Insects', 'Immune', 'Requires treatment'],
-                  ['Cost', 'Higher upfront, lower long-term', 'Lower upfront'],
-                  ['Recyclable', '100%', 'Limited']
+                  ['Weight', 'Lighter and easier to handle', 'Heavier in most industrial uses'],
+                  ['Lifespan', 'Longer repeated service life', 'Shorter repeated service life'],
+                  ['Moisture Resistance', 'Moisture proof', 'Can absorb moisture or warp'],
+                  ['Hygiene', 'Easy to wash and sanitize', 'Porous material'],
+                  ['Splinters', 'No splinters', 'Splinters possible'],
+                  ['Insects', 'No insect treatment needed', 'May require treatment'],
+                  ['Cost', 'Higher upfront, lower long-term', 'Lower upfront cost'],
+                  ['Recyclable', '100% recyclable', 'Limited reuse/recycling']
                 ].map(([feature, plastic, wood]) => (
                   <tr key={feature}>
                     <td className="px-4 py-3 font-black text-[#02024f]">{feature}</td>
@@ -300,10 +321,10 @@ export default function PlasticPallets() {
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Industries Using Plastic Pallets" />
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {industries.map(([title, text]) => (
-              <article className="rounded-2xl bg-slate-50 p-6 text-center ring-1 ring-slate-200" key={title}>
-                <ShieldCheck className="mx-auto text-indigo-600" size={32} />
+              <article className="rounded-2xl border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={title}>
+                <PackageCheck className="mx-auto text-indigo-600" size={32} />
                 <h3 className="mt-4 text-lg font-black text-[#02024f]">{title}</h3>
                 <p className="mt-2 text-sm leading-7 text-slate-600">{text}</p>
               </article>
@@ -312,7 +333,7 @@ export default function PlasticPallets() {
         </div>
       </section>
 
-      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <SectionHeading title="Frequently Asked Questions" />
           <div className="mt-10 grid gap-4">
@@ -340,13 +361,16 @@ export default function PlasticPallets() {
 
       <section className="bg-[#02024f] px-4 py-14 text-center text-white sm:px-6 lg:px-8">
         <h2 className="text-3xl font-black">Order Plastic Pallets Today</h2>
-        <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">5 sizes. New and used. Normal and heavy duty. Free delivery across UAE.</p>
+        <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">5 sizes. New &amp; Used. Normal &amp; Heavy Duty. Free delivery across UAE.</p>
         <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-          <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
+          <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={quoteUrl('plastic pallets')} target="_blank" rel="noreferrer">
             <WhatsAppIcon className="size-5" /> WhatsApp Us
           </a>
           <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+971509253127">
             <CallIcon className="size-5" /> Call Now
+          </a>
+          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="/contact" data-spa-link="true">
+            Contact Us
           </a>
         </div>
       </section>
