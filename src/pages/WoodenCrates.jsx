@@ -1,169 +1,324 @@
-import { CheckCircle2, ChevronDown, ShieldCheck, Star } from 'lucide-react';
+import { CheckCircle2, ChevronDown, Clock, PackageCheck, Ruler, ShieldCheck, Truck } from 'lucide-react';
 import { useState } from 'react';
 import { CallIcon } from '../components/common/ContactIcons.jsx';
-import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
+import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
 
-const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for custom wooden crates in UAE.')}`;
+const imageBase = 'https://mujahidhussaincarpentry.store/images/';
+const whatsappBase = 'https://wa.me/971509253127?text=';
 
-const bullets = [
-  'Custom crate sizes',
-  'Heavy-duty wooden crates',
-  'Export packing crates',
-  'Strong protection for goods',
-  'Bulk order available',
-  'Fast delivery across UAE'
+const introFeatures = ['NEW Only', 'Custom Sizes Available', 'ISPM-15 Treated', 'Export Quality'];
+
+const crateSizes = [
+  {
+    id: 'crate-100x100',
+    label: '100100',
+    quoteLabel: '100x100',
+    heading: '100 cm x 100 cm Wooden Crate',
+    description: 'Compact square crate ideal for machinery parts, automotive components, electrical equipment, and medium-sized industrial goods. Sturdy construction with reinforced corners.',
+    image: 'wooden boxes.jpeg',
+    badge: 'NEW Only',
+    specs: [
+      ['Base Dimensions', '100 cm x 100 cm'],
+      ['Height', 'Custom (typically 60-100 cm)'],
+      ['Availability', 'New Only'],
+      ['Construction', 'Plywood / Timber boards'],
+      ['Treatment', 'ISPM-15 Heat Treatment available']
+    ]
+  },
+  {
+    id: 'crate-100x120',
+    label: '100120',
+    quoteLabel: '100x120',
+    heading: '100 cm x 120 cm Wooden Crate',
+    description: 'Standard pallet-compatible crate size. Fits perfectly on 100x120 pallets for seamless logistics. Ideal for export shipments and containerized cargo.',
+    image: 'wooden boxes heavy duty.jpeg',
+    badge: 'NEW Only',
+    specs: [
+      ['Base Dimensions', '100 cm x 120 cm'],
+      ['Height', 'Custom (typically 60-120 cm)'],
+      ['Availability', 'New Only'],
+      ['Construction', 'Heavy-duty timber frame'],
+      ['Treatment', 'ISPM-15 Heat Treatment available']
+    ]
+  },
+  {
+    id: 'crate-80x200',
+    label: '80200',
+    quoteLabel: '80x200',
+    heading: '80 cm x 200 cm Wooden Crate',
+    description: 'Long-form crate designed for pipes, structural steel, long machinery parts, and elongated industrial equipment. Reinforced bottom and sides for heavy loads.',
+    image: '80 cm x 200 cm heavy duty.jpeg',
+    badge: 'NEW Only',
+    specs: [
+      ['Base Dimensions', '80 cm x 200 cm'],
+      ['Height', 'Custom'],
+      ['Availability', 'New Only'],
+      ['Construction', 'Reinforced timber with steel banding'],
+      ['Treatment', 'ISPM-15 available']
+    ]
+  },
+  {
+    id: 'crate-200x400',
+    label: '200400',
+    quoteLabel: '200x400',
+    heading: '200 cm x 400 cm Wooden Crate',
+    description: 'Extra-large heavy-duty crate for heavy machinery, generators, transformers, construction equipment, and large industrial exports.',
+    image: 'wooden boxes heavy duty.jpeg',
+    badge: 'NEW Only - Heavy Duty',
+    specs: [
+      ['Base Dimensions', '200 cm x 400 cm'],
+      ['Height', 'Custom up to 250 cm'],
+      ['Availability', 'New Only'],
+      ['Construction', 'Heavy-duty engineered timber + steel reinforcement'],
+      ['Load Capacity', 'Up to 5000+ kg']
+    ]
+  },
+  {
+    id: 'crate-100x400',
+    label: '100400',
+    quoteLabel: '100x400',
+    heading: '100 cm x 400 cm Wooden Crate',
+    description: 'Extra-long narrow crate for elongated industrial cargo, steel beams, piping systems, scaffolding, turbine blades, and long machinery components.',
+    image: '100cm x 200 cm normal.jpeg',
+    badge: 'NEW Only - Heavy Duty',
+    specs: [
+      ['Base Dimensions', '100 cm x 400 cm'],
+      ['Height', 'Custom'],
+      ['Availability', 'New Only'],
+      ['Construction', 'Reinforced timber frame with steel banding'],
+      ['Load Capacity', 'Up to 4000+ kg']
+    ]
+  }
 ];
 
-const crateTypes = [
-  ['Export Wooden Crates', 'Export-ready crates built for cargo handling, container loading, and international shipment.', 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Heavy-Duty Crates', 'Strong wooden crates designed for heavy goods, industrial components, and bulk materials.', 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Machinery Packing Crates', 'Custom crates for machinery, spare parts, fabrication equipment, and technical cargo.', 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Fragile Goods Crates', 'Protective wooden crates for fragile, sensitive, and high-value commercial goods.', 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Custom Wooden Boxes', 'Made-to-measure wooden boxes for storage, packing, and transport requirements.', 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Industrial Packing Crates', 'Reliable crate solutions for warehouses, factories, logistics, and shipping companies.', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=65&fm=webp']
+const customChecklist = [
+  'Any width, length, and height',
+  'Lid options: open-top, nailed, bolted, hinged',
+  'Foam-lined and moisture barriers',
+  'Stenciling, branding, and labeling',
+  'ISPM-15 heat treated for export',
+  'Fast turnaround 24 to 72 hours'
 ];
 
-const applications = ['Export Companies', 'Warehouses', 'Factories', 'Machinery Suppliers', 'Logistics Companies', 'Shipping Companies'];
-const features = ['Strong wood material', 'Custom-built design', 'Safe cargo protection', 'Affordable pricing', 'UAE-wide delivery', 'Suitable for export packing'];
-const gallery = [
-  'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=65&fm=webp',
-  'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=900&q=65&fm=webp',
-  'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=65&fm=webp'
+const benefits = [
+  [Ruler, 'Made to Order'],
+  [ShieldCheck, 'Maximum Protection'],
+  [PackageCheck, 'Export Compliant'],
+  [Clock, 'Quick Turnaround'],
+  [Truck, 'Free Delivery'],
+  [CheckCircle2, '15+ Years Experience']
 ];
+
+const useCases = ['Export & Shipping', 'Machinery Protection', 'Warehouse Storage', 'Automotive Parts', 'Electronics', 'Construction Materials'];
 
 const faqs = [
-  ['Do you make custom crate sizes?', 'Yes, we manufacture wooden crates and boxes according to your required dimensions, cargo weight, and packing needs.'],
-  ['Are wooden crates suitable for export?', 'Yes, our wooden crates can be prepared for export packing, cargo protection, and international shipment requirements.'],
-  ['Do you handle bulk crate orders?', 'Yes, we supply wooden crates in bulk for factories, exporters, shipping companies, warehouses, and industrial customers.'],
-  ['Which UAE areas do you deliver to?', 'We deliver wooden crates across Dubai, Sharjah, Abu Dhabi, JAFZA, Jebel Ali, Ras Al Khaimah, Ajman, Fujairah, and all UAE.'],
-  ['How can I get a quote?', 'Contact us by phone or WhatsApp with crate dimensions, quantity, cargo type, and delivery location for fast pricing.']
+  ['Do you sell used wooden crates?', 'No, wooden crates are manufactured new only so the size, structure, and protection match the cargo requirement.'],
+  ['Can I get a custom size crate?', 'Yes, custom wooden crates can be manufactured in any width, length, height, and lid style.'],
+  ['Are your crates ISPM-15 compliant?', 'Yes, ISPM-15 heat treatment is available for export wooden crates.'],
+  ['How fast can you deliver?', 'Standard and custom crate orders can usually be completed within 24 to 72 hours depending on size and quantity.'],
+  ['Can crates be foam-lined for fragile items?', 'Yes, foam lining, moisture barriers, labeling, and extra protection can be added for fragile cargo.']
 ];
 
-function SectionHeading({ eyebrow, title, subtitle }) {
+function imageUrl(file) {
+  return `${imageBase}${encodeURIComponent(file)}`;
+}
+
+function quoteUrl(size) {
+  return `${whatsappBase}${encodeURIComponent(`Hello, I need a quote for ${size} wooden crate.`)}`;
+}
+
+function SectionHeading({ title, subtitle }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      {eyebrow && <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">{eyebrow}</span>}
-      <h2 className="mt-3 text-3xl font-black text-[#02024f] sm:text-4xl">{title}</h2>
+      <h2 className="text-3xl font-black text-[#02024f] sm:text-4xl">{title}</h2>
       {subtitle && <p className="mt-4 text-base leading-7 text-slate-600">{subtitle}</p>}
     </div>
   );
 }
 
+function CrateSizeSection({ item, index }) {
+  const isAlt = index % 2 === 1;
+
+  return (
+    <section className={`${isAlt ? 'bg-[#fbf7ff]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
+      <div className={`mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center ${isAlt ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+        <img
+          className="h-80 w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/10 sm:h-96"
+          src={imageUrl(item.image)}
+          alt={item.heading}
+          width="1000"
+          height="680"
+          loading="lazy"
+          decoding="async"
+        />
+        <div>
+          <span className="inline-flex rounded-full bg-indigo-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-indigo-700 ring-1 ring-indigo-100">
+            {item.badge}
+          </span>
+          <h2 className="mt-4 text-3xl font-black leading-tight text-[#02024f] sm:text-4xl">{item.heading}</h2>
+          <p className="mt-4 text-base leading-8 text-slate-600">{item.description}</p>
+          <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-950/5">
+            {item.specs.map(([label, value]) => (
+              <div className="grid grid-cols-[44%_1fr] border-b border-slate-100 last:border-b-0" key={label}>
+                <strong className="bg-[#fbf7ff] px-4 py-3 text-sm text-[#02024f]">{label}</strong>
+                <span className="px-4 py-3 text-sm font-medium text-slate-700">{value}</span>
+              </div>
+            ))}
+          </div>
+          <a
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-6 py-3 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
+            href={quoteUrl(item.quoteLabel)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <WhatsAppIcon className="size-5" /> Get Quote {item.label}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function WoodenCrates() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [activeSize, setActiveSize] = useState(crateSizes[0].id);
 
   return (
     <>
-      <section
-        className="relative isolate min-h-[520px] bg-slate-950 text-white sm:min-h-[620px]"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=1400&q=65&fm=webp')",
-          backgroundPosition: 'center',
-          backgroundSize: 'cover'
-        }}
-      >
-        <div className="mx-auto flex min-h-[520px] max-w-7xl items-center px-4 py-16 sm:min-h-[620px] sm:px-6 sm:py-20 lg:px-8">
-          <div className="max-w-4xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-indigo-500/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-100 ring-1 ring-white/10">
-              <Star className="text-sky-200" size={15} /> Wooden Crates UAE
-            </span>
-            <h1 className="mt-6 text-3xl font-black leading-tight sm:text-5xl lg:text-7xl">Custom Wooden Crates Supplier in UAE</h1>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
-              Strong wooden crates for packing, storage, export shipping, heavy machinery, fragile goods, and industrial transport across UAE.
+      <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#02024f] via-indigo-800 to-sky-600 px-4 py-20 text-white sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(125,211,252,0.16),transparent_28%)]" aria-hidden="true" />
+        <div className="relative mx-auto max-w-7xl">
+          <nav className="flex flex-wrap items-center gap-2 text-sm font-semibold text-sky-100" aria-label="Breadcrumb">
+            <a className="transition hover:text-white" href="/" data-spa-link="true">Home</a>
+            <span>/</span>
+            <a className="transition hover:text-white" href="/products" data-spa-link="true">Products</a>
+            <span>/</span>
+            <span className="text-white">Wooden Crates</span>
+          </nav>
+          <div className="mt-10 max-w-4xl">
+            <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-7xl">Wooden Crates - All Sizes</h1>
+            <p className="mt-6 max-w-3xl text-base leading-8 text-slate-100 sm:text-xl">
+              Brand new wooden crates for shipping, storage &amp; export. Standard &amp; custom sizes. Free delivery across UAE.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400" href={whatsappUrl} target="_blank" rel="noreferrer">
-                <WhatsAppIcon className="size-5" /> Get Free Quote
-              </a>
-              <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/15" href={whatsappUrl} target="_blank" rel="noreferrer">
-                <WhatsAppIcon className="size-5" /> WhatsApp Now
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
+          <img
+            className="h-[360px] w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/15 sm:h-[460px]"
+            src={imageUrl('wooden boxes heavy duty.jpeg')}
+            alt="Heavy-duty wooden crates"
+            width="1200"
+            height="800"
+            decoding="async"
+          />
           <div>
-            <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">About Product</span>
-            <h2 className="mt-3 text-3xl font-black text-[#02024f] sm:text-4xl">Durable Wooden Crates for Safe Packing</h2>
-            <p className="mt-5 text-base leading-8 text-slate-600">
-              We manufacture and supply custom wooden crates for industrial packing, export cargo, fragile items, heavy goods,
-              machinery, and warehouse storage across UAE.
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-700">Wooden Crates</span>
+            <h2 className="mt-4 text-4xl font-black leading-tight text-[#02024f] sm:text-5xl">Heavy-Duty Wooden Crates for Safe Shipping &amp; Storage</h2>
+            <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
+              We manufacture brand new wooden crates for industrial packaging, export shipping, machinery protection, warehouse storage, fragile cargo, and heavy equipment transport across UAE.
             </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-              {bullets.map((item) => (
+            <ul className="mt-7 grid gap-3 sm:grid-cols-2">
+              {introFeatures.map((feature) => (
+                <li className="flex items-start gap-2 text-sm font-bold text-slate-700" key={feature}>
+                  <CheckCircle2 className="mt-0.5 shrink-0 text-indigo-600" size={18} /> {feature}
+                </li>
+              ))}
+            </ul>
+            <a
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
+              href={quoteUrl('wooden crates')}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <WhatsAppIcon className="size-5" /> Get Best Price
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#fbf7ff] px-4 py-14 sm:px-6 lg:px-8" id="crate-sizes">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading title="Standard Crate Sizes" />
+          <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">
+            {crateSizes.map((item) => (
+              <a
+                className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 ${activeSize === item.id ? 'border-[#02024f] bg-[#02024f] text-white shadow-indigo-950/25' : 'border-indigo-200 bg-white text-indigo-700 hover:border-[#02024f] hover:bg-[#02024f] hover:text-white'}`}
+                href={`#${item.id}`}
+                onClick={() => setActiveSize(item.id)}
+                key={item.id}
+              >
+                {item.label}
+              </a>
+            ))}
+            <a
+              className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 ${activeSize === 'custom-crate' ? 'border-[#02024f] bg-[#02024f] text-white shadow-indigo-950/25' : 'border-indigo-200 bg-white text-indigo-700 hover:border-[#02024f] hover:bg-[#02024f] hover:text-white'}`}
+              href="#custom-crate"
+              onClick={() => setActiveSize('custom-crate')}
+            >
+              Custom Size
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {crateSizes.map((item, index) => <CrateSizeSection item={item} index={index} key={item.id} />)}
+
+      <section className="scroll-mt-24 bg-[#f4f8ff] px-4 py-16 sm:px-6 lg:px-8" id="custom-crate">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="grid min-h-80 place-items-center rounded-3xl bg-white p-10 text-center shadow-2xl shadow-indigo-950/10 ring-1 ring-indigo-100">
+            <div>
+              <Ruler className="mx-auto text-indigo-600" size={76} />
+              <h3 className="mt-5 text-3xl font-black text-[#02024f]">Any Size. Any Shape.</h3>
+              <p className="mx-auto mt-3 max-w-md text-slate-600">We build custom crates to your exact specifications.</p>
+            </div>
+          </div>
+          <div>
+            <h2 className="text-3xl font-black text-[#02024f] sm:text-4xl">Custom Wooden Crates</h2>
+            <p className="mt-4 text-base leading-8 text-slate-600">Need a non-standard size? We manufacture custom wooden crates in any dimension for any purpose.</p>
+            <ul className="mt-6 grid gap-3">
+              {customChecklist.map((item) => (
                 <li className="flex items-start gap-2 text-sm font-semibold text-slate-700" key={item}>
                   <CheckCircle2 className="mt-0.5 shrink-0 text-indigo-600" size={18} /> {item}
                 </li>
               ))}
             </ul>
-          </div>
-          <img className="min-h-96 rounded-3xl object-cover shadow-2xl shadow-slate-950/10" src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=1100&q=65&fm=webp" alt="Wooden crates for cargo packing" width="1100" height="720" loading="lazy" decoding="async" />
-        </div>
-      </section>
-
-      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Crate Types" subtitle="Custom crate solutions for export, machinery, fragile goods, and industrial packing." />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {crateTypes.map(([title, description, image]) => (
-              <article className="group overflow-hidden rounded-3xl bg-white shadow-md shadow-slate-950/5 ring-1 ring-slate-200 transition hover:-translate-y-2 hover:shadow-2xl" key={title}>
-                <div className="overflow-hidden">
-                  <img className="h-48 w-full object-cover transition duration-500 group-hover:scale-110" src={image} alt={title} width="900" height="520" loading="lazy" decoding="async" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-black text-[#02024f]">{title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{description}</p>
-                </div>
-              </article>
-            ))}
+            <a className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={quoteUrl('custom size')} target="_blank" rel="noreferrer">
+              <WhatsAppIcon className="size-5" /> Discuss Custom Crate
+            </a>
           </div>
         </div>
       </section>
 
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Applications" subtitle="Wooden crate supply for industrial packing and shipping operations." />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
-            {applications.map((item) => (
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center font-bold text-[#02024f] shadow-sm" key={item}>{item}</div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Why Choose Our Wooden Crates" subtitle="Built for cargo safety, export packing, and UAE-wide industrial supply." />
+          <SectionHeading title="Why Our Wooden Crates?" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md shadow-slate-950/5 transition hover:-translate-y-2 hover:shadow-2xl" key={feature}>
-                <ShieldCheck className="text-indigo-600" size={28} />
-                <h3 className="mt-4 text-lg font-black text-[#02024f]">{feature}</h3>
+            {benefits.map(([Icon, title]) => (
+              <article className="rounded-2xl border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={title}>
+                <Icon className="mx-auto text-indigo-600" size={32} />
+                <h3 className="mt-4 text-lg font-black text-[#02024f]">{title}</h3>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#fbf7ff] px-4 py-14 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Wooden Crates Gallery" subtitle="Cargo packing, warehouse crates, and export crate visuals." />
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {gallery.map((image, index) => (
-              <img className="h-72 w-full rounded-3xl object-cover shadow-xl shadow-slate-950/10" src={image} alt={`Wooden crate product ${index + 1}`} width="900" height="560" loading="lazy" decoding="async" key={image} />
-            ))}
+          <SectionHeading title="What Are Wooden Crates Used For?" />
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {useCases.map((item) => <span className="rounded-full bg-white px-5 py-3 text-sm font-bold text-[#02024f] shadow-sm ring-1 ring-indigo-100" key={item}>{item}</span>)}
           </div>
         </div>
       </section>
 
-      <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
-          <SectionHeading title="Wooden Crates FAQ" subtitle="Answers about custom crate sizes, export packing, bulk orders, delivery, and quotes." />
+          <SectionHeading title="Frequently Asked Questions" />
           <div className="mt-10 grid gap-4">
             {faqs.map(([question, answer], index) => {
               const isOpen = openFaq === index;
@@ -188,16 +343,14 @@ export default function WoodenCrates() {
       <ProductInquirySection productType="Wooden Crates" />
 
       <section className="bg-[#02024f] px-4 py-14 text-center text-white sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-black">Need Custom Wooden Crates in UAE?</h2>
+        <h2 className="text-3xl font-black">Need Wooden Crates in UAE?</h2>
+        <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">Send your crate size, cargo details, and delivery location to get the best price.</p>
         <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-          <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
+          <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={quoteUrl('wooden crates')} target="_blank" rel="noreferrer">
             <WhatsAppIcon className="size-5" /> Request Quote
           </a>
           <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+971509253127">
             <CallIcon className="size-5" /> Call Now
-          </a>
-          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href={whatsappUrl} target="_blank" rel="noreferrer">
-            <WhatsAppIcon className="size-5" /> WhatsApp Us
           </a>
         </div>
       </section>
