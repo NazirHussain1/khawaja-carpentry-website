@@ -1,6 +1,9 @@
 import cors from 'cors';
+import { v2 as cloudinary } from 'cloudinary';
 import express from 'express';
 import helmet from 'helmet';
+import { MongoClient, ObjectId } from 'mongodb';
+import multer from 'multer';
 import nodemailer from 'nodemailer';
 import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -12,12 +15,55 @@ const dataDir = path.join(__dirname, 'data');
 const inquiryFile = path.join(dataDir, 'inquiries.jsonl');
 const eventFile = path.join(dataDir, 'analytics-events.jsonl');
 const statusFile = path.join(dataDir, 'inquiry-status.json');
+const productsFile = path.join(dataDir, 'products.json');
+const mediaFile = path.join(dataDir, 'media.json');
 const categories = new Set(['Wooden Pallets', 'Wooden Crates', 'Plastic Pallets', 'Jumbo Bags', 'Plastic Jumbo Bags', 'Custom Orders', 'Custom Order']);
 const inquiryStatuses = new Set(['new', 'contacted', 'quoted', 'won', 'lost', 'spam']);
 const requestsByIp = new Map();
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024
+  },
+  fileFilter(_request, file, callback) {
+    if (!file.mimetype.startsWith('image/')) {
+      callback(new Error('Only image uploads are allowed.'));
+      return;
+    }
+    callback(null, true);
+  }
+});
 
 await loadEnv();
 await mkdir(dataDir, { recursive: true });
+
+let mongoClient = null;
+let database = null;
+if (process.env.MONGODB_URI) {
+  mongoClient = new MongoClient(process.env.MONGODB_URI);
+  try {
+    await mongoClient.connect();
+    database = mongoClient.db(process.env.MONGODB_DB || 'khawaja_carpentry');
+    await Promise.all([
+      database.collection('inquiries').createIndex({ submittedAt: -1 }),
+      database.collection('products').createIndex({ slug: 1 }, { unique: true }),
+      database.collection('media').createIndex({ createdAt: -1 })
+    ]);
+    console.log('MongoDB Atlas connected.');
+  } catch (error) {
+    console.error('MongoDB connection failed. Falling back to file storage:', error.message);
+    database = null;
+    await mongoClient.close().catch(() => {});
+  }
+}
+
+if (process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+  });
+}
 
 const app = express();
 const port = Number(process.env.PORT || 5000);
@@ -98,7 +144,7 @@ app.post('/api/inquiries', async (request, response) => {
     return;
   }
 
-  await appendJsonLine(inquiryFile, inquiry);
+  await saveInquiry(inquiry);
   const emailResult = await sendInquiryEmail(inquiry);
 
   response.json({
@@ -112,7 +158,7 @@ app.post('/api/inquiries', async (request, response) => {
 });
 
 app.get('/api/admin/inquiries', requireAdmin, async (_request, response) => {
-  const [inquiries, statusMap] = await Promise.all([readJsonLines(inquiryFile), readStatusMap()]);
+  const [inquiries, statusMap] = await Promise.all([readInquiries(), readStatusMap()]);
   const rows = inquiries
     .map((inquiry) => ({
       ...inquiry,
@@ -143,7 +189,7 @@ app.patch('/api/admin/inquiries/:id', requireAdmin, async (request, response) =>
     return;
   }
 
-  const inquiries = await readJsonLines(inquiryFile);
+  const inquiries = await readInquiries();
   if (!inquiries.some((inquiry) => inquiry.id === id)) {
     response.status(404).json({ ok: false, message: 'Inquiry not found.' });
     return;
@@ -155,9 +201,81 @@ app.patch('/api/admin/inquiries/:id', requireAdmin, async (request, response) =>
     notes,
     updatedAt: new Date().toISOString()
   };
-  await writeJson(statusFile, statusMap);
+  await saveInquiryStatus(id, statusMap[id], statusMap);
 
   response.json({ ok: true, inquiry: { id, ...statusMap[id] } });
+});
+
+app.get('/api/products', async (_request, response) => {
+  const products = await getProducts();
+  response.json({ ok: true, products: products.filter((product) => product.status !== 'draft') });
+});
+
+app.get('/api/admin/products', requireAdmin, async (_request, response) => {
+  response.json({ ok: true, products: await getProducts(true) });
+});
+
+app.post('/api/admin/products', requireAdmin, async (request, response) => {
+  const product = normalizeProduct(request.body);
+  const validationError = validateProduct(product);
+  if (validationError) {
+    response.status(400).json({ ok: false, message: validationError });
+    return;
+  }
+  response.status(201).json({ ok: true, product: await createProduct(product) });
+});
+
+app.patch('/api/admin/products/:id', requireAdmin, async (request, response) => {
+  const product = normalizeProduct(request.body);
+  const validationError = validateProduct(product);
+  if (validationError) {
+    response.status(400).json({ ok: false, message: validationError });
+    return;
+  }
+  const updated = await updateProduct(request.params.id, product);
+  if (!updated) {
+    response.status(404).json({ ok: false, message: 'Product not found.' });
+    return;
+  }
+  response.json({ ok: true, product: updated });
+});
+
+app.delete('/api/admin/products/:id', requireAdmin, async (request, response) => {
+  const removed = await deleteProduct(request.params.id);
+  if (!removed) {
+    response.status(404).json({ ok: false, message: 'Product not found.' });
+    return;
+  }
+  response.json({ ok: true });
+});
+
+app.get('/api/admin/media', requireAdmin, async (_request, response) => {
+  response.json({ ok: true, media: await getMedia() });
+});
+
+app.post('/api/admin/media', requireAdmin, upload.single('image'), async (request, response) => {
+  if (!request.file) {
+    response.status(400).json({ ok: false, message: 'Please choose an image to upload.' });
+    return;
+  }
+  if (!isCloudinaryConfigured()) {
+    response.status(503).json({ ok: false, message: 'Cloudinary is not configured. Add Cloudinary env variables first.' });
+    return;
+  }
+
+  const uploaded = await uploadToCloudinary(request.file);
+  const media = await saveMedia({
+    url: uploaded.secure_url,
+    publicId: uploaded.public_id,
+    width: uploaded.width,
+    height: uploaded.height,
+    format: uploaded.format,
+    bytes: uploaded.bytes,
+    originalName: sanitizeText(request.file.originalname, 160),
+    alt: sanitizeText(request.body?.alt, 160),
+    createdAt: new Date().toISOString()
+  });
+  response.status(201).json({ ok: true, media });
 });
 
 app.use((_request, response) => {
@@ -204,6 +322,267 @@ function normalizeInquiry(input = {}, ip) {
     submittedAt: submittedAt.toISOString(),
     ip
   };
+}
+
+const defaultProducts = [
+  {
+    title: 'Wooden Pallets',
+    slug: 'wooden-pallets',
+    category: 'Industrial Wooden Pallets',
+    summary: '20+ sizes. New, refurbished and used. Normal and heavy duty. ISPM-15.',
+    description: 'Strong wooden pallets for warehouses, logistics, export, construction, manufacturing, and industrial storage.',
+    href: '/wooden-pallets',
+    buttonLabel: 'View All Sizes',
+    imageUrl: 'https://mujahidhussaincarpentry.store/images/100cm%20x%20120cm.jpg',
+    specs: ['20+ sizes', 'New and refurbished', 'ISPM-15 available', 'Custom sizes'],
+    status: 'active',
+    featured: true,
+    sortOrder: 10
+  },
+  {
+    title: 'Wooden Crates',
+    slug: 'wooden-crates',
+    category: 'Export Wooden Crates',
+    summary: 'Brand new crates. Standard sizes plus custom. Export compliant.',
+    description: 'Heavy-duty wooden crates for safe machinery packing, export shipping, storage, and industrial cargo protection.',
+    href: '/wooden-crates',
+    buttonLabel: 'View All Sizes',
+    imageUrl: 'https://mujahidhussaincarpentry.store/images/wooden%20boxes.jpeg',
+    specs: ['New only', 'Export quality', 'Custom heights', 'ISPM-15 available'],
+    status: 'active',
+    featured: true,
+    sortOrder: 20
+  },
+  {
+    title: 'Plastic Pallets',
+    slug: 'plastic-pallets',
+    category: 'Reusable Plastic Pallets',
+    summary: '5 sizes. New and used. Normal and heavy duty. Hygienic.',
+    description: 'Durable plastic pallets for food, pharmaceutical, warehouse, logistics, chemical, and industrial operations.',
+    href: '/plastic-pallets',
+    buttonLabel: 'View All Sizes',
+    imageUrl: 'https://mujahidhussaincarpentry.store/images/plastic%20pallets.jpeg',
+    specs: ['5 sizes', 'New and used', 'Normal and heavy duty', 'Washable'],
+    status: 'active',
+    featured: true,
+    sortOrder: 30
+  },
+  {
+    title: 'Plastic Jumbo Bags',
+    slug: 'plastic-jumbo-bags',
+    category: 'FIBC Jumbo Bags',
+    summary: '500 kg to 2.5 TON. FIBC bulk bags for all industries.',
+    description: 'Heavy-duty jumbo bags for construction, agriculture, minerals, chemicals, export, and bulk material handling.',
+    href: '/plastic-jumbo-bags',
+    buttonLabel: 'View All Sizes',
+    imageUrl: 'https://mujahidhussaincarpentry.store/images/CP3%20Pallets.jpg',
+    specs: ['500 KG', '1 Ton', '1.5 Ton', '2 Ton', '2.5 Ton'],
+    status: 'active',
+    featured: true,
+    sortOrder: 40
+  }
+];
+
+async function saveInquiry(inquiry) {
+  if (database) {
+    await database.collection('inquiries').insertOne({ ...inquiry, status: 'new', notes: '' });
+  }
+  await appendJsonLine(inquiryFile, inquiry);
+}
+
+async function readInquiries() {
+  if (database) {
+    return database.collection('inquiries')
+      .find({})
+      .sort({ submittedAt: -1 })
+      .toArray();
+  }
+  return readJsonLines(inquiryFile);
+}
+
+async function saveInquiryStatus(id, statusData, statusMap) {
+  if (database) {
+    await database.collection('inquiries').updateOne({ id }, { $set: statusData });
+  }
+  await writeJson(statusFile, statusMap);
+}
+
+function normalizeProduct(input = {}) {
+  return {
+    title: sanitizeText(input.title, 120),
+    slug: slugify(input.slug || input.title),
+    category: sanitizeText(input.category, 120),
+    summary: sanitizeText(input.summary, 260),
+    description: sanitizeText(input.description, 900),
+    href: sanitizeText(input.href, 160) || `/products/${slugify(input.slug || input.title)}`,
+    buttonLabel: sanitizeText(input.buttonLabel, 60) || 'Learn More',
+    imageUrl: sanitizeText(input.imageUrl, 400),
+    specs: parseList(input.specs).slice(0, 16),
+    status: input.status === 'draft' ? 'draft' : 'active',
+    featured: Boolean(input.featured),
+    sortOrder: Number.isFinite(Number(input.sortOrder)) ? Number(input.sortOrder) : 100,
+    updatedAt: new Date().toISOString()
+  };
+}
+
+function validateProduct(product) {
+  if (!product.title || product.title.length < 2) return 'Product title is required.';
+  if (!product.slug || product.slug.length < 2) return 'Product slug is required.';
+  if (!product.summary || product.summary.length < 10) return 'Product summary is required.';
+  if (!product.imageUrl || !/^https?:\/\//.test(product.imageUrl)) return 'A valid image URL is required.';
+  return '';
+}
+
+async function getProducts(includeDrafts = false) {
+  await ensureDefaultProducts();
+  const products = database
+    ? await database.collection('products').find(includeDrafts ? {} : { status: 'active' }).sort({ sortOrder: 1, title: 1 }).toArray()
+    : (await readJsonFile(productsFile, [])).filter((product) => includeDrafts || product.status !== 'draft').sort(sortProducts);
+  return products.map(serializeRecord);
+}
+
+async function ensureDefaultProducts() {
+  if (database) {
+    const count = await database.collection('products').countDocuments();
+    if (count === 0) {
+      const now = new Date().toISOString();
+      await database.collection('products').insertMany(defaultProducts.map((product) => ({ ...product, createdAt: now, updatedAt: now })));
+    }
+    return;
+  }
+
+  const products = await readJsonFile(productsFile, []);
+  if (products.length === 0) {
+    const now = new Date().toISOString();
+    await writeJson(productsFile, defaultProducts.map((product, index) => ({
+      id: `local-product-${index + 1}`,
+      ...product,
+      createdAt: now,
+      updatedAt: now
+    })));
+  }
+}
+
+async function createProduct(product) {
+  const record = { ...product, createdAt: new Date().toISOString() };
+  if (database) {
+    const result = await database.collection('products').insertOne(record);
+    return serializeRecord({ _id: result.insertedId, ...record });
+  }
+
+  const products = await readJsonFile(productsFile, []);
+  const saved = { id: `local-product-${Date.now()}`, ...record };
+  products.push(saved);
+  await writeJson(productsFile, products.sort(sortProducts));
+  return saved;
+}
+
+async function updateProduct(id, product) {
+  if (database) {
+    const _id = toObjectId(id);
+    if (!_id) return null;
+    const result = await database.collection('products').findOneAndUpdate(
+      { _id },
+      { $set: product },
+      { returnDocument: 'after' }
+    );
+    return result ? serializeRecord(result) : null;
+  }
+
+  const products = await readJsonFile(productsFile, []);
+  const index = products.findIndex((item) => item.id === id);
+  if (index === -1) return null;
+  products[index] = { ...products[index], ...product };
+  await writeJson(productsFile, products.sort(sortProducts));
+  return products[index];
+}
+
+async function deleteProduct(id) {
+  if (database) {
+    const _id = toObjectId(id);
+    if (!_id) return false;
+    const result = await database.collection('products').deleteOne({ _id });
+    return result.deletedCount > 0;
+  }
+
+  const products = await readJsonFile(productsFile, []);
+  const nextProducts = products.filter((item) => item.id !== id);
+  if (nextProducts.length === products.length) return false;
+  await writeJson(productsFile, nextProducts);
+  return true;
+}
+
+async function getMedia() {
+  const media = database
+    ? await database.collection('media').find({}).sort({ createdAt: -1 }).toArray()
+    : await readJsonFile(mediaFile, []);
+  return media.map(serializeRecord);
+}
+
+async function saveMedia(media) {
+  if (database) {
+    const result = await database.collection('media').insertOne(media);
+    return serializeRecord({ _id: result.insertedId, ...media });
+  }
+
+  const items = await readJsonFile(mediaFile, []);
+  const saved = { id: `local-media-${Date.now()}`, ...media };
+  items.unshift(saved);
+  await writeJson(mediaFile, items);
+  return saved;
+}
+
+function isCloudinaryConfigured() {
+  return Boolean(process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET);
+}
+
+function uploadToCloudinary(file) {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream({
+      folder: process.env.CLOUDINARY_FOLDER || 'khawaja-carpentry',
+      resource_type: 'image'
+    }, (error, result) => {
+      if (error || !result) {
+        reject(error || new Error('Cloudinary upload failed.'));
+        return;
+      }
+      resolve(result);
+    });
+    stream.end(file.buffer);
+  });
+}
+
+function slugify(value = '') {
+  return sanitizeText(value, 120)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function parseList(value) {
+  if (Array.isArray(value)) return value.map((item) => sanitizeText(item, 120)).filter(Boolean);
+  return String(value || '')
+    .split(/\r?\n|,/)
+    .map((item) => sanitizeText(item, 120))
+    .filter(Boolean);
+}
+
+function sortProducts(a, b) {
+  return Number(a.sortOrder || 100) - Number(b.sortOrder || 100) || String(a.title).localeCompare(String(b.title));
+}
+
+function serializeRecord(record) {
+  if (!record) return record;
+  const { _id, ...rest } = record;
+  return { id: String(_id || record.id), ...rest };
+}
+
+function toObjectId(id) {
+  try {
+    return new ObjectId(id);
+  } catch {
+    return null;
+  }
 }
 
 function validateInquiry(inquiry) {
