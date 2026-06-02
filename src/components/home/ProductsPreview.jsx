@@ -1,6 +1,8 @@
 import { ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { fetchManagedProducts } from '../../utils/productsApi.js';
 
-const products = [
+const fallbackProducts = [
   {
     title: 'Wooden Pallets',
     description: 'Strong and durable wooden pallets for warehouses, factories, shipping, logistics, and export use.',
@@ -28,6 +30,26 @@ const products = [
 ];
 
 export default function ProductsPreview() {
+  const [managedProducts, setManagedProducts] = useState([]);
+  const products = managedProducts.length > 0 ? managedProducts.slice(0, 4).map((product) => ({
+    title: product.title,
+    description: product.summary,
+    href: product.href || `/products/${product.slug}`,
+    image: product.imageUrl
+  })) : fallbackProducts;
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchManagedProducts()
+      .then((items) => {
+        if (isMounted) setManagedProducts(items.filter((item) => item.featured !== false));
+      })
+      .catch(() => {});
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
