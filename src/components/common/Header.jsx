@@ -4,7 +4,7 @@ import { CallIcon, MailIcon } from './ContactIcons.jsx';
 import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 const contact = {
-  email: 'mujahidhussaincarpentry@gmail.com',
+  email: 'nh534392@gmail.com',
   phonePrimary: '+971 50 92 53127',
   phoneSecondary: '+971 52 51 73794',
   location: 'Industrial Area Al Sajja, Sharjah, UAE',

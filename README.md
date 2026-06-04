@@ -10,7 +10,7 @@ React/Vite website with an Express backend for a UAE wooden pallet, wooden crate
 - Admin dashboard for inquiries, product cards, and Cloudinary image uploads
 - MongoDB Atlas support for persistent inquiries, product CMS data, and media metadata
 - Local file fallback in `server/data` for development when MongoDB is not configured
-- Optional SMTP email notifications to `mujahidhussaincarpentry@gmail.com`
+- Optional SMTP email notifications to `nh534392@gmail.com`
 - WhatsApp, call, email, Google Maps, and conversion event tracking hooks
 
 ## Run
@@ -49,7 +49,7 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER="your-smtp-user"
 SMTP_PASS="your-smtp-password"
-INQUIRY_TO_EMAIL="mujahidhussaincarpentry@gmail.com"
+INQUIRY_TO_EMAIL="nh534392@gmail.com"
 ```
 
 If SMTP is not configured, the backend still accepts and saves inquiries locally.

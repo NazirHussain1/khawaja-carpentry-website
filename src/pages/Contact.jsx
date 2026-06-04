@@ -10,7 +10,7 @@ const contact = {
   mapEmbed: 'https://www.google.com/maps?q=Industrial%20Area%20Al%20Sajja%2C%20Sharjah%2C%20UAE&output=embed',
   phonePrimary: '+971 50 92 53127',
   phoneSecondary: '+971 52 51 73794',
-  email: 'mujahidhussaincarpentry@gmail.com',
+  email: 'nh534392@gmail.com',
   whatsappUrl: `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need industrial packaging solutions in UAE.')}`
 };
 

@@ -10,7 +10,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: INQUIRY_TO_EMAIL
-        value: mujahidhussaincarpentry@gmail.com
+        value: nh534392@gmail.com
       - key: ALLOWED_ORIGINS
         value: https://mujahidhussaincarpentry.store,https://www.mujahidhussaincarpentry.store
       - key: MONGODB_URI

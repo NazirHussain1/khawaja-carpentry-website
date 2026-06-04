@@ -9,7 +9,7 @@ const company = {
   whatsapp: '971509253127',
   phonePrimary: '+971 50 92 53127',
   phoneSecondary: '+971 52 51 73794',
-  email: 'mujahidhussaincarpentry@gmail.com',
+  email: 'nh534392@gmail.com',
   location: 'Industrial Area Al Sajja, Sharjah, UAE',
   mapsUrl: 'https://www.google.com/maps?q=Industrial%20Area%20Al%20Sajja%2C%20Sharjah%2C%20UAE'
 };

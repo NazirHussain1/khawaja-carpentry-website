@@ -8,7 +8,7 @@ const contact = {
   phone: '+971 50 92 53127',
   whatsappPhone: '+971 52 51 73794',
   whatsappUrl: `https://wa.me/971525173794?text=${encodeURIComponent('Hello, I need a quote for pallets and packaging.')}`,
-  email: 'mujahidhussaincarpentry@gmail.com',
+  email: 'nh534392@gmail.com',
   hours: 'Monday - Saturday : 8:00 AM - 7:00 PM'
 };
 

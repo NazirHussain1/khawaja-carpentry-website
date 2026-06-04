@@ -724,7 +724,7 @@ async function sendInquiryEmail(inquiry) {
 
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
-      to: process.env.INQUIRY_TO_EMAIL || 'mujahidhussaincarpentry@gmail.com',
+      to: process.env.INQUIRY_TO_EMAIL || 'nh534392@gmail.com',
       replyTo: inquiry.email,
       subject: `New Quote Request - ${inquiry.productType}`,
       text: formatEmailText(inquiry),

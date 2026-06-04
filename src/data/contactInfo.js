@@ -4,7 +4,7 @@ const contactInfo = {
   phone: import.meta.env.VITE_CONTACT_PHONE || '+971 50 92 53127',
   secondaryPhone: import.meta.env.VITE_CONTACT_SECONDARY_PHONE || '+971 52 51 73794',
   whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER || '971509253127',
-  email: import.meta.env.VITE_CONTACT_EMAIL || 'mujahidhussaincarpentry@gmail.com',
+  email: import.meta.env.VITE_CONTACT_EMAIL || 'nh534392@gmail.com',
   address: 'Industrial Area Al Sajja, Sharjah, UAE',
   serviceArea: 'Dubai, Sharjah, JAFZA, Jabal Ali, Mussafah, Ras Al Khaimah, Umm Al Quwain, Abu Dhabi, Ajman, Fujairah',
   hours: 'Monday - Saturday: 8:00 AM - 7:00 PM',

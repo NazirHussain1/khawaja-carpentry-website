@@ -26,7 +26,7 @@ Health check:
 NODE_ENV=production
 PORT=5000
 ALLOWED_ORIGINS=https://mujahidhussaincarpentry.store,https://www.mujahidhussaincarpentry.store
-INQUIRY_TO_EMAIL=mujahidhussaincarpentry@gmail.com
+INQUIRY_TO_EMAIL=nh534392@gmail.com
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=use-a-long-secure-password
 MONGODB_URI=mongodb+srv://USER:PASSWORD@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
@@ -46,7 +46,7 @@ VITE_API_BASE_URL=""
 VITE_WHATSAPP_NUMBER=971509253127
 VITE_CONTACT_PHONE="+971 50 92 53127"
 VITE_CONTACT_SECONDARY_PHONE="+971 52 51 73794"
-VITE_CONTACT_EMAIL=mujahidhussaincarpentry@gmail.com
+VITE_CONTACT_EMAIL=nh534392@gmail.com
 VITE_GA_MEASUREMENT_ID=
 VITE_GTM_ID=
 VITE_FACEBOOK_PIXEL_ID=

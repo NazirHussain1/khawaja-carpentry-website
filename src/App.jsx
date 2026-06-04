@@ -24,7 +24,7 @@ const site = {
   image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=65&fm=webp',
   keywords: 'wooden pallets UAE, pallet supplier Dubai, wooden pallets Sharjah, wooden crates UAE, plastic pallets UAE, jumbo bags supplier UAE, industrial packaging UAE, export pallets UAE',
   phone: '+971 50 92 53127',
-  email: 'mujahidhussaincarpentry@gmail.com',
+  email: 'nh534392@gmail.com',
   address: 'Industrial Area Al Sajja, Sharjah, UAE'
 };
 
