@@ -40,6 +40,10 @@ await mkdir(dataDir, { recursive: true });
 let mongoClient = null;
 let database = null;
 if (process.env.MONGODB_URI) {
+  initDatabase();
+}
+
+async function initDatabase() {
   mongoClient = new MongoClient(process.env.MONGODB_URI, {
     serverSelectionTimeoutMS: Number(process.env.MONGODB_TIMEOUT_MS || 8000)
   });
