@@ -27,6 +27,14 @@ NODE_ENV=production
 PORT=5000
 ALLOWED_ORIGINS=https://mujahidhussaincarpentry.store,https://www.mujahidhussaincarpentry.store
 INQUIRY_TO_EMAIL=mujahidhussaincarpentry@gmail.com
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=use-a-long-secure-password
+MONGODB_URI=mongodb+srv://USER:PASSWORD@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
+MONGODB_DB=khawaja_carpentry
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+CLOUDINARY_FOLDER=khawaja-carpentry
 SMTP_HOST=
 SMTP_PORT=587
 SMTP_SECURE=false
@@ -89,6 +97,24 @@ Google Search Console, Google Analytics, Google Tag Manager, Facebook Pixel, and
 - Phone buttons use `tel:`.
 - Email links use `mailto:`.
 - Contact forms submit to `/api/inquiries`.
+- Admin works at `/admin` with `ADMIN_USERNAME` and `ADMIN_PASSWORD`.
+- Admin inquiries are stored in MongoDB Atlas when `MONGODB_URI` is configured.
+- Admin product CMS controls product cards on the home page and `/products`.
+- Admin media uploads go to Cloudinary when Cloudinary variables are configured.
 - Google map iframe loads for Industrial Area Al Sajja, Sharjah, UAE.
 - Product dropdown opens above content.
 - Scroll-to-top button appears after scrolling.
+
+## Admin Data Storage
+
+The backend uses MongoDB Atlas as the primary database when `MONGODB_URI` is set. Collections:
+
+- `inquiries`: quote requests, status, and follow-up notes.
+- `products`: admin-managed product catalogue cards.
+- `media`: Cloudinary image metadata.
+
+If MongoDB is not configured, the server falls back to local files under `server/data`. This fallback is useful for development only and should not be treated as permanent production storage.
+
+## Image Storage
+
+Admin image uploads use Cloudinary. Uploaded images are saved in the `CLOUDINARY_FOLDER` folder and the public URL is stored in MongoDB. The product CMS can then use the Cloudinary URL for product cards.

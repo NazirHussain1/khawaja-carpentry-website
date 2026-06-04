@@ -7,7 +7,9 @@ React/Vite website with an Express backend for a UAE wooden pallet, wooden crate
 - Responsive industrial B2B website
 - Quote and contact forms connected to `/api/inquiries`
 - Inquiry validation, sanitization, honeypot spam protection, and IP rate limiting
-- Local inquiry tracking in `server/data/inquiries.jsonl`
+- Admin dashboard for inquiries, product cards, and Cloudinary image uploads
+- MongoDB Atlas support for persistent inquiries, product CMS data, and media metadata
+- Local file fallback in `server/data` for development when MongoDB is not configured
 - Optional SMTP email notifications to `mujahidhussaincarpentry@gmail.com`
 - WhatsApp, call, email, Google Maps, and conversion event tracking hooks
 
@@ -51,6 +53,43 @@ INQUIRY_TO_EMAIL="mujahidhussaincarpentry@gmail.com"
 ```
 
 If SMTP is not configured, the backend still accepts and saves inquiries locally.
+
+## Admin, Database, and Images
+
+Admin URL:
+
+```text
+/admin
+```
+
+Set secure credentials in `.env`:
+
+```bash
+ADMIN_USERNAME="admin"
+ADMIN_PASSWORD="use-a-long-secure-password"
+```
+
+For production persistence, configure MongoDB Atlas:
+
+```bash
+MONGODB_URI="mongodb+srv://USER:PASSWORD@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority"
+MONGODB_DB="khawaja_carpentry"
+```
+
+For image uploads in the admin media library, configure Cloudinary:
+
+```bash
+CLOUDINARY_CLOUD_NAME=""
+CLOUDINARY_API_KEY=""
+CLOUDINARY_API_SECRET=""
+CLOUDINARY_FOLDER="khawaja-carpentry"
+```
+
+MongoDB collections used by the backend:
+
+- `inquiries`: customer quote requests, statuses, and notes
+- `products`: admin-managed product cards shown on the home page and `/products`
+- `media`: Cloudinary upload metadata
 
 ## Production
 
