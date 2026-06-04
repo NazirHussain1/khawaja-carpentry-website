@@ -118,3 +118,19 @@ If MongoDB is not configured, the server falls back to local files under `server
 ## Image Storage
 
 Admin image uploads use Cloudinary. Uploaded images are saved in the `CLOUDINARY_FOLDER` folder and the public URL is stored in MongoDB. The product CMS can then use the Cloudinary URL for product cards.
+
+## Gmail SMTP Example
+
+Use a Google App Password, not the normal Gmail account password:
+
+```bash
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=nh534392@gmail.com
+SMTP_PASS=your-16-character-google-app-password
+SMTP_FROM="Mujahid Hussain Carpentry <nh534392@gmail.com>"
+INQUIRY_TO_EMAIL=nh534392@gmail.com
+```
+
+After setting these variables, open `/admin` and click `Test Email`.

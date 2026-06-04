@@ -212,6 +212,21 @@ app.patch('/api/admin/inquiries/:id', requireAdmin, async (request, response) =>
   response.json({ ok: true, inquiry: { id, ...statusMap[id] } });
 });
 
+app.post('/api/admin/email-test', requireAdmin, async (request, response) => {
+  const to = sanitizeText(request.body?.to || process.env.INQUIRY_TO_EMAIL || 'nh534392@gmail.com', 120);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) {
+    response.status(400).json({ ok: false, message: 'Please provide a valid email address.' });
+    return;
+  }
+
+  const result = await sendTestEmail(to);
+  if (!result.sent) {
+    response.status(503).json({ ok: false, message: result.message || 'SMTP is not configured or email delivery failed.' });
+    return;
+  }
+  response.json({ ok: true, message: `Test email sent to ${to}.` });
+});
+
 app.get('/api/products', async (_request, response) => {
   const products = await getProducts();
   response.json({ ok: true, products: products.filter((product) => product.status !== 'draft') });
@@ -708,19 +723,11 @@ function parseBasicAuth(header = '') {
 
 async function sendInquiryEmail(inquiry) {
   if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    return { sent: false };
+    return { sent: false, message: 'SMTP is not configured.' };
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT || 587),
-      secure: String(process.env.SMTP_SECURE).toLowerCase() === 'true',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
-      }
-    });
+    const transporter = createMailTransporter();
 
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
@@ -734,8 +741,41 @@ async function sendInquiryEmail(inquiry) {
     return { sent: true };
   } catch (error) {
     console.error('Email delivery failed:', error.message);
-    return { sent: false };
+    return { sent: false, message: error.message };
   }
+}
+
+async function sendTestEmail(to) {
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    return { sent: false, message: 'SMTP is not configured. Add SMTP_HOST, SMTP_USER, and SMTP_PASS.' };
+  }
+
+  try {
+    const transporter = createMailTransporter();
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM || process.env.SMTP_USER,
+      to,
+      subject: 'Mujahid Hussain Carpentry - Email Test',
+      text: 'SMTP email delivery is working for the website contact and inquiry system.',
+      html: '<p>SMTP email delivery is working for the website contact and inquiry system.</p>'
+    });
+    return { sent: true };
+  } catch (error) {
+    console.error('Test email delivery failed:', error.message);
+    return { sent: false, message: error.message };
+  }
+}
+
+function createMailTransporter() {
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT || 587),
+    secure: String(process.env.SMTP_SECURE).toLowerCase() === 'true',
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
+    }
+  });
 }
 
 function formatEmailText(inquiry) {

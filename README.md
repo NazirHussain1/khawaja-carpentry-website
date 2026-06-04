@@ -54,6 +54,20 @@ INQUIRY_TO_EMAIL="nh534392@gmail.com"
 
 If SMTP is not configured, the backend still accepts and saves inquiries locally.
 
+For Gmail delivery, create a Google App Password and use:
+
+```bash
+SMTP_HOST="smtp.gmail.com"
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER="nh534392@gmail.com"
+SMTP_PASS="your-16-character-google-app-password"
+SMTP_FROM="Mujahid Hussain Carpentry <nh534392@gmail.com>"
+INQUIRY_TO_EMAIL="nh534392@gmail.com"
+```
+
+After deployment, use the Admin dashboard `Test Email` button to confirm SMTP is working.
+
 ## Admin, Database, and Images
 
 Admin URL:

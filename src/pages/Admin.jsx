@@ -1,4 +1,4 @@
-import { Download, ImagePlus, LayoutDashboard, Library, Lock, LogOut, Pencil, RefreshCw, Save, Search, Trash2, Upload } from 'lucide-react';
+import { Download, ImagePlus, LayoutDashboard, Library, Lock, LogOut, MailCheck, Pencil, RefreshCw, Save, Search, Trash2, Upload } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const apiBase = import.meta.env.VITE_API_BASE_URL || '';
@@ -113,6 +113,7 @@ export default function Admin() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [loading, setLoading] = useState(false);
   const [savingId, setSavingId] = useState('');
+  const [testingEmail, setTestingEmail] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
@@ -336,6 +337,23 @@ export default function Admin() {
     }
   }
 
+  async function sendEmailTest() {
+    setTestingEmail(true);
+    setError('');
+    setNotice('');
+    try {
+      const data = await requestJson('/api/admin/email-test', {
+        method: 'POST',
+        body: JSON.stringify({ to: 'nh534392@gmail.com' })
+      });
+      setNotice(data.message || 'Test email sent successfully.');
+    } catch (requestError) {
+      setError(requestError.message);
+    } finally {
+      setTestingEmail(false);
+    }
+  }
+
   if (!credentials) {
     return (
       <section className="min-h-[calc(100vh-280px)] bg-slate-100 px-4 py-16 sm:px-6 lg:px-8">
@@ -375,6 +393,9 @@ export default function Admin() {
             <div className="flex flex-wrap gap-2">
               <button className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-bold transition hover:bg-white/15" type="button" onClick={loadAll}>
                 <RefreshCw size={16} /> Refresh
+              </button>
+              <button className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-bold transition hover:bg-white/15 disabled:opacity-60" type="button" onClick={sendEmailTest} disabled={testingEmail}>
+                <MailCheck size={16} /> {testingEmail ? 'Testing...' : 'Test Email'}
               </button>
               <button className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-bold text-[#02024f] transition hover:bg-slate-100" type="button" onClick={handleLogout}>
                 <LogOut size={16} /> Logout
