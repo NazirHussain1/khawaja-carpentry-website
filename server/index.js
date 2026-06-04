@@ -40,7 +40,9 @@ await mkdir(dataDir, { recursive: true });
 let mongoClient = null;
 let database = null;
 if (process.env.MONGODB_URI) {
-  mongoClient = new MongoClient(process.env.MONGODB_URI);
+  mongoClient = new MongoClient(process.env.MONGODB_URI, {
+    serverSelectionTimeoutMS: Number(process.env.MONGODB_TIMEOUT_MS || 8000)
+  });
   try {
     await mongoClient.connect();
     database = mongoClient.db(process.env.MONGODB_DB || 'khawaja_carpentry');
