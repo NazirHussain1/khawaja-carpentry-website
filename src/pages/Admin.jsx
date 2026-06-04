@@ -1,4 +1,4 @@
-import { Download, ImagePlus, LayoutDashboard, Library, Lock, LogOut, Pencil, Plus, RefreshCw, Save, Search, Trash2, Upload } from 'lucide-react';
+import { Download, ImagePlus, LayoutDashboard, Library, Lock, LogOut, Pencil, RefreshCw, Save, Search, Trash2, Upload } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const apiBase = import.meta.env.VITE_API_BASE_URL || '';

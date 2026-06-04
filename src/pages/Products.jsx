@@ -1,11 +1,13 @@
 import { ArrowRight, Award, CheckCircle2, Clock, PackageCheck, Phone, Ruler, ShieldCheck, Truck } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
+import { fetchManagedProducts } from '../utils/productsApi.js';
 
 const imageBase = 'https://mujahidhussaincarpentry.store/images/';
 const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for pallets and packaging in UAE.')}`;
 
-const categories = [
+const fallbackCategories = [
   {
     title: 'Wooden Pallets',
     description: '20+ sizes. New, refurbished and used. Normal and heavy duty. ISPM-15.',
@@ -97,6 +99,10 @@ function imageUrl(file) {
   return `${imageBase}${encodeURIComponent(file)}`;
 }
 
+function productImageUrl(value) {
+  return /^https?:\/\//.test(value || '') ? value : imageUrl(value);
+}
+
 function SectionHeading({ eyebrow, title, subtitle }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
@@ -108,6 +114,27 @@ function SectionHeading({ eyebrow, title, subtitle }) {
 }
 
 export default function Products() {
+  const [managedProducts, setManagedProducts] = useState([]);
+  const categoryProducts = managedProducts.length > 0 ? managedProducts.map((product) => ({
+    title: product.title,
+    description: product.summary,
+    href: product.href || `/products/${product.slug}`,
+    button: product.buttonLabel || 'View Details',
+    image: product.imageUrl
+  })) : fallbackCategories;
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchManagedProducts()
+      .then((items) => {
+        if (isMounted) setManagedProducts(items);
+      })
+      .catch(() => {});
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <>
       <section
@@ -142,9 +169,9 @@ export default function Products() {
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="What We Offer" subtitle="Four product categories serving every industry across the UAE." />
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {categories.map((product) => (
+            {categoryProducts.map((product) => (
               <article className="grid overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-950/5 ring-1 ring-slate-200 md:grid-cols-5" key={product.title}>
-                <img className="h-56 w-full object-cover md:col-span-2 md:h-full" src={imageUrl(product.image)} alt={product.title} width="700" height="460" loading="lazy" decoding="async" />
+                <img className="h-56 w-full object-cover md:col-span-2 md:h-full" src={productImageUrl(product.image)} alt={product.title} width="700" height="460" loading="lazy" decoding="async" />
                 <div className="p-6 md:col-span-3">
                   <h3 className="text-2xl font-black text-[#02024f]">{product.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{product.description}</p>

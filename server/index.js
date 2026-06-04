@@ -651,6 +651,15 @@ async function readStatusMap() {
   }
 }
 
+async function readJsonFile(file, fallbackValue) {
+  try {
+    return JSON.parse(await readFile(file, 'utf8'));
+  } catch (error) {
+    if (error.code === 'ENOENT') return fallbackValue;
+    throw error;
+  }
+}
+
 async function writeJson(file, data) {
   await writeFile(file, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
 }
