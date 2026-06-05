@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
+const isVercel = Boolean(process.env.VERCEL);
 const dataDir = path.join(__dirname, 'data');
 const inquiryFile = path.join(dataDir, 'inquiries.jsonl');
 const eventFile = path.join(dataDir, 'analytics-events.jsonl');
@@ -35,7 +36,9 @@ const upload = multer({
 });
 
 await loadEnv();
-await mkdir(dataDir, { recursive: true });
+if (!isVercel) {
+  await mkdir(dataDir, { recursive: true });
+}
 
 let mongoClient = null;
 let database = null;
@@ -77,6 +80,9 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
+if (process.env.VERCEL_URL) {
+  allowedOrigins.push(`https://${process.env.VERCEL_URL}`);
+}
 
 app.enable('trust proxy');
 app.use((request, response, next) => {
@@ -106,13 +112,15 @@ app.use(cors({
   }
 }));
 app.use(express.json({ limit: '20kb' }));
-app.use(express.static(path.join(rootDir, 'dist'), {
-  maxAge: process.env.NODE_ENV === 'production' ? '1y' : 0,
-  immutable: process.env.NODE_ENV === 'production'
-}));
+if (!isVercel) {
+  app.use(express.static(path.join(rootDir, 'dist'), {
+    maxAge: process.env.NODE_ENV === 'production' ? '1y' : 0,
+    immutable: process.env.NODE_ENV === 'production'
+  }));
+}
 
 app.get('/api/health', (_request, response) => {
-  response.json({ ok: true, service: 'mujahid-hussain-carpentry-api' });
+  response.json({ ok: true, service: 'fiasal-fareed-woods-api' });
 });
 
 app.post('/api/events', async (request, response) => {
@@ -299,13 +307,17 @@ app.post('/api/admin/media', requireAdmin, upload.single('image'), async (reques
   response.status(201).json({ ok: true, media });
 });
 
-app.use((_request, response) => {
-  response.sendFile(path.join(rootDir, 'dist', 'index.html'));
-});
+if (!isVercel) {
+  app.use((_request, response) => {
+    response.sendFile(path.join(rootDir, 'dist', 'index.html'));
+  });
 
-app.listen(port, () => {
-  console.log(`Mujahid Hussain Carpentry API running on http://127.0.0.1:${port}`);
-});
+  app.listen(port, () => {
+    console.log(`FIASAL FAREED WOODS API running on http://127.0.0.1:${port}`);
+  });
+}
+
+export default app;
 
 async function loadEnv() {
   try {
@@ -646,6 +658,7 @@ function isRateLimited(ip) {
 }
 
 async function appendJsonLine(file, data) {
+  assertWritableFallback();
   await appendFile(file, `${JSON.stringify(data)}\n`, 'utf8');
 }
 
@@ -682,7 +695,14 @@ async function readJsonFile(file, fallbackValue) {
 }
 
 async function writeJson(file, data) {
+  assertWritableFallback();
   await writeFile(file, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+}
+
+function assertWritableFallback() {
+  if (isVercel && !database) {
+    throw new Error('Persistent storage is not configured. Set MONGODB_URI for Vercel production.');
+  }
 }
 
 function requireAdmin(request, response, next) {
@@ -755,7 +775,7 @@ async function sendTestEmail(to) {
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to,
-      subject: 'Mujahid Hussain Carpentry - Email Test',
+      subject: 'FIASAL FAREED WOODS - Email Test',
       text: 'SMTP email delivery is working for the website contact and inquiry system.',
       html: '<p>SMTP email delivery is working for the website contact and inquiry system.</p>'
     });

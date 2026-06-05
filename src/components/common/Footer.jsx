@@ -3,15 +3,15 @@ import { CallIcon, MailIcon } from './ContactIcons.jsx';
 import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 const company = {
-  name: 'Mujahid Hussain Carpentry',
-  legalName: 'Mujahid Hussain Carpentry LLC',
+  name: 'FIASAL FAREED WOODS TR L.L.C',
+  legalName: 'FIASAL FAREED WOODS TR L.L.C',
   description: 'Leading manufacturer and supplier of premium wooden pallets, plastic pallets, and wooden crates in UAE.',
   whatsapp: '971509253127',
   phonePrimary: '+971 50 92 53127',
   phoneSecondary: '+971 52 51 73794',
   email: 'nh534392@gmail.com',
-  location: 'Industrial Area Al Sajja, Sharjah, UAE',
-  mapsUrl: 'https://www.google.com/maps?q=Industrial%20Area%20Al%20Sajja%2C%20Sharjah%2C%20UAE'
+  location: 'Sajja Industrial, Sharjah-U.A.E',
+  mapsUrl: 'https://www.google.com/maps?q=Sajja%20Industrial%2C%20Sharjah-U.A.E'
 };
 
 const quickLinks = [
@@ -97,10 +97,10 @@ export default function Footer() {
             <SocialIcon href={whatsappUrl} label="Chat on WhatsApp">
               <WhatsAppIcon className="size-5" />
             </SocialIcon>
-            <SocialIcon href={primaryTel} label="Call Mujahid Hussain Carpentry">
+            <SocialIcon href={primaryTel} label="Call FIASAL FAREED WOODS TR L.L.C">
               <CallIcon className="size-[18px]" />
             </SocialIcon>
-            <SocialIcon href={mailto} label="Email Mujahid Hussain Carpentry">
+            <SocialIcon href={mailto} label="Email FIASAL FAREED WOODS TR L.L.C">
               <MailIcon className="size-[18px]" />
             </SocialIcon>
           </div>

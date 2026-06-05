@@ -3,8 +3,8 @@ import { CallIcon, MailIcon } from '../common/ContactIcons.jsx';
 import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 
 const contact = {
-  location: 'Industrial Area Al Sajja, Sharjah, UAE',
-  mapsUrl: 'https://www.google.com/maps?q=Industrial%20Area%20Al%20Sajja%2C%20Sharjah%2C%20UAE',
+  location: 'Sajja Industrial, Sharjah-U.A.E',
+  mapsUrl: 'https://www.google.com/maps?q=Sajja%20Industrial%2C%20Sharjah-U.A.E',
   phone: '+971 50 92 53127',
   whatsappPhone: '+971 52 51 73794',
   whatsappUrl: `https://wa.me/971525173794?text=${encodeURIComponent('Hello, I need a quote for pallets and packaging.')}`,
@@ -66,8 +66,8 @@ export default function ContactInfo() {
       <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
         <iframe
           className="h-64 w-full"
-          title="Industrial Area Al Sajja, Sharjah map"
-          src="https://www.google.com/maps?q=Industrial%20Area%20Al%20Sajja%2C%20Sharjah%2C%20UAE&output=embed"
+          title="Sajja Industrial, Sharjah map"
+          src="https://www.google.com/maps?q=Sajja%20Industrial%2C%20Sharjah-U.A.E&output=embed"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />

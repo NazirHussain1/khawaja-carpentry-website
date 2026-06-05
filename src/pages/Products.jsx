@@ -4,7 +4,7 @@ import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 import { fetchManagedProducts } from '../utils/productsApi.js';
 
-const imageBase = 'https://mujahidhussaincarpentry.store/images/';
+const imageBase = 'https://khawaja-carpentry-woodpallets.vercel.app/images/';
 const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for pallets and packaging in UAE.')}`;
 
 const fallbackCategories = [
@@ -220,7 +220,7 @@ export default function Products() {
 
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Why Buy from Mujahid Hussain Carpentry?" />
+          <SectionHeading title="Why Buy from FIASAL FAREED WOODS TR L.L.C?" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {reasons.map(([Icon, title, text]) => (
               <article className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-md shadow-slate-950/5 transition hover:-translate-y-2 hover:shadow-2xl" key={title}>

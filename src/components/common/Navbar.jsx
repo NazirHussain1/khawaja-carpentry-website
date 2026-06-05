@@ -37,12 +37,12 @@ export default function Navbar({ activePage, whatsappUrl }) {
 
   return (
     <nav className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-3 py-3 sm:gap-5 sm:px-6 lg:min-h-[100px] lg:px-8" aria-label="Primary navigation">
-      <a className="flex min-w-0 items-center gap-3 text-white" href="/" data-spa-link="true" aria-label="Mujahid Hussain Carpentry home">
+      <a className="flex min-w-0 items-center gap-3 text-white" href="/" data-spa-link="true" aria-label="FIASAL FAREED WOODS TR L.L.C home">
         <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-500/20 text-white ring-1 ring-sky-300/30 sm:size-12">
           <Grid2X2 size={23} />
         </span>
         <span className="min-w-0">
-          <strong className="block truncate text-base font-extrabold tracking-wide sm:text-lg">Mujahid Hussain</strong>
+          <strong className="block truncate text-base font-extrabold tracking-wide sm:text-lg">FIASAL FAREED</strong>
           <span className="block bg-gradient-to-r from-sky-300 to-indigo-300 bg-clip-text text-sm font-bold text-transparent sm:text-base">Carpentry</span>
         </span>
       </a>
@@ -123,7 +123,7 @@ export default function Navbar({ activePage, whatsappUrl }) {
                   <Grid2X2 size={22} />
                 </span>
                 <span className="min-w-0">
-                  <strong className="block truncate text-base font-extrabold">Mujahid Hussain</strong>
+                  <strong className="block truncate text-base font-extrabold">FIASAL FAREED</strong>
                   <span className="block bg-gradient-to-r from-sky-300 to-indigo-300 bg-clip-text text-sm font-bold text-transparent">Carpentry</span>
                 </span>
               </a>

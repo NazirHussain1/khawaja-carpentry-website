@@ -4,7 +4,7 @@ import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
 
-const imageBase = 'https://mujahidhussaincarpentry.store/images/';
+const imageBase = 'https://khawaja-carpentry-woodpallets.vercel.app/images/';
 const whatsappBase = 'https://wa.me/971509253127?text=';
 
 const introFeatures = ['New Pallets', 'Used Pallets', 'Heavy Duty', 'Normal Duty', 'Hygienic & Washable', 'Weather Resistant'];

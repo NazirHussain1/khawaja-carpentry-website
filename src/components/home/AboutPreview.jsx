@@ -36,13 +36,13 @@ export default function AboutPreview() {
         </div>
 
         <div>
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">About Mujahid Hussain Carpentry</span>
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">About FIASAL FAREED WOODS TR L.L.C</span>
           <h2 className="mt-3 text-3xl font-black leading-tight text-[#02024f] sm:text-4xl">
             Trusted wooden pallet manufacturer and supplier in UAE since 2009.
           </h2>
           <p className="mt-5 text-base leading-8 text-slate-600">
-            Mujahid Hussain Carpentry is a leading manufacturer and supplier of wooden pallets, wooden crates, plastic
-            pallets, and plastic jumbo bags in UAE. Based in Industrial Area Al Sajja, Sharjah, we serve customers
+            FIASAL FAREED WOODS TR L.L.C is a leading manufacturer and supplier of wooden pallets, wooden crates, plastic
+            pallets, and plastic jumbo bags in UAE. Based in Sajja Industrial, Sharjah, we serve customers
             across Dubai, Sharjah, JAFZA, Jebel Ali, Abu Dhabi, Ras Al Khaimah, Ajman, Fujairah, and all UAE.
           </p>
 

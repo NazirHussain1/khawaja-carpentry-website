@@ -7,8 +7,8 @@ const contact = {
   email: 'nh534392@gmail.com',
   phonePrimary: '+971 50 92 53127',
   phoneSecondary: '+971 52 51 73794',
-  location: 'Industrial Area Al Sajja, Sharjah, UAE',
-  mapsUrl: 'https://www.google.com/maps?q=Industrial%20Area%20Al%20Sajja%2C%20Sharjah%2C%20UAE',
+  location: 'Sajja Industrial, Sharjah-U.A.E',
+  mapsUrl: 'https://www.google.com/maps?q=Sajja%20Industrial%2C%20Sharjah-U.A.E',
   whatsappUrl: `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for wooden pallets.')}`
 };
 
