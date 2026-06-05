@@ -1,10 +1,14 @@
 # Production Deployment
 
-Domain: `mujahidhussaincarpentry.store`
+Primary preview domain: `https://khawaja-carpentry-woodpallets.vercel.app`
+
+Company: `FIASAL FAREED WOODS TR L.L.C`  
+Location: `Sajja Industrial, Sharjah-U.A.E`  
+TRN: `105168940200003`
 
 ## Recommended Hosting
 
-Use a Node hosting provider because the website includes a working Express backend for `/api/inquiries`.
+Use Vercel for the React frontend and serverless Express API routes.
 
 Supported production start:
 
@@ -12,6 +16,14 @@ Supported production start:
 npm install
 npm run build
 npm start
+```
+
+Vercel deployment:
+
+```bash
+npm install
+npm run build
+npx vercel --prod
 ```
 
 Health check:
@@ -25,7 +37,7 @@ Health check:
 ```bash
 NODE_ENV=production
 PORT=5000
-ALLOWED_ORIGINS=https://mujahidhussaincarpentry.store,https://www.mujahidhussaincarpentry.store
+ALLOWED_ORIGINS=https://khawaja-carpentry-woodpallets.vercel.app
 INQUIRY_TO_EMAIL=nh534392@gmail.com
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=use-a-long-secure-password
@@ -40,9 +52,11 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=
 SMTP_PASS=
-SMTP_FROM="Mujahid Hussain Carpentry <no-reply@mujahidhussaincarpentry.store>"
-VITE_SITE_NAME="Mujahid Hussain Carpentry"
+SMTP_FROM="FIASAL FAREED WOODS TR L.L.C <no-reply@khawaja-carpentry-woodpallets.vercel.app>"
+VITE_SITE_NAME="FIASAL FAREED WOODS TR L.L.C"
+VITE_SITE_URL="https://khawaja-carpentry-woodpallets.vercel.app"
 VITE_API_BASE_URL=""
+VITE_PRODUCT_IMAGE_BASE_URL="https://khawaja-carpentry-woodpallets.vercel.app/images/"
 VITE_WHATSAPP_NUMBER=971509253127
 VITE_CONTACT_PHONE="+971 50 92 53127"
 VITE_CONTACT_SECONDARY_PHONE="+971 52 51 73794"
@@ -56,8 +70,8 @@ VITE_FACEBOOK_PIXEL_ID=
 
 Point the domain to the selected hosting provider:
 
-- Apex `mujahidhussaincarpentry.store`: use the provider A records or ALIAS/ANAME target.
-- `www.mujahidhussaincarpentry.store`: use the provider CNAME target.
+- For the Vercel preview, use the generated `*.vercel.app` URL.
+- For a custom domain later, add it in Vercel Project Settings, then update `VITE_SITE_URL`, `ALLOWED_ORIGINS`, `sitemap.xml`, and `robots.txt`.
 
 Enable SSL/HTTPS in the host dashboard after DNS resolves. The Express server also enforces HTTPS when `NODE_ENV=production` and the host sends `x-forwarded-proto`.
 
@@ -66,14 +80,14 @@ Enable SSL/HTTPS in the host dashboard after DNS resolves. The Express server al
 Submit:
 
 ```text
-https://mujahidhussaincarpentry.store/sitemap.xml
+https://khawaja-carpentry-woodpallets.vercel.app/sitemap.xml
 ```
 
 Verify these files after deployment:
 
 ```text
-https://mujahidhussaincarpentry.store/robots.txt
-https://mujahidhussaincarpentry.store/sitemap.xml
+https://khawaja-carpentry-woodpallets.vercel.app/robots.txt
+https://khawaja-carpentry-woodpallets.vercel.app/sitemap.xml
 ```
 
 Google Search Console, Google Analytics, Google Tag Manager, Facebook Pixel, and Google Business Profile require account access. Add the IDs to environment variables before the production build.
@@ -101,7 +115,7 @@ Google Search Console, Google Analytics, Google Tag Manager, Facebook Pixel, and
 - Admin inquiries are stored in MongoDB Atlas when `MONGODB_URI` is configured.
 - Admin product CMS controls product cards on the home page and `/products`.
 - Admin media uploads go to Cloudinary when Cloudinary variables are configured.
-- Google map iframe loads for Industrial Area Al Sajja, Sharjah, UAE.
+- Google map iframe loads for Sajja Industrial, Sharjah-U.A.E.
 - Product dropdown opens above content.
 - Scroll-to-top button appears after scrolling.
 
@@ -113,11 +127,13 @@ The backend uses MongoDB Atlas as the primary database when `MONGODB_URI` is set
 - `products`: admin-managed product catalogue cards.
 - `media`: Cloudinary image metadata.
 
-If MongoDB is not configured, the server falls back to local files under `server/data`. This fallback is useful for development only and should not be treated as permanent production storage.
+If MongoDB is not configured, the server falls back to local files under `server/data` only outside Vercel. Vercel production must use MongoDB because serverless files are not persistent.
 
 ## Image Storage
 
 Admin image uploads use Cloudinary. Uploaded images are saved in the `CLOUDINARY_FOLDER` folder and the public URL is stored in MongoDB. The product CMS can then use the Cloudinary URL for product cards.
+
+For real product/category images, upload through `/admin` after setting Cloudinary variables. For hardcoded category pages, set `VITE_PRODUCT_IMAGE_BASE_URL` to a folder URL that contains the same image filenames, or replace those category records with Cloudinary URLs during the next content pass.
 
 ## Gmail SMTP Example
 
@@ -129,7 +145,7 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=nh534392@gmail.com
 SMTP_PASS=your-16-character-google-app-password
-SMTP_FROM="Mujahid Hussain Carpentry <nh534392@gmail.com>"
+SMTP_FROM="FIASAL FAREED WOODS TR L.L.C <nh534392@gmail.com>"
 INQUIRY_TO_EMAIL=nh534392@gmail.com
 ```
 

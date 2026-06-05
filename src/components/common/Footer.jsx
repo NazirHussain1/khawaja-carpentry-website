@@ -5,6 +5,7 @@ import WhatsAppIcon from './WhatsAppIcon.jsx';
 const company = {
   name: 'FIASAL FAREED WOODS TR L.L.C',
   legalName: 'FIASAL FAREED WOODS TR L.L.C',
+  trn: '105168940200003',
   description: 'Leading manufacturer and supplier of premium wooden pallets, plastic pallets, and wooden crates in UAE.',
   whatsapp: '971509253127',
   phonePrimary: '+971 50 92 53127',
@@ -93,6 +94,7 @@ export default function Footer() {
             <h2 id="footer-company" className="text-lg font-bold text-white">{company.name}</h2>
           </div>
           <p className="mt-5 max-w-sm text-sm leading-7 text-slate-300/85">{company.description}</p>
+          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">TRN: {company.trn}</p>
           <div className="mt-6 flex items-center gap-3">
             <SocialIcon href={whatsappUrl} label="Chat on WhatsApp">
               <WhatsAppIcon className="size-5" />

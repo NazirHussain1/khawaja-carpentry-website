@@ -1,6 +1,9 @@
-# Mujahid Hussain Carpentry
+# FIASAL FAREED WOODS TR L.L.C
 
-React/Vite website with an Express backend for a UAE wooden pallet, wooden crate, plastic pallet, and jumbo bag supplier.
+React/Vite website with an Express backend for FIASAL FAREED WOODS TR L.L.C, a UAE wooden pallet, wooden crate, plastic pallet, and jumbo bag supplier.
+
+Location: Sajja Industrial, Sharjah-U.A.E  
+TRN: 105168940200003
 
 ## Features
 
@@ -62,7 +65,7 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER="nh534392@gmail.com"
 SMTP_PASS="your-16-character-google-app-password"
-SMTP_FROM="Mujahid Hussain Carpentry <nh534392@gmail.com>"
+SMTP_FROM="FIASAL FAREED WOODS TR L.L.C <nh534392@gmail.com>"
 INQUIRY_TO_EMAIL="nh534392@gmail.com"
 ```
 

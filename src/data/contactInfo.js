@@ -1,5 +1,6 @@
 const contactInfo = {
   businessName: 'FIASAL FAREED WOODS TR L.L.C',
+  trn: '105168940200003',
   tagline: 'Premium Wooden Pallets Manufacturer & Supplier in UAE',
   phone: import.meta.env.VITE_CONTACT_PHONE || '+971 50 92 53127',
   secondaryPhone: import.meta.env.VITE_CONTACT_SECONDARY_PHONE || '+971 52 51 73794',

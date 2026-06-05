@@ -19,13 +19,14 @@ const GetQuote = lazy(() => import('./pages/GetQuote.jsx'));
 const Admin = lazy(() => import('./pages/Admin.jsx'));
 
 const site = {
-  name: 'FIASAL FAREED WOODS TR L.L.C',
-  url: 'https://khawaja-carpentry-woodpallets.vercel.app',
+  name: import.meta.env.VITE_SITE_NAME || 'FIASAL FAREED WOODS TR L.L.C',
+  url: import.meta.env.VITE_SITE_URL || 'https://khawaja-carpentry-woodpallets.vercel.app',
   image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=65&fm=webp',
   keywords: 'wooden pallets UAE, pallet supplier Dubai, wooden pallets Sharjah, wooden crates UAE, plastic pallets UAE, jumbo bags supplier UAE, industrial packaging UAE, export pallets UAE',
   phone: '+971 50 92 53127',
   email: 'nh534392@gmail.com',
-  address: 'Sajja Industrial, Sharjah-U.A.E'
+  address: 'Sajja Industrial, Sharjah-U.A.E',
+  trn: '105168940200003'
 };
 
 const seoPages = {
@@ -183,6 +184,7 @@ function applySeo(page, slug) {
     image: site.image,
     telephone: site.phone,
     email: site.email,
+    taxID: site.trn,
     description: seoPages.home.description,
     address: {
       '@type': 'PostalAddress',
