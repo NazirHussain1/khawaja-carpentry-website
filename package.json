@@ -10,7 +10,8 @@
     "build": "vite build",
     "start": "node server/index.js",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "smoke:production": "node scripts/smoke-production.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.0",
