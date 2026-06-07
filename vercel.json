@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "framework": "vite",
   "installCommand": "npm install",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
@@ -13,5 +12,20 @@
       "source": "/:path*",
       "destination": "/index.html"
     }
-  ]
+  ],
+  "experimentalServices": {
+    "web": {
+      "type": "web",
+      "entrypoint": ".",
+      "routePrefix": "/",
+      "framework": "vite",
+      "buildCommand": "npm install && npm run build"
+    },
+    "api": {
+      "type": "web",
+      "entrypoint": "server/index.js",
+      "routePrefix": "/api",
+      "framework": "express"
+    }
+  }
 }

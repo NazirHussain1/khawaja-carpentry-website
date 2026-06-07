@@ -120,11 +120,11 @@ if (!isVercel) {
   }));
 }
 
-app.get('/api/health', (_request, response) => {
+app.get(apiPath('/health'), (_request, response) => {
   response.json({ ok: true, service: 'fiasal-fareed-woods-api' });
 });
 
-app.post('/api/events', async (request, response) => {
+app.post(apiPath('/events'), async (request, response) => {
   const event = {
     eventName: sanitizeText(request.body?.eventName, 80),
     payload: sanitizeObject(request.body?.payload || {}),
@@ -140,7 +140,7 @@ app.post('/api/events', async (request, response) => {
   response.status(204).end();
 });
 
-app.post('/api/inquiries', async (request, response) => {
+app.post(apiPath('/inquiries'), async (request, response) => {
   const ip = getIp(request);
   if (isRateLimited(ip)) {
     response.status(429).json({ ok: false, message: 'Too many requests. Please try again in a few minutes.' });
@@ -172,7 +172,7 @@ app.post('/api/inquiries', async (request, response) => {
   });
 });
 
-app.get('/api/admin/inquiries', requireAdmin, async (_request, response) => {
+app.get(apiPath('/admin/inquiries'), requireAdmin, async (_request, response) => {
   const [inquiries, statusMap] = await Promise.all([readInquiries(), readStatusMap()]);
   const rows = inquiries
     .map((inquiry) => ({
@@ -194,7 +194,7 @@ app.get('/api/admin/inquiries', requireAdmin, async (_request, response) => {
   });
 });
 
-app.patch('/api/admin/inquiries/:id', requireAdmin, async (request, response) => {
+app.patch(apiPath('/admin/inquiries/:id'), requireAdmin, async (request, response) => {
   const id = sanitizeText(request.params.id, 80);
   const status = sanitizeText(request.body?.status, 30) || 'new';
   const notes = sanitizeText(request.body?.notes, 800);
@@ -221,7 +221,7 @@ app.patch('/api/admin/inquiries/:id', requireAdmin, async (request, response) =>
   response.json({ ok: true, inquiry: { id, ...statusMap[id] } });
 });
 
-app.post('/api/admin/email-test', requireAdmin, async (request, response) => {
+app.post(apiPath('/admin/email-test'), requireAdmin, async (request, response) => {
   const to = sanitizeText(request.body?.to || process.env.INQUIRY_TO_EMAIL || 'nh534392@gmail.com', 120);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) {
     response.status(400).json({ ok: false, message: 'Please provide a valid email address.' });
@@ -236,16 +236,16 @@ app.post('/api/admin/email-test', requireAdmin, async (request, response) => {
   response.json({ ok: true, message: `Test email sent to ${to}.` });
 });
 
-app.get('/api/products', async (_request, response) => {
+app.get(apiPath('/products'), async (_request, response) => {
   const products = await getProducts();
   response.json({ ok: true, products: products.filter((product) => product.status !== 'draft') });
 });
 
-app.get('/api/admin/products', requireAdmin, async (_request, response) => {
+app.get(apiPath('/admin/products'), requireAdmin, async (_request, response) => {
   response.json({ ok: true, products: await getProducts(true) });
 });
 
-app.post('/api/admin/products', requireAdmin, async (request, response) => {
+app.post(apiPath('/admin/products'), requireAdmin, async (request, response) => {
   const product = normalizeProduct(request.body);
   const validationError = validateProduct(product);
   if (validationError) {
@@ -255,7 +255,7 @@ app.post('/api/admin/products', requireAdmin, async (request, response) => {
   response.status(201).json({ ok: true, product: await createProduct(product) });
 });
 
-app.patch('/api/admin/products/:id', requireAdmin, async (request, response) => {
+app.patch(apiPath('/admin/products/:id'), requireAdmin, async (request, response) => {
   const product = normalizeProduct(request.body);
   const validationError = validateProduct(product);
   if (validationError) {
@@ -270,7 +270,7 @@ app.patch('/api/admin/products/:id', requireAdmin, async (request, response) => 
   response.json({ ok: true, product: updated });
 });
 
-app.delete('/api/admin/products/:id', requireAdmin, async (request, response) => {
+app.delete(apiPath('/admin/products/:id'), requireAdmin, async (request, response) => {
   const removed = await deleteProduct(request.params.id);
   if (!removed) {
     response.status(404).json({ ok: false, message: 'Product not found.' });
@@ -279,11 +279,11 @@ app.delete('/api/admin/products/:id', requireAdmin, async (request, response) =>
   response.json({ ok: true });
 });
 
-app.get('/api/admin/media', requireAdmin, async (_request, response) => {
+app.get(apiPath('/admin/media'), requireAdmin, async (_request, response) => {
   response.json({ ok: true, media: await getMedia() });
 });
 
-app.post('/api/admin/media', requireAdmin, upload.single('image'), async (request, response) => {
+app.post(apiPath('/admin/media'), requireAdmin, upload.single('image'), async (request, response) => {
   if (!request.file) {
     response.status(400).json({ ok: false, message: 'Please choose an image to upload.' });
     return;
@@ -321,7 +321,9 @@ if (!isVercel) {
   app.use((_request, response) => {
     response.sendFile(path.join(rootDir, 'dist', 'index.html'));
   });
+}
 
+if (!isVercel || process.env.PORT) {
   app.listen(port, () => {
     console.log(`FIASAL FAREED WOODS API running on http://127.0.0.1:${port}`);
   });
@@ -365,6 +367,11 @@ function normalizeInquiry(input = {}, ip) {
     submittedAt: submittedAt.toISOString(),
     ip
   };
+}
+
+function apiPath(pathName) {
+  const prefixed = `/api${pathName}`;
+  return isVercel ? [prefixed, pathName] : prefixed;
 }
 
 const defaultProducts = [
