@@ -1,6 +1,6 @@
 # Production Deployment
 
-Primary preview domain: `https://khawaja-carpentry-woodpallets.vercel.app`
+Primary preview domain: `https://fiasal-fareed-woods.vercel.app`
 
 Company: `FIASAL FAREED WOODS TR L.L.C`  
 Location: `Sajja Industrial, Sharjah-U.A.E`  
@@ -37,7 +37,7 @@ Health check:
 ```bash
 NODE_ENV=production
 PORT=5000
-ALLOWED_ORIGINS=https://khawaja-carpentry-woodpallets.vercel.app
+ALLOWED_ORIGINS=https://fiasal-fareed-woods.vercel.app
 INQUIRY_TO_EMAIL=nh534392@gmail.com
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=use-a-long-secure-password
@@ -52,11 +52,11 @@ SMTP_PORT=587
 SMTP_SECURE=false
 SMTP_USER=
 SMTP_PASS=
-SMTP_FROM="FIASAL FAREED WOODS TR L.L.C <no-reply@khawaja-carpentry-woodpallets.vercel.app>"
+SMTP_FROM="FIASAL FAREED WOODS TR L.L.C <no-reply@fiasal-fareed-woods.vercel.app>"
 VITE_SITE_NAME="FIASAL FAREED WOODS TR L.L.C"
-VITE_SITE_URL="https://khawaja-carpentry-woodpallets.vercel.app"
+VITE_SITE_URL="https://fiasal-fareed-woods.vercel.app"
 VITE_API_BASE_URL=""
-VITE_PRODUCT_IMAGE_BASE_URL="https://khawaja-carpentry-woodpallets.vercel.app/images/"
+VITE_PRODUCT_IMAGE_BASE_URL="https://fiasal-fareed-woods.vercel.app/images/"
 VITE_WHATSAPP_NUMBER=971509253127
 VITE_CONTACT_PHONE="+971 50 92 53127"
 VITE_CONTACT_SECONDARY_PHONE="+971 52 51 73794"
@@ -80,14 +80,14 @@ Enable SSL/HTTPS in the host dashboard after DNS resolves. The Express server al
 Submit:
 
 ```text
-https://khawaja-carpentry-woodpallets.vercel.app/sitemap.xml
+https://fiasal-fareed-woods.vercel.app/sitemap.xml
 ```
 
 Verify these files after deployment:
 
 ```text
-https://khawaja-carpentry-woodpallets.vercel.app/robots.txt
-https://khawaja-carpentry-woodpallets.vercel.app/sitemap.xml
+https://fiasal-fareed-woods.vercel.app/robots.txt
+https://fiasal-fareed-woods.vercel.app/sitemap.xml
 ```
 
 Google Search Console, Google Analytics, Google Tag Manager, Facebook Pixel, and Google Business Profile require account access. Add the IDs to environment variables before the production build.

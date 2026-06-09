@@ -20,7 +20,7 @@ const Admin = lazy(() => import('./pages/Admin.jsx'));
 
 const site = {
   name: import.meta.env.VITE_SITE_NAME || 'FIASAL FAREED WOODS TR L.L.C',
-  url: import.meta.env.VITE_SITE_URL || 'https://khawaja-carpentry-woodpallets.vercel.app',
+  url: import.meta.env.VITE_SITE_URL || 'https://fiasal-fareed-woods.vercel.app',
   image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=65&fm=webp',
   keywords: 'wooden pallets UAE, pallet supplier Dubai, wooden pallets Sharjah, wooden crates UAE, plastic pallets UAE, jumbo bags supplier UAE, industrial packaging UAE, export pallets UAE',
   phone: '+971 50 92 53127',

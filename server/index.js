@@ -36,7 +36,7 @@ const upload = multer({
 });
 
 await loadEnv();
-const productImageBaseUrl = process.env.PRODUCT_IMAGE_BASE_URL || process.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://khawaja-carpentry-woodpallets.vercel.app/images/';
+const productImageBaseUrl = process.env.PRODUCT_IMAGE_BASE_URL || process.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://fiasal-fareed-woods.vercel.app/images/';
 if (!isVercel) {
   await mkdir(dataDir, { recursive: true });
 }

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://khawaja-carpentry-woodpallets.vercel.app/sitemap.xml
+Sitemap: https://fiasal-fareed-woods.vercel.app/sitemap.xml
