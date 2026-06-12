@@ -4,7 +4,7 @@ import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
 
-const imageBase = import.meta.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://fiasal-fareed-woods.vercel.app/images/';
+const imageBase = import.meta.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://mujahidhussaincarpentry.store/images/';
 const whatsappBase = 'https://wa.me/971509253127?text=';
 
 const introFeatures = ['New Pallets', 'Used Pallets', 'Heavy Duty', 'Normal Duty', 'Hygienic & Washable', 'Weather Resistant'];

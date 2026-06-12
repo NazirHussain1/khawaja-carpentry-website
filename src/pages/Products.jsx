@@ -4,7 +4,7 @@ import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 import { fetchManagedProducts } from '../utils/productsApi.js';
 
-const imageBase = import.meta.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://fiasal-fareed-woods.vercel.app/images/';
+const imageBase = import.meta.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://mujahidhussaincarpentry.store/images/';
 const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for pallets and packaging in UAE.')}`;
 
 const fallbackCategories = [

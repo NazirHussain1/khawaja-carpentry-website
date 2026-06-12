@@ -56,7 +56,7 @@ SMTP_FROM="FIASAL FAREED WOODS TR L.L.C <no-reply@fiasal-fareed-woods.vercel.app
 VITE_SITE_NAME="FIASAL FAREED WOODS TR L.L.C"
 VITE_SITE_URL="https://fiasal-fareed-woods.vercel.app"
 VITE_API_BASE_URL=""
-VITE_PRODUCT_IMAGE_BASE_URL="https://fiasal-fareed-woods.vercel.app/images/"
+VITE_PRODUCT_IMAGE_BASE_URL="https://mujahidhussaincarpentry.store/images/"
 VITE_WHATSAPP_NUMBER=971509253127
 VITE_CONTACT_PHONE="+971 50 92 53127"
 VITE_CONTACT_SECONDARY_PHONE="+971 52 51 73794"
@@ -133,7 +133,7 @@ If MongoDB is not configured, the server falls back to local files under `server
 
 Admin image uploads use Cloudinary. Uploaded images are saved in the `CLOUDINARY_FOLDER` folder and the public URL is stored in MongoDB. The product CMS can then use the Cloudinary URL for product cards.
 
-For real product/category images, upload through `/admin` after setting Cloudinary variables. For hardcoded category pages, set `VITE_PRODUCT_IMAGE_BASE_URL` to a folder URL that contains the same image filenames, or replace those category records with Cloudinary URLs during the next content pass.
+For real product/category images, upload through `/admin` after setting Cloudinary variables. For hardcoded category pages, keep `VITE_PRODUCT_IMAGE_BASE_URL` pointed at a folder URL that contains the same image filenames, or replace those category records with Cloudinary URLs during the next content pass.
 
 ## Gmail SMTP Example
 
