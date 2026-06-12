@@ -111,6 +111,7 @@ MongoDB collections used by the backend:
 ## Production
 
 Production domain configuration and deployment checklist are in `PRODUCTION_DEPLOYMENT.md`.
+Admin image upload and product-image handover notes are in `ADMIN_IMAGE_GUIDE.md`.
 
 ## Structure
 
