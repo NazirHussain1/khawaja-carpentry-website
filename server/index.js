@@ -44,7 +44,7 @@ if (!isVercel) {
 let mongoClient = null;
 let database = null;
 if (process.env.MONGODB_URI) {
-  initDatabase();
+  await initDatabase();
 }
 
 async function initDatabase() {
@@ -332,6 +332,8 @@ if (!isVercel || process.env.PORT) {
 export default app;
 
 async function loadEnv() {
+  if (process.env.SKIP_DOTENV === 'true') return;
+
   try {
     const text = await readFile(path.join(rootDir, '.env'), 'utf8');
     text.split(/\r?\n/).forEach((line) => {

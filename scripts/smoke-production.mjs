@@ -23,7 +23,17 @@ const server = spawn(process.execPath, ['server/index.js'], {
   env: {
     ...process.env,
     PORT: String(port),
-    NODE_ENV: 'production'
+    NODE_ENV: 'production',
+    SKIP_DOTENV: 'true',
+    ADMIN_USERNAME: 'admin',
+    ADMIN_PASSWORD: 'smoke-test-password',
+    MONGODB_URI: '',
+    SMTP_HOST: '',
+    SMTP_USER: '',
+    SMTP_PASS: '',
+    CLOUDINARY_CLOUD_NAME: '',
+    CLOUDINARY_API_KEY: '',
+    CLOUDINARY_API_SECRET: ''
   },
   stdio: ['ignore', 'pipe', 'pipe']
 });
