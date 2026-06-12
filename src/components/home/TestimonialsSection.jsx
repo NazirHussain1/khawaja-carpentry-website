@@ -20,7 +20,7 @@ const testimonials = [
   }
 ];
 
-const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a free quote from a trusted pallet supplier in UAE.')}`;
+const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need a free quote from a trusted pallet supplier in UAE.')}`;
 
 export default function TestimonialsSection() {
   return (

@@ -50,7 +50,7 @@ export default function QuoteForm({ defaultProduct = '', source = 'quote-form', 
         </label>
         <label className={labelClass}>
           Phone Number
-          <input className={fieldClass} type="tel" inputMode="tel" name="phone" placeholder="+971 ..." required pattern="^[+0-9\\s-]{7,}$" autoComplete="tel" />
+          <input className={fieldClass} type="tel" inputMode="tel" name="phone" placeholder="033..." required pattern="^[+0-9\\s-]{7,}$" autoComplete="tel" />
         </label>
         <label className={labelClass}>
           Email Address

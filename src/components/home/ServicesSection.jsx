@@ -24,7 +24,7 @@ const services = [
   }
 ];
 
-const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a service quote for pallets and packaging.')}`;
+const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need a service quote for pallets and packaging.')}`;
 
 export default function ServicesSection() {
   return (

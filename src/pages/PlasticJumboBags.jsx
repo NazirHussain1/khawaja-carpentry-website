@@ -5,7 +5,7 @@ import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
 
 const imageBase = import.meta.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://mujahidhussaincarpentry.store/images/';
-const whatsappBase = 'https://wa.me/971509253127?text=';
+const whatsappBase = 'https://wa.me/923321716508?text=';
 
 const introFeatures = ['New Bags', 'Multiple Capacities', 'UV Resistant', 'Export Quality', 'Custom Printing', 'Food Grade Options'];
 
@@ -518,7 +518,7 @@ export default function PlasticJumboBags() {
           <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href={quoteUrl('Plastic Jumbo Bags')} target="_blank" rel="noreferrer">
             Get Quote
           </a>
-          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+971509253127">
+          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+923321716508">
             <CallIcon className="size-5" /> Call Now
           </a>
         </div>

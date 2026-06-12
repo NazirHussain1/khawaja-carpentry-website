@@ -111,14 +111,23 @@ MongoDB collections used by the backend:
 ## Production
 
 Production domain configuration and deployment checklist are in `PRODUCTION_DEPLOYMENT.md`.
-Admin image upload and product-image handover notes are in `ADMIN_IMAGE_GUIDE.md`.
+
+## Admin Image Notes
+
+Product cards on the home page and `/products` can be changed from `/admin`:
+
+1. Open `Media Library` and upload an image.
+2. Click `Use in Product`.
+3. Open `Products CMS`, edit the product, and save.
+
+Product detail pages such as `/products/wooden-pallets` use fixed image filenames from `VITE_PRODUCT_IMAGE_BASE_URL`. To change those images without code changes, upload replacement files to that image folder using the same filenames. If the image base URL changes in Vercel, redeploy the site.
 
 ## Structure
 
 - Product images load from `VITE_PRODUCT_IMAGE_BASE_URL` or admin-managed Cloudinary URLs
 - `src/components`: reusable UI sections
 - `src/pages`: route-level pages
-- `src/data`: editable site content
+- `src/data`: shared site content used by routes and contact helpers
 - `src/styles`: global and responsive CSS
 - `server`: Express API, inquiry handling, analytics event capture, and email integration
 

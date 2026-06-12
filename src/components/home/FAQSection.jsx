@@ -30,7 +30,7 @@ const faqs = [
   }
 ];
 
-const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I have questions about pallets and packaging.')}`;
+const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I have questions about pallets and packaging.')}`;
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -89,7 +89,7 @@ export default function FAQSection() {
             </a>
             <a
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-extrabold text-white transition duration-300 hover:-translate-y-1 hover:bg-white/15"
-              href="tel:+971509253127"
+              href="tel:+923321716508"
             >
               <CallIcon className="size-5" />
               Call Now

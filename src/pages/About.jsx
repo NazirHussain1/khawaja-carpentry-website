@@ -19,7 +19,7 @@ import { useEffect, useRef, useState } from 'react';
 import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 
-const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for pallets, crates, plastic pallets, or jumbo bags.')}`;
+const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need a quote for pallets, crates, plastic pallets, or jumbo bags.')}`;
 
 const introChecklist = [
   'New Wooden Pallets',
@@ -427,7 +427,7 @@ export default function About() {
           <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href={whatsappUrl} target="_blank" rel="noreferrer">
             <WhatsAppIcon className="size-5" /> WhatsApp Now
           </a>
-          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+971509253127">
+          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+923321716508">
             <CallIcon className="size-5" /> Call Now
           </a>
         </div>

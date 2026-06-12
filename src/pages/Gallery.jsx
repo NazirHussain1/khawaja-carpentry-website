@@ -17,7 +17,7 @@ const galleryItems = [
   ['Delivery Operations', 'Warehouse Operations', 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=1200&q=65&fm=webp']
 ].map(([title, category, image]) => ({ title, category, image }));
 
-const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need quality industrial packaging solutions.')}`;
+const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need quality industrial packaging solutions.')}`;
 
 export default function Gallery() {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -142,7 +142,7 @@ export default function Gallery() {
               <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href={whatsappUrl} target="_blank" rel="noreferrer">
                 <WhatsAppIcon className="size-5" /> WhatsApp Us
               </a>
-              <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+971509253127">
+              <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+923321716508">
                 <CallIcon className="size-5" /> Call Now
               </a>
             </div>

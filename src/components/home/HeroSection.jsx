@@ -2,7 +2,7 @@ import { CheckCircle2, Trophy } from 'lucide-react';
 import { CallIcon } from '../common/ContactIcons.jsx';
 import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 
-const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a free quote for wooden pallets.')}`;
+const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need a free quote for wooden pallets.')}`;
 const trustPoints = ['Since 2009', 'Fast UAE Delivery', 'Custom Sizes Available', 'Bulk Orders Welcome'];
 
 export default function HeroSection() {
@@ -51,7 +51,7 @@ export default function HeroSection() {
             </a>
             <a
               className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-slate-950/40 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-sky-300/70 hover:bg-white/10 sm:w-auto"
-              href="tel:+971509253127"
+              href="tel:+923321716508"
             >
               <CallIcon className="size-5" />
               Call Now

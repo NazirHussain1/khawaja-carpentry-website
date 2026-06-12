@@ -5,7 +5,7 @@ import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
 
 const imageBase = import.meta.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://mujahidhussaincarpentry.store/images/';
-const whatsappBase = 'https://wa.me/971509253127?text=';
+const whatsappBase = 'https://wa.me/923321716508?text=';
 
 const heroFeatures = [
   'New Pallets',
@@ -497,7 +497,7 @@ export default function WoodenPallets() {
           <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={quoteUrl('wooden pallets')} target="_blank" rel="noreferrer">
             <WhatsAppIcon className="size-5" /> Request Quote
           </a>
-          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+971509253127">
+          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+923321716508">
             <CallIcon className="size-5" /> Call Now
           </a>
         </div>

@@ -2,7 +2,7 @@ import { ArrowUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import WhatsAppIcon from './WhatsAppIcon.jsx';
 
-const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for wooden pallets.')}`;
+const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need a quote for wooden pallets.')}`;
 
 export default function WhatsAppButton() {
   const [showScrollTop, setShowScrollTop] = useState(false);

@@ -7,9 +7,9 @@ const company = {
   legalName: 'FIASAL FAREED WOODS TR L.L.C',
   trn: '105168940200003',
   description: 'Leading manufacturer and supplier of premium wooden pallets, plastic pallets, and wooden crates in UAE.',
-  whatsapp: '971509253127',
-  phonePrimary: '+971 50 92 53127',
-  phoneSecondary: '+971 52 51 73794',
+  whatsapp: '923321716508',
+  phonePrimary: '03321716508',
+  phoneSecondary: '03321716508',
   email: 'nh534392@gmail.com',
   location: 'Sajja Industrial, Sharjah-U.A.E',
   mapsUrl: 'https://www.google.com/maps?q=Sajja%20Industrial%2C%20Sharjah-U.A.E'

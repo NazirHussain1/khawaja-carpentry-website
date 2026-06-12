@@ -26,7 +26,7 @@ export default function ContactForm() {
         </label>
         <label className={labelClass}>
           Phone
-          <input className={fieldClass} type="tel" name="phone" placeholder="+971 ..." required pattern="^[+0-9\\s-]{7,}$" />
+          <input className={fieldClass} type="tel" name="phone" placeholder="033..." required pattern="^[+0-9\\s-]{7,}$" />
         </label>
         <label className={labelClass}>
           Email

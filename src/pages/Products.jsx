@@ -5,7 +5,7 @@ import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 import { fetchManagedProducts } from '../utils/productsApi.js';
 
 const imageBase = import.meta.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://mujahidhussaincarpentry.store/images/';
-const whatsappUrl = `https://wa.me/971509253127?text=${encodeURIComponent('Hello, I need a quote for pallets and packaging in UAE.')}`;
+const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need a quote for pallets and packaging in UAE.')}`;
 
 const fallbackCategories = [
   {
@@ -157,7 +157,7 @@ export default function Products() {
               <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/30 transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
                 <WhatsAppIcon className="size-5" /> Get Quote
               </a>
-              <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/15" href="tel:+971509253127">
+              <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/15" href="tel:+923321716508">
                 <CallIcon className="size-5" /> Call Now
               </a>
             </div>
@@ -259,7 +259,7 @@ export default function Products() {
           <div className="rounded-3xl bg-gradient-to-br from-indigo-50 to-sky-50 p-10 text-center ring-1 ring-indigo-100">
             <WhatsAppIcon className="mx-auto size-20 text-[#25D366]" />
             <h3 className="mt-4 text-2xl font-black text-[#02024f]">WhatsApp Us Now</h3>
-            <p className="mt-2 font-semibold text-slate-600">+971 50 92 53127</p>
+            <p className="mt-2 font-semibold text-slate-600">03321716508</p>
             <a className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
               <WhatsAppIcon className="size-5" /> Start Chat
             </a>
@@ -275,7 +275,7 @@ export default function Products() {
           <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
             <WhatsAppIcon className="size-5" /> Get Quote
           </a>
-          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+971509253127">
+          <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1 hover:bg-white/15" href="tel:+923321716508">
             <Phone size={18} /> Call Now
           </a>
         </div>
