@@ -114,7 +114,7 @@ Production domain configuration and deployment checklist are in `PRODUCTION_DEPL
 
 ## Structure
 
-- `public/images`: image folders for hero, products, gallery, and logo assets
+- Product images load from `VITE_PRODUCT_IMAGE_BASE_URL` or admin-managed Cloudinary URLs
 - `src/components`: reusable UI sections
 - `src/pages`: route-level pages
 - `src/data`: editable site content
