@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 import { formDataToInquiry, productOptions, submitInquiry } from '../../utils/inquiries.js';
+import { createTelUrl, createWhatsAppUrl } from '../../utils/whatsapp.js';
 
 const fieldClass = 'mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/15';
 const labelClass = 'text-sm font-bold text-slate-700';
@@ -23,11 +24,18 @@ export default function QuoteForm({ defaultProduct = '', source = 'quote-form', 
     setStatus(null);
 
     try {
-      const result = await submitInquiry(formDataToInquiry(form, source));
+      const inquiry = formDataToInquiry(form, source);
+      const result = await submitInquiry(inquiry);
       setStatus({ type: 'success', message: result.message || 'Inquiry submitted successfully. Our team will contact you shortly.' });
       form.reset();
     } catch (error) {
-      setStatus({ type: 'error', message: error.message });
+      const inquiry = formDataToInquiry(form, source);
+      setStatus({
+        type: 'error',
+        message: error.message,
+        whatsappUrl: createWhatsAppUrl(formatInquiryMessage(inquiry)),
+        callUrl: createTelUrl()
+      });
     } finally {
       setSubmitting(false);
     }
@@ -80,14 +88,36 @@ export default function QuoteForm({ defaultProduct = '', source = 'quote-form', 
       </button>
 
       {status && (
-        <p
+        <div
           className={`mt-4 rounded-2xl px-4 py-3 text-sm font-semibold ${status.type === 'success' ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700'}`}
           role={status.type === 'success' ? 'status' : 'alert'}
           aria-live="polite"
         >
-          {status.message}
-        </p>
+          <p>{status.message}</p>
+          {status.type === 'error' && (
+            <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+              <a className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-4 py-2 text-xs font-black text-white transition hover:bg-emerald-500" href={status.whatsappUrl} target="_blank" rel="noreferrer">
+                Send on WhatsApp
+              </a>
+              <a className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-xs font-black text-red-700 ring-1 ring-red-200 transition hover:bg-red-50" href={status.callUrl}>
+                Call Now
+              </a>
+            </div>
+          )}
+        </div>
       )}
     </form>
   );
+}
+
+function formatInquiryMessage(inquiry) {
+  return [
+    'Hello, I need a quote.',
+    `Name: ${inquiry.name}`,
+    `Phone: ${inquiry.phone}`,
+    `Product: ${inquiry.productType}`,
+    inquiry.quantity ? `Quantity: ${inquiry.quantity}` : '',
+    inquiry.city ? `City: ${inquiry.city}` : '',
+    inquiry.message ? `Message: ${inquiry.message}` : ''
+  ].filter(Boolean).join('\n');
 }
