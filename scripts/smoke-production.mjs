@@ -61,6 +61,7 @@ try {
     await runCheck(check);
   }
   await runInvalidInquiryCheck();
+  await runValidInquiryCheck();
   console.log(`Production smoke checks passed at ${baseUrl}`);
 } finally {
   server.kill();
@@ -128,6 +129,30 @@ async function runInvalidInquiryCheck() {
   }
 
   console.log('invalid inquiry validation: 400');
+}
+
+async function runValidInquiryCheck() {
+  const response = await fetchWithTimeout(`${baseUrl}/api/inquiries`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: 'Smoke Test',
+      phone: '03321716508',
+      email: 'test@example.com',
+      productType: 'Wooden Pallets',
+      quantity: '1',
+      city: 'Test City',
+      message: 'Valid smoke test inquiry. Please ignore.',
+      source: 'production-smoke-test'
+    })
+  });
+  const data = await response.json();
+
+  if (response.status !== 200 || !data.ok || !data.saved) {
+    throw new Error(`valid inquiry returned ${response.status}; expected saved ok response`);
+  }
+
+  console.log(`valid inquiry submission: ${response.status}`);
 }
 
 async function fetchWithTimeout(url, options = {}) {

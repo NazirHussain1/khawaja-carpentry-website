@@ -134,7 +134,7 @@ app.post(apiPath('/events'), async (request, response) => {
   };
 
   if (event.eventName) {
-    await appendJsonLine(eventFile, event);
+    await saveEvent(event);
   }
 
   response.status(204).end();
@@ -159,16 +159,37 @@ app.post(apiPath('/inquiries'), async (request, response) => {
     return;
   }
 
-  await saveInquiry(inquiry);
-  const emailResult = await sendInquiryEmail(inquiry);
+  const [storageResult, emailResult] = await Promise.all([
+    saveInquiry(inquiry)
+      .then(() => ({ saved: true }))
+      .catch((error) => {
+        console.error('Inquiry storage failed:', error.message);
+        return { saved: false, message: error.message };
+      }),
+    sendInquiryEmail(inquiry)
+  ]);
+
+  if (!storageResult.saved && !emailResult.sent) {
+    response.status(503).json({
+      ok: false,
+      inquiryId: inquiry.id,
+      message: 'Inquiry could not be saved or emailed. Check MongoDB and SMTP environment variables.',
+      storageMessage: storageResult.message,
+      emailMessage: emailResult.message
+    });
+    return;
+  }
 
   response.json({
     ok: true,
     inquiryId: inquiry.id,
+    saved: storageResult.saved,
     emailSent: emailResult.sent,
-    message: emailResult.sent
+    message: storageResult.saved && emailResult.sent
       ? 'Inquiry submitted successfully. Our team will contact you shortly.'
-      : 'Inquiry saved successfully. Email delivery is not configured on this server.'
+      : storageResult.saved
+        ? 'Inquiry saved successfully. Email delivery is not configured on this server.'
+        : 'Inquiry email sent successfully. Persistent storage is not configured on this server.'
   });
 });
 
@@ -438,6 +459,7 @@ const defaultProducts = [
 async function saveInquiry(inquiry) {
   if (database) {
     await database.collection('inquiries').insertOne({ ...inquiry, status: 'new', notes: '' });
+    return;
   }
   await appendJsonLine(inquiryFile, inquiry);
 }
@@ -455,8 +477,20 @@ async function readInquiries() {
 async function saveInquiryStatus(id, statusData, statusMap) {
   if (database) {
     await database.collection('inquiries').updateOne({ id }, { $set: statusData });
+    return;
   }
   await writeJson(statusFile, statusMap);
+}
+
+async function saveEvent(event) {
+  if (database) {
+    await database.collection('analytics_events').insertOne(event);
+    return;
+  }
+
+  if (!isVercel) {
+    await appendJsonLine(eventFile, event);
+  }
 }
 
 function normalizeProduct(input = {}) {
