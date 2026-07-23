@@ -12,7 +12,7 @@ const introFeatures = ['NEW Only', 'Custom Sizes Available', 'ISPM-15 Treated', 
 const crateSizes = [
   {
     id: 'crate-100x100',
-    label: '100100',
+    label: '100 × 100 cm',
     quoteLabel: '100x100',
     heading: '100 cm x 100 cm Wooden Crate',
     description: 'Compact square crate ideal for machinery parts, automotive components, electrical equipment, and medium-sized industrial goods. Sturdy construction with reinforced corners.',
@@ -28,7 +28,7 @@ const crateSizes = [
   },
   {
     id: 'crate-100x120',
-    label: '100120',
+    label: '100 × 120 cm',
     quoteLabel: '100x120',
     heading: '100 cm x 120 cm Wooden Crate',
     description: 'Standard pallet-compatible crate size. Fits perfectly on 100x120 pallets for seamless logistics. Ideal for export shipments and containerized cargo.',
@@ -44,7 +44,7 @@ const crateSizes = [
   },
   {
     id: 'crate-80x200',
-    label: '80200',
+    label: '80 × 200 cm',
     quoteLabel: '80x200',
     heading: '80 cm x 200 cm Wooden Crate',
     description: 'Long-form crate designed for pipes, structural steel, long machinery parts, and elongated industrial equipment. Reinforced bottom and sides for heavy loads.',
@@ -60,7 +60,7 @@ const crateSizes = [
   },
   {
     id: 'crate-200x400',
-    label: '200400',
+    label: '200 × 400 cm',
     quoteLabel: '200x400',
     heading: '200 cm x 400 cm Wooden Crate',
     description: 'Extra-large heavy-duty crate for heavy machinery, generators, transformers, construction equipment, and large industrial exports.',
@@ -76,7 +76,7 @@ const crateSizes = [
   },
   {
     id: 'crate-100x400',
-    label: '100400',
+    label: '100 × 400 cm',
     quoteLabel: '100x400',
     heading: '100 cm x 400 cm Wooden Crate',
     description: 'Extra-long narrow crate for elongated industrial cargo, steel beams, piping systems, scaffolding, turbine blades, and long machinery components.',
@@ -243,10 +243,14 @@ export default function WoodenCrates() {
       <section className="bg-[#fbf7ff] px-4 py-14 sm:px-6 lg:px-8" id="crate-sizes">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Standard Crate Sizes" />
-          <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             {crateSizes.map((item) => (
               <a
-                className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 ${activeSize === item.id ? 'border-[#02024f] bg-[#02024f] text-white shadow-indigo-950/25' : 'border-indigo-200 bg-white text-indigo-700 hover:border-[#02024f] hover:bg-[#02024f] hover:text-white'}`}
+                className={`rounded-xl border-2 px-5 py-3 text-sm font-bold shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 ${
+                  activeSize === item.id 
+                    ? 'border-sky-500 bg-sky-500 text-white shadow-sky-500/25' 
+                    : 'border-slate-200 bg-white text-slate-800 hover:border-sky-400 hover:bg-sky-50 hover:text-sky-700'
+                }`}
                 href={`#${item.id}`}
                 onClick={() => setActiveSize(item.id)}
                 key={item.id}
@@ -255,7 +259,11 @@ export default function WoodenCrates() {
               </a>
             ))}
             <a
-              className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 ${activeSize === 'custom-crate' ? 'border-[#02024f] bg-[#02024f] text-white shadow-indigo-950/25' : 'border-indigo-200 bg-white text-indigo-700 hover:border-[#02024f] hover:bg-[#02024f] hover:text-white'}`}
+              className={`rounded-xl border-2 px-5 py-3 text-sm font-bold shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 ${
+                activeSize === 'custom-crate' 
+                  ? 'border-sky-500 bg-sky-500 text-white shadow-sky-500/25' 
+                  : 'border-slate-200 bg-white text-slate-800 hover:border-sky-400 hover:bg-sky-50 hover:text-sky-700'
+              }`}
               href="#custom-crate"
               onClick={() => setActiveSize('custom-crate')}
             >
