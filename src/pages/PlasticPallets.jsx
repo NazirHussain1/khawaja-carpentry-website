@@ -3,9 +3,7 @@ import { useState } from 'react';
 import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
-
-const imageBase = import.meta.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://mujahidhussaincarpentry.store/images/';
-const whatsappBase = 'https://wa.me/923321716508?text=';
+import { createWhatsAppUrl, getImageUrl } from '../config/constants.js';
 
 const introFeatures = ['New Pallets', 'Used Pallets', 'Heavy Duty', 'Normal Duty', 'Hygienic & Washable', 'Weather Resistant'];
 
@@ -96,11 +94,11 @@ const faqs = [
 ];
 
 function imageUrl(file) {
-  return `${imageBase}${encodeURIComponent(file)}`;
+  return getImageUrl(file);
 }
 
 function quoteUrl(size) {
-  return `${whatsappBase}${encodeURIComponent(`Hello, I need a quote for ${size} plastic pallet.`)}`;
+  return createWhatsAppUrl(`Hello, I need a quote for ${size} plastic pallet.`);
 }
 
 function displaySizeLabel(item) {
