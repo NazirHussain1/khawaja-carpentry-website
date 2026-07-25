@@ -292,7 +292,7 @@ function SizeSection({ item, index, onImageOpen }) {
   const fullImageUrl = imageUrl(item.image);
 
   return (
-    <section className={`${isAlt ? 'bg-[#fbf7ff]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
+    <section className={`${isAlt ? 'bg-[#F2E6EE]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
       <div className={`mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center ${isAlt ? 'lg:[&>*:first-child]:order-2' : ''}`}>
         <button
           className="group block overflow-hidden rounded-3xl text-left shadow-2xl shadow-slate-950/10 outline-none ring-offset-4 transition hover:-translate-y-1 hover:shadow-indigo-950/20 focus:ring-4 focus:ring-indigo-300"
@@ -426,7 +426,7 @@ export default function WoodenPallets() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-14 sm:px-6 lg:px-8" id="sizes">
+      <section className="px-4 py-14 sm:px-6 lg:px-8" style={{ backgroundColor: '#F2E6EE' }} id="sizes">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Jump to Any Size" />
           <div className="mt-8 flex flex-wrap justify-center gap-3">

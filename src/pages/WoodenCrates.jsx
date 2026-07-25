@@ -139,7 +139,7 @@ function CrateSizeSection({ item, index }) {
   const isAlt = index % 2 === 1;
 
   return (
-    <section className={`${isAlt ? 'bg-[#fbf7ff]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
+    <section className={`${isAlt ? 'bg-[#F2E6EE]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
       <div className={`mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center ${isAlt ? 'lg:[&>*:first-child]:order-2' : ''}`}>
         <img
           className="h-80 w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/10 sm:h-96"
@@ -159,7 +159,7 @@ function CrateSizeSection({ item, index }) {
           <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-950/5">
             {item.specs.map(([label, value]) => (
               <div className="grid grid-cols-[44%_1fr] border-b border-slate-100 last:border-b-0" key={label}>
-                <strong className="bg-[#fbf7ff] px-4 py-3 text-sm text-[#02024f]">{label}</strong>
+                <strong className="bg-[#F2E6EE] px-4 py-3 text-sm text-[#02024f]">{label}</strong>
                 <span className="px-4 py-3 text-sm font-medium text-slate-700">{value}</span>
               </div>
             ))}
@@ -238,7 +238,7 @@ export default function WoodenCrates() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-14 sm:px-6 lg:px-8" id="crate-sizes">
+      <section className="px-4 py-14 sm:px-6 lg:px-8" style={{ backgroundColor: '#F2E6EE' }} id="crate-sizes">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Standard Crate Sizes" />
           <div className="mt-8 flex flex-wrap justify-center gap-3">

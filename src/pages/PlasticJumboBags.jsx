@@ -328,7 +328,7 @@ export default function PlasticJumboBags() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-14 sm:px-6 lg:px-8" id="jumbo-capacities">
+      <section className="px-4 py-14 sm:px-6 lg:px-8" style={{ backgroundColor: '#F2E6EE' }} id="jumbo-capacities">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Choose Jumbo Bag Capacity" />
           <div className="mt-8 flex flex-wrap justify-center gap-3">
