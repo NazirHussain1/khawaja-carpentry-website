@@ -154,7 +154,7 @@ const faqs = [
 ];
 
 function imageUrl(file) {
-  return `${imageBase}${encodeURIComponent(file)}`;
+  return getImageUrl(file);
 }
 
 function quoteUrl(capacity) {
@@ -331,10 +331,14 @@ export default function PlasticJumboBags() {
       <section className="bg-[#fbf7ff] px-4 py-14 sm:px-6 lg:px-8" id="jumbo-capacities">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Choose Jumbo Bag Capacity" />
-          <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">
-            {capacities.map((item) => (
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {capacities.map((item, index) => (
               <a
-                className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 ${activeCapacity === item.id ? 'border-[#02024f] bg-[#02024f] text-white shadow-indigo-950/25' : 'border-indigo-200 bg-white text-indigo-700 hover:border-[#02024f] hover:bg-[#02024f] hover:text-white'}`}
+                className={`inline-flex items-center gap-2 rounded-[50px] border-2 px-[34px] py-3 text-base font-semibold transition-all duration-300 ${
+                  activeCapacity === item.id 
+                    ? 'border-sky-500 bg-sky-500 text-white shadow-lg' 
+                    : 'border-gray-200 bg-white text-[#02024f] hover:border-sky-400 hover:bg-sky-50 hover:text-sky-600'
+                }`}
                 href={`#${item.id}`}
                 onClick={() => setActiveCapacity(item.id)}
                 key={item.id}
@@ -343,7 +347,11 @@ export default function PlasticJumboBags() {
               </a>
             ))}
             <a
-              className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 ${activeCapacity === 'custom-jumbo-bag' ? 'border-[#02024f] bg-[#02024f] text-white shadow-indigo-950/25' : 'border-indigo-200 bg-white text-indigo-700 hover:border-[#02024f] hover:bg-[#02024f] hover:text-white'}`}
+              className={`inline-flex items-center gap-2 rounded-[50px] border-2 px-[34px] py-3 text-base font-semibold transition-all duration-300 ${
+                activeCapacity === 'custom-jumbo-bag' 
+                  ? 'border-sky-500 bg-sky-500 text-white shadow-lg' 
+                  : 'border-sky-500 bg-sky-500 text-white shadow-lg hover:border-sky-600 hover:bg-sky-600'
+              }`}
               href="#custom-jumbo-bag"
               onClick={() => setActiveCapacity('custom-jumbo-bag')}
             >

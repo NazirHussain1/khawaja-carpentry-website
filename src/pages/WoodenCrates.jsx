@@ -244,10 +244,10 @@ export default function WoodenCrates() {
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {crateSizes.map((item) => (
               <a
-                className={`rounded-xl border-2 px-5 py-3 text-sm font-bold shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 ${
+                className={`inline-flex items-center gap-2 rounded-[50px] border-2 px-[34px] py-3 text-base font-semibold transition-all duration-300 ${
                   activeSize === item.id 
-                    ? 'border-sky-500 bg-sky-500 text-white shadow-sky-500/25' 
-                    : 'border-slate-200 bg-white text-slate-800 hover:border-sky-400 hover:bg-sky-50 hover:text-sky-700'
+                    ? 'border-sky-500 bg-sky-500 text-white shadow-lg' 
+                    : 'border-gray-200 bg-white text-[#02024f] hover:border-sky-400 hover:bg-sky-50 hover:text-sky-600'
                 }`}
                 href={`#${item.id}`}
                 onClick={() => setActiveSize(item.id)}
@@ -257,10 +257,10 @@ export default function WoodenCrates() {
               </a>
             ))}
             <a
-              className={`rounded-xl border-2 px-5 py-3 text-sm font-bold shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 ${
+              className={`inline-flex items-center gap-2 rounded-[50px] border-2 px-[34px] py-3 text-base font-semibold transition-all duration-300 ${
                 activeSize === 'custom-crate' 
-                  ? 'border-sky-500 bg-sky-500 text-white shadow-sky-500/25' 
-                  : 'border-slate-200 bg-white text-slate-800 hover:border-sky-400 hover:bg-sky-50 hover:text-sky-700'
+                  ? 'border-sky-500 bg-sky-500 text-white shadow-lg' 
+                  : 'border-sky-500 bg-sky-500 text-white shadow-lg hover:border-sky-600 hover:bg-sky-600'
               }`}
               href="#custom-crate"
               onClick={() => setActiveSize('custom-crate')}

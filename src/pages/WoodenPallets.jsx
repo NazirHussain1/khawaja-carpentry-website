@@ -429,17 +429,26 @@ export default function WoodenPallets() {
       <section className="bg-[#fbf7ff] px-4 py-14 sm:px-6 lg:px-8" id="sizes">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Jump to Any Size" />
-          <div className="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3">
-            {palletSizes.map((item) => (
-              <a
-                className={`rounded-full border px-4 py-2 text-sm font-black shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 ${activeSize === item.id ? 'border-[#02024f] bg-[#02024f] text-white shadow-indigo-950/25' : 'border-indigo-200 bg-white text-indigo-700 hover:border-[#02024f] hover:bg-[#02024f] hover:text-white'}`}
-                href={`#${item.id}`}
-                onClick={() => setActiveSize(item.id)}
-                key={item.id}
-              >
-                {sizeButtonLabel(item)}
-              </a>
-            ))}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {palletSizes.map((item, index) => {
+              const isSpecialButton = item.label === 'Euro White' || item.label === 'Euro Black' || item.label === 'Custom Size';
+              return (
+                <a
+                  className={`inline-flex items-center gap-2 rounded-[50px] border-2 px-[34px] py-3 text-base font-semibold transition-all duration-300 ${
+                    activeSize === item.id 
+                      ? 'border-sky-500 bg-sky-500 text-white shadow-lg' 
+                      : isSpecialButton
+                      ? 'border-sky-500 bg-sky-500 text-white shadow-lg hover:border-sky-600 hover:bg-sky-600'
+                      : 'border-gray-200 bg-white text-[#02024f] hover:border-sky-400 hover:bg-sky-50 hover:text-sky-600'
+                  }`}
+                  href={`#${item.id}`}
+                  onClick={() => setActiveSize(item.id)}
+                  key={item.id}
+                >
+                  {sizeButtonLabel(item)}
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
