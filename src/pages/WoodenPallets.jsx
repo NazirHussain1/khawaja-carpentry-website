@@ -325,13 +325,13 @@ function SizeSection({ item, index, onImageOpen }) {
               ['Treatment', 'Heat Treated ISPM-15 available']
             ].map(([label, value]) => (
               <div className="grid grid-cols-[44%_1fr] border-b border-slate-100 last:border-b-0" key={label}>
-                <strong className="bg-[#fbf7ff] px-4 py-3 text-sm text-[#02024f]">{label}</strong>
+                <strong className="bg-[#F2E6EE] px-4 py-3 text-sm text-[#02024f]">{label}</strong>
                 <span className="px-4 py-3 text-sm font-medium text-slate-700">{value}</span>
               </div>
             ))}
           </div>
           <a
-            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-6 py-3 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-[50px] bg-gradient-to-r from-indigo-600 to-sky-500 px-9 py-[14px] text-base font-semibold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
             href={quoteUrl(item.quoteLabel)}
             target="_blank"
             rel="noreferrer"
@@ -375,7 +375,7 @@ function ImageLightbox({ image, onClose }) {
 
 export default function WoodenPallets() {
   const [openFaq, setOpenFaq] = useState(0);
-  const [activeSize, setActiveSize] = useState(palletSizes[0].id);
+  const [activeSize, setActiveSize] = useState('');
   const [lightboxImage, setLightboxImage] = useState(null);
   const heroImage = {
     src: imageUrl('100 cm x 120 cm Heavy Duty.jpg'),
@@ -415,7 +415,7 @@ export default function WoodenPallets() {
               ))}
             </ul>
             <a
-              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-[50px] bg-gradient-to-r from-indigo-600 to-sky-500 px-9 py-[14px] text-base font-semibold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
               href={quoteUrl('wooden pallets')}
               target="_blank"
               rel="noreferrer"
@@ -457,7 +457,7 @@ export default function WoodenPallets() {
         <SizeSection item={item} index={index} onImageOpen={setLightboxImage} key={item.id} />
       ))}
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Why Buy Wooden Pallets from Us?" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

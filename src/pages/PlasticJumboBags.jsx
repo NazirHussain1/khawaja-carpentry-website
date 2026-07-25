@@ -207,7 +207,7 @@ function CapacitySection({ item, index, onImageOpen }) {
   };
 
   return (
-    <section className={`${isAlt ? 'bg-[#fbf7ff]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
+    <section className={`${isAlt ? 'bg-[#F2E6EE]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
       <div className={`mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center ${isAlt ? 'lg:[&>*:first-child]:order-2' : ''}`}>
         <button
           className="group block cursor-pointer overflow-hidden rounded-3xl shadow-2xl shadow-slate-950/10 focus:outline-none focus:ring-4 focus:ring-indigo-300"
@@ -234,13 +234,13 @@ function CapacitySection({ item, index, onImageOpen }) {
           <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-950/5">
             {item.specs.map(([label, value]) => (
               <div className="grid grid-cols-[44%_1fr] border-b border-slate-100 last:border-b-0" key={label}>
-                <strong className="bg-[#fbf7ff] px-4 py-3 text-sm text-[#02024f]">{label}</strong>
+                <strong className="bg-[#F2E6EE] px-4 py-3 text-sm text-[#02024f]">{label}</strong>
                 <span className="px-4 py-3 text-sm font-medium text-slate-700">{value}</span>
               </div>
             ))}
           </div>
           <a
-            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-6 py-3 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-[50px] bg-gradient-to-r from-indigo-600 to-sky-500 px-9 py-[14px] text-base font-semibold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
             href={quoteUrl(item.quoteLabel)}
             target="_blank"
             rel="noreferrer"
@@ -255,7 +255,7 @@ function CapacitySection({ item, index, onImageOpen }) {
 
 export default function PlasticJumboBags() {
   const [openFaq, setOpenFaq] = useState(0);
-  const [activeCapacity, setActiveCapacity] = useState(capacities[0].id);
+  const [activeCapacity, setActiveCapacity] = useState('');
   const [lightboxImage, setLightboxImage] = useState(null);
   const introImage = {
     src: imageUrl('CP3 Pallets.jpg'),
@@ -280,7 +280,7 @@ export default function PlasticJumboBags() {
               Heavy-duty FIBC jumbo bags for bulk material storage, transportation, export, construction, agriculture, and industrial applications. Available in multiple load capacities.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400" href={quoteUrl('Plastic Jumbo Bags')} target="_blank" rel="noreferrer">
+              <a className="inline-flex items-center justify-center gap-2 rounded-[50px] bg-gradient-to-r from-indigo-600 to-sky-500 px-9 py-[14px] text-base font-semibold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400" href={quoteUrl('Plastic Jumbo Bags')} target="_blank" rel="noreferrer">
                 <WhatsAppIcon className="size-5" /> Get Best Price
               </a>
               <a className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-4 text-sm font-extrabold text-white backdrop-blur transition hover:-translate-y-1 hover:bg-white/15" href={quoteUrl('Plastic Jumbo Bags')} target="_blank" rel="noreferrer">
@@ -365,7 +365,7 @@ export default function PlasticJumboBags() {
         <CapacitySection item={item} index={index} onImageOpen={setLightboxImage} key={item.id} />
       ))}
 
-      <section className="bg-[#fbf7ff] px-4 py-[70px] sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-[70px] sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="All Capacities at a Glance" />
           <div className="mt-10 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
@@ -435,7 +435,7 @@ export default function PlasticJumboBags() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Industries We Serve" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -463,7 +463,7 @@ export default function PlasticJumboBags() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Jumbo Bag Capacity Guide" />
           <div className="mt-10 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">

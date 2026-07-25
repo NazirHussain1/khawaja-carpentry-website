@@ -158,7 +158,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow="Contact Information" title="Talk to Our Industrial Packaging Team" subtitle="Choose the fastest contact method for pricing, technical requirements, bulk supply, or delivery support." />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -204,7 +204,7 @@ export default function Contact() {
           </form>
 
           <div className="grid gap-6">
-            <form className="rounded-3xl border border-indigo-100 bg-[#fbf7ff] p-6 shadow-xl shadow-indigo-950/5" onSubmit={handleQuickQuote}>
+            <form className="rounded-3xl border border-indigo-100 bg-[#F2E6EE] p-6 shadow-xl shadow-indigo-950/5" onSubmit={handleQuickQuote}>
               <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-700">Quick Quote</span>
               <h2 className="mt-3 text-3xl font-black text-[#02024f]">Request a Fast Quote</h2>
               <div className="mt-6 grid gap-4">
@@ -233,7 +233,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Visit Our Facility" subtitle="Use the map for directions or contact us before visiting for stock availability and order planning." />
           <div className="mt-10 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
@@ -273,7 +273,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Why Contact Us?" subtitle="A practical industrial supplier focused on fast pricing, custom orders, and bulk supply support." />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -304,7 +304,7 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <SectionHeading title="Frequently Asked Questions" />
           <div className="mt-10 grid gap-4">

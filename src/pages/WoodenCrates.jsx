@@ -165,7 +165,7 @@ function CrateSizeSection({ item, index }) {
             ))}
           </div>
           <a
-            className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-6 py-3 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-[50px] bg-gradient-to-r from-indigo-600 to-sky-500 px-9 py-[14px] text-base font-semibold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
             href={quoteUrl(item.quoteLabel)}
             target="_blank"
             rel="noreferrer"
@@ -180,7 +180,7 @@ function CrateSizeSection({ item, index }) {
 
 export default function WoodenCrates() {
   const [openFaq, setOpenFaq] = useState(0);
-  const [activeSize, setActiveSize] = useState(crateSizes[0].id);
+  const [activeSize, setActiveSize] = useState('');
 
   return (
     <>
@@ -227,7 +227,7 @@ export default function WoodenCrates() {
               ))}
             </ul>
             <a
-              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-[50px] bg-gradient-to-r from-indigo-600 to-sky-500 px-9 py-[14px] text-base font-semibold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
               href={quoteUrl('wooden crates')}
               target="_blank"
               rel="noreferrer"
@@ -313,7 +313,7 @@ export default function WoodenCrates() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-14 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-14 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="What Are Wooden Crates Used For?" />
           <div className="mt-8 flex flex-wrap justify-center gap-3">

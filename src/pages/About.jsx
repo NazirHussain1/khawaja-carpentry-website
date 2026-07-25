@@ -227,7 +227,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8" id="our-journey">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8" id="our-journey">
         <div className="mx-auto max-w-7xl">
           <SectionHeading eyebrow="Our Story" title="Our Journey" subtitle="A steady expansion from pallet supply to complete industrial packaging support." />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -256,7 +256,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Why Choose Us" subtitle="Built for businesses that need consistent supply, practical advice, and dependable packaging." />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -294,7 +294,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Manufacturing Process" subtitle="A clear workflow from requirement discussion to quality check and delivery." />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -323,7 +323,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-700">Quality Commitment</span>
@@ -357,7 +357,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Meet Our Team" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -393,7 +393,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-[#fbf7ff] px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <SectionHeading title="Frequently Asked Questions" />
           <div className="mt-10 grid gap-4">
