@@ -128,8 +128,15 @@ function PlasticSizeSection({ item, index }) {
           height="680"
           loading="lazy"
           decoding="async"
+          data-aos={isAlt ? 'fade-right' : 'fade-left'}
+          data-aos-delay={index * 150}
+          data-aos-duration="800"
         />
-        <div>
+        <div
+          data-aos={isAlt ? 'fade-left' : 'fade-right'}
+          data-aos-delay={index * 150 + 100}
+          data-aos-duration="800"
+        >
           <span className="inline-flex rounded-full bg-indigo-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-indigo-700 ring-1 ring-indigo-100">
             Normal &amp; Heavy Duty - New &amp; Used
           </span>

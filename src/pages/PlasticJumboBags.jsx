@@ -214,6 +214,9 @@ function CapacitySection({ item, index, onImageOpen }) {
           type="button"
           aria-label={`Open full image for ${item.heading}`}
           onClick={() => onImageOpen(productImage)}
+          data-aos={isAlt ? 'fade-right' : 'fade-left'}
+          data-aos-delay={index * 150}
+          data-aos-duration="800"
         >
           <img
             className="h-80 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-96"
@@ -225,7 +228,11 @@ function CapacitySection({ item, index, onImageOpen }) {
             decoding="async"
           />
         </button>
-        <div>
+        <div
+          data-aos={isAlt ? 'fade-left' : 'fade-right'}
+          data-aos-delay={index * 150 + 100}
+          data-aos-duration="800"
+        >
           <span className="inline-flex rounded-full bg-[#02024f] px-4 py-2 text-xs font-black uppercase tracking-wide text-white shadow-lg shadow-indigo-950/20">
             {item.label} Capacity
           </span>
