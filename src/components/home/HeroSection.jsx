@@ -46,8 +46,16 @@ export default function HeroSection() {
   };
 
   const handleCardClick = (product) => {
-    // Navigate to product page
+    // Navigate to product page directly
     window.location.href = product.link;
+  };
+
+  const handleArrowClick = (direction) => {
+    if (direction === 'next') {
+      goToNext();
+    } else {
+      goToPrevious();
+    }
   };
 
   return (
@@ -82,7 +90,7 @@ export default function HeroSection() {
       {/* Main Content Container */}
       <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-between px-4 py-12 sm:px-6 lg:px-8">
         {/* Top Content */}
-        <div className="flex flex-1 items-center">
+        <div className="flex flex-1 items-center pt-16">
           <div className="w-full max-w-3xl">
             {/* Main Heading - Static */}
             <motion.h1
@@ -112,50 +120,46 @@ export default function HeroSection() {
                 </p>
               </motion.div>
             </AnimatePresence>
-
-            {/* CTA Buttons */}
-            <motion.div
-              className="mt-8 flex flex-col gap-3 sm:flex-row"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <a
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 px-8 py-4 text-base font-bold text-white shadow-[0_8px_30px_rgba(56,189,248,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(56,189,248,0.4)]"
-                href={heroConfig.primaryButton.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <WhatsAppIcon className="size-5" />
-                {heroConfig.primaryButton.text}
-                <motion.span
-                  className="inline-block"
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <ArrowRight size={18} />
-                </motion.span>
-              </a>
-
-              <a
-                className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/10"
-                href={heroConfig.secondaryButton.href}
-                data-spa-link="true"
-              >
-                {heroConfig.secondaryButton.text}
-                <ArrowRight className="transition-transform group-hover:translate-x-1" size={18} />
-              </a>
-            </motion.div>
           </div>
         </div>
 
-        {/* Bottom Product Selector - Glassmorphism Cards */}
+        {/* Bottom Section - CTA Buttons + Product Cards */}
         <motion.div
           className="pb-8"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
         >
+          {/* CTA Buttons */}
+          <div className="mb-6 flex flex-col justify-center gap-3 sm:flex-row">
+            <a
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 px-8 py-4 text-base font-bold text-white shadow-[0_8px_30px_rgba(56,189,248,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(56,189,248,0.4)]"
+              href={heroConfig.primaryButton.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <WhatsAppIcon className="size-5" />
+              {heroConfig.primaryButton.text}
+              <motion.span
+                className="inline-block"
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <ArrowRight size={18} />
+              </motion.span>
+            </a>
+
+            <a
+              className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/10"
+              href="/products"
+              data-spa-link="true"
+            >
+              View All Products
+              <ArrowRight className="transition-transform group-hover:translate-x-1" size={18} />
+            </a>
+          </div>
+
+          {/* Product Cards */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {heroProducts.map((product, index) => (
               <HeroProductCard
@@ -172,8 +176,8 @@ export default function HeroSection() {
 
       {/* Side Navigation Buttons */}
       <motion.button
-        className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-white/10 p-4 backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:scale-110 lg:block"
-        onClick={goToPrevious}
+        className="absolute left-4 top-1/2 z-20 hidden -translate-y-1/2 cursor-pointer rounded-full bg-white/10 p-4 backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:scale-110 lg:block"
+        onClick={() => handleArrowClick('prev')}
         type="button"
         aria-label="Previous product"
         initial={{ opacity: 0, x: -20 }}
@@ -185,8 +189,8 @@ export default function HeroSection() {
       </motion.button>
 
       <motion.button
-        className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-white/10 p-4 backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:scale-110 lg:block"
-        onClick={goToNext}
+        className="absolute right-4 top-1/2 z-20 hidden -translate-y-1/2 cursor-pointer rounded-full bg-white/10 p-4 backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:scale-110 lg:block"
+        onClick={() => handleArrowClick('next')}
         type="button"
         aria-label="Next product"
         initial={{ opacity: 0, x: 20 }}
@@ -216,23 +220,6 @@ export default function HeroSection() {
           />
         ))}
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-24 left-1/2 hidden -translate-x-1/2 lg:block"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-      >
-        <motion.div
-          className="flex flex-col items-center gap-2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <span className="text-xs font-semibold uppercase tracking-widest text-white/60">Scroll</span>
-          <div className="h-12 w-[2px] bg-gradient-to-b from-white/60 to-transparent" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

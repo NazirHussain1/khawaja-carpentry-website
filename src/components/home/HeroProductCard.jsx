@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 export default function HeroProductCard({ product, isActive, onClick, index }) {
   return (
     <motion.button
-      className={`group relative overflow-hidden rounded-[20px] p-4 text-left backdrop-blur-xl transition-all duration-500 ${
+      className={`group relative cursor-pointer overflow-hidden rounded-[20px] p-4 text-left backdrop-blur-xl transition-all duration-500 ${
         isActive
           ? 'border-2 border-sky-400 bg-white/15 shadow-[0_8px_32px_rgba(56,189,248,0.25)]'
           : 'border border-white/10 bg-white/5 hover:border-white/30 hover:bg-white/10'
@@ -19,6 +19,7 @@ export default function HeroProductCard({ product, isActive, onClick, index }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -8 }}
+      style={{ cursor: 'pointer' }}
     >
       {/* Active indicator glow */}
       {isActive && (
@@ -32,9 +33,9 @@ export default function HeroProductCard({ product, isActive, onClick, index }) {
 
       <div className="flex items-center gap-4">
         {/* Product thumbnail */}
-        <div className="relative size-16 shrink-0 overflow-hidden rounded-xl">
+        <div className="relative size-16 shrink-0 cursor-pointer overflow-hidden rounded-xl">
           <motion.img
-            className="h-full w-full object-cover"
+            className="h-full w-full cursor-pointer object-cover"
             src={product.thumbnail}
             alt={product.title}
             loading="lazy"
