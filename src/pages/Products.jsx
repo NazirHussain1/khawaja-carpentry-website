@@ -141,7 +141,7 @@ export default function Products() {
         className="relative isolate min-h-[460px] bg-slate-950 text-white sm:min-h-[520px]"
         style={{
           backgroundImage:
-            `linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('${imageUrl('100 cm x 120 cm Heavy Duty.jpg')}')`,
+            "linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp')",
           backgroundPosition: 'center',
           backgroundSize: 'cover'
         }}

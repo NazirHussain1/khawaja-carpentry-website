@@ -58,12 +58,12 @@ const chooseUs = [
 ];
 
 const products = [
-  ['Wooden Pallets', 'New, used, refurbished, heat-treated, and custom-size wooden pallets for industrial supply.', '/wooden-pallets', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Plastic Pallets', 'Washable, durable, normal-duty and heavy-duty plastic pallets for logistics and warehouses.', '/plastic-pallets', 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Wooden Crates', 'Export-quality crates for machinery, industrial cargo, storage, and safe transportation.', '/wooden-crates', 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Plastic Jumbo Bags', 'Heavy-duty FIBC jumbo bags for bulk construction, agriculture, minerals, and warehouse use.', '/plastic-jumbo-bags', 'https://images.unsplash.com/photo-1581093458791-9d09ccfed1c1?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Pallet Repair Services', 'Repair, sorting, reconditioning, and refurbishing services for reusable pallet stock.', '/products', 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=65&fm=webp'],
-  ['Custom Packaging Solutions', 'Made-to-order industrial packaging for non-standard sizes, export cargo, and bulk supply.', '/contact', 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=900&q=65&fm=webp']
+  ['Wooden Pallets', 'New, used, refurbished, heat-treated, and custom-size wooden pallets for industrial supply.', '/wooden-pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp'],
+  ['Plastic Pallets', 'Washable, durable, normal-duty and heavy-duty plastic pallets for logistics and warehouses.', '/plastic-pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590503/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp'],
+  ['Wooden Crates', 'Export-quality crates for machinery, industrial cargo, storage, and safe transportation.', '/wooden-crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590633/khawaja-carpentry/emja7hszpeitqkazbndq.webp'],
+  ['Plastic Jumbo Bags', 'Heavy-duty FIBC jumbo bags for bulk construction, agriculture, minerals, and warehouse use.', '/plastic-jumbo-bags', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003706/khawaja-carpentry/zmohrfj5occsegwwl97q.webp'],
+  ['Pallet Repair Services', 'Repair, sorting, reconditioning, and refurbishing services for reusable pallet stock.', '/products', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003710/khawaja-carpentry/kk2edvzkvabmqansnste.webp'],
+  ['Custom Packaging Solutions', 'Made-to-order industrial packaging for non-standard sizes, export cargo, and bulk supply.', '/contact', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590639/khawaja-carpentry/a57buvlmujgv90f1k32q.webp']
 ];
 
 const process = [
@@ -200,7 +200,7 @@ export default function About() {
 
       <section className="bg-white px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
-          <img className="h-[360px] w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/15 sm:h-[500px]" src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=65&fm=webp" alt="Industrial warehouse and manufacturing facility" width="1200" height="820" loading="lazy" decoding="async" />
+          <img className="h-[360px] w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/15 sm:h-[500px]" src="https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp" alt="Industrial warehouse and manufacturing facility" width="1200" height="820" loading="lazy" decoding="async" />
           <div>
             <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-700">About Us</span>
             <h2 className="mt-4 text-4xl font-black leading-tight text-[#02024f] sm:text-5xl">Trusted Wooden Pallet Manufacturer & Supplier</h2>

@@ -6,15 +6,15 @@ import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 const filters = ['All', 'Wooden Pallets', 'Wooden Crates', 'Plastic Pallets', 'Jumbo Bags', 'Warehouse Operations', 'Export Packing'];
 
 const galleryItems = [
-  ['Wooden Pallets', 'Wooden Pallets', 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=65&fm=webp'],
-  ['Wooden Pallet Manufacturing', 'Wooden Pallets', 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=65&fm=webp'],
-  ['Plastic Pallets Stock', 'Plastic Pallets', 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1200&q=65&fm=webp'],
-  ['Wooden Crates', 'Wooden Crates', 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=1200&q=65&fm=webp'],
-  ['Plastic Jumbo Bags', 'Jumbo Bags', 'https://images.unsplash.com/photo-1581093458791-9d09ccfed1c1?auto=format&fit=crop&w=1200&q=65&fm=webp'],
-  ['Forklift Loading Pallets', 'Warehouse Operations', 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1200&q=65&fm=webp'],
-  ['Warehouse Storage', 'Warehouse Operations', 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=65&fm=webp'],
-  ['Export Packing Operations', 'Export Packing', 'https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=1200&q=65&fm=webp'],
-  ['Delivery Operations', 'Warehouse Operations', 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=1200&q=65&fm=webp']
+  ['Wooden Pallets', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp'],
+  ['Wooden Pallet Manufacturing', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590618/khawaja-carpentry/iff96ytyfhmksuskt1kl.webp'],
+  ['Plastic Pallets Stock', 'Plastic Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590503/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp'],
+  ['Wooden Crates', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590633/khawaja-carpentry/emja7hszpeitqkazbndq.webp'],
+  ['Wooden Crates Heavy Duty', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590639/khawaja-carpentry/a57buvlmujgv90f1k32q.webp'],
+  ['Used White Euro Stock', 'Warehouse Operations', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590650/khawaja-carpentry/dgw9s1oyhbemcmhclofw.webp'],
+  ['New White Euro Stock', 'Warehouse Operations', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590672/khawaja-carpentry/dbegytbei3vvaflnkfny.webp'],
+  ['Plastic Heavy Duty Pallets', 'Plastic Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590653/khawaja-carpentry/edizp0jtgrjsuzfkoh34.webp'],
+  ['Wooden Boxes Small Size', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590625/khawaja-carpentry/kjh8lnzkbwucivdfport.webp']
 ].map(([title, category, image]) => ({ title, category, image }));
 
 const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need quality industrial packaging solutions.')}`;
@@ -65,7 +65,7 @@ export default function Gallery() {
         className="relative isolate min-h-[460px] bg-slate-950 text-white sm:min-h-[520px]"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1400&q=65&fm=webp')",
+            "linear-gradient(90deg, rgba(2, 2, 79, 0.94), rgba(22, 17, 86, 0.86), rgba(2, 6, 23, 0.62)), url('https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp')",
           backgroundPosition: 'center',
           backgroundSize: 'cover'
         }}
