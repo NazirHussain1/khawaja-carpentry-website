@@ -36,7 +36,7 @@ const locations = [
   }
 ];
 
-const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need pallets anywhere in UAE.')}`;
+const whatsappUrl = `https://wa.me/971542046121?text=${encodeURIComponent('Hello, I need pallets anywhere in UAE.')}`;
 
 export default function IndustriesSection() {
   return (

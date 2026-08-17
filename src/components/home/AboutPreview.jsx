@@ -17,7 +17,7 @@ const stats = [
   ['7', 'Emirates Covered']
 ];
 
-const whatsappUrl = `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need a quote for wooden pallets.')}`;
+const whatsappUrl = `https://wa.me/971542046121?text=${encodeURIComponent('Hello, I need a quote for wooden pallets.')}`;
 
 export default function AboutPreview() {
   return (

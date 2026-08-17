@@ -5,10 +5,10 @@ import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 const contact = {
   location: 'Sajja Industrial, Sharjah-U.A.E',
   mapsUrl: 'https://www.google.com/maps?q=Sajja%20Industrial%2C%20Sharjah-U.A.E',
-  phone: '03321716508',
-  whatsappPhone: '+923321716508',
-  whatsappUrl: `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need a quote for pallets and packaging.')}`,
-  email: 'nh534392@gmail.com',
+  phone: '+971 58 844 1600',
+  whatsappPhone: '+971 54 204 6121',
+  whatsappUrl: `https://wa.me/971542046121?text=${encodeURIComponent('Hello, I need a quote for pallets and packaging.')}`,
+  email: 'faislfareed786@gmail.com',
   hours: 'Monday - Saturday : 8:00 AM - 7:00 PM'
 };
 
