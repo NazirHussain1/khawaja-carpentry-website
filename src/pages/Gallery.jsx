@@ -1,26 +1,37 @@
-import { ChevronLeft, ChevronRight, Plus, Search, X } from 'lucide-react';
+import { Award, CheckCircle2, ChevronLeft, ChevronRight, Factory, Package, Plus, Search, Star, TrendingUp, Users, X } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
+import contactInfo from '../data/contactInfo.js';
 
-const filters = ['All', 'Wooden Pallets', 'Wooden Crates', 'Plastic Pallets', 'Jumbo Bags'];
+const filters = ['All', 'Wooden Pallets', 'Wooden Crates', 'Plastic Pallets', 'Jumbo Bags', 'Workshop & Projects'];
 
 const galleryItems = [
-  ['Standard Wooden Pallets', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp'],
-  ['Wooden Pallet 110x130', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590618/khawaja-carpentry/iff96ytyfhmksuskt1kl.webp'],
-  ['Heavy Duty Wooden Crate', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590639/khawaja-carpentry/a57buvlmujgv90f1k32q.webp'],
-  ['Wooden Boxes Custom Size', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590633/khawaja-carpentry/emja7hszpeitqkazbndq.webp'],
-  ['Wooden Box 100x100 cm', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590625/khawaja-carpentry/kjh8lnzkbwucivdfport.webp'],
-  ['White Euro Pallets', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590672/khawaja-carpentry/dbegytbei3vvaflnkfny.webp'],
-  ['Refurbished Wooden Pallets', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003710/khawaja-carpentry/kk2edvzkvabmqansnste.webp'],
-  ['New Wooden Pallet 100x120', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785002181/khawaja-carpentry/e1cyyteykkwwsye24ilm.webp'],
-  ['Plastic Pallets Stock', 'Plastic Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590503/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp'],
-  ['Plastic Heavy Duty 100x120', 'Plastic Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590653/khawaja-carpentry/edizp0jtgrjsuzfkoh34.webp'],
-  ['Normal Duty Plastic Pallet', 'Plastic Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590618/khawaja-carpentry/d7jqiagljk0korncdhkr.webp'],
-  ['Plastic Jumbo Bags', 'Jumbo Bags', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003706/khawaja-carpentry/zmohrfj5occsegwwl97q.webp']
-].map(([title, category, image]) => ({ title, category, image }));
+  { title: 'Standard Wooden Pallets', category: 'Wooden Pallets', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp', description: 'High-quality standard wooden pallets for industrial use' },
+  { title: 'Wooden Pallet 110x130', category: 'Wooden Pallets', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590618/khawaja-carpentry/iff96ytyfhmksuskt1kl.webp', description: 'Custom size wooden pallets manufactured to specifications' },
+  { title: 'Heavy Duty Wooden Crate', category: 'Wooden Crates', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590639/khawaja-carpentry/a57buvlmujgv90f1k32q.webp', description: 'Heavy-duty wooden crates for safe transportation' },
+  { title: 'Wooden Boxes Custom Size', category: 'Wooden Crates', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590633/khawaja-carpentry/emja7hszpeitqkazbndq.webp', description: 'Custom-sized wooden boxes for export and storage' },
+  { title: 'Wooden Box 100x100 cm', category: 'Wooden Crates', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590625/khawaja-carpentry/kjh8lnzkbwucivdfport.webp', description: 'Square wooden boxes for industrial packaging' },
+  { title: 'White Euro Pallets', category: 'Wooden Pallets', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590672/khawaja-carpentry/dbegytbei3vvaflnkfny.webp', description: 'Premium white Euro pallets for export' },
+  { title: 'Refurbished Wooden Pallets', category: 'Wooden Pallets', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003710/khawaja-carpentry/kk2edvzkvabmqansnste.webp', description: 'Eco-friendly refurbished pallets' },
+  { title: 'New Wooden Pallet 100x120', category: 'Wooden Pallets', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785002181/khawaja-carpentry/e1cyyteykkwwsye24ilm.webp', description: 'Brand new 100x120 wooden pallets' },
+  { title: 'Plastic Pallets Stock', category: 'Plastic Pallets', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590503/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp', description: 'Durable plastic pallets in stock' },
+  { title: 'Plastic Heavy Duty 100x120', category: 'Plastic Pallets', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590653/khawaja-carpentry/edizp0jtgrjsuzfkoh34.webp', description: 'Heavy-duty plastic pallets for logistics' },
+  { title: 'Normal Duty Plastic Pallet', category: 'Plastic Pallets', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590618/khawaja-carpentry/d7jqiagljk0korncdhkr.webp', description: 'Standard plastic pallets for warehouses' },
+  { title: 'Plastic Jumbo Bags', category: 'Jumbo Bags', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003706/khawaja-carpentry/zmohrfj5occsegwwl97q.webp', description: 'Industrial jumbo bags for bulk materials' },
+  { title: 'Workshop Manufacturing', category: 'Workshop & Projects', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp', description: 'State-of-the-art manufacturing facility' },
+  { title: 'Quality Control Process', category: 'Workshop & Projects', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590639/khawaja-carpentry/a57buvlmujgv90f1k32q.webp', description: 'Rigorous quality control procedures' },
+  { title: 'Warehouse Operations', category: 'Workshop & Projects', image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590503/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp', description: 'Efficient warehouse management' }
+];
 
-const whatsappUrl = `https://wa.me/971542046121?text=${encodeURIComponent('Hello, I need quality industrial packaging solutions.')}`;
+const stats = [
+  { icon: TrendingUp, value: '15+', label: 'Years Experience', color: 'from-indigo-500 to-purple-500' },
+  { icon: Package, value: '50K+', label: 'Products Delivered', color: 'from-sky-500 to-blue-500' },
+  { icon: Users, value: '500+', label: 'Happy Clients', color: 'from-violet-500 to-indigo-500' },
+  { icon: Award, value: '100%', label: 'Quality Assured', color: 'from-pink-500 to-rose-500' }
+];
+
+const whatsappUrl = `https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent('Hello, I need quality industrial packaging solutions.')}`;
 
 export default function Gallery() {
   const [activeFilter, setActiveFilter] = useState('All');
