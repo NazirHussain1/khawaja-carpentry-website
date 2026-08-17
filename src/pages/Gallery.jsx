@@ -3,21 +3,21 @@ import { useEffect, useMemo, useState } from 'react';
 import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 
-const filters = ['All', 'Wooden Pallets', 'Wooden Crates', 'Plastic Pallets', 'Jumbo Bags', 'Warehouse Operations', 'Export Packing'];
+const filters = ['All', 'Wooden Pallets', 'Wooden Crates', 'Plastic Pallets', 'Jumbo Bags'];
 
 const galleryItems = [
-  ['Wooden Pallets Supplier', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp'],
+  ['Standard Wooden Pallets', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp'],
   ['Wooden Pallet 110x130', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590618/khawaja-carpentry/iff96ytyfhmksuskt1kl.webp'],
-  ['Plastic Pallets Stock', 'Plastic Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590503/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp'],
-  ['Wooden Boxes/Crates', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590633/khawaja-carpentry/emja7hszpeitqkazbndq.webp'],
-  ['Heavy Duty Wooden Boxes', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590639/khawaja-carpentry/a57buvlmujgv90f1k32q.webp'],
-  ['Used White Euro Pallets', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590650/khawaja-carpentry/dgw9s1oyhbemcmhclofw.webp'],
-  ['New White Euro Pallets', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590672/khawaja-carpentry/dbegytbei3vvaflnkfny.webp'],
-  ['Plastic Heavy Duty 100x120', 'Plastic Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590653/khawaja-carpentry/edizp0jtgrjsuzfkoh34.webp'],
-  ['Wooden Boxes 100x100', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590625/khawaja-carpentry/kjh8lnzkbwucivdfport.webp'],
+  ['Heavy Duty Wooden Crate', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590639/khawaja-carpentry/a57buvlmujgv90f1k32q.webp'],
+  ['Wooden Boxes Custom Size', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590633/khawaja-carpentry/emja7hszpeitqkazbndq.webp'],
+  ['Wooden Box 100x100 cm', 'Wooden Crates', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590625/khawaja-carpentry/kjh8lnzkbwucivdfport.webp'],
+  ['White Euro Pallets', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590672/khawaja-carpentry/dbegytbei3vvaflnkfny.webp'],
   ['Refurbished Wooden Pallets', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003710/khawaja-carpentry/kk2edvzkvabmqansnste.webp'],
-  ['CP3 Pallets/Jumbo Bags', 'Jumbo Bags', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003706/khawaja-carpentry/zmohrfj5occsegwwl97q.webp'],
-  ['New 100x120 Wooden Pallet', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785002181/khawaja-carpentry/e1cyyteykkwwsye24ilm.webp']
+  ['New Wooden Pallet 100x120', 'Wooden Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785002181/khawaja-carpentry/e1cyyteykkwwsye24ilm.webp'],
+  ['Plastic Pallets Stock', 'Plastic Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590503/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp'],
+  ['Plastic Heavy Duty 100x120', 'Plastic Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590653/khawaja-carpentry/edizp0jtgrjsuzfkoh34.webp'],
+  ['Normal Duty Plastic Pallet', 'Plastic Pallets', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590618/khawaja-carpentry/d7jqiagljk0korncdhkr.webp'],
+  ['Plastic Jumbo Bags', 'Jumbo Bags', 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003706/khawaja-carpentry/zmohrfj5occsegwwl97q.webp']
 ].map(([title, category, image]) => ({ title, category, image }));
 
 const whatsappUrl = `https://wa.me/971542046121?text=${encodeURIComponent('Hello, I need quality industrial packaging solutions.')}`;
