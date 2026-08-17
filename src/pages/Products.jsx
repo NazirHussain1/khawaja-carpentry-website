@@ -264,7 +264,7 @@ export default function Products() {
           <div className="rounded-3xl bg-gradient-to-br from-indigo-50 to-sky-50 p-10 text-center ring-1 ring-indigo-100">
             <WhatsAppIcon className="mx-auto size-20 text-[#25D366]" />
             <h3 className="mt-4 text-2xl font-black text-[#02024f]">WhatsApp Us Now</h3>
-            <p className="mt-2 font-semibold text-slate-600">03321716508</p>
+            <p className="mt-2 font-semibold text-slate-600">+971 54 204 6121</p>
             <a className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
               <WhatsAppIcon className="size-5" /> Start Chat
             </a>
