@@ -75,8 +75,8 @@ export default function Gallery() {
       >
         <div className="mx-auto flex min-h-[460px] max-w-7xl items-center px-4 py-16 sm:min-h-[520px] sm:px-6 sm:py-20 lg:px-8">
           <div className="max-w-4xl">
-            <span className="inline-flex rounded-full bg-indigo-500/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-100 ring-1 ring-white/10">Industrial Gallery</span>
-            <h1 className="mt-6 text-3xl font-black leading-tight sm:text-5xl lg:text-7xl">Our Industrial Gallery</h1>
+            <span className="inline-flex rounded-full bg-indigo-500/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-100 ring-1 ring-white/10">Gallery — Our Work</span>
+            <h1 className="mt-6 text-3xl font-black leading-tight sm:text-5xl lg:text-7xl">FIASAL FAREED WOODS TR L.L.C Sharjah UAE</h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
               Explore our wooden pallets, wooden crates, plastic pallets, jumbo bags, warehouse stock, export packing, and industrial supply operations across UAE.
             </p>

@@ -141,8 +141,8 @@ export default function Contact() {
             <span className="text-white">Contact Us</span>
           </nav>
           <div className="mt-10 max-w-4xl">
-            <span className="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-100 ring-1 ring-white/15">Industrial Contact Desk</span>
-            <h1 className="mt-5 text-4xl font-black leading-tight sm:text-5xl lg:text-7xl">Get in Touch With Us</h1>
+            <span className="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-100 ring-1 ring-white/15">Contact Us — Get in Touch</span>
+            <h1 className="mt-5 text-4xl font-black leading-tight sm:text-5xl lg:text-7xl">FIASAL FAREED WOODS TR L.L.C Sharjah UAE</h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-100 sm:text-xl">
               Need pallets, crates, plastic pallets, or jumbo bags? Contact our team for pricing, bulk orders, and custom manufacturing solutions.
             </p>
