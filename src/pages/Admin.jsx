@@ -344,7 +344,7 @@ export default function Admin() {
     try {
       const data = await requestJson('/api/admin/email-test', {
         method: 'POST',
-        body: JSON.stringify({ to: 'nh534392@gmail.com' })
+        body: JSON.stringify({ to: 'faislfareed786@gmail.com' })
       });
       setNotice(data.message || 'Test email sent successfully.');
     } catch (requestError) {
