@@ -23,8 +23,8 @@ const site = {
   url: import.meta.env.VITE_SITE_URL || 'https://fiasal-fareed-woods.vercel.app',
   image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp',
   keywords: 'wooden pallets UAE, pallet supplier Dubai, wooden pallets Sharjah, wooden crates UAE, plastic pallets UAE, jumbo bags supplier UAE, industrial packaging UAE, export pallets UAE',
-  phone: '03321716508',
-  email: 'nh534392@gmail.com',
+  phone: '+971 58 844 1600',
+  email: 'faislfareed786@gmail.com',
   address: 'Sajja Industrial, Sharjah-U.A.E',
   trn: '105168940200003'
 };

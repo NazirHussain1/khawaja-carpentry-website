@@ -243,7 +243,7 @@ app.patch(apiPath('/admin/inquiries/:id'), requireAdmin, async (request, respons
 });
 
 app.post(apiPath('/admin/email-test'), requireAdmin, async (request, response) => {
-  const to = sanitizeText(request.body?.to || process.env.INQUIRY_TO_EMAIL || 'nh534392@gmail.com', 120);
+  const to = sanitizeText(request.body?.to || process.env.INQUIRY_TO_EMAIL || 'faislfareed786@gmail.com', 120);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) {
     response.status(400).json({ ok: false, message: 'Please provide a valid email address.' });
     return;
@@ -812,7 +812,7 @@ async function sendInquiryEmail(inquiry) {
 
     await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
-      to: process.env.INQUIRY_TO_EMAIL || 'nh534392@gmail.com',
+      to: process.env.INQUIRY_TO_EMAIL || 'faislfareed786@gmail.com',
       replyTo: inquiry.email,
       subject: `New Quote Request - ${inquiry.productType}`,
       text: formatEmailText(inquiry),

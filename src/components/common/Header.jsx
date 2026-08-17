@@ -4,12 +4,12 @@ import { CallIcon, MailIcon } from './ContactIcons.jsx';
 import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 const contact = {
-  email: 'nh534392@gmail.com',
-  phonePrimary: '03321716508',
-  phoneSecondary: '03321716508',
+  email: 'faislfareed786@gmail.com',
+  phonePrimary: '+971 58 844 1600',
+  phoneSecondary: '+971 54 204 6121',
   location: 'Sajja Industrial, Sharjah-U.A.E',
   mapsUrl: 'https://www.google.com/maps?q=Sajja%20Industrial%2C%20Sharjah-U.A.E',
-  whatsappUrl: `https://wa.me/923321716508?text=${encodeURIComponent('Hello, I need a quote for wooden pallets.')}`
+  whatsappUrl: `https://wa.me/971542046121?text=${encodeURIComponent('Hello, I need a quote for wooden pallets.')}`
 };
 
 function TopBarLink({ href, icon: Icon, children, className = '' }) {
