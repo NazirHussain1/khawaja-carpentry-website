@@ -36,7 +36,7 @@ const upload = multer({
 });
 
 await loadEnv();
-const productImageBaseUrl = process.env.PRODUCT_IMAGE_BASE_URL || process.env.VITE_PRODUCT_IMAGE_BASE_URL || 'https://mujahidhussaincarpentry.store/images/';
+// productImageBaseUrl is no longer used - all products now use hardcoded Cloudinary URLs
 if (!isVercel) {
   await mkdir(dataDir, { recursive: true });
 }
@@ -406,7 +406,7 @@ const defaultProducts = [
     description: 'Strong wooden pallets for warehouses, logistics, export, construction, manufacturing, and industrial storage.',
     href: '/wooden-pallets',
     buttonLabel: 'View All Sizes',
-    imageUrl: `${productImageBaseUrl}100cm%20x%20120cm.jpg`,
+    imageUrl: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp',
     specs: ['20+ sizes', 'New and refurbished', 'ISPM-15 available', 'Custom sizes'],
     status: 'active',
     featured: true,
@@ -420,7 +420,7 @@ const defaultProducts = [
     description: 'Heavy-duty wooden crates for safe machinery packing, export shipping, storage, and industrial cargo protection.',
     href: '/wooden-crates',
     buttonLabel: 'View All Sizes',
-    imageUrl: `${productImageBaseUrl}wooden%20boxes.jpeg`,
+    imageUrl: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/emja7hszpeitqkazbndq.webp',
     specs: ['New only', 'Export quality', 'Custom heights', 'ISPM-15 available'],
     status: 'active',
     featured: true,
@@ -434,7 +434,7 @@ const defaultProducts = [
     description: 'Durable plastic pallets for food, pharmaceutical, warehouse, logistics, chemical, and industrial operations.',
     href: '/plastic-pallets',
     buttonLabel: 'View All Sizes',
-    imageUrl: `${productImageBaseUrl}plastic%20pallets.jpeg`,
+    imageUrl: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp',
     specs: ['5 sizes', 'New and used', 'Normal and heavy duty', 'Washable'],
     status: 'active',
     featured: true,
@@ -448,7 +448,7 @@ const defaultProducts = [
     description: 'Heavy-duty jumbo bags for construction, agriculture, minerals, chemicals, export, and bulk material handling.',
     href: '/plastic-jumbo-bags',
     buttonLabel: 'View All Sizes',
-    imageUrl: `${productImageBaseUrl}CP3%20Pallets.jpg`,
+    imageUrl: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/zmohrfj5occsegwwl97q.webp',
     specs: ['500 KG', '1 Ton', '1.5 Ton', '2 Ton', '2.5 Ton'],
     status: 'active',
     featured: true,
