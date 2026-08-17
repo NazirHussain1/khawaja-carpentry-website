@@ -7,7 +7,7 @@ const fallbackProducts = [
     title: 'Wooden Pallets',
     description: 'New & refurbished wooden pallets available in standard, Euro, and custom sizes for warehouses, manufacturing, logistics, and export industries.',
     href: '/wooden-pallets',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_900,h_600,c_fill,f_auto,q_auto/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp',
     badge: 'Best Seller',
     badgeColor: 'from-purple-600 to-indigo-600'
   },
@@ -15,7 +15,7 @@ const fallbackProducts = [
     title: 'Wooden Crates',
     description: 'Heavy-duty custom wooden crates designed for safe transportation of machinery, industrial equipment, fragile products, and export shipments.',
     href: '/wooden-crates',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590633/khawaja-carpentry/emja7hszpeitqkazbndq.webp',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_900,h_600,c_fill,f_auto,q_auto/khawaja-carpentry/emja7hszpeitqkazbndq.webp',
     badge: 'Custom Made',
     badgeColor: 'from-indigo-600 to-blue-600'
   },
@@ -23,7 +23,7 @@ const fallbackProducts = [
     title: 'Plastic Pallets',
     description: 'Durable and lightweight plastic pallets suitable for food processing, pharmaceuticals, warehouses, and hygienic storage applications.',
     href: '/plastic-pallets',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590503/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_900,h_600,c_fill,f_auto,q_auto/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp',
     badge: 'Durable',
     badgeColor: 'from-blue-600 to-cyan-600'
   },
@@ -31,7 +31,7 @@ const fallbackProducts = [
     title: 'Plastic Jumbo Bags',
     description: 'High-capacity FIBC jumbo bags ideal for bulk storage, transportation, agriculture, construction materials, and industrial packaging.',
     href: '/plastic-jumbo-bags',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003706/khawaja-carpentry/zmohrfj5occsegwwl97q.webp',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_900,h_600,c_fill,f_auto,q_auto/khawaja-carpentry/zmohrfj5occsegwwl97q.webp',
     badge: 'Bulk Available',
     badgeColor: 'from-cyan-600 to-teal-600'
   }

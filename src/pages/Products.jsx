@@ -12,28 +12,28 @@ const fallbackCategories = [
     description: '20+ sizes. New, refurbished and used. Normal and heavy duty. ISPM-15.',
     href: '/wooden-pallets',
     button: 'View All Sizes',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp'
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_800,h_600,c_fill,f_auto,q_auto/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp'
   },
   {
     title: 'Wooden Crates',
     description: 'Brand new. Standard sizes plus custom. Export compliant.',
     href: '/wooden-crates',
     button: 'View All Sizes',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590633/khawaja-carpentry/emja7hszpeitqkazbndq.webp'
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_800,h_600,c_fill,f_auto,q_auto/khawaja-carpentry/emja7hszpeitqkazbndq.webp'
   },
   {
     title: 'Plastic Pallets',
     description: '5 sizes. New and used. Normal and heavy duty. Hygienic.',
     href: '/plastic-pallets',
     button: 'View All Sizes',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590503/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp'
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_800,h_600,c_fill,f_auto,q_auto/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp'
   },
   {
     title: 'Plastic Jumbo Bags',
     description: '500 kg to 2.5 TON. FIBC bulk bags for all industries.',
     href: '/plastic-jumbo-bags',
     button: 'View All Sizes',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003706/khawaja-carpentry/zmohrfj5occsegwwl97q.webp'
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_800,h_600,c_fill,f_auto,q_auto/khawaja-carpentry/zmohrfj5occsegwwl97q.webp'
   }
 ];
 
@@ -44,7 +44,7 @@ const highlights = [
     description: 'From compact 80x80 to oversized 130x130. Euro White and Euro Black pallets. New, refurbished, and used. Heavy duty and normal. ISPM-15 heat treated.',
     href: '/wooden-pallets',
     cta: 'Explore All Wooden Pallets',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_1200,h_800,c_fill,f_auto,q_auto/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp',
     badges: ['80x80', '80x120', '100x100', '100x120', '114x114', 'Euro', '+ 14 more']
   },
   {
@@ -53,7 +53,7 @@ const highlights = [
     description: 'Lightweight, moisture-proof, and chemical-resistant. Normal and heavy duty. New and used. Ideal for food, pharmaceutical, and logistics.',
     href: '/plastic-pallets',
     cta: 'Explore All Plastic Pallets',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590503/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_1200,h_800,c_fill,f_auto,q_auto/khawaja-carpentry/m4gejoh6ibzeyxbbrlau.webp',
     badges: ['80x120', '100x100', '100x120', '114x114', '110x130']
   },
   {
@@ -62,7 +62,7 @@ const highlights = [
     description: 'Heavy-duty wooden crates for export, shipping, machinery protection, and warehouse storage. Standard sizes plus custom manufacturing. ISPM-15 compliant.',
     href: '/wooden-crates',
     cta: 'Explore All Crates',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590639/khawaja-carpentry/a57buvlmujgv90f1k32q.webp',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_1200,h_800,c_fill,f_auto,q_auto/khawaja-carpentry/a57buvlmujgv90f1k32q.webp',
     badges: ['100x100', '100x120', '80x200', '200x400', 'Custom']
   },
   {
@@ -71,7 +71,7 @@ const highlights = [
     description: 'Industrial FIBC bulk bags for construction, agriculture, chemicals, and mining. UV resistant, moisture barriers available, food-grade options.',
     href: '/plastic-jumbo-bags',
     cta: 'Explore All Jumbo Bags',
-    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1785003706/khawaja-carpentry/zmohrfj5occsegwwl97q.webp',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/w_1200,h_800,c_fill,f_auto,q_auto/khawaja-carpentry/zmohrfj5occsegwwl97q.webp',
     badges: ['500 kg', '1 TON', '1.5 TON', '2 TON', '2.5 TON']
   }
 ];
