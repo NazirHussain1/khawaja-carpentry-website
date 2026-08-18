@@ -203,7 +203,7 @@ export default function About() {
           <img className="h-[360px] w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/15 sm:h-[500px]" src="https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp" alt="Industrial warehouse and manufacturing facility" width="1200" height="820" loading="lazy" decoding="async" />
           <div>
             <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-700">About Us — Premium Supplier</span>
-            <h2 className="mt-4 text-4xl font-black leading-tight text-[#02024f] sm:text-5xl">FIASAL FAREED WOODS TR L.L.C Sharjah UAE</h2>
+            <h2 className="mt-4 text-4xl font-black leading-tight text-[#02024f] sm:text-5xl">FAISAL FAREED WOODS TR L.L.C Sharjah UAE</h2>
             <p className="mt-5 text-base leading-8 text-slate-600 sm:text-lg">
               Our company supports logistics firms, exporters, warehouses, manufacturers, retailers, construction suppliers, food businesses, and industrial customers with dependable packaging products. We combine practical manufacturing experience, custom sizing, bulk supply capability, and quality-focused inspection to deliver products that are ready for demanding daily use.
             </p>

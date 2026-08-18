@@ -19,8 +19,8 @@ const GetQuote = lazy(() => import('./pages/GetQuote.jsx'));
 const Admin = lazy(() => import('./pages/Admin.jsx'));
 
 const site = {
-  name: import.meta.env.VITE_SITE_NAME || 'FIASAL FAREED WOODS TR L.L.C',
-  url: import.meta.env.VITE_SITE_URL || 'https://fiasal-fareed-woods.vercel.app',
+  name: import.meta.env.VITE_SITE_NAME || 'FAISAL FAREED WOODS TR L.L.C',
+  url: import.meta.env.VITE_SITE_URL || 'https://faisal-fareed-woods.vercel.app',
   image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp',
   keywords: 'wooden pallets UAE, pallet supplier Dubai, wooden pallets Sharjah, wooden crates UAE, plastic pallets UAE, jumbo bags supplier UAE, industrial packaging UAE, export pallets UAE',
   phone: '+971 58 844 1600',
@@ -31,7 +31,7 @@ const site = {
 
 const seoPages = {
   home: {
-    title: 'Wooden Pallets Supplier in UAE | FIASAL FAREED WOODS TR L.L.C',
+    title: 'Wooden Pallets Supplier in UAE | FAISAL FAREED WOODS TR L.L.C',
     description: 'Leading supplier of wooden pallets, wooden crates, plastic pallets, and jumbo bags in Dubai, Sharjah, Abu Dhabi, JAFZA, and all UAE.',
     path: '/'
   },
@@ -46,7 +46,7 @@ const seoPages = {
     path: '/products'
   },
   'wooden-pallets': {
-    title: 'Wooden Pallets - All Sizes New, Refurbished & Used | FIASAL FAREED WOODS TR L.L.C UAE',
+    title: 'Wooden Pallets - All Sizes New, Refurbished & Used | FAISAL FAREED WOODS TR L.L.C UAE',
     description: 'Buy wooden pallets in Dubai, Sharjah and UAE. New, refurbished and used pallets in all sizes: 80x120, 100x120, Euro pallets, CP3 pallets, and custom sizes.',
     path: '/wooden-pallets'
   },
@@ -56,7 +56,7 @@ const seoPages = {
     path: '/wooden-crates'
   },
   'plastic-pallets': {
-    title: 'Plastic Pallets - All Sizes New & Used | FIASAL FAREED WOODS TR L.L.C UAE',
+    title: 'Plastic Pallets - All Sizes New & Used | FAISAL FAREED WOODS TR L.L.C UAE',
     description: 'Buy plastic pallets in Dubai, Sharjah and UAE. New and used plastic pallets in 80x120, 100x100, 100x120, 114x114, and 110x130 sizes.',
     path: '/plastic-pallets'
   },
@@ -66,8 +66,8 @@ const seoPages = {
     path: '/plastic-jumbo-bags'
   },
   contact: {
-    title: 'Contact Us | FIASAL FAREED WOODS TR L.L.C UAE',
-    description: 'Contact FIASAL FAREED WOODS TR L.L.C for wooden pallets, crates, plastic pallets, and jumbo bags across Dubai, Sharjah, Abu Dhabi, and all UAE.',
+    title: 'Contact Us | FAISAL FAREED WOODS TR L.L.C UAE',
+    description: 'Contact FAISAL FAREED WOODS TR L.L.C for wooden pallets, crates, plastic pallets, and jumbo bags across Dubai, Sharjah, Abu Dhabi, and all UAE.',
     path: '/contact'
   },
   gallery: {
@@ -77,16 +77,16 @@ const seoPages = {
   },
   testimonials: {
     title: 'Client Testimonials | Wooden Pallet Supplier UAE',
-    description: 'Read customer reviews for FIASAL FAREED WOODS TR L.L.C, supplier of wooden pallets, crates, plastic pallets, and jumbo bags across UAE.',
+    description: 'Read customer reviews for FAISAL FAREED WOODS TR L.L.C, supplier of wooden pallets, crates, plastic pallets, and jumbo bags across UAE.',
     path: '/testimonials'
   },
   services: {
-    title: 'Industrial Packaging Services UAE | FIASAL FAREED WOODS TR L.L.C',
+    title: 'Industrial Packaging Services UAE | FAISAL FAREED WOODS TR L.L.C',
     description: 'Pallet manufacturing, pallet refurbishing, bulk pallet supply, and custom wooden crating services across UAE.',
     path: '/services'
   },
   industries: {
-    title: 'UAE Pallet Delivery Areas | FIASAL FAREED WOODS TR L.L.C',
+    title: 'UAE Pallet Delivery Areas | FAISAL FAREED WOODS TR L.L.C',
     description: 'Wooden pallet, crate, plastic pallet, and jumbo bag supply across Dubai, Sharjah, Abu Dhabi, JAFZA, Jebel Ali, Ajman, Fujairah, and UAE.',
     path: '/industries'
   },
@@ -101,8 +101,8 @@ const seoPages = {
     path: '/quote'
   },
   admin: {
-    title: 'Inquiry Admin | FIASAL FAREED WOODS TR L.L.C',
-    description: 'Private inquiry dashboard for FIASAL FAREED WOODS TR L.L.C.',
+    title: 'Inquiry Admin | FAISAL FAREED WOODS TR L.L.C',
+    description: 'Private inquiry dashboard for FAISAL FAREED WOODS TR L.L.C.',
     path: '/admin'
   }
 };
