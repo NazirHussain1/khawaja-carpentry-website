@@ -30,7 +30,15 @@ const whyContact = [
   [Users, 'Experienced Team', 'Guidance from a team familiar with industrial packaging.']
 ];
 
-const serviceAreas = ['Dubai', 'Sharjah', 'Abu Dhabi', 'Ajman', 'Ras Al Khaimah', 'Fujairah', 'Umm Al Quwain'];
+const serviceAreas = [
+  'Dubai', 
+  'Sharjah', 
+  'Abu Dhabi', 
+  'Ajman', 
+  'Ras Al Khaimah', 
+  'Fujairah', 
+  'Umm Al Quwain'
+];
 
 const faqs = [
   ['How quickly do you respond?', 'We usually respond quickly during business hours. For urgent quotes, WhatsApp or call is the fastest option.'],
