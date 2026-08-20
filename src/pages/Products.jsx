@@ -95,8 +95,7 @@ const reasons = [
 const industries = ['Logistics', 'Freight', 'Retail', 'Manufacturing', 'Construction', 'Oil and Gas', 'Food', 'Pharma', 'Agriculture', 'Mining'];
 
 function imageUrl(file) {
-  // No longer needed, but kept for compatibility
-  return `https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp`;
+  return productImageUrl(file);
 }
 
 function productImageUrl(value) {
@@ -111,9 +110,9 @@ function productImageUrl(value) {
 function SectionHeading({ eyebrow, title, subtitle }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      {eyebrow && <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">{eyebrow}</span>}
-      <h2 className="mt-3 text-3xl font-black text-[#02024f] sm:text-4xl">{title}</h2>
-      {subtitle && <p className="mt-4 text-base leading-7 text-slate-600">{subtitle}</p>}
+      {eyebrow && <span className="text-xs font-black uppercase tracking-[0.2em] text-[#52837d]">{eyebrow}</span>}
+      <h2 className="mt-3 font-serif text-4xl font-normal text-[#173b42] sm:text-5xl">{title}</h2>
+      {subtitle && <p className="mt-5 text-base leading-8 text-slate-600">{subtitle}</p>}
     </div>
   );
 }
@@ -153,8 +152,8 @@ export default function Products() {
       >
         <div className="mx-auto flex min-h-[460px] max-w-7xl items-center px-4 py-16 sm:min-h-[520px] sm:px-6 sm:py-20 lg:px-8">
           <div className="max-w-4xl">
-            <span className="inline-flex rounded-full bg-indigo-500/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-100 ring-1 ring-white/10">Products — Complete Range</span>
-            <h1 className="mt-6 text-3xl font-black leading-tight sm:text-5xl lg:text-7xl">FAISAL FAREED WOODS TR L.L.C Sharjah UAE</h1>
+            <span className="border-b border-white/40 px-1 py-2 text-xs font-black uppercase tracking-[0.2em] text-sky-100">Products — Complete Range</span>
+            <h1 className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.98] sm:text-6xl lg:text-8xl">FAISAL FAREED WOODS TR L.L.C Sharjah UAE</h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
               Complete range of wooden pallets, wooden crates, plastic pallets, and jumbo bags. All sizes with free delivery across UAE.
             </p>
@@ -170,18 +169,19 @@ export default function Products() {
         </div>
       </section>
 
-      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#fffefa] px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="What We Offer" subtitle="Four product categories serving every industry across the UAE." />
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {categoryProducts.map((product) => (
-              <article className="grid overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-950/5 ring-1 ring-slate-200 md:grid-cols-5" key={product.title}>
-                <img className="h-56 w-full object-cover md:col-span-2 md:h-full" src={productImageUrl(product.image)} alt={product.title} width="700" height="460" loading="lazy" decoding="async" />
-                <div className="p-6 md:col-span-3">
-                  <h3 className="text-2xl font-black text-[#02024f]">{product.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{product.description}</p>
-                  <a className="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-950/20 transition hover:-translate-y-1" href={product.href} data-spa-link="true">
-                    {product.button} <ArrowRight size={16} />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            {categoryProducts.map((product, index) => (
+              <article className="product-section-enter group relative min-h-80 overflow-hidden bg-slate-900 text-white" style={{ animationDelay: `${index * 120}ms` }} key={product.title}>
+                <img className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" src={productImageUrl(product.image)} alt={product.title} width="700" height="460" loading="lazy" decoding="async" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/50 to-slate-950/10 transition duration-500 group-hover:via-slate-950/75" />
+                <div className="relative flex min-h-80 flex-col justify-end p-6">
+                  <h3 className="font-serif text-3xl font-normal">{product.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-200">{product.description}</p>
+                  <a className="mt-0 max-h-0 overflow-hidden text-sm font-bold text-sky-200 opacity-0 transition-all duration-500 group-hover:mt-4 group-hover:max-h-12 group-hover:opacity-100" href={product.href} data-spa-link="true">
+                    {product.button} <ArrowRight className="ml-1 inline" size={16} />
                   </a>
                 </div>
               </article>
@@ -193,15 +193,15 @@ export default function Products() {
       {highlights.map((item, index) => {
         const isAlt = index % 2 === 0;
         return (
-          <section className={`${isAlt ? 'bg-slate-50' : 'bg-white'} px-4 py-16 sm:px-6 lg:px-8`} key={item.title}>
+          <section className="product-section-enter bg-[#fffefa] px-4 py-20 sm:px-6 lg:px-8" style={{ animationDelay: `${index * 140}ms` }} key={item.title}>
             <div className={`mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center ${!isAlt ? 'lg:[&>*:first-child]:order-2' : ''}`}>
-              <img className="h-96 w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/10" src={imageUrl(item.image)} alt={item.title} width="1100" height="720" loading="lazy" decoding="async" />
+              <img className="product-image-motion h-96 w-full object-cover" src={imageUrl(item.image)} alt={item.title} width="1100" height="720" loading="lazy" decoding="async" />
               <div>
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">{item.eyebrow}</span>
                 <h2 className="mt-3 text-3xl font-black text-[#02024f] sm:text-4xl">{item.title}</h2>
                 <p className="mt-5 text-base leading-8 text-slate-600">{item.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {item.badges.map((badge) => <span className="rounded-full bg-white px-4 py-2 text-sm font-bold text-[#02024f] shadow-sm ring-1 ring-indigo-100" key={badge}>{badge}</span>)}
+                  {item.badges.map((badge) => <span className="border-b border-[#b9c7c2] px-1 py-2 text-sm font-bold text-[#315b5d]" key={badge}>{badge}</span>)}
                 </div>
                 <a className="mt-7 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-950/20 transition hover:-translate-y-1" href={item.href} data-spa-link="true">
                   {item.cta} <ArrowRight size={16} />
@@ -223,14 +223,14 @@ export default function Products() {
         </div>
       </section>
 
-      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+      <section className="bg-[#fffefa] px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Why Buy from FAISAL FAREED WOODS TR L.L.C?" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {reasons.map(([Icon, title, text]) => (
-              <article className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-md shadow-slate-950/5 transition hover:-translate-y-2 hover:shadow-2xl" key={title}>
-                <Icon className="mx-auto text-indigo-600" size={34} />
-                <h3 className="mt-4 text-lg font-black text-[#02024f]">{title}</h3>
+              <article className="border-t border-[#dedbd2] p-6 text-center transition-colors hover:bg-[#f4f4ef]" key={title}>
+                <Icon className="mx-auto text-[#52837d]" size={34} />
+                <h3 className="mt-4 font-serif text-2xl font-normal text-[#173b42]">{title}</h3>
                 <p className="mt-2 text-sm leading-7 text-slate-600">{text}</p>
               </article>
             ))}
@@ -238,11 +238,11 @@ export default function Products() {
         </div>
       </section>
 
-      <section className="bg-slate-50 px-4 py-14 sm:px-6 lg:px-8">
+      <section className="bg-[#fffefa] px-4 py-14 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Industries We Serve" />
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {industries.map((industry) => <span className="rounded-full bg-white px-5 py-3 text-sm font-bold text-[#02024f] shadow-sm ring-1 ring-indigo-100" key={industry}>{industry}</span>)}
+            {industries.map((industry) => <span className="border-b border-[#b9c7c2] px-2 py-3 text-sm font-bold text-[#315b5d]" key={industry}>{industry}</span>)}
           </div>
         </div>
       </section>
@@ -261,9 +261,9 @@ export default function Products() {
               ))}
             </div>
           </div>
-          <div className="rounded-3xl bg-gradient-to-br from-indigo-50 to-sky-50 p-10 text-center ring-1 ring-indigo-100">
+          <div className="border-t border-[#b9c7c2] p-10 text-center">
             <WhatsAppIcon className="mx-auto size-20 text-[#25D366]" />
-            <h3 className="mt-4 text-2xl font-black text-[#02024f]">WhatsApp Us Now</h3>
+            <h3 className="mt-4 font-serif text-3xl font-normal text-[#173b42]">WhatsApp Us Now</h3>
             <p className="mt-2 font-semibold text-slate-600">+971 54 204 6121</p>
             <a className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/20 transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">
               <WhatsAppIcon className="size-5" /> Start Chat
@@ -272,9 +272,9 @@ export default function Products() {
         </div>
       </section>
 
-      <section className="bg-[#02024f] px-4 py-14 text-center text-white sm:px-6 lg:px-8">
+      <section className="bg-[#173b42] px-4 py-16 text-center text-white sm:px-6 lg:px-8">
         <PackageCheck className="mx-auto text-sky-300" size={42} />
-        <h2 className="mt-4 text-3xl font-black">Browse Our Full Product Range</h2>
+        <h2 className="mt-4 font-serif text-4xl font-normal">Browse Our Full Product Range</h2>
         <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-300">Wooden pallets, plastic pallets, wooden crates and jumbo bags. All sizes. Best prices in UAE.</p>
         <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
           <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={whatsappUrl} target="_blank" rel="noreferrer">

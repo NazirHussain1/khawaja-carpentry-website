@@ -52,10 +52,12 @@ function getStoredCredentials() {
 
 function saveCredentials(credentials) {
   sessionStorage.setItem('adminCredentials', JSON.stringify(credentials));
+  window.dispatchEvent(new Event('admin-auth-change'));
 }
 
 function clearCredentials() {
   sessionStorage.removeItem('adminCredentials');
+  window.dispatchEvent(new Event('admin-auth-change'));
 }
 
 function createAuthHeader(credentials) {
@@ -402,6 +404,11 @@ export default function Admin() {
               </button>
             </div>
           </div>
+          <div className="mt-6 grid gap-3 border-t border-white/10 pt-5 sm:grid-cols-3">
+            <SummaryMetric label="Total inquiries" value={totals.all || 0} />
+            <SummaryMetric label="New inquiries" value={totals.new || 0} />
+            <SummaryMetric label="Managed products" value={products.length} />
+          </div>
         </div>
 
         <div className="mt-5 flex flex-wrap gap-2">
@@ -523,6 +530,15 @@ function InquiriesPanel({ totals, statusFilter, setStatusFilter, query, setQuery
         </div>
         {!loading && filteredInquiries.length === 0 && <div className="px-4 py-12 text-center text-sm font-semibold text-slate-500">No inquiries match the current filters.</div>}
       </div>
+    </div>
+  );
+}
+
+function SummaryMetric({ label, value }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3">
+      <span className="block text-xs font-bold uppercase tracking-wide text-slate-300">{label}</span>
+      <strong className="mt-1 block text-2xl font-black text-white">{value}</strong>
     </div>
   );
 }

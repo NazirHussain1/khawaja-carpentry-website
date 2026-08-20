@@ -803,8 +803,14 @@ function parseBasicAuth(header = '') {
 }
 
 async function sendInquiryEmail(inquiry) {
+  if (process.env.RESEND_API_KEY) {
+    const resendResult = await sendInquiryWithResend(inquiry);
+    if (resendResult.sent) return resendResult;
+    console.error('Resend delivery failed:', resendResult.message);
+  }
+
   if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    return { sent: false, message: 'SMTP is not configured.' };
+    return sendInquiryWithFormSubmit(inquiry);
   }
 
   try {
@@ -822,13 +828,63 @@ async function sendInquiryEmail(inquiry) {
     return { sent: true };
   } catch (error) {
     console.error('Email delivery failed:', error.message);
+    const fallbackResult = await sendInquiryWithFormSubmit(inquiry);
+    return fallbackResult.sent ? fallbackResult : { sent: false, message: error.message };
+  }
+}
+
+async function sendInquiryWithFormSubmit(inquiry) {
+  const receiver = process.env.FORM_SUBMIT_EMAIL || process.env.INQUIRY_TO_EMAIL;
+  if (!receiver) return { sent: false, message: 'No inquiry receiver is configured.' };
+
+  try {
+    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(receiver)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: `New Quote Request - ${inquiry.productType}`,
+        _replyto: inquiry.email,
+        _template: 'table',
+        Name: inquiry.name,
+        Phone: inquiry.phone,
+        Email: inquiry.email,
+        Product: inquiry.productType,
+        Quantity: inquiry.quantity || 'Not provided',
+        Location: inquiry.city || 'Not provided',
+        Message: inquiry.message
+      })
+    });
+
+    if (!response.ok) throw new Error(`FormSubmit returned HTTP ${response.status}.`);
+    return { sent: true };
+  } catch (error) {
+    console.error('FormSubmit delivery failed:', error.message);
     return { sent: false, message: error.message };
   }
 }
 
+async function sendInquiryWithResend(inquiry) {
+  return sendWithResend({
+    subject: `New Quote Request - ${inquiry.productType}`,
+    replyTo: inquiry.email,
+    text: formatEmailText(inquiry),
+    html: formatEmailHtml(inquiry)
+  });
+}
+
 async function sendTestEmail(to) {
+  if (process.env.RESEND_API_KEY) {
+    const resendResult = await sendWithResend({
+      subject: 'FIASAL FAREED WOODS - Email Test',
+      text: 'Resend email delivery is working for the website inquiry system.',
+      html: '<p>Resend email delivery is working for the website inquiry system.</p>'
+    }, to);
+    if (resendResult.sent) return resendResult;
+    console.error('Resend test delivery failed:', resendResult.message);
+  }
+
   if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    return { sent: false, message: 'SMTP is not configured. Add SMTP_HOST, SMTP_USER, and SMTP_PASS.' };
+    return sendTestEmailWithFormSubmit(to);
   }
 
   try {
@@ -843,21 +899,75 @@ async function sendTestEmail(to) {
     return { sent: true };
   } catch (error) {
     console.error('Test email delivery failed:', error.message);
+    return sendTestEmailWithFormSubmit(to);
+  }
+}
+
+async function sendTestEmailWithFormSubmit(to) {
+  const receiver = process.env.FORM_SUBMIT_EMAIL || process.env.INQUIRY_TO_EMAIL || to;
+  try {
+    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(receiver)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: 'FIASAL FAREED WOODS - Email Test',
+        _template: 'table',
+        Message: 'FormSubmit email delivery is working for the website inquiry system.'
+      })
+    });
+
+    if (!response.ok) throw new Error(`FormSubmit returned HTTP ${response.status}.`);
+    return { sent: true };
+  } catch (error) {
+    console.error('FormSubmit test delivery failed:', error.message);
+    return { sent: false, message: error.message };
+  }
+}
+
+async function sendWithResend(message, testReceiver = process.env.INQUIRY_TO_EMAIL) {
+  const receiver = testReceiver || process.env.INQUIRY_TO_EMAIL;
+  const from = process.env.RESEND_FROM || process.env.SMTP_FROM;
+  if (!receiver || !from) return { sent: false, message: 'Resend receiver or sender is not configured.' };
+
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from,
+        to: [receiver],
+        reply_to: message.replyTo,
+        subject: message.subject,
+        text: message.text,
+        html: message.html
+      })
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.text();
+      throw new Error(`Resend returned HTTP ${response.status}: ${errorBody}`);
+    }
+    return { sent: true };
+  } catch (error) {
     return { sent: false, message: error.message };
   }
 }
 
 function createMailTransporter() {
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
+    host: process.env.SMTP_HOST?.trim(),
     port: Number(process.env.SMTP_PORT || 587),
     secure: String(process.env.SMTP_SECURE).toLowerCase() === 'true',
+    authMethod: 'LOGIN',
     connectionTimeout: Number(process.env.SMTP_TIMEOUT_MS || 10000),
     greetingTimeout: Number(process.env.SMTP_TIMEOUT_MS || 10000),
     socketTimeout: Number(process.env.SMTP_TIMEOUT_MS || 15000),
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS
+      user: process.env.SMTP_USER?.trim(),
+      pass: process.env.SMTP_PASS?.trim()
     }
   });
 }

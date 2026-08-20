@@ -139,10 +139,10 @@ function CrateSizeSection({ item, index }) {
   const isAlt = index % 2 === 1;
 
   return (
-    <section className={`${isAlt ? 'bg-[#F2E6EE]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
+    <section className="bg-[#fffefa] scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id={item.id}>
       <div className={`mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center ${isAlt ? 'lg:[&>*:first-child]:order-2' : ''}`}>
         <img
-          className="h-80 w-full rounded-3xl object-cover shadow-2xl shadow-slate-950/10 sm:h-96"
+          className="h-80 w-full object-cover sm:h-96"
           src={imageUrl(item.image)}
           alt={item.heading}
           width="1000"
@@ -151,15 +151,15 @@ function CrateSizeSection({ item, index }) {
           decoding="async"
         />
         <div>
-          <span className="inline-flex rounded-full bg-indigo-50 px-4 py-2 text-xs font-black uppercase tracking-wide text-indigo-700 ring-1 ring-indigo-100">
+          <span className="border-b border-[#b9c7c2] px-1 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#52837d]">
             {item.badge}
           </span>
-          <h2 className="mt-4 text-3xl font-black leading-tight text-[#02024f] sm:text-4xl">{item.heading}</h2>
+          <h2 className="mt-4 font-serif text-4xl font-normal leading-tight text-[#173b42] sm:text-5xl">{item.heading}</h2>
           <p className="mt-4 text-base leading-8 text-slate-600">{item.description}</p>
-          <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-950/5">
+          <div className="mt-6 overflow-hidden border-t border-[#dedbd2]">
             {item.specs.map(([label, value]) => (
               <div className="grid grid-cols-[44%_1fr] border-b border-slate-100 last:border-b-0" key={label}>
-                <strong className="bg-[#F2E6EE] px-4 py-3 text-sm text-[#02024f]">{label}</strong>
+                <strong className="bg-[#fffefa] px-4 py-3 text-sm text-[#315b5d]">{label}</strong>
                 <span className="px-4 py-3 text-sm font-medium text-slate-700">{value}</span>
               </div>
             ))}

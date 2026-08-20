@@ -47,7 +47,7 @@ export default function ContactInfo() {
 
           return href ? (
             <a
-              className="group flex gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:bg-white hover:shadow-lg"
+              className="group flex gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition duration-300 hover:border-indigo-200 hover:bg-white hover:shadow-lg"
               href={href}
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noreferrer' : undefined}

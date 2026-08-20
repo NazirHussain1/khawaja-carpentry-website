@@ -1,5 +1,5 @@
-import { Boxes, ChevronDown, Grid2X2, Menu, Package, PackageCheck, X } from 'lucide-react';
-import { useState } from 'react';
+import { Boxes, ChevronDown, Grid2X2, Menu, Package, PackageCheck, ShieldCheck, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 const navLinks = [
@@ -19,16 +19,27 @@ const productLinks = [
 ];
 
 function linkClass(isActive) {
-  return `rounded-xl px-4 py-2.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-gradient-to-r hover:from-violet-700 hover:to-sky-600 ${
-    isActive ? 'bg-violet-950/80 shadow-inner shadow-black/30' : 'text-white/85'
+  return `border-b-2 border-transparent px-3 py-4 text-sm font-semibold text-[#315b5d] transition duration-300 hover:border-[#8eb4aa] hover:text-[#173b42] ${
+    isActive ? 'border-[#52837d] text-[#173b42]' : ''
   }`;
 }
 
 export default function Navbar({ activePage, whatsappUrl }) {
   const [open, setOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(() => Boolean(sessionStorage.getItem('adminCredentials')));
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const isProductsActive = productLinks.some(([, , key]) => activePage === key);
+
+  useEffect(() => {
+    const syncAdminState = () => setIsAdmin(Boolean(sessionStorage.getItem('adminCredentials')));
+    window.addEventListener('admin-auth-change', syncAdminState);
+    window.addEventListener('storage', syncAdminState);
+    return () => {
+      window.removeEventListener('admin-auth-change', syncAdminState);
+      window.removeEventListener('storage', syncAdminState);
+    };
+  }, []);
 
   const closeMobileMenu = () => {
     setOpen(false);
@@ -36,14 +47,14 @@ export default function Navbar({ activePage, whatsappUrl }) {
   };
 
   return (
-    <nav className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-3 py-3 sm:gap-5 sm:px-6 lg:min-h-[100px] lg:px-8" aria-label="Primary navigation">
-      <a className="flex min-w-0 items-center gap-3 text-white" href="/" data-spa-link="true" aria-label="FIASAL FAREED WOODS TR L.L.C home">
-        <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-500/20 text-white ring-1 ring-sky-300/30 sm:size-12">
+    <nav className="relative mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-3 py-3 sm:gap-5 sm:px-6 lg:min-h-[92px] lg:px-8" aria-label="Primary navigation">
+      <a className="flex min-w-0 items-center gap-3 text-[#173b42]" href="/" data-spa-link="true" aria-label="FIASAL FAREED WOODS TR L.L.C home">
+        <span className="grid size-11 shrink-0 place-items-center bg-[#dce9e4] text-[#315b5d] sm:size-12">
           <Grid2X2 size={23} />
         </span>
         <span className="min-w-0">
-          <strong className="block truncate text-base font-extrabold tracking-wide sm:text-lg">FIASAL FAREED</strong>
-          <span className="block bg-gradient-to-r from-sky-300 to-indigo-300 bg-clip-text text-sm font-bold text-transparent sm:text-base">Carpentry</span>
+          <strong className="block truncate font-serif text-base font-normal tracking-wide sm:text-lg">FIASAL FAREED</strong>
+          <span className="block text-sm font-bold uppercase tracking-[0.16em] text-[#52837d] sm:text-xs">Carpentry</span>
         </span>
       </a>
 
@@ -91,11 +102,12 @@ export default function Navbar({ activePage, whatsappUrl }) {
         {navLinks.slice(2).map(([label, href, key]) => (
           <a className={linkClass(activePage === key)} href={href} key={href} data-spa-link="true">{label}</a>
         ))}
+        {isAdmin && <a className={linkClass(activePage === 'control-center')} href="/control-center" data-spa-link="true">Admin</a>}
       </div>
 
       <div className="hidden items-center gap-3 lg:flex">
         <a
-          className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-indigo-950/30 transition duration-300 hover:scale-105 hover:from-violet-600 hover:to-sky-400"
+          className="inline-flex items-center gap-2 rounded-sm bg-[#315b5d] px-6 py-3 text-sm font-extrabold text-white shadow-lg shadow-[#173b42]/20 transition duration-300 hover:bg-[#173b42]"
           href={whatsappUrl}
           target="_blank"
           rel="noreferrer"
@@ -106,7 +118,7 @@ export default function Navbar({ activePage, whatsappUrl }) {
       </div>
 
       <button
-        className="inline-flex size-11 items-center justify-center rounded-xl border border-white/15 text-white transition hover:bg-white/10 lg:hidden"
+        className="inline-flex size-11 items-center justify-center border border-[#b9c7c2] text-[#315b5d] transition hover:bg-[#edf4f0] lg:hidden"
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-label="Toggle navigation"
@@ -115,20 +127,20 @@ export default function Navbar({ activePage, whatsappUrl }) {
       </button>
 
       {open && (
-        <div className="animate-mobile-panel fixed inset-0 z-[140] bg-[#02024f]/95 backdrop-blur lg:hidden">
+        <div className="animate-mobile-panel fixed inset-0 z-[140] bg-[#fffefa] text-[#173b42] lg:hidden">
           <div className="flex min-h-dvh flex-col overflow-y-auto px-4 py-4">
-            <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
-                <a className="flex min-w-0 items-center gap-3 text-white" href="/" data-spa-link="true" onClick={closeMobileMenu}>
-                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-500/20 text-white ring-1 ring-sky-300/30">
+            <div className="flex items-center justify-between gap-4 border-b border-[#dedbd2] pb-4">
+                <a className="flex min-w-0 items-center gap-3 text-[#173b42]" href="/" data-spa-link="true" onClick={closeMobileMenu}>
+                <span className="grid size-11 shrink-0 place-items-center bg-[#dce9e4] text-[#315b5d]">
                   <Grid2X2 size={22} />
                 </span>
                 <span className="min-w-0">
-                  <strong className="block truncate text-base font-extrabold">FIASAL FAREED</strong>
-                  <span className="block bg-gradient-to-r from-sky-300 to-indigo-300 bg-clip-text text-sm font-bold text-transparent">Carpentry</span>
+                  <strong className="block truncate font-serif text-base font-normal">FIASAL FAREED</strong>
+                  <span className="block text-xs font-bold uppercase tracking-[0.16em] text-[#52837d]">Carpentry</span>
                 </span>
               </a>
               <button
-                className="grid size-11 shrink-0 place-items-center rounded-xl border border-white/15 text-white transition hover:bg-white/10"
+                className="grid size-11 shrink-0 place-items-center border border-[#b9c7c2] text-[#315b5d] transition hover:bg-[#edf4f0]"
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close navigation"
@@ -140,7 +152,7 @@ export default function Navbar({ activePage, whatsappUrl }) {
             <div className="grid gap-2 py-5">
               {navLinks.slice(0, 2).map(([label, href, key]) => (
                 <a
-                  className={`rounded-2xl px-5 py-4 text-base font-semibold transition duration-300 ${activePage === key ? 'bg-gradient-to-r from-violet-800 to-indigo-700 text-white shadow-lg shadow-indigo-950/30' : 'text-slate-100 hover:translate-x-1 hover:bg-indigo-500/20 hover:text-white'}`}
+                  className={`border-b px-5 py-4 text-base font-semibold transition duration-300 ${activePage === key ? 'border-[#52837d] bg-[#edf4f0] text-[#173b42]' : 'border-transparent text-[#315b5d] hover:translate-x-1 hover:bg-[#f4f4ef]'}`}
                   href={href}
                   key={href}
                   data-spa-link="true"
@@ -149,9 +161,9 @@ export default function Navbar({ activePage, whatsappUrl }) {
                   {label}
                 </a>
               ))}
-              <div className="overflow-hidden rounded-2xl border border-white/10">
+              <div className="overflow-hidden border border-[#dedbd2]">
                 <button
-                  className={`flex w-full items-center justify-between gap-3 px-5 py-4 text-left text-base font-semibold transition ${isProductsActive ? 'bg-gradient-to-r from-violet-800 to-indigo-700 text-white shadow-lg shadow-indigo-950/30' : 'text-slate-100 hover:bg-indigo-500/20'}`}
+                  className={`flex w-full items-center justify-between gap-3 px-5 py-4 text-left text-base font-semibold transition ${isProductsActive ? 'bg-[#edf4f0] text-[#173b42]' : 'text-[#315b5d] hover:bg-[#f4f4ef]'}`}
                   type="button"
                   onClick={() => setMobileProductsOpen((value) => !value)}
                   aria-expanded={mobileProductsOpen}
@@ -161,10 +173,10 @@ export default function Navbar({ activePage, whatsappUrl }) {
                 </button>
                 <div className={`grid transition-all duration-300 ${mobileProductsOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
                   <div className="overflow-hidden">
-                    <div className="grid gap-1 border-t border-white/10 bg-white/5 p-2">
+                    <div className="grid gap-1 border-t border-[#dedbd2] bg-[#f4f4ef] p-2">
                       {productLinks.map(([label, href, key, Icon, description]) => (
                         <a
-                          className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm transition ${activePage === key ? 'bg-white/12 text-white' : 'text-slate-200 hover:bg-indigo-500/20 hover:text-white'}`}
+                          className={`flex items-center gap-3 rounded-sm px-4 py-3 text-sm transition ${activePage === key ? 'bg-white text-[#173b42]' : 'text-[#315b5d] hover:bg-white'}`}
                           href={href}
                           key={href}
                           data-spa-link="true"
@@ -183,7 +195,7 @@ export default function Navbar({ activePage, whatsappUrl }) {
               </div>
               {navLinks.slice(2).map(([label, href, key]) => (
                 <a
-                  className={`rounded-2xl px-5 py-4 text-base font-semibold transition duration-300 ${activePage === key ? 'bg-gradient-to-r from-violet-800 to-indigo-700 text-white shadow-lg shadow-indigo-950/30' : 'text-slate-100 hover:translate-x-1 hover:bg-indigo-500/20 hover:text-white'}`}
+                  className={`border-b px-5 py-4 text-base font-semibold transition duration-300 ${activePage === key ? 'border-[#52837d] bg-[#edf4f0] text-[#173b42]' : 'border-transparent text-[#315b5d] hover:translate-x-1 hover:bg-[#f4f4ef]'}`}
                   href={href}
                   key={href}
                   data-spa-link="true"
@@ -192,8 +204,18 @@ export default function Navbar({ activePage, whatsappUrl }) {
                   {label}
                 </a>
               ))}
+              {isAdmin && (
+                <a
+                  className={`inline-flex items-center gap-2 border-b px-5 py-4 text-base font-semibold transition ${activePage === 'control-center' ? 'border-[#52837d] bg-[#edf4f0] text-[#173b42]' : 'border-transparent text-[#315b5d] hover:translate-x-1 hover:bg-[#f4f4ef]'}`}
+                  href="/control-center"
+                  data-spa-link="true"
+                  onClick={closeMobileMenu}
+                >
+                  <ShieldCheck size={18} /> Admin
+                </a>
+              )}
               <a
-                className="mt-3 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-indigo-950/30 transition hover:scale-[1.02]"
+                className="mt-3 inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-[#315b5d] px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-[#173b42]/20 transition hover:bg-[#173b42]"
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"

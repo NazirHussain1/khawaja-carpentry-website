@@ -28,8 +28,8 @@ function TopBarLink({ href, icon: Icon, children, className = '' }) {
 
 export default function Header({ activePage }) {
   return (
-    <header className="sticky top-0 z-[100] bg-[#02024f] shadow-2xl shadow-slate-950/30">
-      <div className="bg-gradient-to-r from-violet-700 via-indigo-600 to-sky-600">
+    <header className="fixed inset-x-0 top-0 z-[100] bg-[#fffefa] shadow-[0_8px_24px_rgba(23,59,66,0.08)]">
+      <div className="bg-[#173b42]">
         <div className="mx-auto flex min-h-9 max-w-7xl flex-wrap items-center justify-center gap-x-4 gap-y-1 px-3 py-2 sm:gap-x-5 sm:px-6 lg:justify-between lg:px-8 lg:py-0">
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 lg:justify-start">
             <TopBarLink className="max-w-[220px] sm:max-w-none" href={`mailto:${contact.email}`} icon={MailIcon}>{contact.email}</TopBarLink>

@@ -104,6 +104,16 @@ const seoPages = {
     title: 'Inquiry Admin | FAISAL FAREED WOODS TR L.L.C',
     description: 'Private inquiry dashboard for FAISAL FAREED WOODS TR L.L.C.',
     path: '/admin'
+  },
+  'control-center': {
+    title: 'Control Center | FAISAL FAREED WOODS TR L.L.C',
+    description: 'Private control center for FAISAL FAREED WOODS TR L.L.C.',
+    path: '/control-center'
+  },
+  'brevo-test': {
+    title: 'Brevo SMTP Test | FAISAL FAREED WOODS TR L.L.C',
+    description: 'Private Brevo SMTP diagnostics page.',
+    path: '/brevo-test'
   }
 };
 
@@ -122,7 +132,8 @@ const routes = {
   faq: FAQ,
   quote: GetQuote,
   contact: Contact,
-  admin: Admin
+  admin: Admin,
+  'control-center': Admin
 };
 
 function parseRoute() {
@@ -268,7 +279,7 @@ export default function App() {
   return (
     <div className="min-h-screen overflow-x-clip bg-slate-50 text-slate-900 antialiased">
       <Header activePage={page} />
-      <main className="pb-20 sm:pb-0">
+      <main className="pt-[128px] pb-20 sm:pb-0">
         <Suspense fallback={<PageSkeleton />}>
           <Page slug={slug} />
         </Suspense>

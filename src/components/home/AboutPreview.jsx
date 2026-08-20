@@ -21,11 +21,19 @@ const whatsappUrl = `https://wa.me/971542046121?text=${encodeURIComponent('Hello
 
 export default function AboutPreview() {
   return (
-    <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-        <div className="overflow-hidden rounded-3xl shadow-2xl shadow-slate-950/10 ring-1 ring-slate-200">
+    <section className="bg-[#fffefa] px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-7xl bg-[#fffefa] lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+        <div className="relative overflow-hidden bg-[#fffefa] border-b border-[#dedbd2] lg:border-b-0 lg:border-r">
           <img
-            className="h-full min-h-96 w-full object-cover"
+            className="absolute inset-0 h-full min-h-96 w-full scale-110 object-cover opacity-35 blur-2xl"
+            src="https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            className="relative z-10 block h-full min-h-96 w-full rounded-[6px] object-cover"
             src="https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp"
             alt="Wooden pallets stacked inside an industrial warehouse"
             width="1100"
@@ -35,7 +43,7 @@ export default function AboutPreview() {
           />
         </div>
 
-        <div>
+        <div className="p-6 sm:p-8 lg:p-12">
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">About FAISAL FAREED WOODS TR L.L.C</span>
           <h2 className="mt-3 text-3xl font-black leading-tight text-[#02024f] sm:text-4xl">
             Trusted wooden pallet manufacturer and supplier in UAE since 2009.

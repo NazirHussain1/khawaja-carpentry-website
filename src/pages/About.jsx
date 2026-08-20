@@ -232,7 +232,7 @@ export default function About() {
           <SectionHeading eyebrow="Our Story" title="Our Journey" subtitle="A steady expansion from pallet supply to complete industrial packaging support." />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {timeline.map(([year, title]) => (
-              <article className="relative rounded-3xl border border-indigo-100 bg-white p-7 shadow-xl shadow-indigo-950/5 transition hover:-translate-y-1 hover:shadow-2xl" key={year}>
+              <article className="relative rounded-3xl border border-indigo-100 bg-white p-7 shadow-xl shadow-indigo-950/5 transition hover:shadow-2xl" key={year}>
                 <span className="text-4xl font-black text-indigo-600">{year}</span>
                 <h3 className="mt-3 text-xl font-black text-[#02024f]">{title}</h3>
               </article>
@@ -261,7 +261,7 @@ export default function About() {
           <SectionHeading title="Why Choose Us" subtitle="Built for businesses that need consistent supply, practical advice, and dependable packaging." />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {chooseUs.map(([Icon, title]) => (
-              <article className="rounded-3xl border border-indigo-100 bg-white p-7 shadow-lg shadow-indigo-950/5 transition hover:-translate-y-1 hover:shadow-2xl" key={title}>
+              <article className="rounded-3xl border border-indigo-100 bg-white p-7 shadow-lg shadow-indigo-950/5 transition hover:shadow-2xl" key={title}>
                 <div className="grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-lg shadow-indigo-950/20">
                   <Icon size={27} />
                 </div>
@@ -277,7 +277,7 @@ export default function About() {
           <SectionHeading title="Products We Manufacture" subtitle="Complete pallet and packaging support for warehouses, factories, exporters, and logistics operations." />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map(([title, description, href, image]) => (
-              <article className="group overflow-hidden rounded-3xl bg-white shadow-md shadow-slate-950/5 ring-1 ring-slate-200 transition hover:-translate-y-2 hover:shadow-2xl" key={title}>
+              <article className="group overflow-hidden rounded-3xl bg-white shadow-md shadow-slate-950/5 ring-1 ring-slate-200 transition hover:shadow-2xl" key={title}>
                 <div className="overflow-hidden">
                   <img className="h-52 w-full object-cover transition duration-500 group-hover:scale-110" src={image} alt={title} width="900" height="560" loading="lazy" decoding="async" />
                 </div>
@@ -314,7 +314,7 @@ export default function About() {
           <SectionHeading title="Industries We Serve" />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {industries.map((industry) => (
-              <article className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg" key={industry}>
+              <article className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center shadow-sm transition hover:shadow-lg" key={industry}>
                 <Building2 className="mx-auto text-indigo-600" size={30} />
                 <h3 className="mt-4 font-black text-[#02024f]">{industry}</h3>
               </article>

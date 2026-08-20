@@ -39,7 +39,7 @@ export default function TestimonialsSection() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {testimonials.map((item) => (
-            <article className="group rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-md shadow-slate-950/5 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-950/10" key={item.name}>
+            <article className="group rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-md shadow-slate-950/5 transition duration-300 hover:shadow-2xl hover:shadow-indigo-950/10" key={item.name}>
               <div className="flex items-start justify-between gap-4">
                 <div className="grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-lg shadow-indigo-950/20">
                   <Quote size={23} />

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 html,
@@ -29,6 +30,19 @@ textarea {
   --brand-navy: #02024f;
   --brand-indigo: #4f46e5;
   --brand-sky: #0ea5e9;
+  --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+main h1,
+main h2,
+main h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
 }
 
 ::selection {
@@ -113,6 +127,12 @@ main article[class*="bg-white"],
 main form[class*="bg-white"],
 main aside[class*="bg-white"] {
   box-shadow: 0 20px 46px rgba(15, 23, 42, 0.07);
+}
+
+/* Keep content cards closer to the reference site's restrained geometry. */
+main article[class*="rounded-2xl"],
+main article[class*="rounded-3xl"] {
+  border-radius: 6px !important;
 }
 
 main article:hover svg,

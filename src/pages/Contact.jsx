@@ -65,7 +65,7 @@ function ContactCard({ icon: Icon, title, value, href, caption }) {
   const isExternal = href.startsWith('http');
   return (
     <a
-      className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-950/5 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-950/10"
+      className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-950/5 transition duration-300 hover:shadow-2xl hover:shadow-indigo-950/10"
       href={href}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noreferrer' : undefined}
@@ -286,7 +286,7 @@ export default function Contact() {
           <SectionHeading title="Why Contact Us?" subtitle="A practical industrial supplier focused on fast pricing, custom orders, and bulk supply support." />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {whyContact.map(([Icon, title, text]) => (
-              <article className="rounded-3xl border border-indigo-100 bg-white p-7 shadow-lg shadow-indigo-950/5 transition hover:-translate-y-1 hover:shadow-2xl" key={title}>
+              <article className="rounded-3xl border border-indigo-100 bg-white p-7 shadow-lg shadow-indigo-950/5 transition hover:shadow-2xl" key={title}>
                 <div className="grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-lg shadow-indigo-950/20">
                   <Icon size={27} />
                 </div>
@@ -303,7 +303,7 @@ export default function Contact() {
           <SectionHeading title="Areas We Serve" />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {serviceAreas.map((area) => (
-              <article className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-md shadow-slate-950/5 transition hover:-translate-y-1 hover:shadow-lg" key={area}>
+              <article className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-md shadow-slate-950/5 transition hover:shadow-lg" key={area}>
                 <Building2 className="shrink-0 text-indigo-600" size={24} />
                 <span className="font-black text-[#02024f]">{area}</span>
               </article>

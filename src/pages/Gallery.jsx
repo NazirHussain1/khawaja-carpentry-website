@@ -124,7 +124,7 @@ export default function Gallery() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredItems.map((item, index) => (
               <button
-                className="group relative min-h-72 overflow-hidden rounded-3xl bg-slate-900 text-left shadow-lg shadow-slate-950/10 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-950/15"
+                className="group relative min-h-72 overflow-hidden rounded-3xl bg-slate-900 text-left shadow-lg shadow-slate-950/10 transition duration-300 hover:shadow-2xl hover:shadow-indigo-950/15"
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 key={`${item.title}-${item.image}`}
