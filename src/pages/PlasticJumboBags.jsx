@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { CallIcon } from '../components/common/ContactIcons.jsx';
 import WhatsAppIcon from '../components/common/WhatsAppIcon.jsx';
 import ProductInquirySection from '../components/contact/ProductInquirySection.jsx';
-import { createWhatsAppUrl, getImageUrl } from '../config/constants.js';
+import { createWhatsAppUrl } from '../config/constants.js';
 
 const introFeatures = ['New Bags', 'Multiple Capacities', 'UV Resistant', 'Export Quality', 'Custom Printing', 'Food Grade Options'];
 
@@ -14,7 +14,7 @@ const capacities = [
     quoteLabel: '500 KG',
     heading: '500 KG Plastic Jumbo Bag',
     description: 'Compact jumbo bag suitable for sand, gravel, agricultural products, animal feed, and lightweight bulk materials.',
-    image: 'CP3 Pallets.jpg',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786971032/khawaja-carpentry/ycthbljfaibe1ki3alat.webp',
     specs: [
       ['Capacity', '500 KG'],
       ['Typical Size (cm)', '75 x 75 x 100'],
@@ -34,7 +34,7 @@ const capacities = [
     quoteLabel: '1000 KG',
     heading: '1000 KG Plastic Jumbo Bag (1 Ton)',
     description: 'Most popular FIBC bag size for construction materials, cement, chemicals, minerals, and industrial storage.',
-    image: 'CP3 Pallets.jpg',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786971032/khawaja-carpentry/ycthbljfaibe1ki3alat.webp',
     specs: [
       ['Capacity', '1000 KG'],
       ['Typical Size (cm)', '90 x 90 x 120'],
@@ -54,7 +54,7 @@ const capacities = [
     quoteLabel: '1500 KG',
     heading: '1500 KG Plastic Jumbo Bag',
     description: 'Heavy-duty bulk bag for industrial manufacturing, export materials, aggregates, fertilizers, and warehouse storage.',
-    image: 'CP3 Pallets.jpg',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786971032/khawaja-carpentry/ycthbljfaibe1ki3alat.webp',
     specs: [
       ['Capacity', '1500 KG'],
       ['Typical Size (cm)', '100 x 100 x 130'],
@@ -74,7 +74,7 @@ const capacities = [
     quoteLabel: '2000 KG',
     heading: '2000 KG Plastic Jumbo Bag (2 Ton)',
     description: 'Industrial-grade jumbo bag designed for heavy materials including minerals, metal scrap, chemicals, and construction products.',
-    image: 'CP3 Pallets.jpg',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786971032/khawaja-carpentry/ycthbljfaibe1ki3alat.webp',
     specs: [
       ['Capacity', '2000 KG'],
       ['Typical Size (cm)', '110 x 110 x 140'],
@@ -94,7 +94,7 @@ const capacities = [
     quoteLabel: '2500 KG',
     heading: '2500 KG Plastic Jumbo Bag',
     description: 'Maximum-capacity jumbo bag for bulk export shipments, mining materials, industrial raw materials, and large-scale storage.',
-    image: 'CP3 Pallets.jpg',
+    image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786971032/khawaja-carpentry/ycthbljfaibe1ki3alat.webp',
     specs: [
       ['Capacity', '2500 KG'],
       ['Typical Size (cm)', '120 x 120 x 150'],
@@ -153,10 +153,6 @@ const faqs = [
   ['Can you manufacture custom-size FIBC bags?', 'Yes, custom FIBC bags can be made with specific capacity, loop style, liner, fabric, printing, and certification requirements.']
 ];
 
-function imageUrl(file) {
-  return getImageUrl(file);
-}
-
 function quoteUrl(capacity) {
   return createWhatsAppUrl(`Hello, I need a quote for ${capacity} Plastic Jumbo Bags.`);
 }
@@ -202,7 +198,7 @@ function ImageLightbox({ image, onClose }) {
 function CapacitySection({ item, index, onImageOpen }) {
   const isAlt = index % 2 === 1;
   const productImage = {
-    src: imageUrl(item.image),
+    src: item.image,
     alt: item.heading
   };
 
@@ -265,7 +261,7 @@ export default function PlasticJumboBags() {
   const [activeCapacity, setActiveCapacity] = useState('');
   const [lightboxImage, setLightboxImage] = useState(null);
   const introImage = {
-    src: imageUrl('CP3 Pallets.jpg'),
+    src: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786971032/khawaja-carpentry/ycthbljfaibe1ki3alat.webp',
     alt: 'Plastic jumbo bags for bulk material handling'
   };
 
