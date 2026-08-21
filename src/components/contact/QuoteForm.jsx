@@ -42,7 +42,7 @@ export default function QuoteForm({ defaultProduct = '', source = 'quote-form', 
   }
 
   return (
-    <form className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5 lg:p-8" onSubmit={handleSubmit}>
+    <form className="rounded-none border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5 lg:p-8" onSubmit={handleSubmit}>
       <span className="inline-flex rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-indigo-700">
         Quote Form
       </span>

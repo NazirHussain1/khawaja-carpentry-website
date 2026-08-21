@@ -121,7 +121,7 @@ export default function ProductsPreview() {
   }, []);
 
   return (
-    <section className="bg-[#fffefa] px-4 py-[100px] sm:px-6 lg:px-8">
+    <section className="bg-transparent px-4 py-[100px] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center" data-aos="fade-up" data-aos-duration="800">

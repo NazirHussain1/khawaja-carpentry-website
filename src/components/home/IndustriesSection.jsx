@@ -1,5 +1,4 @@
 import { MapPin, Navigation } from 'lucide-react';
-import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
 
 const locations = [
   {
@@ -51,8 +50,6 @@ const locations = [
     backgroundImage: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85'
   }
 ];
-
-const whatsappUrl = `https://wa.me/971542046121?text=${encodeURIComponent('Hello, I need pallets anywhere in UAE.')}`;
 
 export default function IndustriesSection() {
   return (
@@ -118,21 +115,6 @@ export default function IndustriesSection() {
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="mt-12 bg-[#173b42] px-6 py-8 text-center text-white">
-          <h3 className="font-serif text-3xl font-normal">Need pallets anywhere in UAE?</h3>
-          <div className="mt-5 flex justify-center">
-            <a
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition duration-300 hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400"
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <WhatsAppIcon className="size-5" />
-              Contact Us Today
-            </a>
-          </div>
         </div>
       </div>
     </section>

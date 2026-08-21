@@ -15,7 +15,7 @@ const contact = {
 function TopBarLink({ href, icon: Icon, children, className = '' }) {
   return (
     <a
-      className={`inline-flex min-w-0 max-w-full items-center gap-1.5 text-xs font-medium text-white/95 transition hover:-translate-y-0.5 hover:text-white ${className}`}
+      className={`inline-flex min-w-0 max-w-full items-center gap-1.5 text-xs font-medium text-white transition hover:-translate-y-0.5 hover:text-white ${className}`}
       href={href}
       target={href.startsWith('http') ? '_blank' : undefined}
       rel={href.startsWith('http') ? 'noreferrer' : undefined}
@@ -28,8 +28,8 @@ function TopBarLink({ href, icon: Icon, children, className = '' }) {
 
 export default function Header({ activePage }) {
   return (
-    <header className="fixed inset-x-0 top-0 z-[100] bg-[#fffefa] shadow-[0_8px_24px_rgba(23,59,66,0.08)]">
-      <div className="bg-[#173b42]">
+    <header className="fixed inset-x-0 top-0 z-[100] bg-[#fff8ed] shadow-[0_8px_24px_rgba(63,36,23,0.12)]">
+      <div className="bg-[#2a170f] transition duration-500">
         <div className="mx-auto flex min-h-9 max-w-7xl flex-wrap items-center justify-center gap-x-4 gap-y-1 px-3 py-2 sm:gap-x-5 sm:px-6 lg:justify-between lg:px-8 lg:py-0">
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 lg:justify-start">
             <TopBarLink className="max-w-[220px] sm:max-w-none" href={`mailto:${contact.email}`} icon={MailIcon}>{contact.email}</TopBarLink>

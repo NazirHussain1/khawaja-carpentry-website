@@ -359,7 +359,7 @@ export default function Admin() {
   if (!credentials) {
     return (
       <section className="min-h-[calc(100vh-280px)] bg-slate-100 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-md rounded-3xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-950/5">
+        <div className="mx-auto max-w-md rounded-none border border-slate-200 bg-white p-7 shadow-xl shadow-slate-950/5">
           <div className="grid size-12 place-items-center rounded-2xl bg-[#02024f] text-white">
             <Lock size={22} />
           </div>
@@ -385,7 +385,7 @@ export default function Admin() {
   return (
     <section className="min-h-[calc(100vh-280px)] bg-slate-100 px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="rounded-3xl bg-[#02024f] p-6 text-white shadow-xl shadow-slate-950/10">
+        <div className="rounded-none bg-[#02024f] p-6 text-white shadow-xl shadow-slate-950/10">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <span className="text-xs font-black uppercase tracking-[0.2em] text-sky-200">Admin Dashboard</span>
@@ -472,7 +472,7 @@ function InquiriesPanel({ totals, statusFilter, setStatusFilter, query, setQuery
         ))}
       </div>
 
-      <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center">
+      <div className="mt-6 flex flex-col gap-3 rounded-none border border-slate-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center">
         <label className="relative flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
           <input className="w-full rounded-xl border border-slate-300 py-3 pl-10 pr-4 text-sm outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/15" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by customer, phone, product, city, or message" />
@@ -482,7 +482,7 @@ function InquiriesPanel({ totals, statusFilter, setStatusFilter, query, setQuery
         </button>
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
+      <div className="mt-6 overflow-hidden rounded-none border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-slate-200 text-left text-sm">
             <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
@@ -536,7 +536,7 @@ function InquiriesPanel({ totals, statusFilter, setStatusFilter, query, setQuery
 
 function SummaryMetric({ label, value }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3">
+    <div className="rounded-none border border-white/10 bg-white/10 px-4 py-3">
       <span className="block text-xs font-bold uppercase tracking-wide text-slate-300">{label}</span>
       <strong className="mt-1 block text-2xl font-black text-white">{value}</strong>
     </div>
@@ -546,7 +546,7 @@ function SummaryMetric({ label, value }) {
 function ProductsPanel({ products, productForm, setProductForm, editingProductId, setEditingProductId, saveProduct, deleteProduct, savingId, media }) {
   return (
     <div className="mt-6 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-      <form className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5" onSubmit={saveProduct}>
+      <form className="rounded-none border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5" onSubmit={saveProduct}>
         <div className="flex items-center justify-between gap-3">
           <h2 className="text-2xl font-black text-[#02024f]">{editingProductId ? 'Edit Product' : 'Add Product'}</h2>
           {editingProductId && (
@@ -600,11 +600,11 @@ function ProductsPanel({ products, productForm, setProductForm, editingProductId
         </div>
       </form>
 
-      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5">
+      <div className="rounded-none border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5">
         <h2 className="text-2xl font-black text-[#02024f]">Managed Products</h2>
         <div className="mt-5 grid gap-4">
           {products.map((product) => (
-            <article className="grid gap-4 rounded-2xl border border-slate-200 p-4 sm:grid-cols-[96px_1fr_auto]" key={product.id}>
+            <article className="grid gap-4 rounded-none border border-slate-200 p-4 sm:grid-cols-[96px_1fr_auto]" key={product.id}>
               <img className="h-24 w-full rounded-xl object-cover sm:w-24" src={product.imageUrl} alt={product.title} />
               <div>
                 <div className="flex flex-wrap items-center gap-2">
@@ -636,7 +636,7 @@ function ProductsPanel({ products, productForm, setProductForm, editingProductId
 function MediaPanel({ media, uploadImage, uploading, setProductForm }) {
   return (
     <div className="mt-6 grid gap-6 lg:grid-cols-[380px_1fr]">
-      <form className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5" onSubmit={uploadImage}>
+      <form className="rounded-none border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5" onSubmit={uploadImage}>
         <h2 className="text-2xl font-black text-[#02024f]">Upload Image</h2>
         <p className="mt-2 text-sm leading-6 text-slate-600">Images upload to Cloudinary and can be selected for products.</p>
         <label className="mt-5 block text-sm font-bold text-slate-700">
@@ -648,11 +648,11 @@ function MediaPanel({ media, uploadImage, uploading, setProductForm }) {
           <Upload size={17} /> {uploading ? 'Uploading...' : 'Upload to Cloudinary'}
         </button>
       </form>
-      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5">
+      <div className="rounded-none border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5">
         <h2 className="text-2xl font-black text-[#02024f]">Media Library</h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {media.map((item) => (
-            <article className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50" key={item.id}>
+            <article className="overflow-hidden rounded-none border border-slate-200 bg-slate-50" key={item.id}>
               <img className="h-44 w-full object-cover" src={item.url} alt={item.alt || item.originalName || 'Uploaded media'} />
               <div className="p-4">
                 <p className="truncate text-sm font-bold text-[#02024f]">{item.alt || item.originalName || 'Uploaded image'}</p>

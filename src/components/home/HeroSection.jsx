@@ -78,7 +78,7 @@ export default function HeroSection() {
       </AnimatePresence>
 
       {/* Keep the product image present while preserving text contrast. */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/80 via-slate-950/35 to-slate-950/65" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(105deg,rgba(42,23,15,0.86),rgba(91,53,31,0.42)_48%,rgba(42,23,15,0.72))]" />
 
       {/* Main Content Container */}
       <div className="relative mx-auto flex min-h-[calc(100svh-150px)] max-w-7xl flex-col justify-center px-4 py-7 sm:px-6 lg:h-full lg:min-h-0 lg:px-8 lg:py-6">
@@ -95,10 +95,6 @@ export default function HeroSection() {
               {heroConfig.mainHeading}
             </motion.h1>
 
-            <p className="mt-4 max-w-xl text-sm leading-6 text-slate-200 sm:text-base sm:leading-7">
-              {heroConfig.mainDescription}
-            </p>
-
             {/* Dynamic Product Heading */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -107,56 +103,51 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="mt-4"
+                className="mt-2"
               >
                 <h2 className="text-lg font-semibold text-sky-200 sm:text-xl lg:text-2xl">
                   {activeProduct.heading}
                 </h2>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-200 sm:text-base sm:leading-7 lg:text-lg">
+                <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-200 sm:text-base sm:leading-7 lg:text-lg">
                   {activeProduct.description}
                 </p>
               </motion.div>
             </AnimatePresence>
+
+            <motion.div
+              className="mt-4 flex flex-col justify-start gap-2 sm:flex-row"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <a
+                className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#fff8ed] px-6 py-3 text-sm font-bold text-[#5b351f] shadow-2xl shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#fff2dd] sm:min-h-0"
+                href={heroConfig.primaryButton.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <WhatsAppIcon className="size-5" />
+                {heroConfig.primaryButton.text}
+                <motion.span
+                  className="inline-block"
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ArrowRight size={18} />
+                </motion.span>
+              </a>
+
+              <a
+                className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/45 bg-black/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 sm:min-h-0"
+                href="/products"
+                data-spa-link="true"
+              >
+                View All Products
+                <ArrowRight className="transition-transform group-hover:translate-x-1" size={18} />
+              </a>
+            </motion.div>
           </div>
         </div>
-
-        {/* Bottom Section - CTA Buttons + Product Cards */}
-        <motion.div
-          className="mt-5 pb-1"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          {/* CTA Buttons */}
-          <div className="mb-2 flex flex-col justify-start gap-2 sm:flex-row">
-            <a
-              className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-[#02024f] shadow-2xl shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:bg-sky-50 sm:min-h-0"
-              href={heroConfig.primaryButton.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <WhatsAppIcon className="size-5" />
-              {heroConfig.primaryButton.text}
-              <motion.span
-                className="inline-block"
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ArrowRight size={18} />
-              </motion.span>
-            </a>
-
-            <a
-              className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/45 bg-black/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 sm:min-h-0"
-              href="/products"
-              data-spa-link="true"
-            >
-              View All Products
-              <ArrowRight className="transition-transform group-hover:translate-x-1" size={18} />
-            </a>
-          </div>
-
-        </motion.div>
       </div>
 
       {/* Side Navigation Buttons */}

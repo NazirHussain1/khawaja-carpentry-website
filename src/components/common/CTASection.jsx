@@ -6,10 +6,10 @@ import WhatsAppIcon from './WhatsAppIcon.jsx';
 
 export default function CTASection() {
   return (
-    <section className="bg-slate-900 px-4 py-14 text-white sm:px-6 lg:px-8">
+    <section className="bg-[#2a170f] px-4 py-14 text-white sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-3xl">
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">Fast UAE Supply</span>
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#f3c16a]">Fast UAE Supply</span>
           <h2 className="mt-3 text-3xl font-black sm:text-4xl">Need wooden pallets, plastic pallets, crates, or jumbo bags?</h2>
           <p className="mt-4 text-base leading-7 text-slate-300">Share your pallet type, size, quantity, and location. We will prepare custom pricing for your order.</p>
         </div>

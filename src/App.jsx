@@ -18,10 +18,12 @@ const FAQ = lazy(() => import('./pages/FAQ.jsx'));
 const GetQuote = lazy(() => import('./pages/GetQuote.jsx'));
 const Admin = lazy(() => import('./pages/Admin.jsx'));
 
+const siteUrl = import.meta.env.VITE_SITE_URL || 'https://faisal-fareed-carpentry.vercel.app';
+
 const site = {
   name: import.meta.env.VITE_SITE_NAME || 'FAISAL FAREED WOODS TR L.L.C',
-  url: import.meta.env.VITE_SITE_URL || 'https://faisal-fareed-carpentry.vercel.app',
-  image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp',
+  url: siteUrl,
+  image: `${siteUrl}/logo.png`,
   keywords: 'wooden pallets UAE, pallet supplier Dubai, wooden pallets Sharjah, wooden crates UAE, plastic pallets UAE, jumbo bags supplier UAE, industrial packaging UAE, export pallets UAE',
   phone: '+971 58 844 1600',
   email: 'faislfareed786@gmail.com',

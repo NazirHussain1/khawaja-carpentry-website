@@ -32,7 +32,7 @@ export default function ImageGallery({ images = [], alt = 'Product image', class
   if (images.length === 1) {
     return (
       <>
-        <div className={`group relative cursor-pointer overflow-hidden rounded-3xl shadow-2xl shadow-slate-950/10 ${className}`}>
+        <div className={`group relative cursor-pointer overflow-hidden rounded-none shadow-2xl shadow-slate-950/10 ${className}`}>
           <button
             className="image-hover-effect relative block h-full w-full"
             onClick={() => {
@@ -64,7 +64,7 @@ export default function ImageGallery({ images = [], alt = 'Product image', class
     <>
       <div className={`space-y-4 ${className}`}>
         {/* Main Slider */}
-        <div className="group relative overflow-hidden rounded-3xl shadow-2xl shadow-slate-950/10">
+        <div className="group relative overflow-hidden rounded-none shadow-2xl shadow-slate-950/10">
           <Swiper
             modules={[Navigation, Pagination, Thumbs, Zoom, Autoplay]}
             spaceBetween={0}
@@ -145,7 +145,7 @@ export default function ImageGallery({ images = [], alt = 'Product image', class
           >
             {images.map((image, index) => (
               <SwiperSlide key={index}>
-                <div className="group relative aspect-square overflow-hidden rounded-xl border-2 border-slate-200 transition-all hover:border-sky-500 hover:shadow-lg">
+                <div className="group relative aspect-square overflow-hidden rounded-none border-2 border-slate-200 transition-all hover:border-sky-500 hover:shadow-lg">
                   <img
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                     src={image}

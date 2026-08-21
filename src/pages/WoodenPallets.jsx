@@ -462,7 +462,7 @@ export default function WoodenPallets() {
           <SectionHeading title="Why Buy Wooden Pallets from Us?" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {benefits.map((feature) => (
-              <article className="rounded-2xl border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={feature}>
+              <article className="rounded-none border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={feature}>
                 <ShieldCheck className="mx-auto text-indigo-600" size={32} />
                 <h3 className="mt-4 text-lg font-black text-[#02024f]">{feature}</h3>
               </article>
@@ -478,7 +478,7 @@ export default function WoodenPallets() {
             {faqs.map(([question, answer], index) => {
               const isOpen = openFaq === index;
               return (
-                <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" key={question}>
+                <article className="overflow-hidden rounded-none border border-slate-200 bg-white shadow-sm" key={question}>
                   <button className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" type="button" onClick={() => setOpenFaq(isOpen ? -1 : index)}>
                     <span className="font-black text-[#02024f]">{question}</span>
                     <ChevronDown className={`shrink-0 text-indigo-600 transition ${isOpen ? 'rotate-180' : ''}`} size={20} />

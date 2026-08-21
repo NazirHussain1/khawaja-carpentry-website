@@ -375,7 +375,7 @@ export default function PlasticJumboBags() {
       <section className="bg-[#F2E6EE] px-4 py-[70px] sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="All Capacities at a Glance" />
-          <div className="mt-10 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
+          <div className="mt-10 overflow-x-auto rounded-none border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
             <table className="min-w-[760px] overflow-hidden text-left text-sm">
               <thead className="bg-[#02024f] text-white">
                 <tr>
@@ -404,7 +404,7 @@ export default function PlasticJumboBags() {
 
       <section className="scroll-mt-24 bg-[#f4f8ff] px-4 py-16 sm:px-6 lg:px-8" id="custom-jumbo-bag">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="grid min-h-80 place-items-center rounded-3xl bg-white p-10 text-center shadow-2xl shadow-indigo-950/10 ring-1 ring-indigo-100">
+          <div className="grid min-h-80 place-items-center rounded-none bg-white p-10 text-center shadow-2xl shadow-indigo-950/10 ring-1 ring-indigo-100">
             <div>
               <Ruler className="mx-auto text-indigo-600" size={76} />
               <h3 className="mt-5 text-3xl font-black text-[#02024f]">Any Capacity. Any Design.</h3>
@@ -433,7 +433,7 @@ export default function PlasticJumboBags() {
           <SectionHeading title="Types of Jumbo Bags" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {bagTypes.map((type) => (
-              <article className="rounded-2xl border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={type}>
+              <article className="rounded-none border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={type}>
                 <PackageCheck className="mx-auto text-indigo-600" size={32} />
                 <h3 className="mt-4 text-lg font-black text-[#02024f]">{type}</h3>
               </article>
@@ -447,7 +447,7 @@ export default function PlasticJumboBags() {
           <SectionHeading title="Industries We Serve" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {industries.map((industry) => (
-              <article className="rounded-2xl border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={industry}>
+              <article className="rounded-none border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={industry}>
                 <Truck className="mx-auto text-indigo-600" size={32} />
                 <h3 className="mt-4 text-lg font-black text-[#02024f]">{industry}</h3>
               </article>
@@ -461,7 +461,7 @@ export default function PlasticJumboBags() {
           <SectionHeading title="Why Choose Our Jumbo Bags?" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {features.map(([Icon, title]) => (
-              <article className="rounded-2xl border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={title}>
+              <article className="rounded-none border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={title}>
                 <Icon className="mx-auto text-indigo-600" size={32} />
                 <h3 className="mt-4 text-lg font-black text-[#02024f]">{title}</h3>
               </article>
@@ -473,7 +473,7 @@ export default function PlasticJumboBags() {
       <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Jumbo Bag Capacity Guide" />
-          <div className="mt-10 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
+          <div className="mt-10 overflow-x-auto rounded-none border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
             <table className="min-w-full text-left text-sm">
               <thead className="bg-[#02024f] text-white">
                 <tr>
@@ -502,7 +502,7 @@ export default function PlasticJumboBags() {
             {faqs.map(([question, answer], index) => {
               const isOpen = openFaq === index;
               return (
-                <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" key={question}>
+                <article className="overflow-hidden rounded-none border border-slate-200 bg-white shadow-sm" key={question}>
                   <button className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" type="button" onClick={() => setOpenFaq(isOpen ? -1 : index)}>
                     <span className="font-black text-[#02024f]">{question}</span>
                     <ChevronDown className={`shrink-0 text-indigo-600 transition ${isOpen ? 'rotate-180' : ''}`} size={20} />

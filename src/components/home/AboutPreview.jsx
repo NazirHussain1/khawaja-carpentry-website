@@ -17,41 +17,27 @@ const stats = [
   ['7', 'Emirates Covered']
 ];
 
+const videos = [
+  ['Warehouse Operations', '/2711298-uhd_3840_2160_24fps.mp4'],
+  ['Bulk Packaging', '/192778-893446884_medium.mp4'],
+  ['Supply Workflow', '/166808-835670743_medium.mp4']
+];
+
 const whatsappUrl = `https://wa.me/971542046121?text=${encodeURIComponent('Hello, I need a quote for wooden pallets.')}`;
 
 export default function AboutPreview() {
   return (
-    <section className="bg-[#fffefa] px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl bg-[#fffefa] lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
-        <div className="relative overflow-hidden bg-[#fffefa] border-b border-[#dedbd2] lg:border-b-0 lg:border-r">
-          <img
-            className="absolute inset-0 h-full min-h-96 w-full scale-110 object-cover opacity-35 blur-2xl"
-            src="https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp"
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            className="relative z-10 block h-full min-h-96 w-full rounded-[6px] object-cover"
-            src="https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp"
-            alt="Wooden pallets stacked inside an industrial warehouse"
-            width="1100"
-            height="720"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-
-        <div className="p-6 sm:p-8 lg:p-12">
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">About FAISAL FAREED WOODS TR L.L.C</span>
+    <section className="bg-[#f7efe2] px-4 py-16 sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div>
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-700">How We Support Your Supply Chain</span>
           <h2 className="mt-3 text-3xl font-black leading-tight text-[#02024f] sm:text-4xl">
-            Trusted wooden pallet manufacturer and supplier in UAE since 2009.
+            Practical pallet and packaging support from request to delivery.
           </h2>
           <p className="mt-5 text-base leading-8 text-slate-600">
-            FAISAL FAREED WOODS TR L.L.C is a leading manufacturer and supplier of wooden pallets, wooden crates, plastic
-            pallets, and plastic jumbo bags in UAE. Based in Sajja Industrial, Sharjah, we serve customers
-            across Dubai, Sharjah, JAFZA, Jebel Ali, Abu Dhabi, Ras Al Khaimah, Ajman, Fujairah, and all UAE.
+            Share your product type, size, quantity, load weight, and delivery area. Our team helps you choose the right
+            wooden pallet, plastic pallet, crate, or jumbo bag, then prepares the order for warehouse handling, export
+            packing, factory dispatch, or bulk material movement.
           </p>
 
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -65,7 +51,7 @@ export default function AboutPreview() {
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {stats.map(([value, label]) => (
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center shadow-sm" key={label}>
+              <div className="rounded-none border border-slate-200 bg-slate-50 p-4 text-center shadow-sm" key={label}>
                 <strong className="block text-2xl font-black text-[#02024f]">{value}</strong>
                 <span className="mt-1 block text-xs font-bold uppercase tracking-wide text-slate-500">{label}</span>
               </div>
@@ -90,6 +76,28 @@ export default function AboutPreview() {
               Get Quote
             </a>
           </div>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {videos.map(([title, src], index) => (
+            <article className={`group relative min-h-56 overflow-hidden bg-[#2a170f] shadow-[0_18px_38px_rgba(63,36,23,0.14)] ${index === 0 ? 'sm:col-span-2 min-h-72' : ''}`} key={src}>
+              <video
+                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                src={src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={title}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2a170f]/90 via-[#2a170f]/25 to-transparent" />
+              <div className={`relative flex flex-col justify-end p-5 text-white ${index === 0 ? 'min-h-72' : 'min-h-56'}`}>
+                <span className="text-xs font-black uppercase tracking-[0.18em] text-[#f3c16a]">{title}</span>
+                <span className="mt-3 h-px w-20 bg-[#f3c16a]" />
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

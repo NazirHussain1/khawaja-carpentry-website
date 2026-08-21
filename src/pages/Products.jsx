@@ -153,7 +153,7 @@ export default function Products() {
         <div className="mx-auto flex min-h-[460px] max-w-7xl items-center px-4 py-16 sm:min-h-[520px] sm:px-6 sm:py-20 lg:px-8">
           <div className="max-w-4xl">
             <span className="border-b border-white/40 px-1 py-2 text-xs font-black uppercase tracking-[0.2em] text-sky-100">Products — Complete Range</span>
-            <h1 className="mt-6 max-w-4xl font-serif text-5xl font-normal leading-[0.98] sm:text-6xl lg:text-8xl">FAISAL FAREED WOODS TR L.L.C Sharjah UAE</h1>
+            <h1 className="brand-arabic-style mt-6 max-w-4xl text-5xl leading-[0.98] sm:text-6xl lg:text-8xl">Faisal Fareed Woods TR L.L.C Sharjah UAE</h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
               Complete range of wooden pallets, wooden crates, plastic pallets, and jumbo bags. All sizes with free delivery across UAE.
             </p>
@@ -225,7 +225,7 @@ export default function Products() {
 
       <section className="bg-[#fffefa] px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading title="Why Buy from FAISAL FAREED WOODS TR L.L.C?" />
+          <SectionHeading title="Why Buy from Faisal Fareed Woods TR L.L.C?" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {reasons.map(([Icon, title, text]) => (
               <article className="border-t border-[#dedbd2] p-6 text-center transition-colors hover:bg-[#f4f4ef]" key={title}>

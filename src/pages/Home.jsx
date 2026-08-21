@@ -1,13 +1,11 @@
 import CTASection from '../components/common/CTASection.jsx';
 import QuoteForm from '../components/contact/QuoteForm.jsx';
 import AboutPreview from '../components/home/AboutPreview.jsx';
-import FAQSection from '../components/home/FAQSection.jsx';
 import HeroSection from '../components/home/HeroSection.jsx';
 import HowWeWork from '../components/home/HowWeWork.jsx';
 import IndustriesSection from '../components/home/IndustriesSection.jsx';
 import ProductsPreview from '../components/home/ProductsPreview.jsx';
 import ServicesSection from '../components/home/ServicesSection.jsx';
-import TestimonialsSection from '../components/home/TestimonialsSection.jsx';
 import WhyChooseUs from '../components/home/WhyChooseUs.jsx';
 
 export default function Home() {
@@ -20,8 +18,6 @@ export default function Home() {
       <WhyChooseUs />
       <HowWeWork />
       <IndustriesSection />
-      <TestimonialsSection />
-      <FAQSection />
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div>
