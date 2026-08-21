@@ -18,10 +18,12 @@ const FAQ = lazy(() => import('./pages/FAQ.jsx'));
 const GetQuote = lazy(() => import('./pages/GetQuote.jsx'));
 const Admin = lazy(() => import('./pages/Admin.jsx'));
 
+const siteUrl = import.meta.env.VITE_SITE_URL || 'https://faisal-fareed-carpentry.vercel.app';
+
 const site = {
   name: import.meta.env.VITE_SITE_NAME || 'FAISAL FAREED WOODS TR L.L.C',
-  url: import.meta.env.VITE_SITE_URL || 'https://faisal-fareed-carpentry.vercel.app',
-  image: 'https://res.cloudinary.com/dqrldug5h/image/upload/v1786590697/khawaja-carpentry/gvlxhu5tub1xya5e6nwl.webp',
+  url: siteUrl,
+  image: `${siteUrl}/logo.png`,
   keywords: 'wooden pallets UAE, pallet supplier Dubai, wooden pallets Sharjah, wooden crates UAE, plastic pallets UAE, jumbo bags supplier UAE, industrial packaging UAE, export pallets UAE',
   phone: '+971 58 844 1600',
   email: 'faislfareed786@gmail.com',
@@ -104,6 +106,16 @@ const seoPages = {
     title: 'Inquiry Admin | FAISAL FAREED WOODS TR L.L.C',
     description: 'Private inquiry dashboard for FAISAL FAREED WOODS TR L.L.C.',
     path: '/admin'
+  },
+  'control-center': {
+    title: 'Control Center | FAISAL FAREED WOODS TR L.L.C',
+    description: 'Private control center for FAISAL FAREED WOODS TR L.L.C.',
+    path: '/control-center'
+  },
+  'brevo-test': {
+    title: 'Brevo SMTP Test | FAISAL FAREED WOODS TR L.L.C',
+    description: 'Private Brevo SMTP diagnostics page.',
+    path: '/brevo-test'
   }
 };
 
@@ -122,7 +134,8 @@ const routes = {
   faq: FAQ,
   quote: GetQuote,
   contact: Contact,
-  admin: Admin
+  admin: Admin,
+  'control-center': Admin
 };
 
 function parseRoute() {
@@ -268,7 +281,7 @@ export default function App() {
   return (
     <div className="min-h-screen overflow-x-clip bg-slate-50 text-slate-900 antialiased">
       <Header activePage={page} />
-      <main className="pb-20 sm:pb-0">
+      <main className="pt-[128px] pb-20 sm:pb-0">
         <Suspense fallback={<PageSkeleton />}>
           <Page slug={slug} />
         </Suspense>

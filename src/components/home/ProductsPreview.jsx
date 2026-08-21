@@ -40,13 +40,13 @@ const fallbackProducts = [
 function ProductCard({ product, index }) {
   return (
     <article
-      className="group relative overflow-hidden rounded-[24px] bg-white shadow-[0_10px_35px_rgba(0,0,0,0.08)] transition-all duration-[400ms] ease-out hover:-translate-y-[10px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+      className="group relative overflow-hidden bg-transparent"
       data-aos="fade-up"
       data-aos-delay={index * 100}
       data-aos-duration="800"
     >
       {/* Image Container with Overlay Button */}
-      <div className="relative h-[280px] overflow-hidden rounded-t-[24px]">
+      <div className="relative h-[280px] overflow-hidden bg-[#dfe7e2]">
         <img
           className="h-full w-full object-cover transition-transform duration-[400ms] ease-out group-hover:scale-[1.08]"
           src={product.image}
@@ -58,9 +58,9 @@ function ProductCard({ product, index }) {
         />
         
         {/* Hover Overlay with Button */}
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent opacity-0 transition-opacity duration-[400ms] ease-out group-hover:opacity-100">
+          <div className="absolute inset-0 flex items-center justify-center bg-slate-950/35 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
           <a
-            className="translate-y-4 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-3.5 text-base font-semibold text-white shadow-2xl shadow-indigo-900/50 opacity-0 transition-all duration-[400ms] ease-out group-hover:translate-y-0 group-hover:opacity-100 hover:scale-105"
+            className="translate-y-4 rounded-sm bg-white px-7 py-3 text-sm font-bold text-[#173b42] shadow-xl opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 hover:bg-[#edf4f0]"
             href={product.href}
             data-spa-link="true"
           >
@@ -70,18 +70,18 @@ function ProductCard({ product, index }) {
 
         {/* Badge */}
         <div className="absolute left-4 top-4 transition-transform duration-300 group-hover:scale-105">
-          <span className={`inline-flex rounded-full bg-gradient-to-r ${product.badgeColor} px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg`}>
+          <span className="inline-flex bg-white/95 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-[#315b5d] shadow-sm">
             {product.badge}
           </span>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-[#02024f] transition-colors duration-300 group-hover:text-indigo-600">
+      <div className="px-1 pb-2 pt-5">
+        <h3 className="font-serif text-2xl font-normal text-[#173b42] transition-colors duration-300 group-hover:text-[#52837d]">
           {product.title}
         </h3>
-        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-slate-600">
+        <p className="mt-3 line-clamp-3 text-sm leading-7 text-slate-600">
           {product.description}
         </p>
       </div>
@@ -121,14 +121,14 @@ export default function ProductsPreview() {
   }, []);
 
   return (
-    <section className="bg-white px-4 py-[100px] sm:px-6 lg:px-8">
+    <section className="bg-transparent px-4 py-[100px] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center" data-aos="fade-up" data-aos-duration="800">
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-indigo-600">
+          <span className="text-xs font-black uppercase tracking-[0.2em] text-[#52837d]">
             Our Products
           </span>
-          <h2 className="mt-4 text-[28px] font-bold leading-tight text-[#02024f] sm:text-[32px] lg:text-[36px]">
+          <h2 className="mt-4 font-serif text-4xl font-normal leading-tight text-[#173b42] sm:text-5xl">
             Premium Pallet Solutions
           </h2>
           <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">

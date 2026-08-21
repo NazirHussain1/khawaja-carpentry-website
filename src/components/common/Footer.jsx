@@ -1,4 +1,4 @@
-import { ChevronRight, Grid2X2, MapPin } from 'lucide-react';
+import { ChevronRight, MapPin } from 'lucide-react';
 import { CallIcon, MailIcon } from './ContactIcons.jsx';
 import WhatsAppIcon from './WhatsAppIcon.jsx';
 
@@ -14,6 +14,8 @@ const company = {
   location: 'Sajja Industrial, Sharjah-U.A.E',
   mapsUrl: 'https://www.google.com/maps?q=Sajja%20Industrial%2C%20Sharjah-U.A.E'
 };
+
+const logoSrc = '/logo.png';
 
 const quickLinks = [
   ['Home', '#/home'],
@@ -35,15 +37,15 @@ function FooterHeading({ children }) {
   return (
     <div>
       <h3 className="text-lg font-bold text-white">{children}</h3>
-      <span className="mt-3 block h-1 w-12 rounded-full bg-gradient-to-r from-indigo-400 to-sky-400" />
+      <span className="mt-3 block h-1 w-12 rounded-full bg-gradient-to-r from-[#8b4f24] to-[#d18a2f]" />
     </div>
   );
 }
 
 function FooterLink({ href, children }) {
   return (
-    <a className="group inline-flex items-center gap-2 text-sm text-slate-300 transition duration-300 hover:translate-x-1.5 hover:text-sky-300" href={href}>
-      <ChevronRight className="text-indigo-300 transition group-hover:text-sky-300" size={15} />
+    <a className="group inline-flex items-center gap-2 text-sm text-[#e8dccb] transition duration-300 hover:translate-x-1.5 hover:text-[#f3c16a]" href={href}>
+      <ChevronRight className="text-[#d18a2f] transition group-hover:text-[#f3c16a]" size={15} />
       {children}
     </a>
   );
@@ -52,7 +54,7 @@ function FooterLink({ href, children }) {
 function SocialIcon({ href, label, children }) {
   return (
     <a
-      className="grid size-10 place-items-center rounded-full bg-indigo-400/15 text-white ring-1 ring-white/10 transition duration-300 hover:scale-110 hover:bg-indigo-500/70 hover:ring-indigo-300/50"
+      className="grid size-10 place-items-center rounded-full bg-[#8b4f24]/35 text-white ring-1 ring-[#d18a2f]/25 transition duration-300 hover:scale-110 hover:bg-[#8b4f24]/80 hover:ring-[#d18a2f]/60"
       href={href}
       target={href.startsWith('http') ? '_blank' : undefined}
       rel={href.startsWith('http') ? 'noreferrer' : undefined}
@@ -66,12 +68,12 @@ function SocialIcon({ href, label, children }) {
 function ContactItem({ href, icon: Icon, children }) {
   return (
     <a
-      className="group flex items-start gap-3 text-sm leading-6 text-slate-300 transition duration-300 hover:text-sky-300"
+      className="group flex items-start gap-3 text-sm leading-6 text-[#e8dccb] transition duration-300 hover:text-[#f3c16a]"
       href={href}
       target={href.startsWith('http') ? '_blank' : undefined}
       rel={href.startsWith('http') ? 'noreferrer' : undefined}
     >
-      <Icon className="mt-1 shrink-0 text-indigo-300 transition group-hover:text-sky-300" size={18} />
+      <Icon className="mt-1 shrink-0 text-[#d18a2f] transition group-hover:text-[#f3c16a]" size={18} />
       <span>{children}</span>
     </a>
   );
@@ -84,17 +86,15 @@ export default function Footer() {
   const mailto = `mailto:${company.email}`;
 
   return (
-    <footer className="bg-[#02024f] text-slate-300">
+    <footer className="bg-[#2a170f] text-[#e8dccb]">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <section aria-labelledby="footer-company">
           <div className="flex items-center gap-3">
-            <span className="grid size-10 place-items-center rounded-md bg-indigo-400/20 text-white ring-1 ring-indigo-300/30">
-              <Grid2X2 size={20} />
-            </span>
-            <h2 id="footer-company" className="text-lg font-bold text-white">{company.name}</h2>
+            <img className="brand-logo block h-16 w-auto shrink-0 object-contain" src={logoSrc} alt="FIASAL FAREED WOODS TR L.L.C logo" />
+            <h2 id="footer-company" className="sr-only">{company.name}</h2>
           </div>
-          <p className="mt-5 max-w-sm text-sm leading-7 text-slate-300/85">{company.description}</p>
-          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">TRN: {company.trn}</p>
+          <p className="mt-5 max-w-sm text-sm leading-7 text-[#e8dccb]/85">{company.description}</p>
+          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#c8ad88]">TRN: {company.trn}</p>
           <div className="mt-6 flex items-center gap-3">
             <SocialIcon href={whatsappUrl} label="Chat on WhatsApp">
               <WhatsAppIcon className="size-5" />
@@ -137,7 +137,7 @@ export default function Footer() {
         </section>
       </div>
 
-      <div className="border-t border-white/10 px-5 py-5 text-center text-xs text-slate-300/70">
+      <div className="border-t border-[#d18a2f]/15 px-5 py-5 text-center text-xs text-[#e8dccb]/70">
         &copy; 2026 {company.legalName}. All Rights Reserved.
       </div>
     </footer>

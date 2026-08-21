@@ -22,7 +22,7 @@ const items = [
 
 export default function ContactInfo() {
   return (
-    <aside className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5 lg:p-8">
+    <aside className="rounded-none border border-slate-200 bg-white p-6 shadow-xl shadow-slate-950/5 lg:p-8">
       <span className="inline-flex rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-indigo-700">
         Contact Details
       </span>
@@ -47,7 +47,7 @@ export default function ContactInfo() {
 
           return href ? (
             <a
-              className="group flex gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:bg-white hover:shadow-lg"
+              className="group flex gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition duration-300 hover:border-indigo-200 hover:bg-white hover:shadow-lg"
               href={href}
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noreferrer' : undefined}
@@ -56,14 +56,14 @@ export default function ContactInfo() {
               {content}
             </a>
           ) : (
-            <div className="flex gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4" key={label}>
+            <div className="flex gap-4 rounded-none border border-slate-100 bg-slate-50 p-4" key={label}>
               {content}
             </div>
           );
         })}
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <div className="mt-6 overflow-hidden rounded-none border border-slate-200 bg-white shadow-sm">
         <iframe
           className="h-64 w-full"
           title="Sajja Industrial, Sharjah map"

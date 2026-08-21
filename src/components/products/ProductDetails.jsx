@@ -12,8 +12,8 @@ export default function ProductDetails({ product }) {
   return (
     <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-start">
-        <div className={`min-h-96 rounded-lg bg-gradient-to-br ${visualClasses[product.imageClass] || visualClasses['visual-pallet-stack']} p-8 shadow-xl`} aria-hidden="true">
-          <div className="flex h-80 items-end rounded-lg border border-white/20 bg-black/10 p-6">
+        <div className={`min-h-96 rounded-none bg-gradient-to-br ${visualClasses[product.imageClass] || visualClasses['visual-pallet-stack']} p-8 shadow-xl`} aria-hidden="true">
+          <div className="flex h-80 items-end rounded-none border border-white/20 bg-black/10 p-6">
             <div className="grid w-full gap-3">
               <div className="h-12 rounded bg-white/20" />
               <div className="h-12 rounded bg-white/25" />
@@ -33,7 +33,7 @@ export default function ProductDetails({ product }) {
           {product.details?.length > 0 && (
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {product.details.map((group) => (
-                <article className="rounded-lg border border-slate-200 bg-slate-50 p-5" key={group.title}>
+                <article className="rounded-none border border-slate-200 bg-slate-50 p-5" key={group.title}>
                   <h3 className="font-bold text-slate-950">{group.title}</h3>
                   <ul className="mt-3 grid gap-2 text-sm text-slate-600">
                     {group.items.map((item) => <li key={item}>{item}</li>)}

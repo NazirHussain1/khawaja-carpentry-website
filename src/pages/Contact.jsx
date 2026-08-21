@@ -65,7 +65,7 @@ function ContactCard({ icon: Icon, title, value, href, caption }) {
   const isExternal = href.startsWith('http');
   return (
     <a
-      className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-950/5 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-950/10"
+      className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-lg shadow-slate-950/5 transition duration-300 hover:shadow-2xl hover:shadow-indigo-950/10"
       href={href}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noreferrer' : undefined}
@@ -150,7 +150,7 @@ export default function Contact() {
           </nav>
           <div className="mt-10 max-w-4xl">
             <span className="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-100 ring-1 ring-white/15">Contact Us — Get in Touch</span>
-            <h1 className="mt-5 text-4xl font-black leading-tight sm:text-5xl lg:text-7xl">FAISAL FAREED WOODS TR L.L.C Sharjah UAE</h1>
+            <h1 className="brand-arabic-style mt-5 text-4xl leading-tight sm:text-5xl lg:text-7xl">Faisal Fareed Woods TR L.L.C Sharjah UAE</h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-100 sm:text-xl">
               Need pallets, crates, plastic pallets, or jumbo bags? Contact our team for pricing, bulk orders, and custom manufacturing solutions.
             </p>
@@ -177,7 +177,7 @@ export default function Contact() {
 
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8" id="contact-form">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <form className="rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl shadow-slate-950/8 lg:p-8" onSubmit={handleSubmit}>
+          <form className="rounded-none border border-slate-200 bg-white p-6 shadow-2xl shadow-slate-950/8 lg:p-8" onSubmit={handleSubmit}>
             <span className="inline-flex rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-indigo-700">Contact Form</span>
             <h2 className="mt-5 text-3xl font-black text-[#02024f]">Submit Your Inquiry</h2>
             <p className="mt-3 text-sm leading-7 text-slate-600">Share your order details and our team will follow up with pricing, availability, and delivery options.</p>
@@ -212,7 +212,7 @@ export default function Contact() {
           </form>
 
           <div className="grid gap-6">
-            <form className="rounded-3xl border border-indigo-100 bg-[#F2E6EE] p-6 shadow-xl shadow-indigo-950/5" onSubmit={handleQuickQuote}>
+            <form className="rounded-none border border-indigo-100 bg-[#F2E6EE] p-6 shadow-xl shadow-indigo-950/5" onSubmit={handleQuickQuote}>
               <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-700">Quick Quote</span>
               <h2 className="mt-3 text-3xl font-black text-[#02024f]">Request a Fast Quote</h2>
               <div className="mt-6 grid gap-4">
@@ -230,7 +230,7 @@ export default function Contact() {
               </button>
             </form>
 
-            <div className="rounded-3xl bg-[#02024f] p-8 text-white shadow-xl shadow-slate-950/20">
+            <div className="rounded-none bg-[#02024f] p-8 text-white shadow-xl shadow-slate-950/20">
               <h2 className="text-3xl font-black">Need Immediate Assistance?</h2>
               <p className="mt-3 text-sm leading-7 text-slate-300">Chat with our team directly on WhatsApp for quick quotations and support.</p>
               <a className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white transition hover:-translate-y-1" href={createWhatsAppUrl('Hello, I need immediate assistance for industrial packaging.')} target="_blank" rel="noreferrer">
@@ -251,7 +251,7 @@ export default function Contact() {
                 [Clock, 'Business Hours', contactInfo.hours],
                 [Truck, 'Directions', 'Open Google Maps for route planning and delivery coordination.']
               ].map(([Icon, title, text]) => (
-                <article className="rounded-3xl border border-indigo-100 bg-white p-6 shadow-lg shadow-indigo-950/5" key={title}>
+                <article className="rounded-none border border-indigo-100 bg-white p-6 shadow-lg shadow-indigo-950/5" key={title}>
                   <Icon className="text-indigo-600" size={28} />
                   <h3 className="mt-4 text-xl font-black text-[#02024f]">{title}</h3>
                   <p className="mt-2 text-sm leading-7 text-slate-600">{text}</p>
@@ -267,12 +267,12 @@ export default function Contact() {
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Business Hours" />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl shadow-slate-950/5">
+            <article className="rounded-none border border-slate-200 bg-white p-8 shadow-xl shadow-slate-950/5">
               <Clock className="text-indigo-600" size={34} />
               <h3 className="mt-5 text-2xl font-black text-[#02024f]">Monday - Saturday</h3>
               <p className="mt-2 text-lg font-bold text-slate-700">8:00 AM - 7:00 PM</p>
             </article>
-            <article className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl shadow-slate-950/5">
+            <article className="rounded-none border border-slate-200 bg-white p-8 shadow-xl shadow-slate-950/5">
               <Clock className="text-slate-500" size={34} />
               <h3 className="mt-5 text-2xl font-black text-[#02024f]">Sunday</h3>
               <p className="mt-2 text-lg font-bold text-slate-700">Closed</p>
@@ -286,7 +286,7 @@ export default function Contact() {
           <SectionHeading title="Why Contact Us?" subtitle="A practical industrial supplier focused on fast pricing, custom orders, and bulk supply support." />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {whyContact.map(([Icon, title, text]) => (
-              <article className="rounded-3xl border border-indigo-100 bg-white p-7 shadow-lg shadow-indigo-950/5 transition hover:-translate-y-1 hover:shadow-2xl" key={title}>
+              <article className="rounded-none border border-indigo-100 bg-white p-7 shadow-lg shadow-indigo-950/5 transition hover:shadow-2xl" key={title}>
                 <div className="grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-lg shadow-indigo-950/20">
                   <Icon size={27} />
                 </div>
@@ -303,7 +303,7 @@ export default function Contact() {
           <SectionHeading title="Areas We Serve" />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {serviceAreas.map((area) => (
-              <article className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-md shadow-slate-950/5 transition hover:-translate-y-1 hover:shadow-lg" key={area}>
+              <article className="flex items-center gap-3 rounded-none border border-slate-200 bg-white p-5 shadow-md shadow-slate-950/5 transition hover:shadow-lg" key={area}>
                 <Building2 className="shrink-0 text-indigo-600" size={24} />
                 <span className="font-black text-[#02024f]">{area}</span>
               </article>
@@ -319,7 +319,7 @@ export default function Contact() {
             {faqs.map(([question, answer], index) => {
               const isOpen = openFaq === index;
               return (
-                <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" key={question}>
+                <article className="overflow-hidden rounded-none border border-slate-200 bg-white shadow-sm" key={question}>
                   <button className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" type="button" onClick={() => setOpenFaq(isOpen ? -1 : index)}>
                     <span className="font-black text-[#02024f]">{question}</span>
                     <ChevronDown className={`shrink-0 text-indigo-600 transition ${isOpen ? 'rotate-180' : ''}`} size={20} />

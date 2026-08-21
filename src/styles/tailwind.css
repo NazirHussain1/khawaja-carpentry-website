@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 html,
@@ -26,18 +27,43 @@ textarea {
 }
 
 :root {
-  --brand-navy: #02024f;
-  --brand-indigo: #4f46e5;
-  --brand-sky: #0ea5e9;
+  --brand-navy: #2a170f;
+  --brand-indigo: #8b4f24;
+  --brand-sky: #d18a2f;
+  --wood-dark: #2a170f;
+  --wood-bark: #3f2417;
+  --wood-walnut: #5b351f;
+  --wood-cedar: #8b4f24;
+  --wood-honey: #d18a2f;
+  --wood-cream: #fff8ed;
+  --wood-paper: #f7efe2;
+  --wood-sage: #68704d;
+  --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(209, 138, 47, 0.12), transparent 32rem),
+    linear-gradient(180deg, var(--wood-cream), #f5eadc 46%, #fffaf2);
+  color: var(--wood-dark);
+}
+
+main h1,
+main h2,
+main h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
 }
 
 ::selection {
-  background: rgba(79, 70, 229, 0.22);
-  color: #02024f;
+  background: rgba(209, 138, 47, 0.32);
+  color: var(--wood-dark);
 }
 
 :focus-visible {
-  outline: 3px solid rgba(14, 165, 233, 0.78);
+  outline: 3px solid rgba(209, 138, 47, 0.82);
   outline-offset: 3px;
 }
 
@@ -70,7 +96,8 @@ button[class*="bg-gradient-to-r"] {
   position: relative;
   overflow: hidden;
   transform: translateZ(0);
-  box-shadow: 0 18px 34px rgba(49, 46, 129, 0.22);
+  background-image: linear-gradient(110deg, var(--wood-walnut), var(--wood-cedar) 52%, var(--wood-honey)) !important;
+  box-shadow: 0 18px 34px rgba(63, 36, 23, 0.24);
 }
 
 a[class*="bg-gradient-to-r"]::after,
@@ -112,7 +139,14 @@ a[class*="rounded-full"] {
 main article[class*="bg-white"],
 main form[class*="bg-white"],
 main aside[class*="bg-white"] {
-  box-shadow: 0 20px 46px rgba(15, 23, 42, 0.07);
+  border-color: rgba(139, 79, 36, 0.18) !important;
+  box-shadow: 0 20px 46px rgba(63, 36, 23, 0.09);
+}
+
+/* Keep content cards closer to the reference site's restrained geometry. */
+main article[class*="rounded-2xl"],
+main article[class*="rounded-3xl"] {
+  border-radius: 6px !important;
 }
 
 main article:hover svg,
@@ -126,7 +160,84 @@ main svg {
 }
 
 img {
-  background-color: #e2e8f0;
+  background-color: #e8dccb;
+}
+
+img.brand-logo {
+  background-color: transparent !important;
+}
+
+.brand-arabic-style {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: inherit;
+  text-shadow: 0 2px 0 rgba(209, 138, 47, 0.28), 0 12px 30px rgba(42, 23, 15, 0.22);
+}
+
+.brand-arabic-style::first-letter {
+  color: #f3c16a;
+}
+
+/* Wood brand polish for existing Tailwind-heavy pages. */
+.bg-slate-50 {
+  background-color: var(--wood-cream) !important;
+}
+
+.bg-slate-900,
+.bg-slate-950,
+.bg-\[\#02024f\] {
+  background-color: var(--wood-dark) !important;
+}
+
+.text-\[\#02024f\],
+.text-indigo-700,
+.text-indigo-600 {
+  color: var(--wood-walnut) !important;
+}
+
+.text-sky-100,
+.text-sky-200,
+.text-sky-300,
+.text-emerald-300 {
+  color: #f3c16a !important;
+}
+
+.bg-indigo-50,
+.bg-sky-50 {
+  background-color: #fff2dd !important;
+}
+
+.border-indigo-100,
+.border-indigo-200 {
+  border-color: #ead2b5 !important;
+}
+
+.ring-indigo-100,
+.ring-indigo-300\/30 {
+  --tw-ring-color: rgba(209, 138, 47, 0.28) !important;
+}
+
+.shadow-indigo-950\/5,
+.shadow-indigo-950\/10,
+.shadow-indigo-950\/20,
+.shadow-indigo-950\/25,
+.shadow-indigo-950\/30 {
+  --tw-shadow-color: rgba(63, 36, 23, 0.22) !important;
+}
+
+.from-indigo-600,
+.from-indigo-400,
+.from-violet-600 {
+  --tw-gradient-from: var(--wood-walnut) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(91, 53, 31, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via, rgba(139, 79, 36, 0.92)), var(--tw-gradient-to) !important;
+}
+
+.to-sky-500,
+.to-sky-400 {
+  --tw-gradient-to: var(--wood-honey) var(--tw-gradient-to-position) !important;
 }
 
 .ui-reveal {

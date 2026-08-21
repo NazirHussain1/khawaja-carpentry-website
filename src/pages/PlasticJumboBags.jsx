@@ -203,10 +203,10 @@ function CapacitySection({ item, index, onImageOpen }) {
   };
 
   return (
-    <section className={`${isAlt ? 'bg-[#F2E6EE]' : 'bg-white'} scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8`} id={item.id}>
+    <section className="bg-[#fffefa] scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8" id={item.id}>
       <div className={`mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center ${isAlt ? 'lg:[&>*:first-child]:order-2' : ''}`}>
         <button
-          className="group block cursor-pointer overflow-hidden rounded-3xl shadow-2xl shadow-slate-950/10 focus:outline-none focus:ring-4 focus:ring-indigo-300"
+          className="group block cursor-pointer overflow-hidden focus:outline-none focus:ring-4 focus:ring-[#b9c7c2]"
           type="button"
           aria-label={`Open full image for ${item.heading}`}
           onClick={() => onImageOpen(productImage)}
@@ -229,15 +229,15 @@ function CapacitySection({ item, index, onImageOpen }) {
           data-aos-delay={index * 150 + 100}
           data-aos-duration="800"
         >
-          <span className="inline-flex rounded-full bg-[#02024f] px-4 py-2 text-xs font-black uppercase tracking-wide text-white shadow-lg shadow-indigo-950/20">
+          <span className="border-b border-[#b9c7c2] px-1 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#52837d]">
             {item.label} Capacity
           </span>
-          <h2 className="mt-4 text-3xl font-black leading-tight text-[#02024f] sm:text-4xl">{item.heading}</h2>
+          <h2 className="mt-4 font-serif text-4xl font-normal leading-tight text-[#173b42] sm:text-5xl">{item.heading}</h2>
           <p className="mt-4 text-base leading-8 text-slate-600">{item.description}</p>
-          <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-950/5">
+          <div className="mt-6 overflow-hidden border-t border-[#dedbd2]">
             {item.specs.map(([label, value]) => (
               <div className="grid grid-cols-[44%_1fr] border-b border-slate-100 last:border-b-0" key={label}>
-                <strong className="bg-[#F2E6EE] px-4 py-3 text-sm text-[#02024f]">{label}</strong>
+                <strong className="bg-[#fffefa] px-4 py-3 text-sm text-[#315b5d]">{label}</strong>
                 <span className="px-4 py-3 text-sm font-medium text-slate-700">{value}</span>
               </div>
             ))}
@@ -371,7 +371,7 @@ export default function PlasticJumboBags() {
       <section className="bg-[#F2E6EE] px-4 py-[70px] sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="All Capacities at a Glance" />
-          <div className="mt-10 overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
+          <div className="mt-10 overflow-x-auto rounded-none border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
             <table className="min-w-[760px] overflow-hidden text-left text-sm">
               <thead className="bg-[#02024f] text-white">
                 <tr>
@@ -400,7 +400,7 @@ export default function PlasticJumboBags() {
 
       <section className="scroll-mt-24 bg-[#f4f8ff] px-4 py-16 sm:px-6 lg:px-8" id="custom-jumbo-bag">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="grid min-h-80 place-items-center rounded-3xl bg-white p-10 text-center shadow-2xl shadow-indigo-950/10 ring-1 ring-indigo-100">
+          <div className="grid min-h-80 place-items-center rounded-none bg-white p-10 text-center shadow-2xl shadow-indigo-950/10 ring-1 ring-indigo-100">
             <div>
               <Ruler className="mx-auto text-indigo-600" size={76} />
               <h3 className="mt-5 text-3xl font-black text-[#02024f]">Any Capacity. Any Design.</h3>
@@ -429,7 +429,7 @@ export default function PlasticJumboBags() {
           <SectionHeading title="Types of Jumbo Bags" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {bagTypes.map((type) => (
-              <article className="rounded-2xl border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={type}>
+              <article className="rounded-none border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={type}>
                 <PackageCheck className="mx-auto text-indigo-600" size={32} />
                 <h3 className="mt-4 text-lg font-black text-[#02024f]">{type}</h3>
               </article>
@@ -443,7 +443,7 @@ export default function PlasticJumboBags() {
           <SectionHeading title="Industries We Serve" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {industries.map((industry) => (
-              <article className="rounded-2xl border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={industry}>
+              <article className="rounded-none border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={industry}>
                 <Truck className="mx-auto text-indigo-600" size={32} />
                 <h3 className="mt-4 text-lg font-black text-[#02024f]">{industry}</h3>
               </article>
@@ -457,7 +457,7 @@ export default function PlasticJumboBags() {
           <SectionHeading title="Why Choose Our Jumbo Bags?" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {features.map(([Icon, title]) => (
-              <article className="rounded-2xl border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={title}>
+              <article className="rounded-none border border-indigo-100 bg-white p-6 text-center shadow-lg shadow-indigo-950/5" key={title}>
                 <Icon className="mx-auto text-indigo-600" size={32} />
                 <h3 className="mt-4 text-lg font-black text-[#02024f]">{title}</h3>
               </article>
@@ -469,7 +469,7 @@ export default function PlasticJumboBags() {
       <section className="bg-[#F2E6EE] px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading title="Jumbo Bag Capacity Guide" />
-          <div className="mt-10 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
+          <div className="mt-10 overflow-x-auto rounded-none border border-slate-200 bg-white shadow-xl shadow-slate-950/5">
             <table className="min-w-full text-left text-sm">
               <thead className="bg-[#02024f] text-white">
                 <tr>
@@ -498,7 +498,7 @@ export default function PlasticJumboBags() {
             {faqs.map(([question, answer], index) => {
               const isOpen = openFaq === index;
               return (
-                <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm" key={question}>
+                <article className="overflow-hidden rounded-none border border-slate-200 bg-white shadow-sm" key={question}>
                   <button className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left" type="button" onClick={() => setOpenFaq(isOpen ? -1 : index)}>
                     <span className="font-black text-[#02024f]">{question}</span>
                     <ChevronDown className={`shrink-0 text-indigo-600 transition ${isOpen ? 'rotate-180' : ''}`} size={20} />

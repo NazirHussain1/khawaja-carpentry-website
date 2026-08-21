@@ -53,7 +53,7 @@ export default function FAQSection() {
             const isOpen = openIndex === index;
 
             return (
-              <article className={`overflow-hidden rounded-2xl border bg-white shadow-md shadow-slate-950/5 transition duration-300 hover:border-indigo-200 hover:shadow-lg ${isOpen ? 'border-indigo-300' : 'border-slate-200'}`} key={faq.question}>
+              <article className={`overflow-hidden rounded-none border bg-white shadow-md shadow-slate-950/5 transition duration-300 hover:border-indigo-200 hover:shadow-lg ${isOpen ? 'border-indigo-300' : 'border-slate-200'}`} key={faq.question}>
                 <button
                   className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                   type="button"
@@ -75,7 +75,7 @@ export default function FAQSection() {
           })}
         </div>
 
-        <div className="mt-10 rounded-3xl bg-[#02024f] px-6 py-8 text-center text-white shadow-2xl shadow-slate-950/10">
+        <div className="mt-10 rounded-none bg-[#02024f] px-6 py-8 text-center text-white shadow-2xl shadow-slate-950/10">
           <h3 className="text-2xl font-black">Still have questions?</h3>
           <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
             <a

@@ -28,27 +28,42 @@ const whatsappUrl = `https://wa.me/971542046121?text=${encodeURIComponent('Hello
 
 export default function ServicesSection() {
   return (
-    <section className="bg-slate-50 px-4 py-16 sm:px-6 lg:px-8">
+    <section className="bg-transparent px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-indigo-700 shadow-sm">
+          <span className="inline-flex items-center gap-2 border-b border-[#d9bd98] px-1 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#8b4f24]">
             <Hammer size={14} />
             Our Services
           </span>
-          <h2 className="mt-5 text-3xl font-black text-[#02024f] sm:text-4xl">Our Services</h2>
+          <h2 className="mt-5 font-serif text-4xl font-normal text-[#2a170f] sm:text-5xl">Wood Packaging Services</h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
             Complete pallet and packaging solutions for warehouses, factories, exporters, and logistics companies across UAE.
           </p>
         </div>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {services.map(({ title, description, icon: Icon }) => (
-            <article className="group rounded-2xl border border-slate-200 bg-white p-7 shadow-md shadow-slate-950/5 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-950/10" key={title}>
-              <div className="grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-500 text-white shadow-lg shadow-indigo-950/20 transition duration-300 group-hover:shadow-sky-500/35">
+          {services.map(({ title, description, icon: Icon }, index) => (
+            <article
+              className="group relative min-h-72 overflow-hidden rounded-md border border-[#ead2b5] bg-white p-7 shadow-[0_18px_38px_rgba(63,36,23,0.08)] transition-colors duration-500 hover:border-[#d18a2f] hover:bg-[#fffaf2]"
+              key={title}
+            >
+              <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#5b351f] via-[#8b4f24] to-[#d18a2f]" />
+              <span
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2a170f]/6 via-transparent to-[#d18a2f]/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                aria-hidden="true"
+              />
+              <span
+                className="pointer-events-none absolute -right-12 -top-12 size-32 rounded-full bg-[#d18a2f]/10"
+                aria-hidden="true"
+              />
+              <div className="relative grid size-14 place-items-center rounded-md bg-[#fff2dd] text-[#8b4f24] ring-1 ring-[#d9bd98] transition-colors duration-500 group-hover:bg-[#5b351f] group-hover:text-white">
                 <Icon size={28} />
               </div>
-              <h3 className="mt-6 text-xl font-black text-[#02024f]">{title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-600">{description}</p>
+              <div className="relative">
+                <span className="mt-6 block text-xs font-black uppercase tracking-[0.18em] text-[#d18a2f]">0{index + 1}</span>
+                <h3 className="mt-2 font-serif text-2xl font-normal text-[#2a170f] transition duration-500 group-hover:text-[#8b4f24]">{title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{description}</p>
+              </div>
             </article>
           ))}
         </div>

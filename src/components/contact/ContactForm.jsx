@@ -46,7 +46,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" onSubmit={handleSubmit}>
+    <form className="rounded-none border border-slate-200 bg-white p-6 shadow-sm" onSubmit={handleSubmit}>
       <h3 className="text-2xl font-black text-slate-950">Send a message</h3>
       <div className="mt-6 grid gap-5">
         <label className={labelClass}>

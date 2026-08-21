@@ -59,6 +59,45 @@ a img,
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12), 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
+@keyframes card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-reveal {
+  animation: card-reveal 650ms cubic-bezier(0.2, 0.8, 0.2, 1) var(--card-delay, 0ms) both;
+}
+
+@keyframes product-section-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-section-enter {
+  animation: product-section-enter 800ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.product-image-motion {
+  transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 500ms ease;
+}
+
+.product-image-motion:hover {
+  transform: scale(1.035);
+  filter: saturate(1.06);
+}
+
 /* Button Hover Effects */
 .button-hover-scale {
   transition: transform 250ms ease-out;
@@ -75,7 +114,7 @@ a img,
 }
 
 .table-row-hover:hover {
-  background-color: rgba(99, 102, 241, 0.05);
+  background-color: rgba(139, 79, 36, 0.07);
   transform: translateX(4px);
 }
 
@@ -92,7 +131,7 @@ a img,
 }
 
 .swiper-pagination-bullet {
-  background: #4f46e5;
+  background: #8b4f24;
   opacity: 0.5;
   width: 10px;
   height: 10px;
@@ -103,7 +142,7 @@ a img,
   opacity: 1;
   width: 24px;
   border-radius: 5px;
-  background: linear-gradient(to right, #4f46e5, #06b6d4);
+  background: linear-gradient(to right, #5b351f, #d18a2f);
 }
 
 /* Smooth fade in for images */
@@ -146,17 +185,17 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f7efe2;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #4f46e5, #06b6d4);
+  background: linear-gradient(to bottom, #5b351f, #d18a2f);
   border-radius: 6px;
-  border: 2px solid #f1f5f9;
+  border: 2px solid #f7efe2;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #4338ca, #0891b2);
+  background: linear-gradient(to bottom, #3f2417, #8b4f24);
 }
 
 /* Lightbox overlay animation */

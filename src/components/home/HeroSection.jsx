@@ -2,7 +2,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import WhatsAppIcon from '../common/WhatsAppIcon.jsx';
-import HeroProductCard from './HeroProductCard.jsx';
 import { heroProducts, heroConfig } from '../../data/heroData.js';
 
 /**
@@ -45,11 +44,6 @@ export default function HeroSection() {
     setTimeout(() => setIsPaused(false), 10000); // Resume after 10s
   };
 
-  const handleCardClick = (product) => {
-    // Navigate to product page directly
-    window.location.href = product.link;
-  };
-
   const handleArrowClick = (direction) => {
     if (direction === 'next') {
       goToNext();
@@ -59,8 +53,8 @@ export default function HeroSection() {
   };
 
   return (
-    <section 
-      className="relative h-screen min-h-[600px] overflow-hidden bg-slate-950 text-white"
+    <section
+      className="relative min-h-[calc(100svh-150px)] overflow-hidden bg-slate-950 text-white lg:h-[calc(100vh-128px)] lg:min-h-[540px]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -83,18 +77,17 @@ export default function HeroSection() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Dark overlay with gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-slate-900/85 via-indigo-950/75 to-slate-900/85" />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_40%,rgba(99,102,241,0.15),transparent_50%)]" />
+      {/* Keep the product image present while preserving text contrast. */}
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(105deg,rgba(42,23,15,0.86),rgba(91,53,31,0.42)_48%,rgba(42,23,15,0.72))]" />
 
       {/* Main Content Container */}
-      <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-between px-4 py-12 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex min-h-[calc(100svh-150px)] max-w-7xl flex-col justify-center px-4 py-7 sm:px-6 lg:h-full lg:min-h-0 lg:px-8 lg:py-6">
         {/* Top Content */}
-        <div className="flex flex-1 items-center pt-16">
-          <div className="w-full max-w-3xl">
-            {/* Main Heading - Static */}
+        <div className="flex flex-1 items-center pt-8 lg:pt-4">
+          <div className="w-full max-w-2xl">
+            <span className="animate-hero-enter text-[10px] font-black uppercase tracking-[0.2em] text-sky-200 sm:text-xs">Industrial packaging, made dependable</span>
             <motion.h1
-              className="text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-7xl"
+              className="mt-3 max-w-2xl font-serif text-4xl font-normal leading-[0.98] tracking-normal sm:text-5xl lg:text-7xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -110,68 +103,51 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="mt-6"
+                className="mt-2"
               >
-                <h2 className="text-2xl font-bold text-sky-300 sm:text-3xl lg:text-4xl">
+                <h2 className="text-lg font-semibold text-sky-200 sm:text-xl lg:text-2xl">
                   {activeProduct.heading}
                 </h2>
-                <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg lg:text-xl">
+                <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-200 sm:text-base sm:leading-7 lg:text-lg">
                   {activeProduct.description}
                 </p>
               </motion.div>
             </AnimatePresence>
+
+            <motion.div
+              className="mt-4 flex flex-col justify-start gap-2 sm:flex-row"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <a
+                className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#fff8ed] px-6 py-3 text-sm font-bold text-[#5b351f] shadow-2xl shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:bg-[#fff2dd] sm:min-h-0"
+                href={heroConfig.primaryButton.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <WhatsAppIcon className="size-5" />
+                {heroConfig.primaryButton.text}
+                <motion.span
+                  className="inline-block"
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ArrowRight size={18} />
+                </motion.span>
+              </a>
+
+              <a
+                className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/45 bg-black/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 sm:min-h-0"
+                href="/products"
+                data-spa-link="true"
+              >
+                View All Products
+                <ArrowRight className="transition-transform group-hover:translate-x-1" size={18} />
+              </a>
+            </motion.div>
           </div>
         </div>
-
-        {/* Bottom Section - CTA Buttons + Product Cards */}
-        <motion.div
-          className="pb-8"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          {/* CTA Buttons */}
-          <div className="mb-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <a
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-indigo-600 px-8 py-4 text-base font-bold text-white shadow-[0_8px_30px_rgba(56,189,248,0.3)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(56,189,248,0.4)]"
-              href={heroConfig.primaryButton.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <WhatsAppIcon className="size-5" />
-              {heroConfig.primaryButton.text}
-              <motion.span
-                className="inline-block"
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ArrowRight size={18} />
-              </motion.span>
-            </a>
-
-            <a
-              className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/40 hover:bg-white/10"
-              href="/products"
-              data-spa-link="true"
-            >
-              View All Products
-              <ArrowRight className="transition-transform group-hover:translate-x-1" size={18} />
-            </a>
-          </div>
-
-          {/* Product Cards */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {heroProducts.map((product, index) => (
-              <HeroProductCard
-                key={product.id}
-                product={product}
-                isActive={activeProduct.id === product.id}
-                onClick={() => handleCardClick(product)}
-                index={index}
-              />
-            ))}
-          </div>
-        </motion.div>
       </div>
 
       {/* Side Navigation Buttons */}

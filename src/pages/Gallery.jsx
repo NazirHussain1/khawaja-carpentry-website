@@ -87,7 +87,7 @@ export default function Gallery() {
         <div className="mx-auto flex min-h-[460px] max-w-7xl items-center px-4 py-16 sm:min-h-[520px] sm:px-6 sm:py-20 lg:px-8">
           <div className="max-w-4xl">
             <span className="inline-flex rounded-full bg-indigo-500/20 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-sky-100 ring-1 ring-white/10">Gallery — Our Work</span>
-            <h1 className="mt-6 text-3xl font-black leading-tight sm:text-5xl lg:text-7xl">FAISAL FAREED WOODS TR L.L.C Sharjah UAE</h1>
+            <h1 className="brand-arabic-style mt-6 text-3xl leading-tight sm:text-5xl lg:text-7xl">Faisal Fareed Woods TR L.L.C Sharjah UAE</h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-xl">
               Explore our wooden pallets, wooden crates, plastic pallets, jumbo bags, warehouse stock, export packing, and industrial supply operations across UAE.
             </p>
@@ -124,7 +124,7 @@ export default function Gallery() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredItems.map((item, index) => (
               <button
-                className="group relative min-h-72 overflow-hidden rounded-3xl bg-slate-900 text-left shadow-lg shadow-slate-950/10 transition duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-indigo-950/15"
+                className="group relative min-h-72 overflow-hidden rounded-3xl bg-slate-900 text-left shadow-lg shadow-slate-950/10 transition duration-300 hover:shadow-2xl hover:shadow-indigo-950/15"
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 key={`${item.title}-${item.image}`}
@@ -147,7 +147,7 @@ export default function Gallery() {
             ))}
           </div>
 
-          <div className="mt-12 rounded-3xl bg-[#02024f] px-6 py-8 text-center text-white shadow-2xl shadow-slate-950/10">
+          <div className="mt-12 rounded-none bg-[#02024f] px-6 py-8 text-center text-white shadow-2xl shadow-slate-950/10">
             <h2 className="text-2xl font-black">Need Quality Industrial Packaging Solutions?</h2>
             <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
               <a className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-600 to-sky-500 px-7 py-4 text-sm font-extrabold text-white shadow-xl shadow-indigo-950/25 transition hover:-translate-y-1 hover:from-violet-600 hover:to-sky-400" href={whatsappUrl} target="_blank" rel="noreferrer">
@@ -179,7 +179,7 @@ export default function Gallery() {
           <button className="absolute left-4 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:left-8" type="button" onClick={showPrevious} aria-label="Previous image">
             <ChevronLeft size={24} />
           </button>
-          <div className="w-full max-w-5xl animate-hero-enter overflow-hidden rounded-3xl bg-white shadow-2xl">
+          <div className="w-full max-w-5xl animate-hero-enter overflow-hidden rounded-none bg-white shadow-2xl">
             <img className="max-h-[75vh] w-full object-cover" src={activeItem.image} alt={activeItem.title} width="1200" height="800" decoding="async" />
             <div className="flex items-center justify-between gap-4 px-5 py-4">
               <div>
